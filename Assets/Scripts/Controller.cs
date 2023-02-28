@@ -147,6 +147,6 @@ public class Controller : MonoBehaviour
     #endregion
     void Start()
     {
-        BasicSetup();
+        BasicSetup();   
     }
 }
