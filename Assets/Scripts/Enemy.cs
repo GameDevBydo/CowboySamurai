@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
 {
     public GameObject player;
     public float speed = 5.0f;
-
     private float distance;
     void Start()
     {

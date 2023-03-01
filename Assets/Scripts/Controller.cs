@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -85,58 +86,72 @@ public class Controller : MonoBehaviour
         currentScene++;
         WriteCurrentSceneText();
     }
-    // Cria uma string baseada na quantidade de cenas jogaveis disponiveis e retorna ela
-    public void CreateSeed()
-    {   
-        List<char> seedList = new List<char>();
-        for(int i = 0; i <playableScenes; i++)
-        {
-            char id = ((char)Random.Range(97,97+playableScenes));
-            while(seedList.Contains(id))
+        #region Coisas de Seed 
+        public void CreateSeed() // Cria uma seed aleatória em formato de string baseado em quantas cenas jogaveis existem
+        {   
+            List<char> seedList = new List<char>();
+            for(int i = 0; i <playableScenes; i++)
             {
-                id = ((char)Random.Range(97,97+playableScenes));
+                char id = ((char)UnityEngine.Random.Range(97,97+playableScenes));
+                while(seedList.Contains(id))
+                {
+                    id = ((char)UnityEngine.Random.Range(97,97+playableScenes));
+                }
+                seedList.Add(id);
             }
-            seedList.Add(id);
+            seed = string.Concat(seedList);
+            WriteSeedText();
         }
-        seed = string.Concat(seedList);
-        WriteSeedText();
-    }
 
-    // Le uma seed e preenche a lista de fases na ordem correta.
-    public void ConvertSeedIntoList()
-    {
-        if(seed==null) CreateSeed();
-        string seedName = seed;
-        sceneList = new int[playableScenes];
-        char[] seedSplit = seedName.ToCharArray();
-        for(int i = 0; i < seedName.Length; i++)
+        // Le uma seed e preenche a lista de fases na ordem correta.
+        public void ConvertSeedIntoList()
         {
-            sceneList[i] = (((byte)seedSplit[i])-97)+1;
+            if(seed==null) CreateSeed();
+            string seedName = seed;
+            sceneList = new int[playableScenes];
+            char[] seedSplit = seedName.ToCharArray();
+            for(int i = 0; i < seedName.Length; i++)
+            {
+                sceneList[i] = (((byte)seedSplit[i])-97)+1;
+            }
         }
-    }
 
-        #region Teste
-    public void CheckSeedIntegrity(string writtenSeed)
-    {
-        if(writtenSeed.Length != playableScenes) {CreateSeed(); return;}
-    }
+        //Confere se a seed é válida comparando o tamanho dela, e os caracteres presentes
+        public void CheckSeedIntegrity(string writtenSeed) 
+        {
+            bool flag= false;
+            if(writtenSeed.Length != playableScenes) flag = true;
+            for(int i = 0; i < playableScenes; i++)
+            {
+                if(!writtenSeed.Contains(Convert.ToChar(97+i))) flag = true;
+            }
+            if(flag) 
+            {
+                Debug.Log("Seed inválida.");
+                CreateSeed();
+            }
+            else seed = writtenSeed;
+        }
 
-    public void InputSeed(string s)
-    {
-        seed = s.ToLower();
-        WriteSeedText();
-    }
+        // Função para ser chamada e pegar o nome da seed
+        public void InputSeed(string s)
+        {
+            CheckSeedIntegrity(s.ToLower());
+            WriteSeedText();
+        }
 
-    public void WriteSeedText()
-    {
-        seedText.text = "Seed: "+seed;
-    }
+        // Transforma a seed em texto visível para o jogador
+        public void WriteSeedText()
+        {
+            seedText.text = "Seed: "+seed;
+        }
 
-    public void WriteCurrentSceneText()
-    {
-        sceneCountText.text = "Cena:" +currentScene.ToString();
-    }
-    #endregion
+        // Escreve para o player qual a cena (quantitativamente) atual ele está jogando (1ª cena, 2ª cena, etc)
+        public void WriteCurrentSceneText()
+        {
+            sceneCountText.text = "Cena:" +currentScene.ToString();
+        }
+        #endregion
 
     void BasicSetup() // Coisas para acontecerem no inicio do jogo.
     {
