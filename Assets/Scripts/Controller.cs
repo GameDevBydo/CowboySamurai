@@ -57,12 +57,13 @@ public class Controller : MonoBehaviour
         #endregion
 
         #region Scene References
-        public TextMeshProUGUI seedText, sceneCountText;
+        public TextMeshProUGUI[] seedText, sceneCountText;
         #endregion
 
     //Fechar o app
     public void ExitApp()
     {
+        Debug.Log("<color=red>Fechou o jogo.</color>");
         Application.Quit();
     }
     // Carrega uma cena com id especificado.
@@ -128,9 +129,14 @@ public class Controller : MonoBehaviour
             if(flag) 
             {
                 Debug.Log("Seed inválida.");
+                //GameObject.Find("SeedError").SetActive(true);         Trocar função para possibilizar encontrar objetos desativados.
                 CreateSeed();
             }
-            else seed = writtenSeed;
+            else
+            {
+                ///GameObject.Find("SeedError").SetActive(false);
+                seed = writtenSeed;
+            }
         }
 
         // Função para ser chamada e pegar o nome da seed
@@ -143,23 +149,30 @@ public class Controller : MonoBehaviour
         // Transforma a seed em texto visível para o jogador
         public void WriteSeedText()
         {
-            seedText.text = "Seed: "+seed;
+            for(int i = 0; i <seedText.Length; i++)
+            {
+                seedText[i].text = "Seed: "+seed;
+            }
         }
 
         // Escreve para o player qual a cena (quantitativamente) atual ele está jogando (1ª cena, 2ª cena, etc)
         public void WriteCurrentSceneText()
         {
-            sceneCountText.text = "Cena:" +currentScene.ToString();
+            for(int i = 0; i <sceneCountText.Length; i++)
+            {
+                sceneCountText[i].text = "Cena: " +currentScene.ToString();
+            }
         }
         #endregion
+    #endregion
 
     void BasicSetup() // Coisas para acontecerem no inicio do jogo.
     {
         playableScenes = SceneManager.sceneCountInBuildSettings - 1; // Alterar o valor baseado em quantas cenas não jogáveis existem
         currentScene = 0;
         seed = null;
+        currentScreen = GameObject.Find("Intro");
     }
-    #endregion
     void Start()
     {
         BasicSetup();   
