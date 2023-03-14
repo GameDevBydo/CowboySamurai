@@ -10,6 +10,8 @@ public class ComboSystem : MonoBehaviour
     public Attack _attack;
     public bool isValid;
 
+    public KeyCode[] lightAtk, heavyAtk, specialAtk;
+
     void Start()
     {
         //Use this to ensure that the Gizmos are being drawn when in Play Mode.
@@ -31,7 +33,7 @@ public class ComboSystem : MonoBehaviour
             } 
         }
 
-        if(Input.GetKey(KeyCode.JoystickButton3) && !isValid){
+        if(Input.GetKey(KeyCode.P) && !isValid){
             StartCoroutine(timeout(_attack.startUp));
             for(int i = 0; i<_attack.hitboxes.Length; i++){
                 MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
@@ -70,7 +72,7 @@ public class ComboSystem : MonoBehaviour
     //Draw the Box Overlap as a gizmo to show where it currently is testing. Click the Gizmos button to see this
     void OnDrawGizmos()
     {
-        if(Input.GetKey(KeyCode.Comma)){
+        if(Input.GetKey(KeyCode.P)){
             for(int i = 0; i<_attack.hitboxes.Length; i++){
                 
                 Gizmos.color = Color.red;

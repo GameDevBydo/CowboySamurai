@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590e64b0a3b6b40e081ef9b0e6137a59, type: 3}
   m_Name: Hitbox
   m_EditorClassIdentifier: 
-  startingPoint: {x: 0, y: 0, z: 0}
-  extension: {x: 0, y: 0, z: 5}
+  startingPoint: {x: 1, y: 1.5, z: 0}
+  extension: {x: 1, y: 0.3, z: 2}
