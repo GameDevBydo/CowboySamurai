@@ -5287,7 +5287,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _attack: {fileID: 11400000, guid: 472b60050f752429fbdda4d5b7e4e634, type: 2}
-  isValid: 0
+  isValidBlow: 0
+  lightAtk: 2c0000004b010000
+  heavyAtk: 2e0000004d010000
+  specialAtk: 
 --- !u!1 &1646258808
 GameObject:
   m_ObjectHideFlags: 0

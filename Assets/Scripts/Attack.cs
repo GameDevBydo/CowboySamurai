@@ -9,5 +9,5 @@ public class Attack : ScriptableObject
     public Hitbox[] hitboxes;
     public int[] damage;
     public bool hit;
-    public float startUp;
+    public float freezeTime;
 }

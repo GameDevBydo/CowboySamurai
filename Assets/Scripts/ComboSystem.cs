@@ -8,9 +8,9 @@ public class ComboSystem : MonoBehaviour
     public LayerMask m_LayerMask;
 
     public Attack _attack;
-    public bool isValid;
-
+    public bool isValidBlow;
     public KeyCode[] lightAtk, heavyAtk, specialAtk;
+
 
     void Start()
     {
@@ -23,67 +23,117 @@ public class ComboSystem : MonoBehaviour
 
     void FixedUpdate()
     {
+        buttonsAttacks();
+    }
+    #region Buttons Attacks
+    public void buttonsAttacks(){
+        //Coloca a variavel hit como false
         _attack.hit = false;
 
-        
-        if(Input.GetKey(KeyCode.JoystickButton2) && !isValid){
-            StartCoroutine(timeout(_attack.startUp));
+        //if para botao de attack
+        if(Input.GetKey(lightAtk[0]) && !isValidBlow){
+            //chama cooutine para o freezetime do golpe
+            StartCoroutine(timeout(_attack.freezeTime));
+            //for para passar em todo vetor de hitbox
+            for(int i = 0; i<_attack.hitboxes.Length; i++){
+                //cria as caixas para fazer o desenho do golpe
+                MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
+            } 
+        }
+        if(Input.GetKey(lightAtk[1]) && !isValidBlow){
+            StartCoroutine(timeout(_attack.freezeTime));
             for(int i = 0; i<_attack.hitboxes.Length; i++){
                 MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
             } 
         }
-
-        if(Input.GetKey(KeyCode.P) && !isValid){
-            StartCoroutine(timeout(_attack.startUp));
+        if(Input.GetKey(heavyAtk[0]) && !isValidBlow){
+            StartCoroutine(timeout(_attack.freezeTime));
             for(int i = 0; i<_attack.hitboxes.Length; i++){
                 MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
             } 
         }
-        
+        if(Input.GetKey(heavyAtk[1]) && !isValidBlow){
+            StartCoroutine(timeout(_attack.freezeTime));
+            for(int i = 0; i<_attack.hitboxes.Length; i++){
+                MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
+            } 
+        }
     }
+    #endregion
 
+    #region  Timeout golpe
     IEnumerator timeout(float value){
-        isValid = true;
+        //Coloca como verdadeiro a variavel que controla se o player pode usar o golpe
+        isValidBlow = true;
+        //time para que a variavel volte para falso e o player volte a poder usar o golpe
         yield return new WaitForSeconds(value);
-        isValid = !isValid;
+        //variavel volta para falso para poder usar o golpe
+        isValidBlow = !isValidBlow;
     }
-    
+    #endregion
 
+    #region OverlapBox create
     void MyCollisions(Vector3 center,Vector3 halfExtents, Quaternion orientation, int damage)
     {
-        //Use the OverlapBox to detect if there are any other colliders within this box area.
-        //Use the GameObject's centre, half the size (as a radius) and rotation. This creates an invisible box around your GameObject.
+        //Isso cria uma caixa invisível ao redor do seu GameObject .
         Collider[] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + center.x, gameObject.transform.position.y + center.y, ((halfExtents.z/2.0f)+gameObject.transform.position.z)+center.z), halfExtents, orientation, m_LayerMask);
         int i = 0;
         
-        //Check when there is a new collider coming into contact with the box
+        //Verifica quando há um novo colisor entrando em contato com a caixa
         while (i < hitColliders.Length)
         {
-            
+            //Coloca o hit do attack como verdadeiro
             _attack.hit = true;
-            //Output all of the collider nam
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-            //Increase the number of Colliders in the array
+            // Imprime todos os nomes dos colisores
+            //Debug.Log("Hit : " + hitColliders[i].name + i);
+            //Aumenta o número de Colliders no array
             i++;
             
         }
     }
+    #endregion
 
-    //Draw the Box Overlap as a gizmo to show where it currently is testing. Click the Gizmos button to see this
+    #region Gizmos
+    //Desenhe o Box Overlap como um gizmo para mostrar onde ele está testando no momento
     void OnDrawGizmos()
     {
-        if(Input.GetKey(KeyCode.P)){
+        if(Input.GetKey(lightAtk[0])){
             for(int i = 0; i<_attack.hitboxes.Length; i++){
                 
                 Gizmos.color = Color.red;
-                //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+                //Verifica se está rodando no modo Play , para não tentar desenhar isso no modo Editor
                 if (m_Started)
-                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
                     Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + _attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + _attack.hitboxes[i].startingPoint.y, (_attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+_attack.hitboxes[i].startingPoint.z), _attack.hitboxes[i].extension);
                 
             }
-           
-            
+        }
+        if(Input.GetKey(lightAtk[1])){
+            for(int i = 0; i<_attack.hitboxes.Length; i++){
+                
+                Gizmos.color = Color.red;
+                if (m_Started)
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + _attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + _attack.hitboxes[i].startingPoint.y, (_attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+_attack.hitboxes[i].startingPoint.z), _attack.hitboxes[i].extension);
+                
+            }
+        }
+        if(Input.GetKey(heavyAtk[0])){
+            for(int i = 0; i<_attack.hitboxes.Length; i++){
+                
+                Gizmos.color = Color.red;
+                if (m_Started)
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + _attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + _attack.hitboxes[i].startingPoint.y, (_attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+_attack.hitboxes[i].startingPoint.z), _attack.hitboxes[i].extension);
+                
+            }
+        }
+        if(Input.GetKey(heavyAtk[1])){
+            for(int i = 0; i<_attack.hitboxes.Length; i++){
+                
+                Gizmos.color = Color.red;
+                if (m_Started)
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + _attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + _attack.hitboxes[i].startingPoint.y, (_attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+_attack.hitboxes[i].startingPoint.z), _attack.hitboxes[i].extension);
+                
+            }
         }
     }
+    #endregion
 }
