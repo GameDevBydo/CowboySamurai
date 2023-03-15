@@ -75,9 +75,11 @@ public class Controller : MonoBehaviour
     // Carrega o menu, e altera os trem q mudar
     public void LoadMenu()
     {
+        ChangeGameStates(0);
         LoadScene(0);
         currentScene = 0;
         WriteCurrentSceneText();
+        inputPause = true;
     }
 
     // Carrega a proxima cena da lista ja seedada
@@ -87,6 +89,19 @@ public class Controller : MonoBehaviour
         currentScene++;
         WriteCurrentSceneText();
     }
+
+    public void StartGame(GameObject screen)
+    {
+        if(seed == null)
+        {
+            ConvertSeedIntoList();
+        }
+        ChangeGameStates(1);
+        inputPause = false; // Trocar para tocar pós animação
+        LoadNextScene();
+        ChangeScreen(screen);
+    }
+
         #region Coisas de Seed 
         public void CreateSeed() // Cria uma seed aleatória em formato de string baseado em quantas cenas jogaveis existem
         {   
@@ -166,8 +181,34 @@ public class Controller : MonoBehaviour
         #endregion
     #endregion
 
+    #region Game States
+    public enum States 
+    {
+        UI,
+        Game,
+    }
+    public States states;
+    public void ChangeGameStates(int stateID)
+    {
+        switch(stateID)
+        {
+            case 0: states = States.UI;
+            break;
+            case 1: states = States.Game;
+            break;
+
+            default: Debug.Log("<color=red>Estado não inserido. Estado se tornou UI.</color>");
+            states = States.UI;
+            break;
+        }
+    }
+    public bool inputPause, playerPause;
+    #endregion
     void BasicSetup() // Coisas para acontecerem no inicio do jogo.
     {
+        ChangeGameStates(0);
+        inputPause = true;
+        playerPause = false;
         playableScenes = SceneManager.sceneCountInBuildSettings - 1; // Alterar o valor baseado em quantas cenas não jogáveis existem
         currentScene = 0;
         seed = null;

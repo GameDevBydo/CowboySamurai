@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     const float gravity= -9.81f;
     public bool groundedPlayer;
     public float speed = 2f, jump = 2f;
-    static Player instance;
+    public static Player instance;
     
     #region Singleton 
     void Awake()
@@ -40,7 +40,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        MovimentPlayer();
+        if(!Controller.instance.inputPause && Controller.instance.states == Controller.States.Game)
+        {
+            if(Input.GetKeyDown(KeyCode.P)) PlayerPause(); // Pause funciona apenas no teclado por enquanto
+            
+            if(!Controller.instance.playerPause)
+            {
+                MovimentPlayer();
+            }
+        }
     }
 
     #region Movimento do player
@@ -78,6 +86,11 @@ public class Player : MonoBehaviour
         controller.Move( input* Time.deltaTime * speed);
         controller.Move(playerVelocity * Time.deltaTime);
     }
-
     #endregion
+
+    void PlayerPause()
+    {
+        Controller.instance.playerPause = !Controller.instance.playerPause;
+        Controller.instance.ChangeGameStates(Controller.instance.playerPause?0:1);
+    }
 }

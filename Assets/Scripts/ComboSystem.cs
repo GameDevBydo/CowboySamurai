@@ -5,9 +5,8 @@ using UnityEngine;
 public class ComboSystem : MonoBehaviour
 {
     bool m_Started;
-    public LayerMask m_LayerMask;
-
-    public Attack _attack;
+    public LayerMask m_EnemyLayer;
+    public MoveList moveList;
     public bool isValidBlow;
     public KeyCode[] lightAtk, heavyAtk, specialAtk;
 
@@ -16,47 +15,29 @@ public class ComboSystem : MonoBehaviour
     {
         //Use this to ensure that the Gizmos are being drawn when in Play Mode.
         m_Started = true;
-
     }
-
-    
 
     void FixedUpdate()
     {
-        buttonsAttacks();
+        CallAttack();
     }
-    #region Buttons Attacks
-    public void buttonsAttacks(){
-        //Coloca a variavel hit como false
-        _attack.hit = false;
 
-        //if para botao de attack
-        if(Input.GetKey(lightAtk[0]) && !isValidBlow){
-            //chama cooutine para o freezetime do golpe
-            StartCoroutine(timeout(_attack.freezeTime));
-            //for para passar em todo vetor de hitbox
-            for(int i = 0; i<_attack.hitboxes.Length; i++){
-                //cria as caixas para fazer o desenho do golpe
-                MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
-            } 
+    #region Attacks
+    public void CallAttack() // Pega um input e ativa o golpe relacionado a esse input.
+    {
+        for(int i = 0; i<moveList._attack.Length; i++)
+        {
+            moveList._attack[i].hit = false;
         }
-        if(Input.GetKey(lightAtk[1]) && !isValidBlow){
-            StartCoroutine(timeout(_attack.freezeTime));
-            for(int i = 0; i<_attack.hitboxes.Length; i++){
-                MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
-            } 
+
+        if(Input.GetKey(lightAtk[0]) && !isValidBlow || Input.GetKey(lightAtk[1]) && !isValidBlow){
+            CheckAttackCollision(0);
+            StartCoroutine(timeout(moveList._attack[0].freezeTime));
         }
-        if(Input.GetKey(heavyAtk[0]) && !isValidBlow){
-            StartCoroutine(timeout(_attack.freezeTime));
-            for(int i = 0; i<_attack.hitboxes.Length; i++){
-                MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
-            } 
-        }
-        if(Input.GetKey(heavyAtk[1]) && !isValidBlow){
-            StartCoroutine(timeout(_attack.freezeTime));
-            for(int i = 0; i<_attack.hitboxes.Length; i++){
-                MyCollisions(_attack.hitboxes[i].startingPoint,_attack.hitboxes[i].extension, Quaternion.identity, _attack.damage[0]);
-            } 
+        
+        if(Input.GetKey(heavyAtk[0]) && !isValidBlow || Input.GetKey(heavyAtk[1]) && !isValidBlow){
+            CheckAttackCollision(1);
+            StartCoroutine(timeout(moveList._attack[1].freezeTime));
         }
     }
     #endregion
@@ -73,23 +54,28 @@ public class ComboSystem : MonoBehaviour
     #endregion
 
     #region OverlapBox create
-    void MyCollisions(Vector3 center,Vector3 halfExtents, Quaternion orientation, int damage)
+    void CheckAttackCollision(int moveId) // Método para checar se o ataque colidiu com inimigos, e se sim, causar dano
     {
-        //Isso cria uma caixa invisível ao redor do seu GameObject .
-        Collider[] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + center.x, gameObject.transform.position.y + center.y, ((halfExtents.z/2.0f)+gameObject.transform.position.z)+center.z), halfExtents, orientation, m_LayerMask);
-        int i = 0;
-        
-        //Verifica quando há um novo colisor entrando em contato com a caixa
-        while (i < hitColliders.Length)
+        // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
+        // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
+        List<Collider> hitCollider = new List<Collider>();
+        List<Enemy> enemiesHit = new List<Enemy>();
+ 
+        for(int i = 0; i<moveList._attack[moveId].hitboxes.Length; i++)
         {
-            //Coloca o hit do attack como verdadeiro
-            _attack.hit = true;
-            // Imprime todos os nomes dos colisores
-            //Debug.Log("Hit : " + hitColliders[i].name + i);
-            //Aumenta o número de Colliders no array
-            i++;
-            
+            hitCollider.AddRange(Physics.OverlapBox(new Vector3(gameObject.transform.position.x + moveList._attack[moveId].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[moveId].hitboxes[i].startingPoint.y, ((moveList._attack[0].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+moveList._attack[moveId].hitboxes[i].startingPoint.z), moveList._attack[0].hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
         }
+
+        foreach (Collider col in hitCollider)
+        {
+            if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
+        }
+
+        foreach(Enemy en in enemiesHit)
+        {
+            en.TakeDamage(moveList._attack[moveId].damage);
+        }
+
     }
     #endregion
 
@@ -97,43 +83,27 @@ public class ComboSystem : MonoBehaviour
     //Desenhe o Box Overlap como um gizmo para mostrar onde ele está testando no momento
     void OnDrawGizmos()
     {
-        if(Input.GetKey(lightAtk[0])){
-            for(int i = 0; i<_attack.hitboxes.Length; i++){
+        if(Input.GetKey(lightAtk[0]) && !isValidBlow || Input.GetKey(lightAtk[1]) && !isValidBlow){
+            for(int i = 0; i<moveList._attack[0].hitboxes.Length; i++){
                 
-                Gizmos.color = Color.red;
+                Gizmos.color = Color.blue;
                 //Verifica se está rodando no modo Play , para não tentar desenhar isso no modo Editor
                 if (m_Started)
-                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + _attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + _attack.hitboxes[i].startingPoint.y, (_attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+_attack.hitboxes[i].startingPoint.z), _attack.hitboxes[i].extension);
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + moveList._attack[0].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[0].hitboxes[i].startingPoint.y, (moveList._attack[0].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+moveList._attack[0].hitboxes[i].startingPoint.z), moveList._attack[0].hitboxes[i].extension);
                 
             }
         }
-        if(Input.GetKey(lightAtk[1])){
-            for(int i = 0; i<_attack.hitboxes.Length; i++){
+
+        if(Input.GetKey(heavyAtk[0]) && !isValidBlow || Input.GetKey(heavyAtk[1]) && !isValidBlow){
+            for(int i = 0; i<moveList._attack[1].hitboxes.Length; i++){
                 
                 Gizmos.color = Color.red;
                 if (m_Started)
-                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + _attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + _attack.hitboxes[i].startingPoint.y, (_attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+_attack.hitboxes[i].startingPoint.z), _attack.hitboxes[i].extension);
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + moveList._attack[1].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[1].hitboxes[i].startingPoint.y, (moveList._attack[1].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+moveList._attack[1].hitboxes[i].startingPoint.z), moveList._attack[1].hitboxes[i].extension);
                 
             }
         }
-        if(Input.GetKey(heavyAtk[0])){
-            for(int i = 0; i<_attack.hitboxes.Length; i++){
-                
-                Gizmos.color = Color.red;
-                if (m_Started)
-                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + _attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + _attack.hitboxes[i].startingPoint.y, (_attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+_attack.hitboxes[i].startingPoint.z), _attack.hitboxes[i].extension);
-                
-            }
-        }
-        if(Input.GetKey(heavyAtk[1])){
-            for(int i = 0; i<_attack.hitboxes.Length; i++){
-                
-                Gizmos.color = Color.red;
-                if (m_Started)
-                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + _attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + _attack.hitboxes[i].startingPoint.y, (_attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+_attack.hitboxes[i].startingPoint.z), _attack.hitboxes[i].extension);
-                
-            }
-        }
+        
     }
     #endregion
 }

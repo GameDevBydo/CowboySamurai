@@ -7,7 +7,7 @@ public class Attack : ScriptableObject
 {
     public int attackId;
     public Hitbox[] hitboxes;
-    public int[] damage;
+    public int damage;
     public bool hit;
     public float freezeTime;
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 84}
+  m_AnchoredPosition: {x: 0, y: 164}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &22497194
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 206194709}
   - component: {fileID: 206194708}
   m_Layer: 5
-  m_Name: NextLevelBT
+  m_Name: StartGameBT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,12 +732,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 840519719}
-  m_Father: {fileID: 449461451}
+  m_Father: {fileID: 340587834}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 574, y: -158}
+  m_AnchoredPosition: {x: 580, y: -224}
   m_SizeDelta: {x: 200, y: 110.571}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206194708
@@ -786,11 +786,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: LoadNextScene
-        m_Mode: 1
+        m_MethodName: StartGame
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 25114359}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1177,7 +1177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.10018722, y: -0.029744333, z: 0.0029964244, w: 0.9945194}
-  m_LocalPosition: {x: -5.82, y: 5.23, z: -14.66}
+  m_LocalPosition: {x: 0, y: 5.23, z: -14.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1265,6 +1265,7 @@ RectTransform:
   - {fileID: 967908201}
   - {fileID: 760239705}
   - {fileID: 22497193}
+  - {fileID: 206194707}
   m_Father: {fileID: 1964895591}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1751,7 +1752,6 @@ RectTransform:
   - {fileID: 281702011}
   - {fileID: 2019567561}
   - {fileID: 7677533}
-  - {fileID: 206194707}
   - {fileID: 639329429}
   m_Father: {fileID: 1964895591}
   m_RootOrder: -1
@@ -2370,7 +2370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &639329429
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3187,7 +3187,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Level
+  m_text: "Come\xE7ar"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3214,8 +3214,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.9
-  m_fontSizeBase: 49.9
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5283,13 +5283,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbc9e24e224b4bd1b2369b2d332ae74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LayerMask:
+  m_EnemyLayer:
     serializedVersion: 2
-    m_Bits: 0
-  _attack: {fileID: 11400000, guid: 472b60050f752429fbdda4d5b7e4e634, type: 2}
+    m_Bits: 64
+  moveList: {fileID: 11400000, guid: eaa46e15ebb1693458483b87b3b9e82c, type: 2}
   isValidBlow: 0
   lightAtk: 2c0000004b010000
-  heavyAtk: 2e0000004d010000
+  heavyAtk: 2e0000004c010000
   specialAtk: 
 --- !u!1 &1646258808
 GameObject:
@@ -5624,6 +5624,9 @@ MonoBehaviour:
   - {fileID: 22497194}
   sceneCountText:
   - {fileID: 1114524549}
+  states: 0
+  inputPause: 0
+  playerPause: 0
 --- !u!4 &1747575655
 Transform:
   m_ObjectHideFlags: 0

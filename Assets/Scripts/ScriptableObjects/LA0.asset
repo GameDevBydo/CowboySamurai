@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9044bc4d8c39640539bbfa62e1942ecf, type: 3}
-  m_Name: Attack
+  m_Name: LA0
   m_EditorClassIdentifier: 
   attackId: 0
   hitboxes:
   - {fileID: 11400000, guid: 83fa118c4fe5848ce970233be0e33b36, type: 2}
   - {fileID: 11400000, guid: 1f1df914ad2d745408a77a458cb391ba, type: 2}
   - {fileID: 11400000, guid: aa415d156c2be447cba69eefd15ca1ba, type: 2}
-  damage: 050000000a0000000f000000
+  damage: 10
   hit: 0
-  startUp: 2
+  freezeTime: 1
