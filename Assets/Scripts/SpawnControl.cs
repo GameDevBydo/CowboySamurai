@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class SpawnControl : MonoBehaviour
 {
-    public GameObject Spawner;
-    public GameObject Player;
-    public int yPos;
-    public int zPos;
-    float distance = Vector3.Distance(GameObject.FindWithTag("Player").transform.position, (GameObject.FindWithTag("Spawner")).transform.position); 
+    public Spawn[] spawns;
+    public GameObject[] entities;
+    bool spawnTimer;
 
-    void Start()
+    void Update()
     {
-        Instantiate(Spawner, new Vector3(distance, yPos, zPos), Quaternion.identity);
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            StartSpawnEntities(0,3,1);
+        }
+    }
+
+
+    public void StartSpawnEntities(int entityId, int quantity, int spawnId)
+    {
+        for(int i = 0; i < quantity; i++)
+        {
+            spawns[spawnId].SpawnEntity(entities[entityId]);
+        }
     }
 }

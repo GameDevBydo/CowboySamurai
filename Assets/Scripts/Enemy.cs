@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     #region Movement Variables
     [HideInInspector]
-    public float speed = 5.0f;
+    public float speed;
     public float baseSpeed = 5.0f;
     private float distance;
     [SerializeField]
@@ -17,9 +17,12 @@ public class Enemy : MonoBehaviour
     #region Combat Variables
     private int hp = 50;
     #endregion
+
+    public ParticleSystem deathPS;
     void Awake()
     {
         player = Player.instance.gameObject; //Define o player 
+        speed = baseSpeed;
     }
 
     void Update()
@@ -55,11 +58,14 @@ public class Enemy : MonoBehaviour
         CheckDeath();
     }
 
+
+
     void CheckDeath() // Método para checagem de morte
     {
         if(hp <= 0)
         {
             Debug.Log(gameObject.name + "morreu");
+            Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Destroy(gameObject);
         }
     }

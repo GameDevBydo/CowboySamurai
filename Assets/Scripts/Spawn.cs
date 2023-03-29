@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool canSpawn;
+    
+    public void SpawnEntity(GameObject obj)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Instantiate(obj, transform.position, Quaternion.identity);
     }
 }

@@ -30,11 +30,60 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     #endregion 
+
+    #region State Machine
+    enum PlayerState
+    {
+        CINEMATIC,
+        STANDING,
+        WALKING,
+        AIRBORNE,
+        ATTACKING,
+        HITSTUN,
+        DASHING
+    }
+
+    PlayerState currentState, pastState;
+
+    public void ChangePlayerState(int id)
+    {
+        pastState = currentState;
+        switch(id)
+        {
+            case 0:
+                currentState = PlayerState.CINEMATIC;
+            break;
+            case 1:
+                currentState = PlayerState.STANDING;
+            break;
+            case 2:
+                currentState = PlayerState.WALKING;
+            break;
+            case 3:
+                currentState = PlayerState.AIRBORNE;
+            break;
+            case 4:
+                currentState = PlayerState.ATTACKING;
+            break;
+            case 5:
+                currentState = PlayerState.HITSTUN;
+            break;
+            case 6:
+                currentState = PlayerState.DASHING;
+            break;
+            default:
+                Debug.Log("Change to state 1");
+                currentState = PlayerState.STANDING;
+            break;
+        }
+    }
+    #endregion
     
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        ChangePlayerState(0);
     }
 
     // Update is called once per frame
@@ -85,6 +134,10 @@ public class Player : MonoBehaviour
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move( input* Time.deltaTime * speed);
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if(!groundedPlayer) ChangePlayerState(3);
+        if(input !=Vector3.zero) ChangePlayerState(2);
+        else ChangePlayerState(1);
     }
     #endregion
 

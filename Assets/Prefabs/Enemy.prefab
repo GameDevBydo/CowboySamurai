@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055206369884760288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.82, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -130,8 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  baseSpeed: 5
-  canFollow: 0
+  baseSpeed: 1
+  canFollow: 1
+  deathPS: {fileID: 7471442581379728010, guid: 89971e4de0b250148a5b9ef2a2c651d5, type: 3}
 --- !u!136 &1055206369884760301
 CapsuleCollider:
   m_ObjectHideFlags: 0

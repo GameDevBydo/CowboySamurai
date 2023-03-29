@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa415d156c2be447cba69eefd15ca1ba, type: 2}
   damage: 10
   hit: 0
-  freezeTime: 1
+  freezeTime: 0.3

@@ -25,6 +25,7 @@ public class ComboSystem : MonoBehaviour
     #region Attacks
     public void CallAttack() // Pega um input e ativa o golpe relacionado a esse input.
     {
+        Player.instance.ChangePlayerState(4);
         for(int i = 0; i<moveList._attack.Length; i++)
         {
             moveList._attack[i].hit = false;
@@ -50,6 +51,7 @@ public class ComboSystem : MonoBehaviour
         yield return new WaitForSeconds(value);
         //variavel volta para falso para poder usar o golpe
         isValidBlow = !isValidBlow;
+        Player.instance.ChangePlayerState(1);
     }
     #endregion
 
@@ -63,7 +65,7 @@ public class ComboSystem : MonoBehaviour
  
         for(int i = 0; i<moveList._attack[moveId].hitboxes.Length; i++)
         {
-            hitCollider.AddRange(Physics.OverlapBox(new Vector3(gameObject.transform.position.x + moveList._attack[moveId].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[moveId].hitboxes[i].startingPoint.y, ((moveList._attack[0].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+moveList._attack[moveId].hitboxes[i].startingPoint.z), moveList._attack[0].hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
+            hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + moveList._attack[moveId].hitboxes[i].startingPoint.x), gameObject.transform.position.y + moveList._attack[moveId].hitboxes[i].startingPoint.y, ((moveList._attack[0].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+moveList._attack[moveId].hitboxes[i].startingPoint.z), moveList._attack[0].hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
         }
 
         foreach (Collider col in hitCollider)
