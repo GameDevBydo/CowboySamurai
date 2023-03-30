@@ -42,12 +42,12 @@ public class ControlCam : MonoBehaviour
 
     void Deadzone()
     {
-        if(player.transform.position.x > (startPlane.x + size.x * 0.15f) && player.transform.position.x < (endPlane.x - size.x * 0.15f ))
+        if(player.transform.position.x > (startPlane.x + size.x * 0.12f) && player.transform.position.x < (endPlane.x - size.x * 0.12f ))
         {
             ft.m_DeadZoneWidth = 0f;
         }
         else{
-            ft.m_DeadZoneWidth = 0.8f;
+            ft.m_DeadZoneWidth = 1.2f;
         }
     }
 
