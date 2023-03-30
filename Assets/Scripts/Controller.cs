@@ -29,6 +29,10 @@ public class Controller : MonoBehaviour
     #region UI Stuff (Tudo relacionado a UI)
     [HideInInspector]
     public GameObject currentScreen = null;
+    [Header("Telas")]
+    public GameObject inGameScreen;
+    public GameObject pauseScreen;
+    public TextMeshProUGUI comboCounter;
     
     // Usado em botões para trocar telas, como menu, opções, etc
     public void ChangeScreen(GameObject screen)
@@ -203,7 +207,42 @@ public class Controller : MonoBehaviour
         }
     }
     public bool inputPause, playerPause;
+
+    public void TogglePlayerPause()
+    {
+        playerPause = !playerPause;
+        ChangeGameStates(playerPause?0:1);
+        if(playerPause) ChangeScreen(pauseScreen);
+        else ChangeScreen(inGameScreen);
+    }
     #endregion
+
+    #region Spawn Controller
+    public Spawn[] spawns;
+    public GameObject[] entities;
+    bool spawnTimer;
+
+    public int entitiesInScene;
+
+    void SetSpawns()
+    {
+        spawns = new Spawn[transform.GetChild(2).childCount];
+        for(int i = 0; i< transform.GetChild(2).childCount; i++)
+        {
+            spawns[i] = transform.GetChild(2).GetChild(i).GetComponent<Spawn>();
+        }
+    }
+
+    public void StartSpawnEntities(int entityId, int quantity, int spawnId)
+    {
+        for(int i = 0; i < quantity; i++)
+        {
+            spawns[spawnId].SpawnEntity(entities[entityId]);
+            entitiesInScene++;
+        }
+    }
+    #endregion
+
     void BasicSetup() // Coisas para acontecerem no inicio do jogo.
     {
         ChangeGameStates(0);
@@ -213,9 +252,19 @@ public class Controller : MonoBehaviour
         currentScene = 0;
         seed = null;
         currentScreen = GameObject.Find("Intro");
+        entitiesInScene = 0;
+        SetSpawns();
     }
     void Start()
     {
         BasicSetup();   
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            StartSpawnEntities(0,1,1);
+        }
     }
 }

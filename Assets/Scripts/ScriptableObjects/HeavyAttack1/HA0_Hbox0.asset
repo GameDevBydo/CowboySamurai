@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590e64b0a3b6b40e081ef9b0e6137a59, type: 3}
   m_Name: HA0_Hbox0
   m_EditorClassIdentifier: 
-  startingPoint: {x: 2, y: 1, z: 0}
-  extension: {x: 5, y: 2, z: 2}
+  _startingPoint: {x: 2.7, y: 1, z: 0}
+  extension: {x: 2.5, y: 1, z: 1}

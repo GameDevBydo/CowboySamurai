@@ -9,17 +9,19 @@ public class ComboSystem : MonoBehaviour
     public MoveList moveList;
     public bool isValidBlow;
     public KeyCode[] lightAtk, heavyAtk, specialAtk;
-
+    public int comboCounter;
 
     void Start()
     {
         //Use this to ensure that the Gizmos are being drawn when in Play Mode.
         m_Started = true;
+        comboCounter = 0;
     }
 
     void FixedUpdate()
     {
         CallAttack();
+        ComboTimer();
     }
 
     #region Attacks
@@ -41,6 +43,35 @@ public class ComboSystem : MonoBehaviour
             StartCoroutine(timeout(moveList._attack[1].freezeTime));
         }
     }
+    #endregion
+
+    #region Combo Counter
+
+    float comboTimer;
+    void ComboTimer()
+    {
+        if(comboTimer>0) comboTimer-=Time.fixedDeltaTime;
+        else if(comboTimer<=0 && comboCounter>0) ResetComboCounter();    
+    }
+    public void IncreaseComboCounter()
+    {
+        comboTimer = 3;
+        comboCounter++;
+        UpdateComboCounter();
+    }
+
+    public void ResetComboCounter()
+    {
+        comboCounter = 0;
+        UpdateComboCounter();
+    }
+
+    public void UpdateComboCounter()
+    {
+        if(comboCounter >0) Controller.instance.comboCounter.text = "Combo: " + comboCounter;
+        else Controller.instance.comboCounter.text = "";
+    }
+
     #endregion
 
     #region  Timeout golpe
@@ -75,6 +106,7 @@ public class ComboSystem : MonoBehaviour
 
         foreach(Enemy en in enemiesHit)
         {
+            IncreaseComboCounter();
             en.TakeDamage(moveList._attack[moveId].damage);
         }
 
@@ -91,7 +123,7 @@ public class ComboSystem : MonoBehaviour
                 Gizmos.color = Color.blue;
                 //Verifica se está rodando no modo Play , para não tentar desenhar isso no modo Editor
                 if (m_Started)
-                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + moveList._attack[0].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[0].hitboxes[i].startingPoint.y, (moveList._attack[0].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+moveList._attack[0].hitboxes[i].startingPoint.z), moveList._attack[0].hitboxes[i].extension);
+                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + moveList._attack[0].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[0].hitboxes[i].startingPoint.y, (moveList._attack[0].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+moveList._attack[0].hitboxes[i].startingPoint.z), moveList._attack[0].hitboxes[i].extension*2);
                 
             }
         }
@@ -101,7 +133,7 @@ public class ComboSystem : MonoBehaviour
                 
                 Gizmos.color = Color.red;
                 if (m_Started)
-                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + moveList._attack[1].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[1].hitboxes[i].startingPoint.y, (moveList._attack[1].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+moveList._attack[1].hitboxes[i].startingPoint.z), moveList._attack[1].hitboxes[i].extension);
+                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + moveList._attack[1].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[1].hitboxes[i].startingPoint.y, (moveList._attack[1].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+moveList._attack[1].hitboxes[i].startingPoint.z), moveList._attack[1].hitboxes[i].extension*2);
                 
             }
         }

@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     #region Combat Variables
     private int hp = 50;
+    private float range;
     #endregion
 
     public ParticleSystem deathPS;
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     {
         player = Player.instance.gameObject; //Define o player 
         speed = baseSpeed;
+        range = Random.Range( 1.5f, 2.5f);
     }
 
     void Update()
@@ -38,7 +40,7 @@ public class Enemy : MonoBehaviour
         Vector2 playerPos = new Vector2(player.transform.position.x, 0);
 
         transform.position = Vector2.MoveTowards(this.transform.position, playerPos, speed * Time.deltaTime);
-        if(distance <= 2)
+        if(distance <= range)
         {
             speed = 0;
         }
@@ -65,6 +67,7 @@ public class Enemy : MonoBehaviour
         if(hp <= 0)
         {
             Debug.Log(gameObject.name + "morreu");
+            Controller.instance.entitiesInScene--;
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Destroy(gameObject);
         }

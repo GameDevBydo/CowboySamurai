@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!Controller.instance.inputPause && Controller.instance.states == Controller.States.Game)
+        if(!Controller.instance.inputPause)
         {
             if(Input.GetKeyDown(KeyCode.P)) PlayerPause(); // Pause funciona apenas no teclado por enquanto
             
@@ -143,7 +143,6 @@ public class Player : MonoBehaviour
 
     void PlayerPause()
     {
-        Controller.instance.playerPause = !Controller.instance.playerPause;
-        Controller.instance.ChangeGameStates(Controller.instance.playerPause?0:1);
+        Controller.instance.TogglePlayerPause();
     }
 }

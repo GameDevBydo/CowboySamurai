@@ -8,6 +8,8 @@ public class ControlCam : MonoBehaviour
     public CinemachineVirtualCamera cam;
     public GameObject plane,player;
     
+    Vector3 startPlane,center,endPlane,size;
+    CinemachineFramingTransposer ft;
     void Awake() 
     {
         plane = GameObject.Find("Plane");
@@ -15,32 +17,32 @@ public class ControlCam : MonoBehaviour
     }
     void Start()
     {
+        ft = cam.GetCinemachineComponent<CinemachineFramingTransposer>();
         player = GameObject.Find("Player_PlaceHolder");
         cam.Follow = player.transform;
         cam.LookAt = player.transform;
+        DefineDeadzone();
     }
 
     void Update()
     {
        Deadzone();
-
     }
 
     #region DEADZONE AO FINAL DA TELA
-    public void Deadzone()
+    public void DefineDeadzone()
     {
-        Vector3 startPlane,center,endPlane,size;
-        CinemachineFramingTransposer ft = cam.GetCinemachineComponent<CinemachineFramingTransposer>();
-
-        size = plane.GetComponent<MeshFilter>().mesh.bounds.size;
-        Vector3 sizeScaled = Vector3.Scale(size,plane.transform.localScale);
-
+        size = Vector3.Scale(plane.GetComponent<MeshFilter>().mesh.bounds.size, plane.transform.localScale);
         center = plane.GetComponent<MeshFilter>().mesh.bounds.center;
 
-        startPlane = center - sizeScaled/2;
-        endPlane = center + sizeScaled/2;
+        startPlane = center - size/2;
+        endPlane = center + size/2;
 
-        if(player.transform.position.x > (startPlane.x + sizeScaled.x * 0.15f) && player.transform.position.x < (endPlane.x - sizeScaled.x * 0.15f ))
+    }
+
+    void Deadzone()
+    {
+        if(player.transform.position.x > (startPlane.x + size.x * 0.15f) && player.transform.position.x < (endPlane.x - size.x * 0.15f ))
         {
             ft.m_DeadZoneWidth = 0f;
         }
