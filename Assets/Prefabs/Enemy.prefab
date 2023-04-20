@@ -115,7 +115,7 @@ Transform:
   m_Children:
   - {fileID: 1055206369190292806}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1055206369884760291
 MonoBehaviour:
@@ -133,6 +133,8 @@ MonoBehaviour:
   baseSpeed: 1
   canFollow: 1
   deathPS: {fileID: 7471442581379728010, guid: 89971e4de0b250148a5b9ef2a2c651d5, type: 3}
+  baseMat: {fileID: 2100000, guid: f9248c66b6e0211428af699ecaf06e26, type: 2}
+  hitMat: {fileID: 2100000, guid: 636102617bce3884baf8ecec0753561e, type: 2}
 --- !u!136 &1055206369884760301
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -9,8 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 590e64b0a3b6b40e081ef9b0e6137a59, type: 3}
-  m_Name: LA0_Hbox1
+  m_Script: {fileID: 11500000, guid: 9044bc4d8c39640539bbfa62e1942ecf, type: 3}
+  m_Name: L
   m_EditorClassIdentifier: 
-  _startingPoint: {x: 1.5, y: 1.2, z: 0}
-  extension: {x: 0.5, y: 0.15, z: 1}
+  attackName: L
+  hitboxes:
+  - {fileID: 11400000, guid: 83fa118c4fe5848ce970233be0e33b36, type: 2}
+  damage: 1
+  hit: 0
+  startUp: 99
+  recovery: 0.5
+  knockbackRatio: 99
+  knockupRatio: 99

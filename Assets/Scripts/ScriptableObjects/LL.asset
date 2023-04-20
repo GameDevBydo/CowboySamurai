@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9044bc4d8c39640539bbfa62e1942ecf, type: 3}
+  m_Name: LL
+  m_EditorClassIdentifier: 
+  attackName: LL
+  hitboxes:
+  - {fileID: 11400000, guid: 83fa118c4fe5848ce970233be0e33b36, type: 2}
+  - {fileID: 11400000, guid: 1f1df914ad2d745408a77a458cb391ba, type: 2}
+  - {fileID: 11400000, guid: aa415d156c2be447cba69eefd15ca1ba, type: 2}
+  damage: 2
+  hit: 0
+  startUp: 99
+  recovery: 1
+  knockbackRatio: 99
+  knockupRatio: 99

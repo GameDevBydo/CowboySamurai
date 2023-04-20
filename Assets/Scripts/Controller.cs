@@ -102,6 +102,7 @@ public class Controller : MonoBehaviour
         }
         ChangeGameStates(1);
         inputPause = false; // Trocar para tocar pós animação
+        playerPause = false;
         LoadNextScene();
         ChangeScreen(screen);
     }
@@ -264,7 +265,11 @@ public class Controller : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
-            StartSpawnEntities(0,1,1);
+            StartSpawnEntities(0,1,UnityEngine.Random.Range(0,spawns.Length));
+        }
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            LoadNextScene();
         }
     }
 }

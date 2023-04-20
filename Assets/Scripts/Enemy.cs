@@ -20,11 +20,14 @@ public class Enemy : MonoBehaviour
     #endregion
 
     public ParticleSystem deathPS;
+    public Material baseMat, hitMat;
+    private MeshRenderer rend;
     void Awake()
     {
         player = Player.instance.gameObject; //Define o player 
         speed = baseSpeed;
         range = Random.Range( 1.5f, 2.5f);
+        rend = GetComponentInChildren<MeshRenderer>();
     }
 
     void Update()
@@ -52,24 +55,32 @@ public class Enemy : MonoBehaviour
     #endregion
 
 
-
+    #region Combat
     public void TakeDamage(int damage) // Método para ser chamado ao levar dano
     {
         hp-=damage;
-        Debug.Log("HP Atual: " + hp);
+        //Debug.Log("HP Atual: " + hp);
+        StartCoroutine(HitMaterialEffect());
         CheckDeath();
     }
 
+    public IEnumerator HitMaterialEffect()
+    {
+        rend.material = hitMat;
+        yield return new WaitForSeconds(0.1f);
+        rend.material = baseMat;
+    }
 
 
     void CheckDeath() // Método para checagem de morte
     {
         if(hp <= 0)
         {
-            Debug.Log(gameObject.name + "morreu");
             Controller.instance.entitiesInScene--;
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Destroy(gameObject);
         }
     }
+    #endregion
+
 }

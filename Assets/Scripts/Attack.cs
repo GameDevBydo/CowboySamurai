@@ -5,9 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Attack", menuName = "Game/Combat/Attack", order = 2)]
 public class Attack : ScriptableObject
 {
-    public int attackId;
+    public string attackName;
     public Hitbox[] hitboxes;
     public int damage;
+    [HideInInspector]
     public bool hit;
-    public float freezeTime;
+    public float startUp;
+    public float recovery;
+    public float knockbackRatio;
+    public float knockupRatio;
 }

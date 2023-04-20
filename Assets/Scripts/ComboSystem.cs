@@ -7,10 +7,18 @@ public class ComboSystem : MonoBehaviour
     bool m_Started;
     public LayerMask m_EnemyLayer;
     public MoveList moveList;
-    public bool isValidBlow;
+    public bool canAttack = true;
     public KeyCode[] lightAtk, heavyAtk, specialAtk;
+
+    [HideInInspector]
     public int comboCounter;
 
+    [HideInInspector]
+    public string comboSequence = "";
+
+    float recoveryTimer;
+
+    Attack attack = null, previousAttack = null;
     void Start()
     {
         //Use this to ensure that the Gizmos are being drawn when in Play Mode.
@@ -20,6 +28,7 @@ public class ComboSystem : MonoBehaviour
 
     void FixedUpdate()
     {
+        Timeout();
         CallAttack();
         ComboTimer();
     }
@@ -27,20 +36,30 @@ public class ComboSystem : MonoBehaviour
     #region Attacks
     public void CallAttack() // Pega um input e ativa o golpe relacionado a esse input.
     {
+        bool buttonPress = false;
         Player.instance.ChangePlayerState(4);
         for(int i = 0; i<moveList._attack.Length; i++)
         {
             moveList._attack[i].hit = false;
         }
 
-        if(Input.GetKey(lightAtk[0]) && !isValidBlow || Input.GetKey(lightAtk[1]) && !isValidBlow){
-            CheckAttackCollision(0);
-            StartCoroutine(timeout(moveList._attack[0].freezeTime));
-        }
+        if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]))
+        {
+            comboSequence += "L";
+            buttonPress = true;
+        } 
         
-        if(Input.GetKey(heavyAtk[0]) && !isValidBlow || Input.GetKey(heavyAtk[1]) && !isValidBlow){
-            CheckAttackCollision(1);
-            StartCoroutine(timeout(moveList._attack[1].freezeTime));
+        
+        if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))
+        {
+            comboSequence += "H";
+            buttonPress = true;
+        } 
+
+        if(buttonPress)
+        {
+            CheckAttackCollision(comboSequence);
+            buttonPress = false;
         }
     }
     #endregion
@@ -75,41 +94,81 @@ public class ComboSystem : MonoBehaviour
     #endregion
 
     #region  Timeout golpe
-    IEnumerator timeout(float value){
-        //Coloca como verdadeiro a variavel que controla se o player pode usar o golpe
-        isValidBlow = true;
-        //time para que a variavel volte para falso e o player volte a poder usar o golpe
-        yield return new WaitForSeconds(value);
-        //variavel volta para falso para poder usar o golpe
-        isValidBlow = !isValidBlow;
-        Player.instance.ChangePlayerState(1);
+    void Timeout(){
+        if(recoveryTimer>0)
+        {
+            canAttack = false;
+            recoveryTimer -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            canAttack = true;
+            attack = null;
+            comboSequence ="";
+            Player.instance.ChangePlayerState(1);   
+        }
     }
     #endregion
 
     #region OverlapBox create
-    void CheckAttackCollision(int moveId) // Método para checar se o ataque colidiu com inimigos, e se sim, causar dano
+    void CheckAttackCollision(string name) // Método para checar se o ataque colidiu com inimigos, e se sim, causar dano
     {
-        // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
-        // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
-        List<Collider> hitCollider = new List<Collider>();
-        List<Enemy> enemiesHit = new List<Enemy>();
- 
-        for(int i = 0; i<moveList._attack[moveId].hitboxes.Length; i++)
+        for(int i= 0; i <moveList._attack.Length; i++)
         {
-            hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + moveList._attack[moveId].hitboxes[i].startingPoint.x), gameObject.transform.position.y + moveList._attack[moveId].hitboxes[i].startingPoint.y, ((moveList._attack[0].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+moveList._attack[moveId].hitboxes[i].startingPoint.z), moveList._attack[0].hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
+            if(moveList._attack[i].attackName == name && moveList.attackUnlocked[i])
+            {
+                if(previousAttack != null) Debug.Log("Golpe Anterior: " + previousAttack.hit);
+                if(previousAttack != null && previousAttack.hit == true) canAttack = true;
+                attack = moveList._attack[i];
+            }
         }
-
-        foreach (Collider col in hitCollider)
+        if(attack != null && canAttack)
         {
-            if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
-        }
+            //Debug.Log("Golpe atual: "+ name);
 
-        foreach(Enemy en in enemiesHit)
+            // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
+            // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
+            List<Collider> hitCollider = new List<Collider>();
+            List<Enemy> enemiesHit = new List<Enemy>();
+
+            for(int i = 0; i<attack.hitboxes.Length; i++)
+            {
+                hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x), gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, ((attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
+            }
+
+            foreach (Collider col in hitCollider)
+            {
+                if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
+            }
+
+            foreach(Enemy en in enemiesHit)
+            {
+                IncreaseComboCounter();
+                en.TakeDamage(attack.damage);
+            }
+            recoveryTimer = attack.recovery;
+            if(enemiesHit.Count>0) attack.hit = true;
+            previousAttack = attack;
+            Debug.Log(previousAttack.hit);
+        }
+        else
         {
-            IncreaseComboCounter();
-            en.TakeDamage(moveList._attack[moveId].damage);
+            comboSequence = "";
         }
+    }
+    #endregion
 
+
+
+    #region Cheats 
+
+    void UnlockAllMoves()
+    {
+        for(int i = 0; i< moveList.attackUnlocked.Length; i++)
+        {
+            moveList.attackUnlocked[i] = true;
+        }
+        Debug.Log("<color=green>Unlocked all moves.</color>");
     }
     #endregion
 
@@ -117,27 +176,31 @@ public class ComboSystem : MonoBehaviour
     //Desenhe o Box Overlap como um gizmo para mostrar onde ele está testando no momento
     void OnDrawGizmos()
     {
-        if(Input.GetKey(lightAtk[0]) && !isValidBlow || Input.GetKey(lightAtk[1]) && !isValidBlow){
-            for(int i = 0; i<moveList._attack[0].hitboxes.Length; i++){
-                
-                Gizmos.color = Color.blue;
-                //Verifica se está rodando no modo Play , para não tentar desenhar isso no modo Editor
-                if (m_Started)
-                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + moveList._attack[0].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[0].hitboxes[i].startingPoint.y, (moveList._attack[0].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+moveList._attack[0].hitboxes[i].startingPoint.z), moveList._attack[0].hitboxes[i].extension*2);
-                
+        if(attack != null)
+        {
+            if(Input.GetKey(lightAtk[0]) && !canAttack || Input.GetKey(lightAtk[1]) && !canAttack)
+            {
+                for(int i = 0; i<attack.hitboxes.Length; i++){
+                    
+                    Gizmos.color = Color.blue;
+                    //Verifica se está rodando no modo Play , para não tentar desenhar isso no modo Editor
+                    if (m_Started)
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*2);
+                    
+                }
             }
-        }
 
-        if(Input.GetKey(heavyAtk[0]) && !isValidBlow || Input.GetKey(heavyAtk[1]) && !isValidBlow){
-            for(int i = 0; i<moveList._attack[1].hitboxes.Length; i++){
-                
-                Gizmos.color = Color.red;
-                if (m_Started)
-                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + moveList._attack[1].hitboxes[i].startingPoint.x, gameObject.transform.position.y + moveList._attack[1].hitboxes[i].startingPoint.y, (moveList._attack[1].hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+moveList._attack[1].hitboxes[i].startingPoint.z), moveList._attack[1].hitboxes[i].extension*2);
-                
+            if(Input.GetKey(heavyAtk[0]) && !canAttack || Input.GetKey(heavyAtk[1]) && !canAttack)
+            {
+                for(int i = 0; i<attack.hitboxes.Length; i++){
+                    
+                    Gizmos.color = Color.red;
+                    if (m_Started)
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*2);
+                    
+                }
             }
         }
-        
     }
     #endregion
 }
