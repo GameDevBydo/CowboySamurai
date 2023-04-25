@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055206369190292807}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -135,6 +135,15 @@ MonoBehaviour:
   deathPS: {fileID: 7471442581379728010, guid: 89971e4de0b250148a5b9ef2a2c651d5, type: 3}
   baseMat: {fileID: 2100000, guid: f9248c66b6e0211428af699ecaf06e26, type: 2}
   hitMat: {fileID: 2100000, guid: 636102617bce3884baf8ecec0753561e, type: 2}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  attackEnemy:
+  - {fileID: 11400000, guid: a2c14b87e7a2d4f758f377073b7388e9, type: 2}
+  - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
+  - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
+  recoveryTimer: 5
+  canAttack: 0
 --- !u!136 &1055206369884760301
 CapsuleCollider:
   m_ObjectHideFlags: 0

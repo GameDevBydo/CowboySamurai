@@ -22,17 +22,60 @@ public class Enemy : MonoBehaviour
     public ParticleSystem deathPS;
     public Material baseMat, hitMat;
     private MeshRenderer rend;
+
+    bool m_Started;
+    public LayerMask m_LayerMask;
+    public Attack[] attackEnemy;
+    int currentAttack;
+
+    public static Enemy instance;
+
+    public float recoveryTimer = 5.0f;
+    public bool canAttack;
+    
     void Awake()
     {
         player = Player.instance.gameObject; //Define o player 
         speed = baseSpeed;
         range = Random.Range( 1.5f, 2.5f);
         rend = GetComponentInChildren<MeshRenderer>();
+        m_Started = true;
+        instance = this;
     }
 
     void Update()
     {
+
         if(canFollow) FollowPlayer();
+        
+    }
+    void AttackPlayer(){
+        currentAttack = Random.Range(1,100);
+        
+        if(0 < currentAttack && currentAttack < 33){
+            Golpe(attackEnemy[0]);
+            Debug.Log(currentAttack);
+        }
+        if(33 <= currentAttack && currentAttack <= 66){
+            Golpe(attackEnemy[1]);
+            Debug.Log(currentAttack);
+        }
+        if(currentAttack > 66){
+            Golpe(attackEnemy[2]);
+            Debug.Log(currentAttack);
+        }
+    
+    }
+
+    void Timeout(){
+        if(recoveryTimer>0 && !canAttack)
+        {
+            recoveryTimer -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            canAttack = true;  
+        }
     }
 
     #region Movement 
@@ -46,10 +89,21 @@ public class Enemy : MonoBehaviour
         if(distance <= range)
         {
             speed = 0;
+            Timeout();
+            if(canAttack)
+                AttackPlayer();
+
         }
         else
         {
             speed = baseSpeed;
+            currentAttack = 0;
+        }
+        if(player.transform.position.x < gameObject.transform.position.x){
+            transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+        }
+        if(player.transform.position.x > gameObject.transform.position.x){
+            gameObject.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1);
         }
     }
     #endregion
@@ -81,6 +135,54 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void Golpe(Attack attack)
+    {
+
+        //Use the OverlapBox to detect if there are any other colliders within this box area.
+        //Use the GameObject's centre, half the size (as a radius) and rotation. This creates an invisible box around your GameObject.
+        Collider[] hitColliders = Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[0].startingPointEnemy.x), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, m_LayerMask);
+        int i = 0;
+        //Check when there is a new collider coming into contact with the box
+        while (i < hitColliders.Length)
+        {
+            //Output all of the collider names
+            Debug.Log("Hit : " + hitColliders[i].name + i);
+            //Increase the number of Colliders in the array
+            i++;
+        }
+        canAttack = false;
+        recoveryTimer = attack.recovery;
+
+    }
+
+    void OnDrawGizmos()
+    {
+        if(0 < currentAttack && currentAttack < 33){
+            Gizmos.color = Color.red;
+            //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+            if (m_Started)
+                //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[0].hitboxes[0].startingPointEnemy.x), gameObject.transform.position.y + attackEnemy[0].hitboxes[0].startingPointEnemy.y, ((attackEnemy[0].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[0].hitboxes[0].startingPointEnemy.z), attackEnemy[0].hitboxes[0].extension);
+        }
+        if(33 <= currentAttack && currentAttack <= 66){
+            Gizmos.color = Color.blue;
+            //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+            if (m_Started)
+                //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[1].hitboxes[0].startingPointEnemy.x), gameObject.transform.position.y + attackEnemy[1].hitboxes[0].startingPointEnemy.y, ((attackEnemy[1].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[1].hitboxes[0].startingPointEnemy.z), attackEnemy[1].hitboxes[0].extension);
+        }
+        if(currentAttack > 66){
+            
+            Gizmos.color = Color.green;
+            //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+            if (m_Started)
+                //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[2].hitboxes[0].startingPointEnemy.x), gameObject.transform.position.y + attackEnemy[2].hitboxes[0].startingPointEnemy.y, ((attackEnemy[2].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[2].hitboxes[0].startingPointEnemy.z), attackEnemy[2].hitboxes[0].extension);
+        }
+    }
     #endregion
+
+
 
 }
