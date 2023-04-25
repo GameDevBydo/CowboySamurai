@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Animator anim;
     private GameObject player;
     #region Movement Variables
     [HideInInspector]
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour
         rend = GetComponentInChildren<MeshRenderer>();
         m_Started = true;
         instance = this;
+        //anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -86,6 +88,12 @@ public class Enemy : MonoBehaviour
         Vector2 playerPos = new Vector2(player.transform.position.x, 0);
 
         transform.position = Vector2.MoveTowards(this.transform.position, playerPos, speed * Time.deltaTime);
+        if(speed > 0){
+            anim.SetBool("Walking",true);        
+        }
+        if(speed <= 0){
+            anim.SetBool("Walking",false);
+        }
         if(distance <= range)
         {
             speed = 0;
