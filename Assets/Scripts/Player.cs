@@ -13,9 +13,9 @@ public class Player : MonoBehaviour
     const float gravity= -9.81f;
     public bool groundedPlayer;
     public float speed = 2f, jump = 2f;
-    public static Player instance;
-    
+
     #region Singleton 
+    public static Player instance;
     void Awake()
     {
         //Singleton básico, para evitar multiplos controllers na cena
@@ -139,6 +139,28 @@ public class Player : MonoBehaviour
         if(input !=Vector3.zero) ChangePlayerState(2);
         else ChangePlayerState(1);
     }
+    #endregion
+
+    #region Combate
+    
+    public int maxHP = 200, hitPoints = 200;
+
+    public void TakeDamage(int damage)
+    {
+        hitPoints-=damage;
+        Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
+        //Tocar o som de dano q esta no combo system
+        CheckDeath();
+    }
+
+    public void CheckDeath()
+    {
+        if(hitPoints<=0)
+        {
+            Controller.instance.GameOver();
+        }
+    }
+
     #endregion
 
     void PlayerPause()

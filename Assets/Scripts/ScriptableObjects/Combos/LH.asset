@@ -15,7 +15,7 @@ MonoBehaviour:
   attackName: LH
   hitboxes:
   - {fileID: 11400000, guid: 5bc3a0bef44922540b1795258ca9ca58, type: 2}
-  damage: 50
+  damage: 20
   hit: 0
   startUp: 99
   recovery: 1.5

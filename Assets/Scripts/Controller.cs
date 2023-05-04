@@ -31,7 +31,7 @@ public class Controller : MonoBehaviour
     public GameObject currentScreen = null;
     [Header("Telas")]
     public GameObject inGameScreen;
-    public GameObject pauseScreen;
+    public GameObject pauseScreen, gameOverScreen;
     public TextMeshProUGUI comboCounter;
     
     // Usado em botões para trocar telas, como menu, opções, etc
@@ -223,7 +223,7 @@ public class Controller : MonoBehaviour
     public GameObject[] entities;
     bool spawnTimer;
 
-    public int entitiesInScene;
+    public int enemiesInScene;
 
     void SetSpawns()
     {
@@ -239,9 +239,18 @@ public class Controller : MonoBehaviour
         for(int i = 0; i < quantity; i++)
         {
             spawns[spawnId].SpawnEntity(entities[entityId]);
-            entitiesInScene++;
+            enemiesInScene++;
         }
     }
+    #endregion
+
+    #region Death
+        public void GameOver()
+        {
+            ChangeGameStates(0);
+            ChangeScreen(gameOverScreen);
+            inputPause = true;
+        }
     #endregion
 
     void BasicSetup() // Coisas para acontecerem no inicio do jogo.
@@ -253,7 +262,7 @@ public class Controller : MonoBehaviour
         currentScene = 0;
         seed = null;
         currentScreen = GameObject.Find("Intro");
-        entitiesInScene = 0;
+        enemiesInScene = 0;
         SetSpawns();
     }
     void Start()
@@ -272,4 +281,20 @@ public class Controller : MonoBehaviour
             LoadNextScene();
         }
     }
+
+    public Image lifeBar;
+    public void UpdateLifeBar(float fill)
+    {
+        lifeBar.fillAmount = fill;
+    }
+
+    #region Level Completion  (será trocado por sistema de quest)
+    public int enemiesDefeated;
+    
+    public void ClearLevel()
+    {
+    }
+
+    #endregion
+
 }

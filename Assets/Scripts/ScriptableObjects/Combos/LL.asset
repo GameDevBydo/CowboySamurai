@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83fa118c4fe5848ce970233be0e33b36, type: 2}
   - {fileID: 11400000, guid: 1f1df914ad2d745408a77a458cb391ba, type: 2}
   - {fileID: 11400000, guid: aa415d156c2be447cba69eefd15ca1ba, type: 2}
-  damage: 2
+  damage: 10
   hit: 0
   startUp: 99
   recovery: 1

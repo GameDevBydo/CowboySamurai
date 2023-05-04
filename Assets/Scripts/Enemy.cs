@@ -16,16 +16,16 @@ public class Enemy : MonoBehaviour
     #endregion
 
     #region Combat Variables
-    private int hp = 50;
+    public int hp = 50;
     private float range;
     #endregion
 
     public ParticleSystem deathPS;
     public Material baseMat, hitMat;
-    private MeshRenderer rend;
+    private SkinnedMeshRenderer rend;
 
     bool m_Started;
-    public LayerMask m_LayerMask;
+    public LayerMask playerMask;
     public Attack[] attackEnemy;
     int currentAttack;
 
@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         player = Player.instance.gameObject; //Define o player 
         speed = baseSpeed;
         range = Random.Range( 1.5f, 2.5f);
-        rend = GetComponentInChildren<MeshRenderer>();
+        rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
         m_Started = true;
         instance = this;
         //anim = GetComponent<Animator>();
@@ -47,9 +47,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-
         if(canFollow) FollowPlayer();
-        
     }
     void AttackPlayer(){
         currentAttack = Random.Range(1,100);
@@ -138,7 +136,7 @@ public class Enemy : MonoBehaviour
     {
         if(hp <= 0)
         {
-            Controller.instance.entitiesInScene--;
+            Controller.instance.enemiesInScene--;
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Destroy(gameObject);
         }
@@ -149,16 +147,15 @@ public class Enemy : MonoBehaviour
 
         //Use the OverlapBox to detect if there are any other colliders within this box area.
         //Use the GameObject's centre, half the size (as a radius) and rotation. This creates an invisible box around your GameObject.
-        Collider[] hitColliders = Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[0].startingPointEnemy.x), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, m_LayerMask);
+        Collider[] hitColliders = Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[0].startingPointEnemy.x), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, playerMask);
         int i = 0;
         //Check when there is a new collider coming into contact with the box
-        while (i < hitColliders.Length)
+        foreach(Collider col in hitColliders)
         {
-            //Output all of the collider names
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-            //Increase the number of Colliders in the array
+            Player.instance.TakeDamage(attack.damage);
             i++;
         }
+        
         canAttack = false;
         recoveryTimer = attack.recovery;
 

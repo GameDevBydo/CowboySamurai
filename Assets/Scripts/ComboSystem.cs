@@ -18,7 +18,8 @@ public class ComboSystem : MonoBehaviour
 
     float recoveryTimer;
 
-    Attack attack = null, previousAttack = null;
+    Attack attack = null;
+    bool previousAttackHit = false;
     void Start()
     {
         //Use this to ensure that the Gizmos are being drawn when in Play Mode.
@@ -110,6 +111,22 @@ public class ComboSystem : MonoBehaviour
     }
     #endregion
 
+    #region Efeitos
+
+    public AudioSource hitSound, hurtSound;
+    public void PlayHurtSound()
+    {
+        hurtSound.Stop();
+        hurtSound.Play();
+    }
+    void PlayHitSound()
+    {
+        hitSound.Stop();
+        hitSound.Play();
+    }
+
+    #endregion
+
     #region OverlapBox create
     void CheckAttackCollision(string name) // Método para checar se o ataque colidiu com inimigos, e se sim, causar dano
     {
@@ -117,8 +134,8 @@ public class ComboSystem : MonoBehaviour
         {
             if(moveList._attack[i].attackName == name && moveList.attackUnlocked[i])
             {
-                if(previousAttack != null) Debug.Log("Golpe Anterior: " + previousAttack.hit);
-                if(previousAttack != null && previousAttack.hit == true) canAttack = true;
+                if(previousAttackHit) canAttack = true;
+                Debug.Log(name);
                 attack = moveList._attack[i];
             }
         }
@@ -147,9 +164,12 @@ public class ComboSystem : MonoBehaviour
                 en.TakeDamage(attack.damage);
             }
             recoveryTimer = attack.recovery;
-            if(enemiesHit.Count>0) attack.hit = true;
-            previousAttack = attack;
-            Debug.Log(previousAttack.hit);
+            if(enemiesHit.Count>0) 
+            {
+                attack.hit = true;
+                PlayHitSound();
+            }
+            previousAttackHit = attack.hit;
         }
         else
         {
@@ -158,7 +178,6 @@ public class ComboSystem : MonoBehaviour
     }
     #endregion
 
-// aaaaaaa roque 
 
     #region Cheats 
 
