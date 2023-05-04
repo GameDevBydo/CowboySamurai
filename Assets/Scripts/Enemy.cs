@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
         }
         if(player.transform.position.x > gameObject.transform.position.x){
-            gameObject.transform.rotation = new Quaternion(0.0f, 0.0f, 0.0f, 1);
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
         }
     }
     #endregion

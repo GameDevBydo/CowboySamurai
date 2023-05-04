@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
     public static Controller instance;
     void Awake()
     {
+        BasicSetup();
         //Singleton básico, para evitar multiplos controllers na cena
         if (instance != null && instance != this)
         {
@@ -224,9 +225,15 @@ public class Controller : MonoBehaviour
     bool spawnTimer;
 
     public int enemiesInScene;
+    private float respawnTimer = 5.0f;
+    private float timer;
+    public bool canSpawnL, canSpawnR;
+    public GameObject spawnL, spawnR;
 
     void SetSpawns()
     {
+        spawnL = GameObject.FindWithTag("spawnL");
+        spawnR = GameObject.FindWithTag("spawnR");
         spawns = new Spawn[transform.GetChild(2).childCount];
         for(int i = 0; i< transform.GetChild(2).childCount; i++)
         {
@@ -242,6 +249,20 @@ public class Controller : MonoBehaviour
             enemiesInScene++;
         }
     }
+
+    /*public void ValidSpawn(){
+        
+        if(spawnL.transform.position.x > ControlCam.instance.startPlane.x){
+            canSpawnL = true;
+        }else{
+            canSpawnL = false;
+        }
+        if(spawnR.transform.position.x < ControlCam.instance.endPlane.x){
+            canSpawnR = true;
+        }else{
+            canSpawnR = false;
+        }
+    }*/
     #endregion
 
     #region Death
@@ -265,16 +286,18 @@ public class Controller : MonoBehaviour
         enemiesInScene = 0;
         SetSpawns();
     }
-    void Start()
-    {
-        BasicSetup();   
-    }
+
+ 
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            StartSpawnEntities(0,1,UnityEngine.Random.Range(0,spawns.Length));
+        if(currentScene != 0){
+            timer -= Time.deltaTime;
+            if(timer <=0)
+            {
+                StartSpawnEntities(0,1,UnityEngine.Random.Range(0,spawns.Length));
+                timer = respawnTimer;
+            }
         }
         if(Input.GetKeyDown(KeyCode.N))
         {

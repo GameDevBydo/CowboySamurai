@@ -7,6 +7,7 @@ public class SpawnControl : MonoBehaviour
     public Spawn[] spawns;
     public GameObject[] entities;
     bool spawnTimer;
+    
 
     void Update()
     {

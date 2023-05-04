@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3367,8 +3367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 113}
-  m_SizeDelta: {x: 836, y: 544}
+  m_AnchoredPosition: {x: 0, y: 36}
+  m_SizeDelta: {x: 968.5, y: 917.42676}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &602932304
 MonoBehaviour:
@@ -3390,7 +3390,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: edc4a564763f0424d86c878105a14a02, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c5983d0e6f364b74b94302eef7edd0b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4338,7 +4338,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -590, y: 250}
-  m_SizeDelta: {x: 750, y: 748.5}
+  m_SizeDelta: {x: 416, y: 390}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &808771486
 MonoBehaviour:
@@ -4360,7 +4360,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ac67e33d5c9784d469d628e4a6c0fac1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8814c0a287a94c78a74da16fb988139, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4390,7 +4390,7 @@ GameObject:
   - component: {fileID: 828219391}
   m_Layer: 0
   m_Name: SpawnR
-  m_TagString: Untagged
+  m_TagString: spawnR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4422,7 +4422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6807c785a82125c4dad395b7e3c1244c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canSpawn: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5893,7 +5892,7 @@ GameObject:
   - component: {fileID: 1039724301}
   m_Layer: 0
   m_Name: SpawnL
-  m_TagString: Untagged
+  m_TagString: spawnL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5925,7 +5924,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6807c785a82125c4dad395b7e3c1244c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canSpawn: 0
 --- !u!1 &1070269505
 GameObject:
   m_ObjectHideFlags: 3
@@ -8347,6 +8345,10 @@ MonoBehaviour:
   entities:
   - {fileID: 1055206369884760288, guid: 267890760b9ba02429c20f5c7b0bd640, type: 3}
   enemiesInScene: 0
+  canSpawnL: 0
+  canSpawnR: 0
+  spawnL: {fileID: 0}
+  spawnR: {fileID: 0}
   lifeBar: {fileID: 1829340589}
   enemiesDefeated: 0
 --- !u!4 &1747575655

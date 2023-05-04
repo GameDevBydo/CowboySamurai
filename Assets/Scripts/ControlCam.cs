@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class ControlCam : MonoBehaviour
 {
+    public static ControlCam instance;
     public CinemachineVirtualCamera cam;
     public GameObject plane,player;
     
-    Vector3 startPlane,center,endPlane,size;
+    public Vector3 startPlane,center,endPlane,size;
     CinemachineFramingTransposer ft;
     void Awake() 
     {
+        instance = this;
         plane = GameObject.Find("Plane");
         cam = GetComponent<CinemachineVirtualCamera>();
     }

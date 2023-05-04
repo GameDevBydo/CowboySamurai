@@ -18,9 +18,9 @@ public class EntitySpawn : MonoBehaviour
     {
         for(int i = 0; i < enemyCount; i++)
         {
-        Instantiate(Enemy, new Vector3(1,yPos,zPos), Quaternion.identity);
-        yield return new WaitForSeconds(0.01f);
-        enemyCount += 1;
+            Instantiate(Enemy, new Vector3(1,yPos,zPos), Quaternion.identity);
+            yield return new WaitForSeconds(0.01f);
+            enemyCount += 1;
         }
     }
 }
