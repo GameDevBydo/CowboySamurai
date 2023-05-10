@@ -47,7 +47,17 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if(canFollow) FollowPlayer();
+        if(!Controller.instance.inputPause)
+        {
+            if(!Controller.instance.playerPause)
+            {
+                if(canFollow) FollowPlayer();
+            }else{
+                anim.SetBool("Walking",false);
+            }
+        }else{
+            anim.SetBool("Walking",false);
+        }
     }
     void AttackPlayer(){
         currentAttack = Random.Range(1,100);

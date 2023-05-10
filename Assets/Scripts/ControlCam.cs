@@ -47,6 +47,7 @@ public class ControlCam : MonoBehaviour
         if(player.transform.position.x > (startPlane.x + size.x * 0.12f) && player.transform.position.x < (endPlane.x - size.x * 0.12f ))
         {
             ft.m_DeadZoneWidth = 0f;
+            
         }
         else{
             ft.m_DeadZoneWidth = 1.2f;

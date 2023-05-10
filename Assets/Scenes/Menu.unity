@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4388,6 +4388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 828219390}
   - component: {fileID: 828219391}
+  - component: {fileID: 828219392}
   m_Layer: 0
   m_Name: SpawnR
   m_TagString: spawnR
@@ -4422,6 +4423,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6807c785a82125c4dad395b7e3c1244c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &828219392
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828219389}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -5890,6 +5912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1039724300}
   - component: {fileID: 1039724301}
+  - component: {fileID: 1039724302}
   m_Layer: 0
   m_Name: SpawnL
   m_TagString: spawnL
@@ -5924,6 +5947,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6807c785a82125c4dad395b7e3c1244c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1039724302
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039724299}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1070269505
 GameObject:
   m_ObjectHideFlags: 3
@@ -8345,10 +8389,6 @@ MonoBehaviour:
   entities:
   - {fileID: 1055206369884760288, guid: 267890760b9ba02429c20f5c7b0bd640, type: 3}
   enemiesInScene: 0
-  canSpawnL: 0
-  canSpawnR: 0
-  spawnL: {fileID: 0}
-  spawnR: {fileID: 0}
   lifeBar: {fileID: 1829340589}
   enemiesDefeated: 0
 --- !u!4 &1747575655

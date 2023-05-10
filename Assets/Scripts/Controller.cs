@@ -54,7 +54,8 @@ public class Controller : MonoBehaviour
     
         #region Scene Variables
         //Quantas cenas jogaveis existem para a randomização, e um rastreador da quantidade de cenas jogaveis.
-        int playableScenes = 0, currentScene = 0;
+        int playableScenes = 0; 
+        public int currentScene = 0;
         //Lista das cenas randomizadas.
         int[] sceneList;
         // Seed atual
@@ -223,17 +224,12 @@ public class Controller : MonoBehaviour
     public Spawn[] spawns;
     public GameObject[] entities;
     bool spawnTimer;
-
     public int enemiesInScene;
     private float respawnTimer = 5.0f;
     private float timer;
-    public bool canSpawnL, canSpawnR;
-    public GameObject spawnL, spawnR;
 
     void SetSpawns()
     {
-        spawnL = GameObject.FindWithTag("spawnL");
-        spawnR = GameObject.FindWithTag("spawnR");
         spawns = new Spawn[transform.GetChild(2).childCount];
         for(int i = 0; i< transform.GetChild(2).childCount; i++)
         {
@@ -249,20 +245,6 @@ public class Controller : MonoBehaviour
             enemiesInScene++;
         }
     }
-
-    /*public void ValidSpawn(){
-        
-        if(spawnL.transform.position.x > ControlCam.instance.startPlane.x){
-            canSpawnL = true;
-        }else{
-            canSpawnL = false;
-        }
-        if(spawnR.transform.position.x < ControlCam.instance.endPlane.x){
-            canSpawnR = true;
-        }else{
-            canSpawnR = false;
-        }
-    }*/
     #endregion
 
     #region Death
@@ -287,15 +269,14 @@ public class Controller : MonoBehaviour
         SetSpawns();
     }
 
- 
-
     void Update()
     {
         if(currentScene != 0){
             timer -= Time.deltaTime;
-            if(timer <=0)
+            if(timer <=0 && enemiesInScene<=5)
             {
                 StartSpawnEntities(0,1,UnityEngine.Random.Range(0,spawns.Length));
+                
                 timer = respawnTimer;
             }
         }
