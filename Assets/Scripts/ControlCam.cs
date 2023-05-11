@@ -7,29 +7,40 @@ public class ControlCam : MonoBehaviour
 {
     public static ControlCam instance;
     public CinemachineVirtualCamera cam;
-    public GameObject plane,player;
+    public GameObject plane,player,preFabPlayer;
     
     public Vector3 startPlane,center,endPlane,size;
     CinemachineFramingTransposer ft;
+
     void Awake() 
     {
+        
         instance = this;
         plane = GameObject.Find("Plane");
         cam = GetComponent<CinemachineVirtualCamera>();
+        DefineDeadzone();
+        PositionPlayer();
+        player = GameObject.FindWithTag("Player");
     }
     void Start()
     {
         ft = cam.GetCinemachineComponent<CinemachineFramingTransposer>();
-        player = GameObject.Find("Player_PlaceHolder");
         cam.Follow = player.transform;
         cam.LookAt = player.transform;
-        DefineDeadzone();
     }
 
     void Update()
     {
-       Deadzone();
+        Deadzone();
     }
+
+    void PositionPlayer(){
+
+        Instantiate(preFabPlayer, new Vector3(startPlane.x + size.x * 0.12f,0,0),Quaternion.identity);
+        
+    
+    }
+
 
     #region DEADZONE AO FINAL DA TELA
     public void DefineDeadzone()
@@ -39,7 +50,6 @@ public class ControlCam : MonoBehaviour
 
         startPlane = center - size/2;
         endPlane = center + size/2;
-
     }
 
     void Deadzone()
@@ -47,12 +57,10 @@ public class ControlCam : MonoBehaviour
         if(player.transform.position.x > (startPlane.x + size.x * 0.12f) && player.transform.position.x < (endPlane.x - size.x * 0.12f ))
         {
             ft.m_DeadZoneWidth = 0f;
-            
         }
         else{
             ft.m_DeadZoneWidth = 1.2f;
         }
     }
-
     #endregion
 }

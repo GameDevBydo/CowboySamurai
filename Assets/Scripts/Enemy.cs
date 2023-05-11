@@ -147,6 +147,7 @@ public class Enemy : MonoBehaviour
         if(hp <= 0)
         {
             Controller.instance.enemiesInScene--;
+            Controller.instance.enemiesDefeated++;
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Destroy(gameObject);
         }

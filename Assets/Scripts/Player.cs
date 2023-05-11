@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public static Player instance;
     void Awake()
     {
+        
         //Singleton básico, para evitar multiplos controllers na cena
         if (instance != null && instance != this)
         {
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
         {
             instance = this;
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     #endregion 
 
@@ -89,6 +90,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        AttSpawnPosition();
         if(!Controller.instance.inputPause)
         {
             if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) PlayerPause(); // Pause funciona apenas no teclado por enquanto
@@ -99,6 +101,12 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void AttSpawnPosition(){
+        Controller.instance.spawns[0].transform.position = new Vector3(transform.position.x -10, 0, 0);
+        Controller.instance.spawns[1].transform.position = new Vector3(transform.position.x +10, 0, 0);
+    }
+
 
     #region Movimento do player
     public void MovimentPlayer()

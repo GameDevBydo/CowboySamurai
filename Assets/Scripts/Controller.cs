@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 public class Controller : MonoBehaviour
 {
     #region Singleton 
@@ -87,11 +88,11 @@ public class Controller : MonoBehaviour
         WriteCurrentSceneText();
         inputPause = true;
     }
-
     // Carrega a proxima cena da lista ja seedada
     public void LoadNextScene()
     {
         LoadScene(sceneList[currentScene]);
+        enemiesInScene = 0;
         currentScene++;
         WriteCurrentSceneText();
     }
@@ -266,25 +267,29 @@ public class Controller : MonoBehaviour
         seed = null;
         currentScreen = GameObject.Find("Intro");
         enemiesInScene = 0;
+        enemiesDefeated = 0;
         SetSpawns();
     }
 
     void Update()
     {
+  
         if(currentScene != 0){
             timer -= Time.deltaTime;
             if(timer <=0 && enemiesInScene<=5)
             {
                 StartSpawnEntities(0,1,UnityEngine.Random.Range(0,spawns.Length));
-                
                 timer = respawnTimer;
             }
         }
+        ChangeLevel();
         if(Input.GetKeyDown(KeyCode.N))
         {
             LoadNextScene();
         }
     }
+
+    
 
     public Image lifeBar;
     public void UpdateLifeBar(float fill)
@@ -294,11 +299,36 @@ public class Controller : MonoBehaviour
 
     #region Level Completion  (será trocado por sistema de quest)
     public int enemiesDefeated;
-    
+    public int ChangeScene;
     public void ClearLevel()
     {
     }
 
+    public void ChangeLevel(){
+        switch(currentScene){
+            case 1:
+                ChangeScene = 3;
+                break;
+            case 2:
+                ChangeScene = 5;
+                break;
+            case 3:
+                ChangeScene = 7;
+                break;
+            case 4:
+                ChangeScene = 10;
+                break;
+            case 5:
+                ChangeScene = 12;
+                break;
+            default:
+                ChangeScene = 3;
+                break;
+        }
+        if(enemiesDefeated>ChangeScene){
+            LoadNextScene();
+        }
+    }
     #endregion
 
 }
