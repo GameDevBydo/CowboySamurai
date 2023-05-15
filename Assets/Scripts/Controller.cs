@@ -77,7 +77,8 @@ public class Controller : MonoBehaviour
     public void LoadScene(int sceneId)
     {
         SceneManager.LoadScene(sceneId);
-    }
+        UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
+    }   
 
     // Carrega o menu, e altera os trem q mudar
     public void LoadMenu()
@@ -108,6 +109,8 @@ public class Controller : MonoBehaviour
         playerPause = false;
         LoadNextScene();
         ChangeScreen(screen);
+        Player.instance.hitPoints = Player.instance.maxHP;
+        UpdateLifeBar(1);
     }
 
         #region Coisas de Seed 

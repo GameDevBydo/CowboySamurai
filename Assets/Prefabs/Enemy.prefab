@@ -137,6 +137,7 @@ MonoBehaviour:
   canFollow: 1
   hp: 100
   deathPS: {fileID: 7471442581379728010, guid: 89971e4de0b250148a5b9ef2a2c651d5, type: 3}
+  hitPS: {fileID: 7471442581379728010, guid: 96f0f0fd616dbf94abdbb61bc60ce24f, type: 3}
   baseMat: {fileID: 2100000, guid: 69663aed3b034439394cfc45cdb26638, type: 2}
   hitMat: {fileID: 2100000, guid: 636102617bce3884baf8ecec0753561e, type: 2}
   playerMask:
@@ -182,7 +183,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6435175770616589649, guid: 12416cc22c3c7ef4da3c640b6d83ec15,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4fcdc549f7bdaf041aef38cfd973d29c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

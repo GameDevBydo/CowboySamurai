@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     private float range;
     #endregion
 
-    public ParticleSystem deathPS;
+    public ParticleSystem deathPS, hitPS;
     public Material baseMat, hitMat;
     private SkinnedMeshRenderer rend;
 
@@ -129,7 +129,9 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage) // Método para ser chamado ao levar dano
     {
         hp-=damage;
+        Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
         //Debug.Log("HP Atual: " + hp);
+        GetComponent<AudioSource>().Play();
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
     }
