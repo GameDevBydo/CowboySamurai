@@ -152,6 +152,9 @@ public class Player : MonoBehaviour
     #region Combate
     
     public int maxHP = 200, hitPoints = 200;
+    private float knockbackForce = 300.0f;
+    private float knockbackRadius;
+
 
     public void TakeDamage(int damage)
     {
@@ -168,6 +171,33 @@ public class Player : MonoBehaviour
             Controller.instance.GameOver();
         }
     }
+    // gives the knockback
+    private void OnCollisionEnter(Collision collision)
+    {
+        Rigidbody rb = collision.transform.position - transform.position;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, knockbackRadius); 
+
+        if(rb != null)
+        {
+            Vector3 direction = collision.transform.position - transform.position;
+            direction.y = 0;
+
+            rb.AddForce(direction.normalized * knockbackForce, ForceMode.Impulse);
+        }
+        for(int i = 0; i < colliders.Length; i++)
+        {
+            Rigidbody rb = colliders[i].GetComponent<Rigidbody>();
+
+            if(rb != null)
+            {
+                rb.AddExplosionForce(knockbackForce, transform.position, knockbackRadius, 0f, ForceMode.Impulse);
+                //capable of using ExplosionForce when enemy dies. They "fly" away
+            }
+        }
+
+    }
+    //gives the knockback area
+    //send a raytracing to set the hit of the knockback
 
     #endregion
 
