@@ -274,7 +274,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
@@ -754,6 +754,18 @@ MonoBehaviour:
   jump: 2
   maxHP: 200
   hitPoints: 200
+  m_EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  moveList: {fileID: 11400000, guid: eaa46e15ebb1693458483b87b3b9e82c, type: 2}
+  canAttack: 1
+  lightAtk: 750000004b010000
+  heavyAtk: 690000004c010000
+  specialAtk: 
+  comboCounter: 0
+  comboSequence: 
+  hitSound: {fileID: 8242759655555836609}
+  hurtSound: {fileID: 6528233523523229146}
 --- !u!114 &1642497002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,7 +773,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2432761055447202610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfbc9e24e224b4bd1b2369b2d332ae74, type: 3}
   m_Name: 

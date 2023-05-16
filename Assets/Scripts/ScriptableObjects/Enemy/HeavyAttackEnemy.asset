@@ -18,6 +18,6 @@ MonoBehaviour:
   damage: 20
   hit: 0
   startUp: 0
-  recovery: 10
+  recovery: 5
   knockbackRatio: 0
   knockupRatio: 0
