@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ComboSystem : MonoBehaviour
 {
-    bool m_Started;
+    /*bool m_Started;
     public LayerMask m_EnemyLayer;
     public MoveList moveList;
     public bool canAttack = true;
@@ -221,4 +221,6 @@ public class ComboSystem : MonoBehaviour
         }
     }
     #endregion
+    */
+    
 }

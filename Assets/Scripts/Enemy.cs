@@ -126,7 +126,7 @@ public class Enemy : MonoBehaviour
 
 
     #region Combat
-    public void TakeDamage(int damage) // Método para ser chamado ao levar dano
+    public void TakeDamage(int damage, float stun) // Método para ser chamado ao levar dano
     {
         hp-=damage;
         Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
@@ -134,6 +134,7 @@ public class Enemy : MonoBehaviour
         GetComponent<AudioSource>().Play();
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
+        recoveryTimer = stun;
     }
 
     public IEnumerator HitMaterialEffect()

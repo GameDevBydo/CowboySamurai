@@ -12,6 +12,9 @@ public class Attack : ScriptableObject
     public bool hit;
     public float startUp;
     public float recovery;
+    public float stun;
     public float knockbackRatio;
     public float knockupRatio;
+
+    public float meterGen;
 }

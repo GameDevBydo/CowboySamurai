@@ -34,7 +34,8 @@ public class Controller : MonoBehaviour
     [Header("Telas")]
     public GameObject inGameScreen;
     public GameObject pauseScreen, gameOverScreen;
-    public TextMeshProUGUI comboCounter;
+    public TextMeshProUGUI comboCounter, comboComment;
+    public CommentSO comments;
     
     // Usado em botões para trocar telas, como menu, opções, etc
     public void ChangeScreen(GameObject screen)
@@ -78,6 +79,7 @@ public class Controller : MonoBehaviour
     {
         SceneManager.LoadScene(sceneId);
         UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
+        UpdateBulletBar(Player.instance.bulletBar);
     }   
 
     // Carrega o menu, e altera os trem q mudar
@@ -110,7 +112,9 @@ public class Controller : MonoBehaviour
         LoadNextScene();
         ChangeScreen(screen);
         Player.instance.hitPoints = Player.instance.maxHP;
+        Player.instance.bulletBar = 0;
         UpdateLifeBar(1);
+        UpdateBulletBar(0);
     }
 
         #region Coisas de Seed 
@@ -293,12 +297,46 @@ public class Controller : MonoBehaviour
     }
 
     
-
+    #region Updating Stats
     public Image lifeBar;
     public void UpdateLifeBar(float fill)
     {
         lifeBar.fillAmount = fill;
     }
+    [Header("Bullets")]
+    public Image[] bulletIcons;
+    public Color bulletColor, bulletMaxColor;
+    public void UpdateBulletBar(float ammount)
+    {
+        bulletIcons[0].fillAmount = Mathf.Clamp(ammount/20f, 0,1);
+        bulletIcons[1].fillAmount = Mathf.Clamp(ammount/20f-1, 0,1);
+        bulletIcons[2].fillAmount = Mathf.Clamp(ammount/20f-2, 0,1);
+        bulletIcons[3].fillAmount = Mathf.Clamp(ammount/20f-3, 0,1);
+        bulletIcons[4].fillAmount = Mathf.Clamp(ammount/20f-4, 0,1);
+        bulletIcons[5].fillAmount = Mathf.Clamp(ammount/20f-5, 0,1);
+        foreach(Image bullet in bulletIcons)
+        {
+            if(bullet.fillAmount >=1) bullet.transform.GetComponent<Shadow>().enabled = true;
+            else bullet.transform.GetComponent<Shadow>().enabled = false;
+        }
+        if(ammount >= Player.instance.bulletMax)
+        {
+            foreach(Image bullet in bulletIcons)
+            {
+                bullet.color = bulletMaxColor*10;
+                bullet.transform.GetComponent<Shadow>().effectColor = bulletMaxColor *0.8f;
+            }
+        }
+        else
+        {
+            foreach(Image bullet in bulletIcons)
+            {
+                bullet.color = bulletColor;
+                bullet.transform.GetComponent<Shadow>().effectColor = bulletColor *0.8f;
+            }
+        }
+    }
+    #endregion
 
     #region Level Completion  (será trocado por sistema de quest)
     public int enemiesDefeated;

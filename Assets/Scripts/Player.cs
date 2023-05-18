@@ -160,6 +160,8 @@ public class Player : MonoBehaviour
     private float knockbackForce = 300.0f;
     private float knockbackRadius;
 
+    public float bulletBar = 0, bulletMax = 120;
+
 
     public void TakeDamage(int damage)
     {
@@ -167,6 +169,12 @@ public class Player : MonoBehaviour
         Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
         //Tocar o som de dano q esta no combo system
         CheckDeath();
+    }
+
+    public void ChangeMeter(float val)
+    {
+        Mathf.Clamp(bulletBar+=val, 0, bulletMax);
+        Controller.instance.UpdateBulletBar(bulletBar);
     }
 
     public void CheckDeath()
@@ -253,6 +261,12 @@ public class Player : MonoBehaviour
                 buttonPress = true;
             } 
 
+            if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
+            {
+                comboSequence = "S";
+                buttonPress = true;
+            } 
+
             if(buttonPress)
             {
                 CheckAttackCollision(comboSequence);
@@ -284,8 +298,39 @@ public class Player : MonoBehaviour
 
         public void UpdateComboCounter()
         {
-            if(comboCounter >0) Controller.instance.comboCounter.text = "Combo: " + comboCounter;
-            else Controller.instance.comboCounter.text = "";
+            if(comboCounter >0) 
+            {
+                Controller.instance.comboCounter.text = "Combo: " + comboCounter;
+                if(comboCounter >= 10 && comboCounter<20)
+                {
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[0];
+                }
+                else if(comboCounter >= 20 && comboCounter<30)
+                {
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[1];
+                }
+                else if(comboCounter >= 30 && comboCounter<40)
+                {
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[2];
+                }
+                else if(comboCounter >= 40 && comboCounter<50)
+                {
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[3];
+                }
+                else if(comboCounter >= 50 && comboCounter<60)
+                {
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[4];
+                }
+                else if(comboCounter >= 60 && comboCounter<70)
+                {
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[5];
+                }
+            }
+            else 
+            {
+                Controller.instance.comboCounter.text = "";
+                Controller.instance.comboComment.text = "";
+            }
         }
 
         #endregion
@@ -302,7 +347,7 @@ public class Player : MonoBehaviour
                 canAttack = true;
                 attack = null;
                 comboSequence ="";
-                ChangePlayerState(1);   
+                ChangePlayerState(1);
             }
         }
         #endregion
@@ -331,7 +376,6 @@ public class Player : MonoBehaviour
                 if(moveList._attack[i].attackName == name && moveList.attackUnlocked[i])
                 {
                     if(previousAttackHit) canAttack = true;
-                    Debug.Log(name);
                     attack = moveList._attack[i];
                 }
             }
@@ -346,9 +390,15 @@ public class Player : MonoBehaviour
 
                 for(int i = 0; i<attack.hitboxes.Length; i++)
                 {
+                    Debug.Log(attack.attackName);
                     hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x), gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, ((attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
                 }
 
+                if(attack.attackName == "S" && bulletBar/bulletMax >= 1/3)
+                {
+                    ChangeMeter(-bulletMax/3);
+                    //BERNARDOOOOOOO ARRUMA ESSA MERDA Q VC FEZ AAAAAAAAAAAA
+                }
                 foreach (Collider col in hitCollider)
                 {
                     if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
@@ -357,7 +407,8 @@ public class Player : MonoBehaviour
                 foreach(Enemy en in enemiesHit)
                 {
                     IncreaseComboCounter();
-                    en.TakeDamage(attack.damage);
+                    en.TakeDamage(attack.damage, attack.stun);
+                    ChangeMeter(attack.meterGen);
                 }
                 recoveryTimer = attack.recovery;
                 if(enemiesHit.Count>0) 
@@ -399,7 +450,7 @@ public class Player : MonoBehaviour
                         Gizmos.color = Color.blue;
                         //Verifica se está rodando no modo Play , para não tentar desenhar isso no modo Editor
                         if (m_Started)
-                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*2);
+                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
                         
                     }
                 }
@@ -410,8 +461,7 @@ public class Player : MonoBehaviour
                         
                         Gizmos.color = Color.red;
                         if (m_Started)
-                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*2);
-                        
+                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
                     }
                 }
             }
