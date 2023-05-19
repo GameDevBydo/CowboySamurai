@@ -126,11 +126,12 @@ public class Enemy : MonoBehaviour
 
 
     #region Combat
-    public void TakeDamage(int damage, float stun) // Método para ser chamado ao levar dano
+    public void TakeDamage(int damage, float stun, AudioClip sfx) // Método para ser chamado ao levar dano
     {
         hp-=damage;
         Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
         //Debug.Log("HP Atual: " + hp);
+        GetComponent<AudioSource>().clip = sfx;
         GetComponent<AudioSource>().Play();
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
@@ -163,12 +164,13 @@ public class Enemy : MonoBehaviour
         //Use the GameObject's centre, half the size (as a radius) and rotation. This creates an invisible box around your GameObject.
         Debug.Log(-Mathf.Sign(this.transform.rotation.eulerAngles.y-180));
         Collider[] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, playerMask);
-        int i = 0;
         //Check when there is a new collider coming into contact with the box
         foreach(Collider col in hitColliders)
         {
-            Player.instance.TakeDamage(attack.damage);
-            i++;
+            if(Player.instance.getHit)
+            {
+                Player.instance.TakeDamage(attack.damage);
+            }
         }
         
         canAttack = false;

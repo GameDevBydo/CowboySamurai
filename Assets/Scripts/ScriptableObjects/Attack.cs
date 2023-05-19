@@ -17,4 +17,6 @@ public class Attack : ScriptableObject
     public float knockupRatio;
 
     public float meterGen;
+
+    public AudioClip sfx;
 }

@@ -8591,7 +8591,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8689,7 +8689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 12416cc22c3c7ef4da3c640b6d83ec15, type: 2}
   songs:
-  - {fileID: 8300000, guid: ab49f7e7561b2f04a816bc1bdf4c28d9, type: 3}
+  - {fileID: 8300000, guid: e84b1bd32f9e1394f85dc567f7cd1b00, type: 3}
   musicSpeaker: {fileID: 1747575657}
 --- !u!1 &1747994124
 GameObject:

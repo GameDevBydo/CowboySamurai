@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     public bool groundedPlayer;
     public float speed = 2f, jump = 2f;
 
+    SkinnedMeshRenderer rend;
+    public Material baseMat, hitMat, dashMat;
+
     #region Singleton 
     public static Player instance;
     void Awake()
@@ -84,9 +87,12 @@ public class Player : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        rend = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
         ChangePlayerState(0);
         m_Started = true;
         comboCounter = 0;
+        getHit = true;
+        canDash = true;
     }
 
     // Update is called once per frame
@@ -103,6 +109,7 @@ public class Player : MonoBehaviour
                 Timeout();
                 CallAttack();
                 ComboTimer();
+                if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
             }
         }
     }
@@ -166,9 +173,17 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hitPoints-=damage;
+        StartCoroutine(HitMaterialEffect());
         Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
         //Tocar o som de dano q esta no combo system
         CheckDeath();
+    }
+
+    public IEnumerator HitMaterialEffect()
+    {
+        rend.material = hitMat;
+        yield return new WaitForSeconds(0.1f);
+        rend.material = baseMat;
     }
 
     public void ChangeMeter(float val)
@@ -272,6 +287,20 @@ public class Player : MonoBehaviour
                 CheckAttackCollision(comboSequence);
                 buttonPress = false;
             }
+        }
+
+        public bool getHit, canDash;
+        
+
+        IEnumerator DashCD()
+        {
+            canDash = false;
+            getHit = false;
+            rend.material = dashMat;
+            yield return new WaitForSeconds(2);
+            getHit = true;
+            canDash = true;
+            rend.material = baseMat;
         }
         #endregion
 
@@ -407,7 +436,7 @@ public class Player : MonoBehaviour
                 foreach(Enemy en in enemiesHit)
                 {
                     IncreaseComboCounter();
-                    en.TakeDamage(attack.damage, attack.stun);
+                    en.TakeDamage(attack.damage, attack.stun, attack.sfx);
                     ChangeMeter(attack.meterGen);
                 }
                 recoveryTimer = attack.recovery;
@@ -464,6 +493,16 @@ public class Player : MonoBehaviour
                         Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
                     }
                 }
+
+                if(Input.GetKeyDown(specialAtk[0]) && !canAttack || Input.GetKeyDown(specialAtk[1]) && !canAttack)
+                {
+                    for(int i = 0; i<attack.hitboxes.Length; i++){
+                        
+                        Gizmos.color = Color.yellow;
+                        if (m_Started)
+                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
+                    }
+                } 
             }
         }
         #endregion

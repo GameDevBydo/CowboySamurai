@@ -752,6 +752,10 @@ MonoBehaviour:
   groundedPlayer: 0
   speed: 2
   jump: 2
+  baseMat: {fileID: -8474651742996372913, guid: 912d24b2299d9c4449196510f97906e4,
+    type: 3}
+  hitMat: {fileID: 2100000, guid: 636102617bce3884baf8ecec0753561e, type: 2}
+  dashMat: {fileID: 2100000, guid: 5246593842d5f604dbaefd4067124497, type: 2}
   maxHP: 200
   hitPoints: 200
   bulletBar: 0
@@ -766,6 +770,8 @@ MonoBehaviour:
   specialAtk: 6f0000004d010000
   comboCounter: 0
   comboSequence: 
+  getHit: 0
+  canDash: 0
   hitSound: {fileID: 8242759655555836609}
   hurtSound: {fileID: 6528233523523229146}
 --- !u!114 &1642497002

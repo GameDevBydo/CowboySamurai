@@ -24,3 +24,4 @@ MonoBehaviour:
   knockbackRatio: 99
   knockupRatio: 99
   meterGen: 8
+  sfx: {fileID: 8300000, guid: 725f59137a9ee9249889b6adca64ab86, type: 3}
