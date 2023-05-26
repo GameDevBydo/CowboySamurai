@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     private Animator anim;
     private CharacterController controller;
-
+    public float exp;
     private Vector3 playerVelocity;
     private Vector3 input;
 
