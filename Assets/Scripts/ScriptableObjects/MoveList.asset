@@ -18,5 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c672e607d9fe1ba4bb08502eb4e4846b, type: 2}
   - {fileID: 11400000, guid: c1f5070d8f8c1084c883a65a4bbeff9e, type: 2}
   - {fileID: 11400000, guid: 85978cc574b9f444181c5647c0b7b5a4, type: 2}
-  - {fileID: 11400000, guid: c6c313f27f82e2d4084761b608e6cbe8, type: 2}
-  attackUnlocked: 010101010100
+  attackUnlocked: 0101010100

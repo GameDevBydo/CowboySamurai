@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
 
     public void ChangeMeter(float val)
     {
-        Mathf.Clamp(bulletBar+=val, 0, bulletMax);
+        bulletBar = Mathf.Clamp(bulletBar+=val, 0, bulletMax);
         Controller.instance.UpdateBulletBar(bulletBar);
     }
 
@@ -237,7 +237,7 @@ public class Player : MonoBehaviour
     #region Combo System
         bool m_Started;
         public LayerMask m_EnemyLayer;
-        public MoveList moveList;
+        public MoveList moveList, superList;
         public bool canAttack = true;
         public KeyCode[] lightAtk, heavyAtk, specialAtk;
 
@@ -278,8 +278,12 @@ public class Player : MonoBehaviour
 
             if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
             {
-                comboSequence = "S";
-                buttonPress = true;
+                int bullet = Mathf.FloorToInt(bulletBar/(bulletMax/6));
+                if(bullet > 0)
+                {
+                    SuperCollission(bullet-1);
+                    Debug.Log("Super de " + bullet + "balas");
+                }
             } 
 
             if(buttonPress)
@@ -408,6 +412,7 @@ public class Player : MonoBehaviour
                     attack = moveList._attack[i];
                 }
             }
+
             if(attack != null && canAttack)
             {
                 //Debug.Log("Golpe atual: "+ name);
@@ -420,14 +425,10 @@ public class Player : MonoBehaviour
                 for(int i = 0; i<attack.hitboxes.Length; i++)
                 {
                     Debug.Log(attack.attackName);
-                    hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x), gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, ((attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
+                    hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x), gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, 
+                    ((attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
                 }
 
-                if(attack.attackName == "S" && bulletBar/bulletMax >= 1/3)
-                {
-                    ChangeMeter(-bulletMax/3);
-                    //BERNARDOOOOOOO ARRUMA ESSA MERDA Q VC FEZ AAAAAAAAAAAA
-                }
                 foreach (Collider col in hitCollider)
                 {
                     if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
@@ -445,6 +446,50 @@ public class Player : MonoBehaviour
                     attack.hit = true;
                     PlayHitSound();
                 }
+                previousAttackHit = attack.hit;
+            }
+            else
+            {
+                comboSequence = "";
+            }
+        }
+
+        void SuperCollission(int meter)
+        {
+            attack = superList._attack[meter];
+
+            if(attack != null && canAttack)
+            {
+                // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
+                // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
+
+                List<Collider> hitCollider = new List<Collider>();
+                List<Enemy> enemiesHit = new List<Enemy>();
+
+                for(int i = 0; i<attack.hitboxes.Length; i++)
+                {
+                    Debug.Log(attack.attackName);
+                    hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x), gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, 
+                    ((attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
+                }
+
+                foreach (Collider col in hitCollider)
+                {
+                    if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
+                }
+
+                foreach(Enemy en in enemiesHit)
+                {
+                    IncreaseComboCounter();
+                    en.TakeDamage(attack.damage, attack.stun, attack.sfx);
+                }
+                recoveryTimer = attack.recovery;
+                if(enemiesHit.Count>0) 
+                {
+                    attack.hit = true;
+                    PlayHitSound();
+                }
+                ChangeMeter(attack.meterGen);
                 previousAttackHit = attack.hit;
             }
             else
@@ -479,7 +524,8 @@ public class Player : MonoBehaviour
                         Gizmos.color = Color.blue;
                         //Verifica se está rodando no modo Play , para não tentar desenhar isso no modo Editor
                         if (m_Started)
-                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
+                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y,
+                         (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
                         
                     }
                 }
@@ -494,7 +540,7 @@ public class Player : MonoBehaviour
                     }
                 }
 
-                if(Input.GetKeyDown(specialAtk[0]) && !canAttack || Input.GetKeyDown(specialAtk[1]) && !canAttack)
+                if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
                 {
                     for(int i = 0; i<attack.hitboxes.Length; i++){
                         

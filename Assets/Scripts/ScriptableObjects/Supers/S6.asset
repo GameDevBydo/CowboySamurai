@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9044bc4d8c39640539bbfa62e1942ecf, type: 3}
-  m_Name: S
+  m_Name: S6
   m_EditorClassIdentifier: 
   attackName: S
   hitboxes:
@@ -22,5 +22,5 @@ MonoBehaviour:
   stun: 10
   knockbackRatio: 0
   knockupRatio: 0
-  meterGen: 0
+  meterGen: -120
   sfx: {fileID: 8300000, guid: 41915ecc158c60045aeca94eef3c2ee8, type: 3}

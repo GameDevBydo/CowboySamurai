@@ -9,5 +9,10 @@ public class SceneSetup : MonoBehaviour
     {
         main = Controller.instance;
     }
+
+    public void NextScene()
+    {
+        if(main.questClear) main.LoadNextScene();
+    }
     
 }

@@ -31,6 +31,7 @@ public class Controller : MonoBehaviour
     #region UI Stuff (Tudo relacionado a UI)
     [HideInInspector]
     public GameObject currentScreen = null;
+    public GameObject nextLevel;
     [Header("Telas")]
     public GameObject inGameScreen;
     public GameObject pauseScreen, gameOverScreen;
@@ -62,6 +63,7 @@ public class Controller : MonoBehaviour
         int[] sceneList;
         // Seed atual
         string seed;
+        public bool questClear = false;
         #endregion
 
         #region Scene References
@@ -78,8 +80,10 @@ public class Controller : MonoBehaviour
     public void LoadScene(int sceneId)
     {
         SceneManager.LoadScene(sceneId);
+        questClear = false;
         UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
         UpdateBulletBar(Player.instance.bulletBar);
+        nextLevel.SetActive(false);
     }   
 
     // Carrega o menu, e altera os trem q mudar
@@ -367,7 +371,9 @@ public class Controller : MonoBehaviour
                 break;
         }
         if(enemiesDefeated>ChangeScene){
-            LoadNextScene();
+            questClear = true;
+            nextLevel.SetActive(true);
+            enemiesDefeated = 0;
         }
     }
     #endregion
