@@ -152,7 +152,7 @@ public class Enemy : MonoBehaviour
         {
             Controller.instance.enemiesInScene--;
             Controller.instance.enemiesDefeated++;
-            SkillController.instance.exp += 0.25f;
+            SkillController.instance.exp += 0.5f;
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Destroy(gameObject);
         }
