@@ -204,6 +204,16 @@ public class Enemy : MonoBehaviour
                 Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[2].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[2].hitboxes[0].startingPointEnemy.y, ((attackEnemy[2].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[2].hitboxes[0].startingPointEnemy.z), attackEnemy[2].hitboxes[0].extension);
         }
     }
+
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Player")
+        {
+            Player.instance.TakeDamage(40);
+        }
+    }
     #endregion
 
 

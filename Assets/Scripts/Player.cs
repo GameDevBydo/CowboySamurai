@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     private Animator anim;
     private CharacterController controller;
-    public float exp;
+    public float exp = 0;
     private Vector3 playerVelocity;
     private Vector3 input;
 
@@ -469,8 +469,9 @@ public class Player : MonoBehaviour
                 for(int i = 0; i<attack.hitboxes.Length; i++)
                 {
                     Debug.Log(attack.attackName);
-                    hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x), gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, 
-                    ((attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
+                    Vector3 p = gameObject.transform.position + attack.hitboxes[i].startingPoint;
+                    p.z += attack.hitboxes[i].extension.z * 0.5f;
+                    hitCollider.AddRange(Physics.OverlapBox(p, attack.hitboxes[i].extension, Quaternion.identity, m_EnemyLayer));
                 }
 
                 foreach (Collider col in hitCollider)
@@ -523,10 +524,12 @@ public class Player : MonoBehaviour
                         
                         Gizmos.color = Color.blue;
                         //Verifica se está rodando no modo Play , para não tentar desenhar isso no modo Editor
-                        if (m_Started)
-                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y,
-                         (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
-                        
+                        if (m_Started){
+                            Vector3 p = gameObject.transform.position + attack.hitboxes[i].startingPoint;
+                            Vector3 e = attack.hitboxes[i].extension*2;
+                            p.z += attack.hitboxes[i].extension.z * 0.5f;
+                            Gizmos.DrawWireCube(p , new Vector3(e.z, e.y, e.x));
+                        }
                     }
                 }
 
@@ -535,8 +538,12 @@ public class Player : MonoBehaviour
                     for(int i = 0; i<attack.hitboxes.Length; i++){
                         
                         Gizmos.color = Color.red;
-                        if (m_Started)
-                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
+                        if (m_Started){
+                            Vector3 p = gameObject.transform.position + attack.hitboxes[i].startingPoint;
+                            Vector3 e = attack.hitboxes[i].extension*2;
+                            p.z += attack.hitboxes[i].extension.z * 0.5f;
+                            Gizmos.DrawWireCube(p , new Vector3(e.z, e.y, e.x));
+                        }
                     }
                 }
 
@@ -545,8 +552,12 @@ public class Player : MonoBehaviour
                     for(int i = 0; i<attack.hitboxes.Length; i++){
                         
                         Gizmos.color = Color.yellow;
-                        if (m_Started)
-                        Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x, gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, (attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension*4);
+                        if (m_Started){
+                            Vector3 p = gameObject.transform.position + attack.hitboxes[i].startingPoint;
+                            Vector3 e = attack.hitboxes[i].extension*2;
+                            p.z += attack.hitboxes[i].extension.z * 0.5f;
+                            Gizmos.DrawWireCube(p , new Vector3(e.z, e.y, e.x));
+                        }
                     }
                 } 
             }
