@@ -745,8 +745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d202535ad4aca2a4e9acf6b554865029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 0
   groundedPlayer: 0
-  speed: 2
+  speed: 5
   jump: 2
   baseMat: {fileID: -8474651742996372913, guid: 912d24b2299d9c4449196510f97906e4,
     type: 3}

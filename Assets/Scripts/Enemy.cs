@@ -145,6 +145,11 @@ public class Enemy : MonoBehaviour
         rend.material = baseMat;
     }
 
+    void KnockBack()
+    {
+
+    }
+
 
     void CheckDeath() // Método para checagem de morte
     {
@@ -205,13 +210,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
     void OnCollisionEnter(Collision collision)
     {
         if(collision.transform.tag == "Player")
         {
             Player.instance.TakeDamage(40);
+            Debug.Log("Bateu sai de mim AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
     }
     #endregion
