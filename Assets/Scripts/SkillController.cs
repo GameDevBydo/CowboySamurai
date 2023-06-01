@@ -20,6 +20,12 @@ public class SkillController : MonoBehaviour
     void Start()
     {
         instance = this;
+    
+
+        for(int i = 1; i< Player.instance.moveList.attackUnlocked.Length; i++)
+            {
+                Player.instance.moveList.attackUnlocked[i] = false;
+            }
     }
 
     void Update()
@@ -33,52 +39,56 @@ public class SkillController : MonoBehaviour
     public void ControllerUnlocked ()
     {
 
-        if(exp >= 1f && exp < 2)
+        if(exp >= 1f)
         {
             skills[0].GetComponent<Button>().interactable = true;
-            skills[0].skillUnlocked = true;
         }
-        else if(exp >= 2f && exp < 3 && skills[1].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+        if(exp >= 2f && skills[1].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
         {
             skills[1].GetComponent<Button>().interactable = true;
-            skills[1].skillUnlocked = true;
+            
         }
-        else if(exp >= 3f && exp < 4 && skills[2].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+        if(exp >= 3f && skills[2].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
         {
             skills[2].GetComponent<Button>().interactable = true;
-            skills[2].skillUnlocked = true;
+            
         }
-        else if(exp >= 4f && exp < 5 && skills[3].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+        if(exp >= 4f && skills[3].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
         {
             skills[3].GetComponent<Button>().interactable = true;
-            skills[3].skillUnlocked = true;
+            
         }
-        else if(exp >= 5f && exp < 6 && skills[4].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+        if(exp >= 5f && skills[4].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
         {
             skills[4].GetComponent<Button>().interactable = true;
-            skills[4].skillUnlocked = true;
+            
         } 
     }
 
     public void unlockSkill1()
     {
         Player.instance.moveList.attackUnlocked[1] = true;
+        skills[0].skillUnlocked = true;
     }
     public void unlockSkill2()
     {
         Player.instance.moveList.attackUnlocked[2] = true;
+        skills[1].skillUnlocked = true;
     }
     public void unlockSkill3()
     {
         Player.instance.moveList.attackUnlocked[3] = true;
+        skills[2].skillUnlocked = true;
     }
     public void unlockSkill4()
     {
         Player.instance.moveList.attackUnlocked[4] = true;
+        skills[3].skillUnlocked = true;
     }
     public void unlockSkill5()
     {
         Player.instance.moveList.attackUnlocked[5] = true;
+        skills[4].skillUnlocked = true;
     }
     
 

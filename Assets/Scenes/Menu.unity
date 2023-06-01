@@ -11331,7 +11331,7 @@ MonoBehaviour:
   - {fileID: 187641640}
   - {fileID: 1359232948}
   - {fileID: 438589221}
-  exp: 1
+  exp: 3
   skillname: {fileID: 2126241773}
   desc: {fileID: 494928049}
   expUp: {fileID: 2115916298}
