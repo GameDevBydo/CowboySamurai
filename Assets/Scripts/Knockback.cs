@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class Knockback : MonoBehaviour
 {
-    public string knockbackTag = "";
+    public GameObject thisGameObject;
     public float knockbackForce = 10f;
+    public float knockbackDelay = 2f;
+    public float timer = 0;
+    public bool canKnockback = true;
+    public int offset = 5;
 
-    private void OnCollisionEnter(Collision collision)
+    Transform startMarker = thisGameObject.transform.position;
+    Transform endMarker = thisGameObject.transform. position + offset;
+
+    void Update()
     {
-        if (collision.gameObject.CompareTag(knockbackTag))
+        if (canKnockback)
         {
-            Rigidbody otherRigidBody = collision.gameObject.GetComponent<Rigidbody>();
-            if (otherRigidBody != null)
+            Vector3 knockbackVector = new Vector3.Lerp(startMarker + (endMarker - startMarker) * KnockbackForce);
+            timer += time.deltaTime;
+            if (timer >= knockbackDelay)
             {
-                Vector3 direction = (collision.transform.position - transform.position).normalized;
-                otherRigidBody.AddForce(direction * knockbackForce, ForceMode.Impulse);
-            }
+                canKnockback(false);
+            } 
         }
     }
 }
