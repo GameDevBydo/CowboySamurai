@@ -63,14 +63,23 @@ public class Enemy : MonoBehaviour
         currentAttack = Random.Range(1,100);
         
         if(0 < currentAttack && currentAttack < 33){
+            anim.SetBool("Punch", true);
+            anim.SetBool("Kick", false);
+            anim.SetBool("JumpKick", false);
             Golpe(attackEnemy[0]);
             //Debug.Log(currentAttack);
         }
         if(33 <= currentAttack && currentAttack <= 66){
+            anim.SetBool("Punch", false);
+            anim.SetBool("Kick", true);
+            anim.SetBool("JumpKick", false);
             Golpe(attackEnemy[1]);
             //Debug.Log(currentAttack);
         }
         if(currentAttack > 66){
+            anim.SetBool("Punch", false);
+            anim.SetBool("Kick", false);
+            anim.SetBool("JumpKick", true);
             Golpe(attackEnemy[2]);
             //Debug.Log(currentAttack);
         }
@@ -108,7 +117,6 @@ public class Enemy : MonoBehaviour
             Timeout();
             if(canAttack)
                 AttackPlayer();
-
         }
         else
         {
@@ -136,6 +144,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
         recoveryTimer = stun;
+        anim.SetTrigger("Stunned");
     }
 
     public IEnumerator HitMaterialEffect()
