@@ -274,7 +274,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
@@ -746,6 +746,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exp: 0
+  money: 0
+  moneyText: {fileID: 0}
+  prefabCoin: {fileID: 3587314294987872190, guid: c4ba1d7f62e8832489d85f662692e862,
+    type: 3}
   groundedPlayer: 0
   speed: 5
   jump: 2

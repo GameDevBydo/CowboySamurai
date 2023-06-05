@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,8 +8,11 @@ public class Player : MonoBehaviour
     private Animator anim;
     private CharacterController controller;
     public float exp = 0;
+    public int money = 0;
     private Vector3 playerVelocity;
     private Vector3 input;
+    public TextMeshProUGUI moneyText;
+    public GameObject prefabCoin;
 
     const float gravity= -9.81f;
     public bool groundedPlayer;
@@ -34,6 +38,39 @@ public class Player : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
     }
     #endregion 
+
+        void Start()
+    {
+        moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+        controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
+        rend = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        ChangePlayerState(0);
+        m_Started = true;
+        comboCounter = 0;
+        getHit = true;
+        canDash = true;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        moneyText.text = "Money: "+ money;
+        AttSpawnPosition();
+        if(!Controller.instance.inputPause)
+        {
+            if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) PlayerPause(); // Pause funciona apenas no teclado por enquanto
+            
+            if(!Controller.instance.playerPause)
+            {
+                MovimentPlayer();
+                Timeout();
+                CallAttack();
+                ComboTimer();
+                if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
+            }
+        }
+    }
 
     #region State Machine
     enum PlayerState
@@ -83,36 +120,7 @@ public class Player : MonoBehaviour
     }
     #endregion
     
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
-        rend = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
-        ChangePlayerState(0);
-        m_Started = true;
-        comboCounter = 0;
-        getHit = true;
-        canDash = true;
-    }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        AttSpawnPosition();
-        if(!Controller.instance.inputPause)
-        {
-            if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) PlayerPause(); // Pause funciona apenas no teclado por enquanto
-            
-            if(!Controller.instance.playerPause)
-            {
-                MovimentPlayer();
-                Timeout();
-                CallAttack();
-                ComboTimer();
-                if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
-            }
-        }
-    }
 
     public void AttSpawnPosition(){
         Controller.instance.spawns[0].transform.position = new Vector3(transform.position.x -10, 0, 0);

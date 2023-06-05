@@ -67,28 +67,49 @@ public class SkillController : MonoBehaviour
 
     public void unlockSkill1()
     {
-        Player.instance.moveList.attackUnlocked[1] = true;
-        skills[0].skillUnlocked = true;
+        if(Player.instance.money >= skills[0].price && skills[0].skillUnlocked == false)
+        {
+            skills[0].GetComponent<Button>().interactable = false;
+            Player.instance.moveList.attackUnlocked[1] = true;
+            skills[0].skillUnlocked = true;
+            Player.instance.money -= skills[0].price;   
+        }
     }
     public void unlockSkill2()
     {
-        Player.instance.moveList.attackUnlocked[2] = true;
-        skills[1].skillUnlocked = true;
+        if(Player.instance.money >= skills[1].price && skills[1].skillUnlocked == false)
+        {
+            Player.instance.moveList.attackUnlocked[2] = true;
+            skills[1].skillUnlocked = true;
+            Player.instance.money -= skills[1].price;
+        }
     }
     public void unlockSkill3()
     {
-        Player.instance.moveList.attackUnlocked[3] = true;
-        skills[2].skillUnlocked = true;
+        if(Player.instance.money >= skills[2].price && skills[2].skillUnlocked == false)
+        {
+            Player.instance.moveList.attackUnlocked[3] = true;
+            skills[2].skillUnlocked = true;
+            Player.instance.money -= skills[2].price;
+        }
     }
     public void unlockSkill4()
     {
-        Player.instance.moveList.attackUnlocked[4] = true;
-        skills[3].skillUnlocked = true;
+        if(Player.instance.money >= skills[3].price && skills[3].skillUnlocked == false)
+        {
+            Player.instance.moveList.attackUnlocked[4] = true;
+            skills[3].skillUnlocked = true;
+            Player.instance.money -= skills[3].price;
+        }
     }
     public void unlockSkill5()
     {
-        Player.instance.moveList.attackUnlocked[5] = true;
-        skills[4].skillUnlocked = true;
+        if(Player.instance.money >= skills[4].price && skills[4].skillUnlocked == false)
+        {
+            Player.instance.moveList.attackUnlocked[5] = true;
+            skills[4].skillUnlocked = true;
+            Player.instance.money -= skills[4].price;
+        }
     }
     
 

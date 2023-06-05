@@ -19,5 +19,8 @@ MonoBehaviour:
   hit: 0
   startUp: 0
   recovery: 5
+  stun: 0
   knockbackRatio: 0
   knockupRatio: 0
+  meterGen: 0
+  sfx: {fileID: 0}
