@@ -21,6 +21,20 @@ public class Player : MonoBehaviour
     SkinnedMeshRenderer rend;
     public Material baseMat, hitMat, dashMat;
 
+    // gives the knockback
+    public GameObject thisGameObject; // checks game object
+    public float knockbackForce = 10f; //add force to knockback
+    public float knockbackDelay = 2f; // delay between knockback (could be done at attack)
+    public float timer = 0; //timer
+    public bool canKnockback = true; //bool that changes when attacks (applies knockback)
+    public int offset = 5; // offset to knockback distance in time
+
+    Transform startMarker = thisGameObject.transform.position; //startknockback
+    Transform endMarker = thisGameObject.transform. position + offset; //endknockback
+
+    //gives the knockback area
+    //send a raytracing to set the hit of the knockback
+
     #region Singleton 
     public static Player instance;
     void Awake()
@@ -68,6 +82,19 @@ public class Player : MonoBehaviour
                 CallAttack();
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
+            }
+            if (canKnockback)
+            {
+                Vector3 knockbackVector = new Vector3.Lerp(startMarker + (endMarker - startMarker) * knockbackForce);
+                Vector3 posX = knockbackVector;
+                timer += time.deltaTime;
+            Vector3 posY = thisGameObject.transform.EulerAngles(y);
+
+            Transform position = new Vector3(posX, posY, thisGameObject.transform.position.z);
+                if (timer >= knockbackDelay)
+                {
+                    canKnockback(false);
+                } 
             }
         }
     }
@@ -207,34 +234,6 @@ public class Player : MonoBehaviour
             Controller.instance.GameOver();
         }
     }
-    // gives the knockback
-    private void OnCollisionEnter(Collision collision)
-    {
-        /*Rigidbody rb = collision.transform.position - transform.position;
-        Collider[] colliders = Physics.OverlapSphere(transform.position, knockbackRadius); 
-
-        if(rb != null)
-        {
-            Vector3 direction = collision.transform.position - transform.position;
-            direction.y = 0;
-
-            rb.AddForce(direction.normalized * knockbackForce, ForceMode.Impulse);
-        }
-        for(int i = 0; i < colliders.Length; i++)
-        {
-            Rigidbody rb = colliders[i].GetComponent<Rigidbody>();
-
-            if(rb != null)
-            {
-                rb.AddExplosionForce(knockbackForce, transform.position, knockbackRadius, 0f, ForceMode.Impulse);
-                //capable of using ExplosionForce when enemy dies. They "fly" away
-            }
-        */
-
-    }
-    //gives the knockback area
-    //send a raytracing to set the hit of the knockback
-
     #endregion
 
     void PlayerPause()
