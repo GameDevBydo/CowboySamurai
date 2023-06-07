@@ -18,7 +18,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Skill [] previousSkill;
 
     
-    public float exp; 
+    
     private Button buttonSkill;
     void Start()
     {
