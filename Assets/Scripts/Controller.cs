@@ -51,6 +51,18 @@ public class Controller : MonoBehaviour
     {
         panel.SetActive(!panel.activeSelf);
     }
+
+    public Image introImg;
+    void ScrollingIntro()
+    {
+        introImg.material.mainTextureOffset += Vector2.right * (Time.deltaTime) * 0.03f;
+    }
+
+    void Start()
+    {
+        introImg.material.mainTextureOffset = Vector2.zero;
+        introImg.material = new Material(introImg.material);
+    }
     #endregion
 
     #region Scene and Application Management
@@ -298,6 +310,7 @@ public class Controller : MonoBehaviour
         {
             LoadNextScene();
         }
+        ScrollingIntro();
     }
 
     

@@ -14,10 +14,11 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public string skillDesc;
     public Sprite skillSprite;
     public bool skillUnlocked;
+    public int price;
     public Skill [] previousSkill;
 
     
-    public float exp; 
+    
     private Button buttonSkill;
     void Start()
     {

@@ -15,9 +15,12 @@ MonoBehaviour:
   attackName: 
   hitboxes:
   - {fileID: 11400000, guid: 3f982f64b76a8441c85cd82450b24a25, type: 2}
-  damage: 20
+  damage: 4
   hit: 0
   startUp: 0
   recovery: 5
+  stun: 0
   knockbackRatio: 0
   knockupRatio: 0
+  meterGen: 0
+  sfx: {fileID: 0}

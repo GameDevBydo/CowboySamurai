@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
     public Animator anim;
     private GameObject player;
     #region Movement Variables
@@ -63,14 +64,23 @@ public class Enemy : MonoBehaviour
         currentAttack = Random.Range(1,100);
         
         if(0 < currentAttack && currentAttack < 33){
+            anim.SetBool("Punch", true);
+            anim.SetBool("Kick", false);
+            anim.SetBool("JumpKick", false);
             Golpe(attackEnemy[0]);
             //Debug.Log(currentAttack);
         }
         if(33 <= currentAttack && currentAttack <= 66){
+            anim.SetBool("Punch", false);
+            anim.SetBool("Kick", true);
+            anim.SetBool("JumpKick", false);
             Golpe(attackEnemy[1]);
             //Debug.Log(currentAttack);
         }
         if(currentAttack > 66){
+            anim.SetBool("Punch", false);
+            anim.SetBool("Kick", false);
+            anim.SetBool("JumpKick", true);
             Golpe(attackEnemy[2]);
             //Debug.Log(currentAttack);
         }
@@ -108,7 +118,6 @@ public class Enemy : MonoBehaviour
             Timeout();
             if(canAttack)
                 AttackPlayer();
-
         }
         else
         {
@@ -136,6 +145,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
         recoveryTimer = stun;
+        anim.SetTrigger("Stunned");
     }
 
     public IEnumerator HitMaterialEffect()
@@ -143,6 +153,11 @@ public class Enemy : MonoBehaviour
         rend.material = hitMat;
         yield return new WaitForSeconds(0.1f);
         rend.material = baseMat;
+    }
+
+    void KnockBack()
+    {
+
     }
 
 
@@ -154,6 +169,7 @@ public class Enemy : MonoBehaviour
             Controller.instance.enemiesDefeated++;
             SkillController.instance.exp += 0.5f;
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
+            Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
             Destroy(gameObject);
         }
     }
@@ -205,13 +221,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
     void OnCollisionEnter(Collision collision)
     {
         if(collision.transform.tag == "Player")
         {
             Player.instance.TakeDamage(40);
+            Debug.Log("Bateu sai de mim AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
     }
     #endregion
