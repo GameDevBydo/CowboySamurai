@@ -1626,7 +1626,6 @@ MonoBehaviour:
   price: 0
   previousSkill:
   - {fileID: 1163934177}
-  exp: 0
 --- !u!1 &206194706
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3207,6 @@ MonoBehaviour:
   price: 0
   previousSkill:
   - {fileID: 1359232948}
-  exp: 0
 --- !u!1 &449461450
 GameObject:
   m_ObjectHideFlags: 0
@@ -9223,7 +9221,6 @@ MonoBehaviour:
   price: 0
   previousSkill:
   - {fileID: 1404243005}
-  exp: 0
 --- !u!1 &1239656804
 GameObject:
   m_ObjectHideFlags: 0
@@ -9554,7 +9551,6 @@ MonoBehaviour:
   price: 0
   previousSkill:
   - {fileID: 187641640}
-  exp: 0
 --- !u!1 &1371388893
 GameObject:
   m_ObjectHideFlags: 3
@@ -10031,7 +10027,6 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 10
   previousSkill: []
-  exp: 0
 --- !u!1 &1426607273
 GameObject:
   m_ObjectHideFlags: 0

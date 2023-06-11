@@ -22,15 +22,15 @@ public class Player : MonoBehaviour
     public Material baseMat, hitMat, dashMat;
 
     // gives the knockback
-    public GameObject thisGameObject; // checks game object
-    public float knockbackForce = 10f; //add force to knockback
-    public float knockbackDelay = 2f; // delay between knockback (could be done at attack)
-    public float timer = 0; //timer
-    public bool canKnockback = true; //bool that changes when attacks (applies knockback)
-    public int offset = 5; // offset to knockback distance in time
+   //public GameObject thisGameObject; // checks game object
+   //public float knockbackForce = 10f; //add force to knockback
+   //public float knockbackDelay = 2f; // delay between knockback (could be done at attack)
+   //public float timer = 0; //timer
+   //public bool canKnockback = true; //bool that changes when attacks (applies knockback)
+   //public int offset = 5; // offset to knockback distance in time
 
-    Transform startMarker = thisGameObject.transform.position; //startknockback
-    Transform endMarker = thisGameObject.transform. position + offset; //endknockback
+    //Transform startMarker = thisGameObject.transform.position; //startknockback
+    //Transform endMarker = thisGameObject.transform. position + offset; //endknockback
 
     //gives the knockback area
     //send a raytracing to set the hit of the knockback
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 
         void Start()
     {
-        moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+        //moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         rend = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        moneyText.text = "Money: "+ money;
+        //moneyText.text = "Money: "+ money;
         AttSpawnPosition();
         if(!Controller.instance.inputPause)
         {
@@ -83,19 +83,19 @@ public class Player : MonoBehaviour
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
             }
-            if (canKnockback)
-            {
-                Vector3 knockbackVector = new Vector3.Lerp(startMarker + (endMarker - startMarker) * knockbackForce);
-                Vector3 posX = knockbackVector;
-                timer += time.deltaTime;
-            Vector3 posY = thisGameObject.transform.EulerAngles(y);
-
-            Transform position = new Vector3(posX, posY, thisGameObject.transform.position.z);
-                if (timer >= knockbackDelay)
-                {
-                    canKnockback(false);
-                } 
-            }
+            //if (canKnockback)
+            //{
+            //    Vector3 knockbackVector = new Vector3.Lerp(startMarker + (endMarker - startMarker) * knockbackForce);
+            //    Vector3 posX = knockbackVector;
+            //    timer += time.deltaTime;
+            //Vector3 posY = thisGameObject.transform.EulerAngles(y);
+            //
+            //Transform position = new Vector3(posX, posY, thisGameObject.transform.position.z);
+            //    if (timer >= knockbackDelay)
+            //    {
+            //        canKnockback(false);
+            //    } 
+            //}
         }
     }
 
