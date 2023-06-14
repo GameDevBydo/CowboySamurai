@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
+    
     bool canSpawn;
     float timer = 5.0f;
     void Update()

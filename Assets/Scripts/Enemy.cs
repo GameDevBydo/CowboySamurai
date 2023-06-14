@@ -194,6 +194,7 @@ public class Enemy : MonoBehaviour
             if(Player.instance.getHit)
             {
                 Player.instance.TakeDamage(attack.damage);
+                //
             }
         }
         
@@ -228,14 +229,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.transform.tag == "Player")
-        {
-            Player.instance.TakeDamage(40);
-            Debug.Log("Bateu sai de mim AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        }
-    }
+    
     #endregion
 
 

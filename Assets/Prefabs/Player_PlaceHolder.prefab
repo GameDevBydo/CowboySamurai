@@ -274,7 +274,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
@@ -746,8 +746,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exp: 0
-  money: 0
-  moneyText: {fileID: 0}
   prefabCoin: {fileID: 3587314294987872190, guid: c4ba1d7f62e8832489d85f662692e862,
     type: 3}
   groundedPlayer: 0
@@ -757,6 +755,12 @@ MonoBehaviour:
     type: 3}
   hitMat: {fileID: 2100000, guid: 636102617bce3884baf8ecec0753561e, type: 2}
   dashMat: {fileID: 2100000, guid: 5246593842d5f604dbaefd4067124497, type: 2}
+  thisGameObject: {fileID: 2432761055447202610}
+  knockbackForce: 10
+  knockbackDelay: 2
+  timer: 0
+  canKnockback: 0
+  offset: 5
   maxHP: 200
   hitPoints: 200
   bulletBar: 0

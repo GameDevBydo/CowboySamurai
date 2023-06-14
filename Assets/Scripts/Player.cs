@@ -22,15 +22,16 @@ public class Player : MonoBehaviour
     public Material baseMat, hitMat, dashMat;
 
     // gives the knockback
-   //public GameObject thisGameObject; // checks game object
-   //public float knockbackForce = 10f; //add force to knockback
-   //public float knockbackDelay = 2f; // delay between knockback (could be done at attack)
-   //public float timer = 0; //timer
-   //public bool canKnockback = true; //bool that changes when attacks (applies knockback)
-   //public int offset = 5; // offset to knockback distance in time
+   public GameObject thisGameObject; // checks game object
+   public float knockbackForce = 0.1f; //add force to knockback
+   public float knockbackDelay = 2f; // delay between knockback (could be done at attack)
+   public float timer = 0; //timer
+   public bool canKnockback = false; //bool that changes when attacks (applies knockback)
+   public int offset = 5; // offset to knockback distance in time
 
-    //Transform startMarker = thisGameObject.transform.position; //startknockback
-    //Transform endMarker = thisGameObject.transform. position + offset; //endknockback
+    Vector3 startMarker;
+    Vector3 endMarker;
+    
 
     //gives the knockback area
     //send a raytracing to set the hit of the knockback
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
         comboCounter = 0;
         getHit = true;
         canDash = true;
+        
     }
 
     // Update is called once per frame
@@ -83,19 +85,22 @@ public class Player : MonoBehaviour
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
             }
-            //if (canKnockback)
-            //{
-            //    Vector3 knockbackVector = new Vector3.Lerp(startMarker + (endMarker - startMarker) * knockbackForce);
-            //    Vector3 posX = knockbackVector;
-            //    timer += time.deltaTime;
-            //Vector3 posY = thisGameObject.transform.EulerAngles(y);
-            //
-            //Transform position = new Vector3(posX, posY, thisGameObject.transform.position.z);
-            //    if (timer >= knockbackDelay)
-            //    {
-            //        canKnockback(false);
-            //    } 
-            //}
+            if (canKnockback)
+            {
+                
+                if (timer >= knockbackDelay)
+                {
+                    canKnockback = false;
+                } 
+            }
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit) {
+        if(hit.collider.CompareTag("Enemy"))
+        {
+            Vector3 backward = transform.TransformDirection(new Vector3(0,0,-10f));
+            controller.Move(backward * 15f* Time.deltaTime);
         }
     }
 
@@ -199,8 +204,6 @@ public class Player : MonoBehaviour
     #region Combate
     
     public int maxHP = 200, hitPoints = 200;
-    private float knockbackForce = 300.0f;
-    private float knockbackRadius;
 
     public float bulletBar = 0, bulletMax = 120;
 
