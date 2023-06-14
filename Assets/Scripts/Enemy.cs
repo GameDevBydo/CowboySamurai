@@ -176,7 +176,7 @@ public class Enemy : MonoBehaviour
             Controller.instance.enemiesDefeated++;
             SkillController.instance.exp += 0.5f;
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
-            //Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
+            Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
             Destroy(gameObject);
         }
     }

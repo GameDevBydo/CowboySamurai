@@ -38,7 +38,7 @@ public class Controller : MonoBehaviour
     public GameObject nextLevel;
     [Header("Telas")]
     public GameObject inGameScreen;
-    public GameObject pauseScreen, gameOverScreen;
+    public GameObject pauseScreen, gameOverScreen, shop;
     public TextMeshProUGUI comboCounter, comboComment;
     public CommentSO comments;
     
@@ -301,6 +301,7 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
+        
         moneyText.text = "Money: "+ money.ToString();
         if(currentScene != 0){
             timer -= Time.deltaTime;
