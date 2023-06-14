@@ -64,27 +64,34 @@ public class Enemy : MonoBehaviour
         currentAttack = Random.Range(1,100);
         
         if(0 < currentAttack && currentAttack < 33){
-            anim.SetBool("Punch", true);
-            anim.SetBool("Kick", false);
-            anim.SetBool("JumpKick", false);
+            //anim.SetBool("Punch", true);
+            //anim.SetBool("Kick", false);
+            //anim.SetBool("JumpKick", false);
+            anim.SetTrigger("Punch");
             Golpe(attackEnemy[0]);
-            //Debug.Log(currentAttack);
+  
+
+            
         }
         if(33 <= currentAttack && currentAttack <= 66){
-            anim.SetBool("Punch", false);
-            anim.SetBool("Kick", true);
-            anim.SetBool("JumpKick", false);
+            //anim.SetBool("Punch", false);
+            //anim.SetBool("Kick", true);
+            //anim.SetBool("JumpKick", false);
+            anim.SetTrigger("Kick");
             Golpe(attackEnemy[1]);
-            //Debug.Log(currentAttack);
+            
+
+            
         }
         if(currentAttack > 66){
-            anim.SetBool("Punch", false);
-            anim.SetBool("Kick", false);
-            anim.SetBool("JumpKick", true);
+            //anim.SetBool("Punch", false);
+            //anim.SetBool("Kick", false);
+            //anim.SetBool("JumpKick", true);
+            anim.SetTrigger("Jumpkick");
             Golpe(attackEnemy[2]);
-            //Debug.Log(currentAttack);
+            
+            
         }
-    
     }
 
     void Timeout(){

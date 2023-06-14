@@ -8,10 +8,10 @@ public class Player : MonoBehaviour
     private Animator anim;
     private CharacterController controller;
     public float exp = 0;
-    public int money = 0;
+    
     private Vector3 playerVelocity;
     private Vector3 input;
-    public TextMeshProUGUI moneyText;
+    
     public GameObject prefabCoin;
 
     const float gravity= -9.81f;

@@ -9,9 +9,13 @@ using TMPro;
 
 public class Controller : MonoBehaviour
 {
+    
     #region Singleton 
     [HideInInspector]
     public static Controller instance;
+
+    public int money = 0;
+    public TextMeshProUGUI moneyText;
     void Awake()
     {
         BasicSetup();
@@ -285,6 +289,7 @@ public class Controller : MonoBehaviour
         ChangeGameStates(0);
         inputPause = true;
         playerPause = false;
+        comboCounter.text = "Combo: " + Convert.ToString(0);
         playableScenes = SceneManager.sceneCountInBuildSettings - 1; // Alterar o valor baseado em quantas cenas não jogáveis existem
         currentScene = 0;
         seed = null;
@@ -296,12 +301,12 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-  
+        moneyText.text = "Money: "+ money.ToString();
         if(currentScene != 0){
             timer -= Time.deltaTime;
             if(timer <=0 && enemiesInScene<=5)
             {
-                StartSpawnEntities(0,1,UnityEngine.Random.Range(0,spawns.Length));
+                StartSpawnEntities(UnityEngine.Random.Range(0,entities.Length),1,UnityEngine.Random.Range(0,spawns.Length));
                 timer = respawnTimer;
             }
         }
@@ -391,4 +396,10 @@ public class Controller : MonoBehaviour
     }
     #endregion
 
+    public void PauseFullGame(){
+        Time.timeScale=0;
+    }
+    public void UnPauseFullGame(){
+        Time.timeScale=1;
+    }
 }

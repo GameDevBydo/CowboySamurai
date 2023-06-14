@@ -67,48 +67,48 @@ public class SkillController : MonoBehaviour
 
     public void unlockSkill1()
     {
-        if(Player.instance.money >= skills[0].price && skills[0].skillUnlocked == false)
+        if(Controller.instance.money >= skills[0].price && skills[0].skillUnlocked == false)
         {
             skills[0].GetComponent<Button>().interactable = false;
             Player.instance.moveList.attackUnlocked[1] = true;
             skills[0].skillUnlocked = true;
-            Player.instance.money -= skills[0].price;   
+            Controller.instance.money -= skills[0].price;   
         }
     }
     public void unlockSkill2()
     {
-        if(Player.instance.money >= skills[1].price && skills[1].skillUnlocked == false)
+        if(Controller.instance.money >= skills[1].price && skills[1].skillUnlocked == false)
         {
             Player.instance.moveList.attackUnlocked[2] = true;
             skills[1].skillUnlocked = true;
-            Player.instance.money -= skills[1].price;
+            Controller.instance.money -= skills[1].price;
         }
     }
     public void unlockSkill3()
     {
-        if(Player.instance.money >= skills[2].price && skills[2].skillUnlocked == false)
+        if(Controller.instance.money >= skills[2].price && skills[2].skillUnlocked == false)
         {
             Player.instance.moveList.attackUnlocked[3] = true;
             skills[2].skillUnlocked = true;
-            Player.instance.money -= skills[2].price;
+            Controller.instance.money -= skills[2].price;
         }
     }
     public void unlockSkill4()
     {
-        if(Player.instance.money >= skills[3].price && skills[3].skillUnlocked == false)
+        if(Controller.instance.money >= skills[3].price && skills[3].skillUnlocked == false)
         {
             Player.instance.moveList.attackUnlocked[4] = true;
             skills[3].skillUnlocked = true;
-            Player.instance.money -= skills[3].price;
+            Controller.instance.money -= skills[3].price;
         }
     }
     public void unlockSkill5()
     {
-        if(Player.instance.money >= skills[4].price && skills[4].skillUnlocked == false)
+        if(Controller.instance.money >= skills[4].price && skills[4].skillUnlocked == false)
         {
             Player.instance.moveList.attackUnlocked[5] = true;
             skills[4].skillUnlocked = true;
-            Player.instance.money -= skills[4].price;
+            Controller.instance.money -= skills[4].price;
         }
     }
     

@@ -20,7 +20,6 @@ public class Coin : MonoBehaviour
     }
     
     private void OnCollisionEnter(Collision other) {
-        
         if(other.gameObject.tag == "ground")
         {
             rb.useGravity = false;
@@ -32,7 +31,7 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Player.instance.money++;
+            Controller.instance.money++;
             Destroy(gameObject);
         }
 
