@@ -1710,7 +1710,7 @@ MonoBehaviour:
     est '
   skillSprite: {fileID: 0}
   skillUnlocked: 0
-  price: 0
+  price: 7
   previousSkill:
   - {fileID: 1163934177}
 --- !u!1 &206194706
@@ -3291,7 +3291,7 @@ MonoBehaviour:
     est '
   skillSprite: {fileID: 0}
   skillUnlocked: 0
-  price: 0
+  price: 10
   previousSkill:
   - {fileID: 1359232948}
 --- !u!1 &449461450
@@ -9450,7 +9450,7 @@ MonoBehaviour:
     est '
   skillSprite: {fileID: 0}
   skillUnlocked: 0
-  price: 0
+  price: 6
   previousSkill:
   - {fileID: 1404243005}
 --- !u!1 &1239656804
@@ -9915,7 +9915,7 @@ MonoBehaviour:
     est '
   skillSprite: {fileID: 0}
   skillUnlocked: 0
-  price: 0
+  price: 8
   previousSkill:
   - {fileID: 187641640}
 --- !u!1 &1371388893
@@ -10392,7 +10392,7 @@ MonoBehaviour:
     est '
   skillSprite: {fileID: 0}
   skillUnlocked: 0
-  price: 10
+  price: 5
   previousSkill: []
 --- !u!1 &1426607273
 GameObject:
