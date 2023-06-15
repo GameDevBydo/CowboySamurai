@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
         {
             Vector3 backward = transform.TransformDirection(new Vector3(0,0,-10f));
             controller.Move(backward * 15f* Time.deltaTime);
+            TakeDamage(20);
         }
     }
 
@@ -163,7 +164,8 @@ public class Player : MonoBehaviour
     #region Movimento do player
     public void MovimentPlayer()
     {
-        groundedPlayer = controller.isGrounded;
+        //groundedPlayer = controller.isGrounded;
+        groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.1f);
         input.Set(Input.GetAxisRaw("Horizontal"),0,0);
         
         //Verifica se o player está tocando no chão

@@ -15,7 +15,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Sprite skillSprite;
     public bool skillUnlocked;
     public int price;
-    public Skill [] previousSkill;
+    public Skill [] nextSkills;
 
     
     

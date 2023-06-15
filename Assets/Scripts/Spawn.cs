@@ -7,7 +7,7 @@ public class Spawn : MonoBehaviour
 {
     
     bool canSpawn;
-    float timer = 5.0f;
+    float timer = 1.0f;
     void Update()
     {
         Deadzone();

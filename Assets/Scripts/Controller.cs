@@ -253,7 +253,7 @@ public class Controller : MonoBehaviour
     public GameObject[] entities;
     bool spawnTimer;
     public int enemiesInScene;
-    private float respawnTimer = 5.0f;
+    private float respawnTimer = 0.7f;
     private float timer;
 
     void SetSpawns()
@@ -305,7 +305,7 @@ public class Controller : MonoBehaviour
         moneyText.text = "Money: "+ money.ToString();
         if(currentScene != 0){
             timer -= Time.deltaTime;
-            if(timer <=0 && enemiesInScene<=5)
+            if(timer <=0 && enemiesInScene<=10)
             {
                 StartSpawnEntities(UnityEngine.Random.Range(0,entities.Length),1,UnityEngine.Random.Range(0,spawns.Length));
                 timer = respawnTimer;

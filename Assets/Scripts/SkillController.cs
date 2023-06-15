@@ -14,7 +14,7 @@ public class SkillController : MonoBehaviour
     public TextMeshProUGUI skillname,desc,expUp;
     public Image skillsprite;
 
-    
+    public Sprite disabled, selectable, activated;
 
 
     void Start()
@@ -22,10 +22,16 @@ public class SkillController : MonoBehaviour
         instance = this;
     
 
-        for(int i = 1; i< Player.instance.moveList.attackUnlocked.Length; i++)
-            {
-                Player.instance.moveList.attackUnlocked[i] = false;
-            }
+        for(int i = 1; i< skills.Length; i++)
+        {
+            //Player.instance.moveList.attackUnlocked[i] = false;
+            skills[i].GetComponent<Image>().sprite = disabled;
+        }
+
+        UnlockSKill(0);
+        //Aqui seria o save para desbloquear as skills
+
+        // Rodar um for, usando o UnlockSkill para ativar as skills salvas no save do player.
     }
 
     void Update()
@@ -38,31 +44,59 @@ public class SkillController : MonoBehaviour
     // Controle de skills desbloqueadas e interatividade dos botões
     public void ControllerUnlocked ()
     {
+        //if(exp >= 1f)
+        //{
+        //    skills[0].GetComponent<Button>().interactable = true;
+        //}
+        //if(exp >= 2f && skills[1].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+        //{
+        //    skills[1].GetComponent<Button>().interactable = true;
+        //    
+        //}
+        //if(exp >= 3f && skills[2].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+        //{
+        //    skills[2].GetComponent<Button>().interactable = true;
+        //    
+        //}
+        //if(exp >= 4f && skills[3].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+        //{
+        //    skills[3].GetComponent<Button>().interactable = true;
+        //    
+        //}
+        //if(exp >= 5f && skills[4].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+        //{
+        //    skills[4].GetComponent<Button>().interactable = true;
+        //    
+        //} 
+    }
 
-        if(exp >= 1f)
+
+    void EnableNextSkill(int id)
+    {
+        for(int i = 0; i< skills[id].nextSkills.Length; i++)
         {
-            skills[0].GetComponent<Button>().interactable = true;
+            skills[id].nextSkills[i].GetComponent<Button>().interactable = true;
+            skills[id].nextSkills[i].GetComponent<Image>().sprite = selectable;
         }
-        if(exp >= 2f && skills[1].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
+    }
+
+
+    public void BuySkill(int id) // Função para p player usar ingame
+    {
+        if(exp >= skills[id].price && skills[id].skillUnlocked == false)
         {
-            skills[1].GetComponent<Button>().interactable = true;
-            
+            UnlockSKill(id);
+            exp -= skills[id].price;
         }
-        if(exp >= 3f && skills[2].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
-        {
-            skills[2].GetComponent<Button>().interactable = true;
-            
-        }
-        if(exp >= 4f && skills[3].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
-        {
-            skills[3].GetComponent<Button>().interactable = true;
-            
-        }
-        if(exp >= 5f && skills[4].GetComponent<Skill>().previousSkill[0].skillUnlocked == true)
-        {
-            skills[4].GetComponent<Button>().interactable = true;
-            
-        } 
+    }
+
+    void UnlockSKill(int id) // Função para usar em dev mode
+    {
+        skills[id].GetComponent<Button>().interactable = false;
+        skills[id].GetComponent<Image>().sprite = activated;
+        Player.instance.moveList.attackUnlocked[id] = true;
+        skills[id].skillUnlocked = true;
+        EnableNextSkill(id);
     }
 
     public void unlockSkill1()

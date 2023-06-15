@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {   
-    private float gravity = -2f;
+    private float gravity = -3.5f;
     void Update() 
     {
         Vector3 pos = transform.position;
