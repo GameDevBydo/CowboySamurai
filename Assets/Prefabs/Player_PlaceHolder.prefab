@@ -1098,12 +1098,6 @@ MonoBehaviour:
     type: 3}
   hitMat: {fileID: 2100000, guid: 636102617bce3884baf8ecec0753561e, type: 2}
   dashMat: {fileID: 2100000, guid: 5246593842d5f604dbaefd4067124497, type: 2}
-  thisGameObject: {fileID: 2432761055447202610}
-  knockbackForce: 10
-  knockbackDelay: 2
-  timer: 0
-  canKnockback: 0
-  offset: 5
   maxHP: 200
   hitPoints: 200
   bulletBar: 0
@@ -1114,9 +1108,9 @@ MonoBehaviour:
   moveList: {fileID: 11400000, guid: eaa46e15ebb1693458483b87b3b9e82c, type: 2}
   superList: {fileID: 11400000, guid: c10bd7e73c661684eafb155a3b77332a, type: 2}
   canAttack: 1
-  lightAtk: 750000004a010000
-  heavyAtk: 690000004b010000
-  specialAtk: 6f0000004f010000
+  lightAtk: 690000004a010000
+  heavyAtk: 6f0000004b010000
+  specialAtk: 750000004f010000
   interactKey: 650000004c010000
   comboCounter: 0
   comboSequence: 
