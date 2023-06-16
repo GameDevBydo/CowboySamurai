@@ -18233,22 +18233,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
-      propertyPath: moneyText
-      value: 
-      objectReference: {fileID: 1138698459}
-    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
-      propertyPath: heavyAtk.Array.data[1]
-      value: 331
-      objectReference: {fileID: 0}
-    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
-      propertyPath: lightAtk.Array.data[1]
-      value: 330
-      objectReference: {fileID: 0}
-    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
-      propertyPath: specialAtk.Array.data[1]
-      value: 335
-      objectReference: {fileID: 0}
     - target: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
         type: 3}
       propertyPath: m_Name

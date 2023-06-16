@@ -251,7 +251,7 @@ public class Player : MonoBehaviour
         public LayerMask m_EnemyLayer;
         public MoveList moveList, superList;
         public bool canAttack = true;
-        public KeyCode[] lightAtk, heavyAtk, specialAtk;
+        public KeyCode[] lightAtk, heavyAtk, specialAtk, interactKey;
 
         [HideInInspector]
         public int comboCounter;

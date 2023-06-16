@@ -39,22 +39,6 @@ public class SkillController : MonoBehaviour
         expUp.text = "EXP: " + exp;
     }
 
-    public void LoadSkills()
-    {
-        for(int i = 0; i< skills.Length; i++)
-        {
-            if(skills[i].GetComponent<Skill>().skillUnlocked) 
-            {
-                skills[i].GetComponent<Image>().sprite = activated;
-                skills[i].GetComponent<Button>().interactable = false;
-                EnableNextSkill(i);
-            }
-            //else if(skills[i].)
-            skills[i].GetComponent<Image>().sprite = disabled;
-            Debug.Log("passei");
-        }
-    }
-
     void EnableNextSkill(int id)
     {
         for(int i = 0; i< skills[id].nextSkills.Length; i++)

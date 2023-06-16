@@ -26,7 +26,7 @@ public class Npc : MonoBehaviour
             prefab.transform.position = transformCanva;
             prefab.SetActive(true);
 
-            if(Input.GetKeyUp(KeyCode.E))
+            if(Input.GetKeyDown(Player.instance.interactKey[0]) || Input.GetKeyDown(Player.instance.interactKey[1]))
             {
                 Controller.instance.shop.SetActive(true);
                 Controller.instance.PauseFullGame();
