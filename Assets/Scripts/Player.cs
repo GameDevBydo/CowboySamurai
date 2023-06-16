@@ -94,6 +94,7 @@ public class Player : MonoBehaviour
             canKnockback = true;
             knockbackDirection = new Vector3(transform.position.x - hit.transform.position.x, 1f, 0f).normalized;
             timerKnockback = 0f;
+            TakeDamage(15);
         }
     }
 
@@ -150,7 +151,7 @@ public class Player : MonoBehaviour
                 currentState = PlayerState.STANDING;
             break;
         }
-        Debug.Log(animationName);
+        
         anim.Play(animationName);
         
     }

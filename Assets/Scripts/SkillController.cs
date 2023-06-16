@@ -28,7 +28,7 @@ public class SkillController : MonoBehaviour
         for(int i = 0; i< skills.Length; i++)
         {
             skills[i].GetComponent<Image>().sprite = disabled;
-            Debug.Log("passei");
+            
         }
         UnlockSKill(0);
         
