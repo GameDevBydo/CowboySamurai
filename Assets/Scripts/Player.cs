@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
             if(!Controller.instance.playerPause)
             {
                 MovimentPlayer();
-                Timeout();
+                if(attack != null) Timeout();
                 CallAttack();
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
@@ -118,38 +118,49 @@ public class Player : MonoBehaviour
     }
 
     PlayerState currentState, pastState;
-
+    string animationName;
     public void ChangePlayerState(int id)
     {
         pastState = currentState;
+        if(currentState != pastState) return;
         switch(id)
         {
             case 0:
                 currentState = PlayerState.CINEMATIC;
+                animationName = "Idle";
             break;
             case 1:
                 currentState = PlayerState.STANDING;
+                animationName = "Idle";
             break;
             case 2:
                 currentState = PlayerState.WALKING;
+                animationName = "Walk";
             break;
             case 3:
                 currentState = PlayerState.AIRBORNE;
+                animationName = "Jump";
             break;
             case 4:
                 currentState = PlayerState.ATTACKING;
+                animationName = comboSequence;
             break;
             case 5:
                 currentState = PlayerState.HITSTUN;
+                animationName = "Idle";
             break;
             case 6:
                 currentState = PlayerState.DASHING;
+                animationName = "Idle";
             break;
             default:
                 Debug.Log("Change to state 1");
                 currentState = PlayerState.STANDING;
             break;
         }
+        Debug.Log(animationName);
+        anim.Play(animationName);
+        
     }
     #endregion
     
@@ -178,18 +189,21 @@ public class Player : MonoBehaviour
         if(input != Vector3.zero)
         {
             transform.forward = input;
-            anim.SetBool("walking",true);
+            if(currentState != PlayerState.ATTACKING && groundedPlayer) ChangePlayerState(2);
+            //anim.SetBool("walking",true);
         }
         else
         {
-            anim.SetBool("walking",false);
+            if(currentState != PlayerState.ATTACKING && groundedPlayer) ChangePlayerState(1);
+            //anim.SetBool("walking",false);
         }
         
         //Pulo do player
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);
-            anim.SetTrigger("jump");
+            //anim.SetTrigger("jump");
+            ChangePlayerState(3);
         }
 
         //Aplicação da gravidade e da movimentação 
@@ -197,9 +211,9 @@ public class Player : MonoBehaviour
         controller.Move( input* Time.deltaTime * speed);
         controller.Move(playerVelocity * Time.deltaTime);
 
-        if(!groundedPlayer) ChangePlayerState(3);
-        if(input !=Vector3.zero) ChangePlayerState(2);
-        else ChangePlayerState(1);
+        //if(!groundedPlayer) ChangePlayerState(3);
+        //if(input !=Vector3.zero) ChangePlayerState(2);
+        //else ChangePlayerState(1);
     }
     #endregion
 
@@ -269,7 +283,6 @@ public class Player : MonoBehaviour
         public void CallAttack() // Pega um input e ativa o golpe relacionado a esse input.
         {
             bool buttonPress = false;
-            ChangePlayerState(4);
             for(int i = 0; i<moveList._attack.Length; i++)
             {
                 moveList._attack[i].hit = false;
@@ -279,6 +292,7 @@ public class Player : MonoBehaviour
             {
                 comboSequence += "L";
                 buttonPress = true;
+                ChangePlayerState(4);
             } 
             
             
