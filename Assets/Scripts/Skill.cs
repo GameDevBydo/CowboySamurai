@@ -23,8 +23,8 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     void Start()
     {
         buttonSkill = this.GetComponent<Button>();
-        buttonSkill.interactable = false;
-        gameObject.GetComponent<Image>().sprite = skillSprite;
+        //buttonSkill.interactable = false;
+        //gameObject.GetComponent<Image>().sprite = skillSprite;
     }
 
     // Assinala visualmente que a skill já foi desbloqueada e "comprada"
