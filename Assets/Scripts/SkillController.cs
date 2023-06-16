@@ -21,7 +21,10 @@ public class SkillController : MonoBehaviour
     {
         instance = this;
     
-        
+        for (int i = 1; i < Player.instance.moveList.attackUnlocked.Length; i++)
+        {
+            Player.instance.moveList.attackUnlocked[i] = false;
+        }
         for(int i = 0; i< skills.Length; i++)
         {
             skills[i].GetComponent<Image>().sprite = disabled;

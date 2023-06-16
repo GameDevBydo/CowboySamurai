@@ -21,20 +21,15 @@ public class Player : MonoBehaviour
     SkinnedMeshRenderer rend;
     public Material baseMat, hitMat, dashMat;
 
-    // gives the knockback
-   public GameObject thisGameObject; // checks game object
-   public float knockbackForce = 0.1f; //add force to knockback
-   public float knockbackDelay = 2f; // delay between knockback (could be done at attack)
-   public float timer = 0; //timer
-   public bool canKnockback = false; //bool that changes when attacks (applies knockback)
-   public int offset = 5; // offset to knockback distance in time
+    
+    private float timerKnockback; 
+    private bool canKnockback = false; 
+    private Vector3 knockbackDirection;
 
-    Vector3 startMarker;
-    Vector3 endMarker;
+    
     
 
-    //gives the knockback area
-    //send a raytracing to set the hit of the knockback
+    
 
     #region Singleton 
     public static Player instance;
@@ -71,8 +66,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //moneyText.text = "Money: "+ money;
+        
         AttSpawnPosition();
+        KnockBack();
         if(!Controller.instance.inputPause)
         {
             if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) PlayerPause(); // Pause funciona apenas no teclado por enquanto
@@ -85,23 +81,19 @@ public class Player : MonoBehaviour
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
             }
-            if (canKnockback)
-            {
                 
-                if (timer >= knockbackDelay)
-                {
-                    canKnockback = false;
-                } 
-            }
+            
         }
+
+        
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         if(hit.collider.CompareTag("Enemy"))
-        {
-            Vector3 backward = transform.TransformDirection(new Vector3(0,0,-10f));
-            controller.Move(backward * 15f* Time.deltaTime);
-            TakeDamage(20);
+        {   
+            canKnockback = true;
+            knockbackDirection = new Vector3(transform.position.x - hit.transform.position.x, 1f, 0f).normalized;
+            timerKnockback = 0f;
         }
     }
 
@@ -171,7 +163,25 @@ public class Player : MonoBehaviour
         Controller.instance.spawns[1].transform.position = new Vector3(transform.position.x +10, 0, 0);
     }
 
-
+    public void KnockBack()
+    {
+        if(canKnockback)
+        {
+            timerKnockback += Time.deltaTime;
+            if(timerKnockback <= 0.5f)
+            {
+                Vector3 knockbackForce = knockbackDirection * 5f * Time.fixedDeltaTime; 
+                controller.Move(knockbackForce);
+                Debug.Log(knockbackForce);
+                
+            }
+            else 
+            {
+                canKnockback = false;
+            }
+        
+        }
+    }
     #region Movimento do player
     public void MovimentPlayer()
     {
