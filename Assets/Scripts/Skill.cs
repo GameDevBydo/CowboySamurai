@@ -43,20 +43,21 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         
-        SkillController.instance.skillname.text = skillName;
-        SkillController.instance.desc.text = skillDesc;
-        SkillController.instance.skillsprite.sprite = skillSprite;
-        SkillController.instance.skillsprite.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+      //SkillController.instance.skillname.text = skillName;
+      //SkillController.instance.desc.text = skillDesc;
+      //SkillController.instance.skillPrice.text = ("Preço: "+ price + " exp");
+      //SkillController.instance.skillsprite.sprite = skillSprite;
+      //SkillController.instance.skillsprite.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
 
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         
-        SkillController.instance.skillname.text = string.Empty;
-        SkillController.instance.desc.text = string.Empty;
-        SkillController.instance.skillsprite.sprite = null;
-        
-        SkillController.instance.skillsprite.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+       // SkillController.instance.skillname.text = string.Empty;
+       // SkillController.instance.desc.text = string.Empty;
+       // SkillController.instance.skillPrice.text = string.Empty;
+       // SkillController.instance.skillsprite.sprite = null;
+       // SkillController.instance.skillsprite.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
 
     }
 }

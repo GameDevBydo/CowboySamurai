@@ -11,7 +11,7 @@ public class SkillController : MonoBehaviour
     public Skill [] skills;
     
     public float exp;
-    public TextMeshProUGUI skillname,desc,expUp;
+    public TextMeshProUGUI skillname,desc,expUp,skillPrice;
     public Image skillsprite;
 
     public Sprite disabled, selectable, activated;
@@ -21,14 +21,15 @@ public class SkillController : MonoBehaviour
     {
         instance = this;
     
-
+        
         for(int i = 1; i< skills.Length; i++)
         {
             //Player.instance.moveList.attackUnlocked[i] = false;
             skills[i].GetComponent<Image>().sprite = disabled;
+            Debug.Log("passei");
         }
-
         UnlockSKill(0);
+        
         //Aqui seria o save para desbloquear as skills
 
         // Rodar um for, usando o UnlockSkill para ativar as skills salvas no save do player.
