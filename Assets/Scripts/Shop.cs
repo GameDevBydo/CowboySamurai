@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public int lifeRegenAmount = 50;
+    public int lifeRegenAmount = 30;
     public Button[] itens;
     public int[] valueItens;
     // Start is called before the first frame update
@@ -34,6 +34,7 @@ public class Shop : MonoBehaviour
         if(Player.instance.hitPoints>=200){
             Player.instance.hitPoints = 200;
         }
+        Controller.instance.UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
         Controller.instance.money -= valueItens[index];
     }
 

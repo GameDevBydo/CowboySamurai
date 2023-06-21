@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         //moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        rend = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        rend = transform.GetChild(5).GetChild(0).GetComponent<SkinnedMeshRenderer>(); // Referenciado o meshrenderer do modelo do Lucas (objeto PM_Body)
         ChangePlayerState(0);
         m_Started = true;
         comboCounter = 0;
@@ -212,9 +212,11 @@ public class Player : MonoBehaviour
         //Pulo do player
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
-            playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);
+            //playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);
             //anim.SetTrigger("jump");
             ChangePlayerState(3);
+
+            // BERNARDOOOOO FAZ UM COOLDOWN PRO IS GROUND FICAR FALSOOO
         }
 
         //Aplicação da gravidade e da movimentação 

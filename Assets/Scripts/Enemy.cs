@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         player = Player.instance.gameObject; //Define o player 
         speed = baseSpeed;
         range = Random.Range( 1.5f, 2.5f);
-        rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>(); // PARA USAR O MODELO DO CAUE EU TROQUEI O 2º GET CHILD PARA INDEX 0, VOLTAR PARA 1 SE USAR O MODELO DO MIXAMO
         m_Started = true;
         instance = this;
         //anim = GetComponent<Animator>();

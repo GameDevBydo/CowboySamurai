@@ -302,7 +302,7 @@ public class Controller : MonoBehaviour
     void Update()
     {
         
-        moneyText.text = "Money: "+ money.ToString();
+        moneyText.text = money.ToString();
         if(currentScene != 0){
             timer -= Time.deltaTime;
             if(timer <=0 && enemiesInScene<=10)
