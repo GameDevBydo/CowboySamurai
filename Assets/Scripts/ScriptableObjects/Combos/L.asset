@@ -19,8 +19,8 @@ MonoBehaviour:
   hit: 0
   startUp: 99
   recovery: 1.1
-  stun: 10
+  stun: 1.2
   knockbackRatio: 99
   knockupRatio: 99
-  meterGen: 8
+  meterGen: 2
   sfx: {fileID: 8300000, guid: 41915ecc158c60045aeca94eef3c2ee8, type: 3}

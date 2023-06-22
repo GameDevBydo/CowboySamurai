@@ -8,10 +8,9 @@ using TMPro;
 public class SkillController : MonoBehaviour
 {
     public static SkillController instance;
-    public Skill [] skills;
+    public Skill [] skills, superSkills;
     
-    public float exp;
-    public TextMeshProUGUI skillname,desc,expUp,skillPrice;
+    public TextMeshProUGUI skillname,desc,expUp,expTxtHud,skillPrice;
     public Image skillsprite;
 
     public Sprite disabled, selectable, activated;
@@ -28,9 +27,9 @@ public class SkillController : MonoBehaviour
         for(int i = 0; i< skills.Length; i++)
         {
             skills[i].GetComponent<Image>().sprite = disabled;
-            
         }
         UnlockSKill(0);
+        UnlockSuper(0);
         
         //Aqui seria o save para desbloquear as skills
 
@@ -39,10 +38,11 @@ public class SkillController : MonoBehaviour
 
     void Update()
     {
-        expUp.text = "EXP: " + exp;
+        expUp.text = "EXP: " + Player.instance.exp;
+        expTxtHud.text = "EXP: " + Player.instance.exp;
     }
 
-    void EnableNextSkill(int id)
+    public void EnableNextSkill(int id)
     {
         for(int i = 0; i< skills[id].nextSkills.Length; i++)
         {
@@ -50,24 +50,50 @@ public class SkillController : MonoBehaviour
             skills[id].nextSkills[i].GetComponent<Image>().sprite = selectable;
         }
     }
+    public void EnableNextSuper(int id)
+    {
+        for(int i = 0; i<superSkills[id].nextSkills.Length; i++)
+        {
+            superSkills[id].nextSkills[i].GetComponent<Button>().interactable = true;
+            superSkills[id].nextSkills[i].GetComponent<Image>().sprite = selectable;
+        }
+    }
 
 
     public void BuySkill(int id) // Função para p player usar ingame
     {
-        if(exp >= skills[id].price && skills[id].skillUnlocked == false)
+        if(Player.instance.exp >= skills[id].price && skills[id].skillUnlocked == false)
         {
             UnlockSKill(id);
-            exp -= skills[id].price;
+            Player.instance.exp -= skills[id].price;
         }
     }
 
-    void UnlockSKill(int id) // Função para usar em dev mode
+    public void UnlockSKill(int id) // Função para usar em dev mode
     {
         skills[id].GetComponent<Button>().interactable = false;
         skills[id].GetComponent<Image>().sprite = activated;
         Player.instance.moveList.attackUnlocked[id] = true;
         skills[id].skillUnlocked = true;
         EnableNextSkill(id);
+    }
+
+    public void BuySuperSkill(int id) // Função para p player usar ingame
+    {
+        if(Player.instance.exp >= superSkills[id].price && superSkills[id].skillUnlocked == false)
+        {
+            UnlockSuper(id);
+            Player.instance.exp -= superSkills[id].price;
+        }
+    }
+
+    public void UnlockSuper(int id)
+    {
+        superSkills[id].GetComponent<Button>().interactable = false;
+        superSkills[id].GetComponent<Image>().sprite = activated;
+        Player.instance.SetMaxMeter(id);
+        superSkills[id].skillUnlocked = true;
+        EnableNextSuper(id);
     }
 }
 

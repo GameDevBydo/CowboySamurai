@@ -9,6 +9,11 @@ public class Npc : MonoBehaviour
 
     private GameObject player;
     private float dist;
+
+    public int npcType; // 0 para vendedor (abre uma loja), 1 para texto
+
+    [TextArea(2,4)]
+    public string quote;
     
     // Start is called before the first frame update
     void Start()
@@ -28,8 +33,15 @@ public class Npc : MonoBehaviour
 
             if(Input.GetKeyDown(Player.instance.interactKey[0]) || Input.GetKeyDown(Player.instance.interactKey[1]))
             {
-                Controller.instance.shop.SetActive(true);
-                Controller.instance.PauseFullGame();
+                if(npcType == 0)
+                {
+                    Controller.instance.shop.SetActive(true);
+                    Controller.instance.PauseFullGame();
+                }
+                if(npcType == 1)
+                {
+                    Controller.instance.StartWriting(quote);
+                }
             }
         }
         else

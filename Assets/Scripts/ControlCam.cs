@@ -19,11 +19,11 @@ public class ControlCam : MonoBehaviour
         plane = GameObject.Find("Plane");
         cam = GetComponent<CinemachineVirtualCamera>();
         DefineDeadzone();
-        PositionPlayer();
-        player = GameObject.FindWithTag("Player");
+        player = Player.instance.gameObject;
     }
     void Start()
     {
+        PositionPlayer();
         ft = cam.GetCinemachineComponent<CinemachineFramingTransposer>();
         cam.Follow = player.transform;
         cam.LookAt = player.transform;
@@ -35,10 +35,10 @@ public class ControlCam : MonoBehaviour
     }
 
     void PositionPlayer(){
-
-        Instantiate(preFabPlayer, new Vector3(startPlane.x + size.x * 0.12f,0,0),Quaternion.identity);
-        
-    
+        Debug.Log(new Vector3(startPlane.x + size.x * 0.12f,0,0));
+        Player.instance.controller.enabled = false;
+        Player.instance.transform.position = new Vector3(startPlane.x + size.x * 0.12f,0,0);
+        Player.instance.controller.enabled = true;
     }
 
 

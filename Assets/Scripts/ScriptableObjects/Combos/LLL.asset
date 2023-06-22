@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9044bc4d8c39640539bbfa62e1942ecf, type: 3}
-  m_Name: HeavyAttackEnemy
+  m_Name: LLL
   m_EditorClassIdentifier: 
-  attackName: 
+  attackName: LLH
   hitboxes:
-  - {fileID: 11400000, guid: 3f982f64b76a8441c85cd82450b24a25, type: 2}
-  damage: 15
+  - {fileID: 11400000, guid: 83fa118c4fe5848ce970233be0e33b36, type: 2}
+  - {fileID: 11400000, guid: 1f1df914ad2d745408a77a458cb391ba, type: 2}
+  damage: 30
   hit: 0
-  startUp: 0
-  recovery: 1.5
-  stun: 0
-  knockbackRatio: 0
-  knockupRatio: 0
-  meterGen: 0
-  sfx: {fileID: 0}
+  startUp: 99
+  recovery: 3
+  stun: 4
+  knockbackRatio: 99
+  knockupRatio: 99
+  meterGen: 6
+  sfx: {fileID: 8300000, guid: 41915ecc158c60045aeca94eef3c2ee8, type: 3}

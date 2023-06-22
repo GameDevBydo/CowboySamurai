@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Animator anim;
-    private CharacterController controller;
+    public CharacterController controller;
     public float exp = 0;
     
     private Vector3 playerVelocity;
@@ -20,16 +20,14 @@ public class Player : MonoBehaviour
 
     SkinnedMeshRenderer rend;
     public Material baseMat, hitMat, dashMat;
-
     
     private float timerKnockback; 
     private bool canKnockback = false; 
     private Vector3 knockbackDirection;
 
-    
-    
+    [HideInInspector]
+    public bool canCheat = false;
 
-    
 
     #region Singleton 
     public static Player instance;
@@ -45,7 +43,7 @@ public class Player : MonoBehaviour
         {
             instance = this;
         }
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
     #endregion 
 
@@ -75,7 +73,8 @@ public class Player : MonoBehaviour
             
             if(!Controller.instance.playerPause)
             {
-                MovimentPlayer();
+                Cheats();
+                MovementPlayer();
                 if(attack != null) Timeout();
                 CallAttack();
                 ComboTimer();
@@ -89,7 +88,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
-        if(hit.collider.CompareTag("Enemy"))
+        if(hit.collider.CompareTag("Enemy") && getHit)
         {   
             canKnockback = true;
             knockbackDirection = new Vector3(transform.position.x - hit.transform.position.x, 1f, 0f).normalized;
@@ -184,10 +183,16 @@ public class Player : MonoBehaviour
         }
     }
     #region Movimento do player
-    public void MovimentPlayer()
+    float groundCheck = 0;
+    public void MovementPlayer()
     {
         //groundedPlayer = controller.isGrounded;
-        groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        if(groundCheck <=0) groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        else
+        {
+            groundedPlayer = false;
+            groundCheck-= Time.deltaTime;
+        }
         input.Set(Input.GetAxisRaw("Horizontal"),0,0);
         
         //Verifica se o player está tocando no chão
@@ -214,6 +219,7 @@ public class Player : MonoBehaviour
         {
             //playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);
             //anim.SetTrigger("jump");
+            groundCheck = 1.03f;
             ChangePlayerState(3);
 
             // BERNARDOOOOO FAZ UM COOLDOWN PRO IS GROUND FICAR FALSOOO
@@ -234,7 +240,7 @@ public class Player : MonoBehaviour
     
     public int maxHP = 200, hitPoints = 200;
 
-    public float bulletBar = 0, bulletMax = 120;
+    public float bulletBar = 0, bulletMax = 0;
 
 
     public void TakeDamage(int damage)
@@ -257,6 +263,10 @@ public class Player : MonoBehaviour
     {
         bulletBar = Mathf.Clamp(bulletBar+=val, 0, bulletMax);
         Controller.instance.UpdateBulletBar(bulletBar);
+    }
+    public void SetMaxMeter(int value)
+    {
+        bulletMax = (value+1)*20;
     }
 
     public void CheckDeath()
@@ -295,40 +305,43 @@ public class Player : MonoBehaviour
         #region Attacks
         public void CallAttack() // Pega um input e ativa o golpe relacionado a esse input.
         {
-            bool buttonPress = false;
-            for(int i = 0; i<moveList._attack.Length; i++)
+            if(groundedPlayer)
             {
-                moveList._attack[i].hit = false;
-            }
-
-            if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]))
-            {
-                comboSequence += "L";
-                buttonPress = true;
-                ChangePlayerState(4);
-            } 
-            
-            
-            if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))
-            {
-                comboSequence += "H";
-                buttonPress = true;
-            } 
-
-            if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
-            {
-                int bullet = Mathf.FloorToInt(bulletBar/(bulletMax/6));
-                if(bullet > 0)
+                bool buttonPress = false;
+                for(int i = 0; i<moveList._attack.Length; i++)
                 {
-                    SuperCollission(bullet-1);
-                    Debug.Log("Super de " + bullet + "balas");
+                    moveList._attack[i].hit = false;
                 }
-            } 
 
-            if(buttonPress)
-            {
-                CheckAttackCollision(comboSequence);
-                buttonPress = false;
+                if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]))
+                {
+                    comboSequence += "L";
+                    buttonPress = true;
+                    ChangePlayerState(4);
+                } 
+                
+                
+                if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))
+                {
+                    comboSequence += "H";
+                    buttonPress = true;
+                } 
+
+                if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
+                {
+                    int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
+                    if(bullet > 0)
+                    {
+                        SuperCollission(bullet-1);
+                        Debug.Log("Super de " + bullet + "balas");
+                    }
+                } 
+
+                if(buttonPress)
+                {
+                    CheckAttackCollision(comboSequence);
+                    buttonPress = false;
+                }
             }
         }
 
@@ -541,13 +554,43 @@ public class Player : MonoBehaviour
 
         #region Cheats 
 
-        void UnlockAllMoves()
+        void Cheats()
         {
-            for(int i = 0; i< moveList.attackUnlocked.Length; i++)
+            //if(canCheat)
+            //{
+                if(Input.GetKeyDown(KeyCode.F1)) GainLifeCheat();
+                if(Input.GetKeyDown(KeyCode.F2)) GainMoneyCheat();
+                if(Input.GetKeyDown(KeyCode.F3)) GainEXPCheat();
+                if(Input.GetKeyDown(KeyCode.F9)) MaximizeSkillTree();
+            //}
+        }
+        void MaximizeSkillTree()
+        {
+            for(int i = 0; i< SkillController.instance.skills.Length; i++)
             {
-                moveList.attackUnlocked[i] = true;
+                SkillController.instance.UnlockSKill(i);
+            }
+            for(int i = 0; i< SkillController.instance.superSkills.Length; i++)
+            {
+                SkillController.instance.UnlockSuper(i);
             }
             Debug.Log("<color=green>Unlocked all moves.</color>");
+        }
+
+        void GainLifeCheat()
+        {
+            hitPoints+= 50;
+            hitPoints = Mathf.Clamp(hitPoints, 0, maxHP);
+            Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
+        }
+        
+        void GainMoneyCheat()
+        {
+            Controller.instance.money += 20;
+        }
+        void GainEXPCheat()
+        {
+            exp += 15;
         }
         #endregion
 

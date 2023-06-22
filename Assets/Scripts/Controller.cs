@@ -38,8 +38,8 @@ public class Controller : MonoBehaviour
     public GameObject nextLevel;
     [Header("Telas")]
     public GameObject inGameScreen;
-    public GameObject pauseScreen, gameOverScreen, shop;
-    public TextMeshProUGUI comboCounter, comboComment;
+    public GameObject pauseScreen, gameOverScreen, shop, dialoguePanel;
+    public TextMeshProUGUI comboCounter, comboComment, dialogueText;
     public CommentSO comments;
     
     // Usado em botões para trocar telas, como menu, opções, etc
@@ -60,6 +60,50 @@ public class Controller : MonoBehaviour
     void ScrollingIntro()
     {
         introImg.material.mainTextureOffset += Vector2.right * (Time.deltaTime) * 0.03f;
+    }
+
+
+    void WriteText()
+    {
+        if(quoteToWrite.Length == currentLetter)
+        {
+            isWriting = false;
+            Invoke("StopWrite", 3f);
+        }
+        else if (lettersCD<=0)
+        {
+            dialogueText.text+= quoteToWrite[currentLetter];
+            if(quoteToWrite[currentLetter] == ' ') lettersCD = 0f;
+            else lettersCD = 0.01f;
+            currentLetter++;
+        }
+        else lettersCD-=Time.deltaTime;
+    }
+
+    bool isWriting;
+    string quoteToWrite;
+    int currentLetter;
+    float lettersCD;
+    public void StartWriting(string sentence)
+    {
+        TogglePanel(dialoguePanel);
+        dialogueText.text = "";
+        quoteToWrite = sentence;
+        currentLetter = 0;
+        Invoke("BeginWrite", 1);
+    }
+
+    void BeginWrite()
+    {
+        isWriting = true;
+        inputPause = true;
+    }
+
+    void StopWrite()
+    {
+        isWriting = false;
+        inputPause = false;
+        TogglePanel(dialoguePanel);
     }
 
     void Start()
@@ -312,11 +356,8 @@ public class Controller : MonoBehaviour
             }
         }
         ChangeLevel();
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            LoadNextScene();
-        }
         ScrollingIntro();
+        if(isWriting) WriteText();
     }
 
     
@@ -398,9 +439,9 @@ public class Controller : MonoBehaviour
     #endregion
 
     public void PauseFullGame(){
-        Time.timeScale=0;
+        inputPause = true;
     }
     public void UnPauseFullGame(){
-        Time.timeScale=1;
+        inputPause = false;
     }
 }
