@@ -66,13 +66,13 @@ public class Player : MonoBehaviour
     {
         
         AttSpawnPosition();
-        KnockBack();
         if(!Controller.instance.inputPause)
         {
             if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) PlayerPause(); // Pause funciona apenas no teclado por enquanto
             
             if(!Controller.instance.playerPause)
             {
+                KnockBack();
                 Cheats();
                 MovementPlayer();
                 if(attack != null) Timeout();

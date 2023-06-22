@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Npc : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class Npc : MonoBehaviour
     public int npcType; // 0 para vendedor (abre uma loja), 1 para texto
 
     [TextArea(2,4)]
-    public string quote;
+    public string[] quotes;
+
+    public UnityEvent[] endEvent;
     
     // Start is called before the first frame update
     void Start()
@@ -40,7 +43,7 @@ public class Npc : MonoBehaviour
                 }
                 if(npcType == 1)
                 {
-                    Controller.instance.StartWriting(quote);
+                    Controller.instance.StartWriting(quotes, endEvent);
                 }
             }
         }

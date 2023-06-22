@@ -14,5 +14,11 @@ public class SceneSetup : MonoBehaviour
     {
         if(main.questClear) main.LoadNextScene();
     }
+
+    public void EndGame()
+    {
+        Controller.instance.ChangeScreen(Controller.instance.endGameScreen);
+        Controller.instance.PauseFullGame();
+    }
     
 }

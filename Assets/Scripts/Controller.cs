@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Events;
 
 
 public class Controller : MonoBehaviour
@@ -38,7 +39,7 @@ public class Controller : MonoBehaviour
     public GameObject nextLevel;
     [Header("Telas")]
     public GameObject inGameScreen;
-    public GameObject pauseScreen, gameOverScreen, shop, dialoguePanel;
+    public GameObject pauseScreen, gameOverScreen, shop, dialoguePanel, endGameScreen;
     public TextMeshProUGUI comboCounter, comboComment, dialogueText;
     public CommentSO comments;
     
@@ -67,8 +68,28 @@ public class Controller : MonoBehaviour
     {
         if(quoteToWrite.Length == currentLetter)
         {
-            isWriting = false;
-            Invoke("StopWrite", 3f);
+            if(currentSentence == allQuotes.Length-1)
+            {
+                isWriting = false;
+                Invoke("StopWrite", 3f);
+            }
+            else
+            {
+                if(nextQuoteCD<=0)
+                {
+                    endQuoteEvent.Invoke();
+                    currentSentence++;
+                    currentEvent++;
+                    currentLetter = 0;
+                    dialogueText.text = "";
+                    nextQuoteCD = 3;
+                    endQuoteEvent = allQuoteEvents[currentEvent];
+                }
+                else
+                {
+                    nextQuoteCD-=Time.deltaTime;
+                }
+            }
         }
         else if (lettersCD<=0)
         {
@@ -82,14 +103,22 @@ public class Controller : MonoBehaviour
 
     bool isWriting;
     string quoteToWrite;
-    int currentLetter;
-    float lettersCD;
-    public void StartWriting(string sentence)
+    string[] allQuotes;
+    int currentLetter, currentSentence, currentEvent;
+    float lettersCD, nextQuoteCD;
+
+    UnityEvent endQuoteEvent;
+    UnityEvent[] allQuoteEvents;
+    public void StartWriting(string[] sentences, UnityEvent[] endEvent)
     {
         TogglePanel(dialoguePanel);
         dialogueText.text = "";
-        quoteToWrite = sentence;
+        currentSentence = 0;
+        quoteToWrite = sentences[currentSentence];
         currentLetter = 0;
+        nextQuoteCD = 3;
+        allQuoteEvents = endEvent;
+        endQuoteEvent = allQuoteEvents[currentEvent];
         Invoke("BeginWrite", 1);
     }
 
@@ -110,6 +139,8 @@ public class Controller : MonoBehaviour
     {
         introImg.material.mainTextureOffset = Vector2.zero;
         introImg.material = new Material(introImg.material);
+        playerBasePos = Player.instance.transform.position;
+        playerBaseRot = Player.instance.transform.rotation;
     }
     #endregion
 
@@ -152,16 +183,27 @@ public class Controller : MonoBehaviour
         ChangeGameStates(0);
         LoadScene(0);
         currentScene = 0;
+        ResetPlayerPosition();
         WriteCurrentSceneText();
         inputPause = true;
     }
     // Carrega a proxima cena da lista ja seedada
     public void LoadNextScene()
     {
-        LoadScene(sceneList[currentScene]);
-        enemiesInScene = 0;
-        currentScene++;
-        WriteCurrentSceneText();
+        if(currentScene != playableScenes)
+        {
+            LoadScene(sceneList[currentScene]);
+            enemiesInScene = 0;
+            currentScene++;
+            WriteCurrentSceneText();
+        }
+        else
+        {
+            LoadScene(2);
+            enemiesInScene = 0;
+            currentScene++;
+            WriteCurrentSceneText();
+        }
     }
 
     public void StartGame(GameObject screen)
@@ -179,6 +221,16 @@ public class Controller : MonoBehaviour
         Player.instance.bulletBar = 0;
         UpdateLifeBar(1);
         UpdateBulletBar(0);
+    }
+
+    private Vector3 playerBasePos;
+    private Quaternion playerBaseRot;
+    void ResetPlayerPosition()
+    {
+        Player.instance.controller.enabled = false;
+        Player.instance.transform.position = playerBasePos;
+        Player.instance.transform.rotation = playerBaseRot;
+        Player.instance.controller.enabled = true;
     }
 
         #region Coisas de Seed 
@@ -334,7 +386,7 @@ public class Controller : MonoBehaviour
         inputPause = true;
         playerPause = false;
         comboCounter.text = "Combo: " + Convert.ToString(0);
-        playableScenes = SceneManager.sceneCountInBuildSettings - 1; // Alterar o valor baseado em quantas cenas não jogáveis existem
+        playableScenes = SceneManager.sceneCountInBuildSettings - 3; // Alterar o valor baseado em quantas cenas não jogáveis existem
         currentScene = 0;
         seed = null;
         currentScreen = GameObject.Find("Intro");
@@ -440,8 +492,10 @@ public class Controller : MonoBehaviour
 
     public void PauseFullGame(){
         inputPause = true;
+        states = States.UI;
     }
     public void UnPauseFullGame(){
         inputPause = false;
+        states = States.Game;
     }
 }

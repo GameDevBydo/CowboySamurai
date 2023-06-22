@@ -159,6 +159,9 @@ MonoBehaviour:
   distance: 3
   npcType: 0
   quotes: []
+  endEvent:
+  - m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &6750092
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -713,12 +716,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: db8720c4d79a7a646ab32fcbfcdc99fa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.49
+      value: 16.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: db8720c4d79a7a646ab32fcbfcdc99fa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: db8720c4d79a7a646ab32fcbfcdc99fa,
         type: 3}
@@ -829,8 +832,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 856762268}
   distance: 3
-  npcType: 0
-  quotes: []
+  npcType: 1
+  quotes:
+  - "Voc\xEA andou todo esse caminho... Tudo isso... E eu nem te contei que voc\xEA
+    estava no trem errado. Boa sorte para pegar  o trem correto na PR\xD3XIMA PARADA."
+  endEvent:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114083852}
+        m_TargetAssemblyTypeName: SceneSetup, Assembly-CSharp
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &547909756
 Animator:
   serializedVersion: 5
@@ -2449,7 +2469,7 @@ PrefabInstance:
     - target: {fileID: 8244456139831837689, guid: c5bfcc5f3e0556543af5df22ef0c8d21,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.39
+      value: 3.330804
       objectReference: {fileID: 0}
     - target: {fileID: 8244456139831837689, guid: c5bfcc5f3e0556543af5df22ef0c8d21,
         type: 3}
@@ -2474,12 +2494,12 @@ PrefabInstance:
     - target: {fileID: 8244456139831837689, guid: c5bfcc5f3e0556543af5df22ef0c8d21,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.79
+      value: 0.45685768
       objectReference: {fileID: 0}
     - target: {fileID: 8244456139831837689, guid: c5bfcc5f3e0556543af5df22ef0c8d21,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.9
+      value: 1.375904
       objectReference: {fileID: 0}
     - target: {fileID: 8244456139831837689, guid: c5bfcc5f3e0556543af5df22ef0c8d21,
         type: 3}
