@@ -71,7 +71,11 @@ public class Player : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
                 PlayerPause(); // Pause funciona apenas no teclado por enquanto
             } 
-            
+
+            if(Input.GetKeyDown(KeyCode.Joystick1Button6) || Input.GetKeyDown(KeyCode.Z)){
+                Controller.instance.ToggleShop();
+            }
+                        
             
             if(!Controller.instance.playerPause)
             {

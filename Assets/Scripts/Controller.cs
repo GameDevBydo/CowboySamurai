@@ -40,7 +40,7 @@ public class Controller : MonoBehaviour
     public GameObject nextLevel;
     [Header("Telas")]
     public GameObject inGameScreen;
-    public GameObject pauseScreen, gameOverScreen, shop, dialoguePanel, endGameScreen;
+    public GameObject pauseScreen, gameOverScreen, shop, dialoguePanel, endGameScreen, skillTreePanel;
     public TextMeshProUGUI comboCounter, comboComment, dialogueText;
     public CommentSO comments;
 
@@ -60,7 +60,13 @@ public class Controller : MonoBehaviour
     // Usado em botões para abrir e fechar subjanelas
     public void TogglePanel(GameObject panel)
     {
+        auxScreen = EventSystem.current.firstSelectedGameObject;
+        Debug.Log(auxScreen);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(panel.transform.GetChild(1).gameObject);
         panel.SetActive(!panel.activeSelf);
+        if(panel.activeSelf == false)
+            EventSystem.current.SetSelectedGameObject(auxScreen);        
     }
 
     public Image introImg;
@@ -349,7 +355,7 @@ public class Controller : MonoBehaviour
         }
     }
     public bool inputPause, playerPause;
-    public GameObject FirstButtonPause;
+    public GameObject FirstButtonPause, FirstButtonSkill;
 
     public void TogglePlayerPause()
     {
@@ -361,6 +367,15 @@ public class Controller : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(FirstButtonPause);
     }
     #endregion
+
+    public void ToggleShop(){
+        playerPause = !playerPause;
+        ChangeGameStates(playerPause?0:1);
+        if(playerPause) ChangeScreen(skillTreePanel);
+        else ChangeScreen(inGameScreen);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(FirstButtonSkill);
+    }
 
     #region Spawn Controller
     public Spawn[] spawns;

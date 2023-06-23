@@ -6,13 +6,9 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     public int lifeRegenAmount = 30;
+    public int gainXP = 30;
     public Button[] itens;
     public int[] valueItens;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -38,7 +34,8 @@ public class Shop : MonoBehaviour
         Controller.instance.money -= valueItens[index];
     }
     public void BuyXP(int index){
-        
+        Player.instance.exp += gainXP;
+        Controller.instance.money -= valueItens[index];
     }
 
 }

@@ -48,6 +48,7 @@ public class SkillController : MonoBehaviour
         {
             skills[id].nextSkills[i].GetComponent<Button>().interactable = true;
             skills[id].nextSkills[i].GetComponent<Image>().sprite = selectable;
+            
         }
     }
     public void EnableNextSuper(int id)

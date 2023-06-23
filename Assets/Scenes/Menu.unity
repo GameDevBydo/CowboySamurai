@@ -753,9 +753,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeRegenAmount: 50
+  gainXP: 30
   itens:
   - {fileID: 1686670954}
-  valueItens: 0f000000
+  - {fileID: 703721706}
+  valueItens: 0f0000000f000000
 --- !u!1 &64704281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,7 +1839,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -277, y: -177}
-  m_SizeDelta: {x: 367, y: 465}
+  m_SizeDelta: {x: 375, y: 463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138002906
 MonoBehaviour:
@@ -1859,7 +1861,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cdb965a77776166408d0a9850cb5ef7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a8a96b88e218c5d4694c1c5da243b3a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2578,7 +2580,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: ChangeScreen
+        m_MethodName: TogglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1371247040}
@@ -3374,7 +3376,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 760239706}
+    m_SelectOnUp: {fileID: 1764461947}
     m_SelectOnDown: {fileID: 1134452281}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -3598,7 +3600,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 285, y: -176}
-  m_SizeDelta: {x: 540, y: 363}
+  m_SizeDelta: {x: 540, y: 396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &238815498
 MonoBehaviour:
@@ -3620,7 +3622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 33865af1069150849aa27ac8e99ec24c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31052d398d154d844a6b0d75caa2db1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4798,7 +4800,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -277, y: -177}
-  m_SizeDelta: {x: 367, y: 465}
+  m_SizeDelta: {x: 375, y: 463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345548607
 MonoBehaviour:
@@ -4820,7 +4822,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cdb965a77776166408d0a9850cb5ef7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a8a96b88e218c5d4694c1c5da243b3a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8795,7 +8797,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 285, y: -176}
-  m_SizeDelta: {x: 540, y: 363}
+  m_SizeDelta: {x: 540, y: 396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &621955813
 MonoBehaviour:
@@ -8817,7 +8819,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 33865af1069150849aa27ac8e99ec24c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31052d398d154d844a6b0d75caa2db1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10532,6 +10534,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 27733948}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyXP
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &703721707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11859,7 +11873,7 @@ MonoBehaviour:
   m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.01
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -12100,7 +12114,7 @@ MonoBehaviour:
   m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.01
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -12300,7 +12314,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: ChangeScreen
+        m_MethodName: TogglePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 64704281}
@@ -13598,10 +13612,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: ChangeScreen
+        m_MethodName: TogglePanel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 449461450}
+          m_ObjectArgument: {fileID: 64704281}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -16896,7 +16910,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 760239706}
+    m_SelectOnDown: {fileID: 1764461947}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -20178,10 +20192,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: ChangeScreen
+        m_MethodName: TogglePanel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 449461450}
+          m_ObjectArgument: {fileID: 1371247040}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -23522,6 +23536,7 @@ MonoBehaviour:
   shop: {fileID: 27733946}
   dialoguePanel: {fileID: 2043859856}
   endGameScreen: {fileID: 291323197}
+  skillTreePanel: {fileID: 1066996725}
   comboCounter: {fileID: 428231858}
   comboComment: {fileID: 562089114}
   dialogueText: {fileID: 1219989016}
@@ -23538,6 +23553,7 @@ MonoBehaviour:
   inputPause: 0
   playerPause: 0
   FirstButtonPause: {fileID: 888430078}
+  FirstButtonSkill: {fileID: 1163934172}
   spawns: []
   entities:
   - {fileID: 1055206369884760288, guid: 267890760b9ba02429c20f5c7b0bd640, type: 3}
@@ -24020,7 +24036,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 1134452281}
     m_SelectOnDown: {fileID: 206194708}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 760239706}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -26848,6 +26864,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
+      propertyPath: exp
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
         type: 3}
       propertyPath: m_Name
@@ -27668,7 +27688,7 @@ MonoBehaviour:
   m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.01
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
