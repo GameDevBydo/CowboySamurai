@@ -49,6 +49,7 @@ public class Controller : MonoBehaviour
         if(currentScreen!= null) currentScreen.SetActive(false);
         currentScreen = screen;
         currentScreen.SetActive(true);
+        
     }
 
     // Usado em botões para abrir e fechar subjanelas
