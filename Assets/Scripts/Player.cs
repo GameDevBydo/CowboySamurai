@@ -274,6 +274,7 @@ public class Player : MonoBehaviour
         if(hitPoints<=0)
         {
             Controller.instance.GameOver();
+            ChangePlayerState(0);
         }
     }
     #endregion
