@@ -19,7 +19,7 @@ MonoBehaviour:
   hit: 0
   startUp: 99
   recovery: 1.1
-  stun: 1.2
+  stun: 2
   knockbackRatio: 99
   knockupRatio: 99
   meterGen: 2

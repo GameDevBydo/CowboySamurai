@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
         AIRBORNE,
         ATTACKING,
         HITSTUN,
+        SUPER,
         DASHING
     }
 
@@ -116,7 +117,10 @@ public class Player : MonoBehaviour
     public void ChangePlayerState(int id)
     {
         pastState = currentState;
-        if(currentState != pastState) return;
+        //if(id != 4)
+        //{
+            if(currentState != pastState) return;
+        //}
         switch(id)
         {
             case 0:
@@ -147,12 +151,15 @@ public class Player : MonoBehaviour
                 currentState = PlayerState.DASHING;
                 animationName = "Idle";
             break;
+            case 7:
+                currentState = PlayerState.SUPER;
+                animationName = "S";
+            break;
             default:
                 Debug.Log("Change to state 1");
                 currentState = PlayerState.STANDING;
             break;
         }
-        
         anim.Play(animationName);
         
     }
@@ -208,12 +215,12 @@ public class Player : MonoBehaviour
         if(input != Vector3.zero)
         {
             transform.forward = input;
-            if(currentState != PlayerState.ATTACKING && groundedPlayer) ChangePlayerState(2);
+            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER)  && groundedPlayer) ChangePlayerState(2);
             //anim.SetBool("walking",true);
         }
         else
         {
-            if(currentState != PlayerState.ATTACKING && groundedPlayer) ChangePlayerState(1);
+            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER) && groundedPlayer) ChangePlayerState(1);
             //anim.SetBool("walking",false);
         }
         
@@ -230,8 +237,8 @@ public class Player : MonoBehaviour
 
         //Aplicação da gravidade e da movimentação 
         playerVelocity.y += gravity * Time.deltaTime;
-        controller.Move( input* Time.deltaTime * speed);
-        controller.Move(playerVelocity * Time.deltaTime);
+        if(currentState != PlayerState.SUPER) controller.Move( input* Time.deltaTime * speed);
+        if(currentState != PlayerState.SUPER) controller.Move(playerVelocity * Time.deltaTime);
 
         //if(!groundedPlayer) ChangePlayerState(3);
         //if(input !=Vector3.zero) ChangePlayerState(2);
@@ -277,7 +284,7 @@ public class Player : MonoBehaviour
         if(hitPoints<=0)
         {
             Controller.instance.GameOver();
-            ChangePlayerState(0);
+            //ChangePlayerState(0);
         }
     }
     #endregion
@@ -304,6 +311,7 @@ public class Player : MonoBehaviour
 
         Attack attack = null;
         bool previousAttackHit = false;
+        string previousAttack = null;
 
 
         #region Attacks
@@ -321,7 +329,6 @@ public class Player : MonoBehaviour
                 {
                     comboSequence += "L";
                     buttonPress = true;
-                    ChangePlayerState(4);
                 } 
                 
                 
@@ -464,13 +471,15 @@ public class Player : MonoBehaviour
             {
                 if(moveList._attack[i].attackName == name && moveList.attackUnlocked[i])
                 {
-                    if(previousAttackHit) canAttack = true;
+                    if(previousAttackHit && previousAttack != name) canAttack = true;
                     attack = moveList._attack[i];
                 }
             }
 
             if(attack != null && canAttack)
             {
+                anim.Play("ResetAttack");
+                ChangePlayerState(4);
                 //Debug.Log("Golpe atual: "+ name);
 
                 // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
@@ -503,6 +512,7 @@ public class Player : MonoBehaviour
                     PlayHitSound();
                 }
                 previousAttackHit = attack.hit;
+                previousAttack = name;
             }
             else
             {
@@ -512,10 +522,13 @@ public class Player : MonoBehaviour
 
         void SuperCollission(int meter)
         {
+            
             attack = superList._attack[meter];
 
-            if(attack != null && canAttack)
+            if(attack != null)
             {
+                anim.Play("ResetAttack");
+                ChangePlayerState(7);
                 // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
                 // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
 

@@ -320,7 +320,7 @@ MonoBehaviour:
   npcType: 0
   quotes: []
   endEvent:
-    m_PersistentCalls:
+  - m_PersistentCalls:
       m_Calls: []
 --- !u!136 &6750092
 CapsuleCollider:
@@ -1115,7 +1115,11 @@ MonoBehaviour:
     as teclas A e D para ir para esquerda e direita. "
   - "E se voc\xEA encontrar com eles, use a tecla I para usar se Ataque Leve neles."
   endEvent:
-    m_PersistentCalls:
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls: []
+  - m_PersistentCalls:
       m_Calls: []
 --- !u!95 &547909756
 Animator:
@@ -2076,11 +2080,21 @@ MonoBehaviour:
   npcType: 1
   quotes:
   - "H\xE3? Voc\xEA n\xE3o sabe o que s\xE3o essas coisas na sua tela?"
-  - 
-  - 
   endEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!95 &1266724398
 Animator:
   serializedVersion: 5

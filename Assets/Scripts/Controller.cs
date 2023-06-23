@@ -52,7 +52,7 @@ public class Controller : MonoBehaviour
         currentScreen = screen;
         currentScreen.SetActive(true);
         if(screen.name != "InGame"){
-            EventSystem.current.SetSelectedGameObject(null);
+            //EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(screen.transform.GetChild(1).gameObject);
         }
     }
@@ -72,6 +72,8 @@ public class Controller : MonoBehaviour
 
     void WriteText()
     {
+        Debug.Log(currentSentence);
+        Debug.Log(allQuotes.Length-1);
         if(quoteToWrite.Length == currentLetter)
         {
             if(currentSentence == allQuotes.Length-1)
@@ -120,7 +122,8 @@ public class Controller : MonoBehaviour
         TogglePanel(dialoguePanel);
         dialogueText.text = "";
         currentSentence = 0;
-        quoteToWrite = sentences[currentSentence];
+        allQuotes = sentences;
+        quoteToWrite = allQuotes[currentSentence];
         currentLetter = 0;
         nextQuoteCD = 3;
         allQuoteEvents = endEvent;
@@ -139,6 +142,7 @@ public class Controller : MonoBehaviour
         isWriting = false;
         inputPause = false;
         TogglePanel(dialoguePanel);
+        endQuoteEvent.Invoke();
     }
 
     void Start()
@@ -196,6 +200,9 @@ public class Controller : MonoBehaviour
     // Carrega a proxima cena da lista ja seedada
     public void LoadNextScene()
     {
+        Debug.Log(currentScene);
+        Debug.Log(playableScenes);
+        Debug.Log(SceneManager.sceneCountInBuildSettings-1);
         if(currentScene != playableScenes)
         {
             LoadScene(sceneList[currentScene]);
@@ -205,7 +212,9 @@ public class Controller : MonoBehaviour
         }
         else
         {
-            LoadScene(2);
+            LoadScene(7); // Lembrar de mudar para ser = a ultima cena que tem no projeto
+            spawns[0].allowSpawn = false;
+            spawns[1].allowSpawn = false;
             enemiesInScene = 0;
             currentScene++;
             WriteCurrentSceneText();
@@ -419,6 +428,7 @@ public class Controller : MonoBehaviour
         ChangeLevel();
         ScrollingIntro();
         if(isWriting) WriteText();
+        if(Input.GetKeyDown(KeyCode.N)) LoadNextScene();
     }
 
     

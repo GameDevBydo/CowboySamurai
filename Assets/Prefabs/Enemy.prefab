@@ -148,7 +148,6 @@ MonoBehaviour:
   attackEnemy:
   - {fileID: 11400000, guid: a2c14b87e7a2d4f758f377073b7388e9, type: 2}
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
-  - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
   recoveryTimer: 1
   canAttack: 0
 --- !u!82 &4316789935786862231

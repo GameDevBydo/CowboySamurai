@@ -279,7 +279,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   prefabCoin: {fileID: 3587314294987872190, guid: c4ba1d7f62e8832489d85f662692e862,
     type: 3}
   groundedPlayer: 0
-  speed: 3.5
+  speed: 2.5
   jump: 2
   baseMat: {fileID: 2100000, guid: eac40cb2bb3ff354d8b754898cc76256, type: 2}
   hitMat: {fileID: 2100000, guid: d1a9cbd025907ae40895b1d89c3e27ee, type: 2}
@@ -1113,9 +1113,9 @@ MonoBehaviour:
   moveList: {fileID: 11400000, guid: eaa46e15ebb1693458483b87b3b9e82c, type: 2}
   superList: {fileID: 11400000, guid: c10bd7e73c661684eafb155a3b77332a, type: 2}
   canAttack: 1
-  lightAtk: 690000004a010000
-  heavyAtk: 6f0000004b010000
-  specialAtk: 750000004f010000
+  lightAtk: 750000004a010000
+  heavyAtk: 690000004b010000
+  specialAtk: 6f0000004f010000
   interactKey: 650000004c010000
   comboCounter: 0
   comboSequence: 

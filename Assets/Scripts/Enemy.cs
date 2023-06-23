@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
     void AttackPlayer(){
         currentAttack = Random.Range(1,100);
         
-        if(0 < currentAttack && currentAttack < 33){
+        if(0 < currentAttack && currentAttack < 50){
             //anim.SetBool("Punch", true);
             //anim.SetBool("Kick", false);
             //anim.SetBool("JumpKick", false);
@@ -74,23 +74,12 @@ public class Enemy : MonoBehaviour
 
             
         }
-        if(33 <= currentAttack && currentAttack <= 66){
+        if(33 <= currentAttack && currentAttack <= 50){
             //anim.SetBool("Punch", false);
             //anim.SetBool("Kick", true);
             //anim.SetBool("JumpKick", false);
             anim.SetTrigger("Kick");
             Golpe(attackEnemy[1]);
-            
-
-            
-        }
-        if(currentAttack > 66){
-            //anim.SetBool("Punch", false);
-            //anim.SetBool("Kick", false);
-            //anim.SetBool("JumpKick", true);
-            anim.SetTrigger("Jumpkick");
-            Golpe(attackEnemy[2]);
-            
             
         }
     }
@@ -152,7 +141,7 @@ public class Enemy : MonoBehaviour
         GetComponent<AudioSource>().Play();
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
-        recoveryTimer = stun;
+        recoveryTimer = Mathf.Max(stun, recoveryTimer);
         anim.SetTrigger("Stunned");
     }
 
@@ -187,7 +176,6 @@ public class Enemy : MonoBehaviour
 
         //Use the OverlapBox to detect if there are any other colliders within this box area.
         //Use the GameObject's centre, half the size (as a radius) and rotation. This creates an invisible box around your GameObject.
-        Debug.Log(-Mathf.Sign(this.transform.rotation.eulerAngles.y-180));
         Collider[] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, playerMask);
         //Check when there is a new collider coming into contact with the box
         foreach(Collider col in hitColliders)
@@ -200,33 +188,25 @@ public class Enemy : MonoBehaviour
         }
         
         canAttack = false;
-        recoveryTimer = attack.recovery;
+        recoveryTimer = Mathf.Max(recoveryTimer,attack.recovery);
 
     }
 
     void OnDrawGizmos()
     {
-        if(0 < currentAttack && currentAttack < 33){
+        if(0 < currentAttack && currentAttack < 50){
             Gizmos.color = Color.red;
             //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
             if (m_Started)
                 //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
                 Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[0].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[0].hitboxes[0].startingPointEnemy.y, ((attackEnemy[0].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[0].hitboxes[0].startingPointEnemy.z), attackEnemy[0].hitboxes[0].extension);
         }
-        if(33 <= currentAttack && currentAttack <= 66){
+        if(33 <= currentAttack && currentAttack <= 50){
             Gizmos.color = Color.blue;
             //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
             if (m_Started)
                 //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
                 Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[1].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[1].hitboxes[0].startingPointEnemy.y, ((attackEnemy[1].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[1].hitboxes[0].startingPointEnemy.z), attackEnemy[1].hitboxes[0].extension);
-        }
-        if(currentAttack > 66){
-            
-            Gizmos.color = Color.green;
-            //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
-            if (m_Started)
-                //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[2].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[2].hitboxes[0].startingPointEnemy.y, ((attackEnemy[2].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[2].hitboxes[0].startingPointEnemy.z), attackEnemy[2].hitboxes[0].extension);
         }
     }
 

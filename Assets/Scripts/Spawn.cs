@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    
+    public bool allowSpawn;
     bool canSpawn;
     float timer = 1.0f;
     void Update()
@@ -14,8 +14,10 @@ public class Spawn : MonoBehaviour
     }
     public void SpawnEntity(GameObject obj)
     {
-        if(canSpawn)
-            Instantiate(obj, new Vector3(transform.position.x, 0.0f, transform.position.z), Quaternion.identity);
+        if(allowSpawn)
+        {
+            if(canSpawn) Instantiate(obj, new Vector3(transform.position.x, 0.0f, transform.position.z), Quaternion.identity);
+        }
     }
 
     public void Deadzone(){
