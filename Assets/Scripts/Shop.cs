@@ -37,5 +37,8 @@ public class Shop : MonoBehaviour
         Controller.instance.UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
         Controller.instance.money -= valueItens[index];
     }
+    public void BuyXP(int index){
+        
+    }
 
 }
