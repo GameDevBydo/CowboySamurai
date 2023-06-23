@@ -51,8 +51,10 @@ public class Controller : MonoBehaviour
         if(currentScreen!= null) currentScreen.SetActive(false);
         currentScreen = screen;
         currentScreen.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(screen.transform.GetChild(1).gameObject);
+        if(screen.name != "InGame"){
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(screen.transform.GetChild(1).gameObject);
+        }
     }
     GameObject auxScreen;
     // Usado em botões para abrir e fechar subjanelas
