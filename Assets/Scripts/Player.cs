@@ -68,7 +68,10 @@ public class Player : MonoBehaviour
         AttSpawnPosition();
         if(!Controller.instance.inputPause)
         {
-            if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) PlayerPause(); // Pause funciona apenas no teclado por enquanto
+            if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
+                PlayerPause(); // Pause funciona apenas no teclado por enquanto
+            } 
+            
             
             if(!Controller.instance.playerPause)
             {

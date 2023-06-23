@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 
 public class Controller : MonoBehaviour
@@ -42,6 +43,7 @@ public class Controller : MonoBehaviour
     public GameObject pauseScreen, gameOverScreen, shop, dialoguePanel, endGameScreen;
     public TextMeshProUGUI comboCounter, comboComment, dialogueText;
     public CommentSO comments;
+
     
     // Usado em botões para trocar telas, como menu, opções, etc
     public void ChangeScreen(GameObject screen)
@@ -49,9 +51,10 @@ public class Controller : MonoBehaviour
         if(currentScreen!= null) currentScreen.SetActive(false);
         currentScreen = screen;
         currentScreen.SetActive(true);
-        
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(screen.transform.GetChild(1).gameObject);
     }
-
+    GameObject auxScreen;
     // Usado em botões para abrir e fechar subjanelas
     public void TogglePanel(GameObject panel)
     {
@@ -335,6 +338,7 @@ public class Controller : MonoBehaviour
         }
     }
     public bool inputPause, playerPause;
+    public GameObject FirstButtonPause;
 
     public void TogglePlayerPause()
     {
@@ -342,6 +346,8 @@ public class Controller : MonoBehaviour
         ChangeGameStates(playerPause?0:1);
         if(playerPause) ChangeScreen(pauseScreen);
         else ChangeScreen(inGameScreen);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(FirstButtonPause);
     }
     #endregion
 
