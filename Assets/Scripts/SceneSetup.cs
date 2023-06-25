@@ -12,7 +12,7 @@ public class SceneSetup : MonoBehaviour
 
     public void NextScene()
     {
-        if(main.questClear) main.LoadNextScene();
+        if(main.questClear || main.currentScene == 0) main.LoadNextScene();
     }
 
     public void EndGame()

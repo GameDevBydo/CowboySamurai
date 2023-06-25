@@ -183,6 +183,11 @@ public class Controller : MonoBehaviour
         Debug.Log("<color=red>Fechou o jogo.</color>");
         Application.Quit();
     }
+    public bool playTutorial = true;
+    public void ToggleTutorial(bool value)
+    {
+        playTutorial = value;
+    }
     // Carrega uma cena com id especificado.
     public void LoadScene(int sceneId)
     {
@@ -209,16 +214,26 @@ public class Controller : MonoBehaviour
         Debug.Log(currentScene);
         Debug.Log(playableScenes);
         Debug.Log(SceneManager.sceneCountInBuildSettings-1);
-        if(currentScene != playableScenes)
+        if(playTutorial && currentScene == 0)
+        {
+            LoadScene(SceneManager.sceneCountInBuildSettings-2); // Lembrar de mudar para ser = a ultima cena que tem no projeto - 1
+            spawns[0].allowSpawn = false;
+            spawns[1].allowSpawn = false;
+            enemiesInScene = 0;
+            WriteCurrentSceneText();
+        }
+        else if(currentScene != playableScenes)
         {
             LoadScene(sceneList[currentScene]);
+            spawns[0].allowSpawn = true;
+            spawns[1].allowSpawn = true;
             enemiesInScene = 0;
             currentScene++;
             WriteCurrentSceneText();
         }
         else
         {
-            LoadScene(7); // Lembrar de mudar para ser = a ultima cena que tem no projeto
+            LoadScene(SceneManager.sceneCountInBuildSettings-1); // Lembrar de mudar para ser = a ultima cena que tem no projeto
             spawns[0].allowSpawn = false;
             spawns[1].allowSpawn = false;
             enemiesInScene = 0;
@@ -516,7 +531,7 @@ public class Controller : MonoBehaviour
                 ChangeScene = 3;
                 break;
         }
-        if(enemiesDefeated>ChangeScene){
+        if(enemiesDefeated>ChangeScene && currentScene!= 0){
             questClear = true;
             nextLevel.SetActive(true);
             enemiesDefeated = 0;
