@@ -78,8 +78,6 @@ public class Controller : MonoBehaviour
 
     void WriteText()
     {
-        Debug.Log(currentSentence);
-        Debug.Log(allQuotes.Length-1);
         if(quoteToWrite.Length == currentLetter)
         {
             if(currentSentence == allQuotes.Length-1)
@@ -183,7 +181,7 @@ public class Controller : MonoBehaviour
         Debug.Log("<color=red>Fechou o jogo.</color>");
         Application.Quit();
     }
-    public bool playTutorial = true;
+    public bool playTutorial = true, tutorialDone = false;
     public void ToggleTutorial(bool value)
     {
         playTutorial = value;
@@ -211,10 +209,7 @@ public class Controller : MonoBehaviour
     // Carrega a proxima cena da lista ja seedada
     public void LoadNextScene()
     {
-        Debug.Log(currentScene);
-        Debug.Log(playableScenes);
-        Debug.Log(SceneManager.sceneCountInBuildSettings-1);
-        if(playTutorial && currentScene == 0)
+        if(playTutorial && currentScene == 0 && !tutorialDone)
         {
             LoadScene(SceneManager.sceneCountInBuildSettings-2); // Lembrar de mudar para ser = a ultima cena que tem no projeto - 1
             spawns[0].allowSpawn = false;
@@ -546,5 +541,11 @@ public class Controller : MonoBehaviour
     public void UnPauseFullGame(){
         inputPause = false;
         states = States.Game;
+    }
+
+    public GameObject[] outlines;
+    public void ToggleOutline(int id)
+    {
+        outlines[id].SetActive(!outlines[id].activeSelf);
     }
 }

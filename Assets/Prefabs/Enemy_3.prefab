@@ -136,10 +136,10 @@ MonoBehaviour:
   baseSpeed: 2
   canFollow: 1
   hp: 100
-  expDropped: 0.5
+  expDropped: 1
   deathPS: {fileID: 7471442581379728010, guid: 89971e4de0b250148a5b9ef2a2c651d5, type: 3}
   hitPS: {fileID: 7471442581379728010, guid: 96f0f0fd616dbf94abdbb61bc60ce24f, type: 3}
-  baseMat: {fileID: 2100000, guid: c1a78c4b19eb7194987e6f25eb6944d4, type: 2}
+  baseMat: {fileID: 2100000, guid: 89b55ba288586a046aa4c9575bedd9f8, type: 2}
   hitMat: {fileID: 2100000, guid: 636102617bce3884baf8ecec0753561e, type: 2}
   playerMask:
     serializedVersion: 2
@@ -333,7 +333,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c1a78c4b19eb7194987e6f25eb6944d4, type: 2}
+  - {fileID: 2100000, guid: e6df2ed0d9d8a9849a18d6b76e08172f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -427,7 +427,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d1a9cbd025907ae40895b1d89c3e27ee, type: 2}
+      objectReference: {fileID: 2100000, guid: 89b55ba288586a046aa4c9575bedd9f8, type: 2}
     - target: {fileID: 5866666021909216657, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
       propertyPath: m_Controller
@@ -442,7 +442,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c1a78c4b19eb7194987e6f25eb6944d4, type: 2}
+      objectReference: {fileID: 2100000, guid: e6df2ed0d9d8a9849a18d6b76e08172f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

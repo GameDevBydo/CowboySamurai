@@ -29,7 +29,9 @@ public class SkillController : MonoBehaviour
             skills[i].GetComponent<Image>().sprite = disabled;
         }
         UnlockSKill(0);
-        UnlockSuper(0);
+        superSkills[0].GetComponent<Button>().interactable = true;
+        superSkills[0].GetComponent<Image>().sprite = selectable;
+        //UnlockSuper(0);
         
         //Aqui seria o save para desbloquear as skills
 

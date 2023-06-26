@@ -38,6 +38,7 @@ public class ControlCam : MonoBehaviour
         Debug.Log(new Vector3(startPlane.x + size.x * 0.12f,0,0));
         Player.instance.controller.enabled = false;
         Player.instance.transform.position = new Vector3(startPlane.x + size.x * 0.12f,0,0);
+        Player.instance.transform.rotation = Quaternion.Euler(0,90,0);
         Player.instance.controller.enabled = true;
     }
 
@@ -54,7 +55,7 @@ public class ControlCam : MonoBehaviour
 
     void Deadzone()
     {
-        if(player.transform.position.x > (startPlane.x + size.x * 0.12f) && player.transform.position.x < (endPlane.x - size.x * 0.12f ))
+        if(player.transform.position.x > (startPlane.x + size.x * 0.1f) && player.transform.position.x < (endPlane.x - size.x * 0.1f ))
         {
             ft.m_DeadZoneWidth = 0f;
         }

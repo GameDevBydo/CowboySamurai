@@ -12,7 +12,14 @@ public class SceneSetup : MonoBehaviour
 
     public void NextScene()
     {
-        if(main.questClear || main.currentScene == 0) main.LoadNextScene();
+        if(main.questClear || main.currentScene == 0) 
+        {
+            if(main.currentScene == 0)
+            {
+                main.tutorialDone = true;
+            }
+            main.LoadNextScene();
+        }
     }
 
     public void EndGame()
@@ -21,4 +28,9 @@ public class SceneSetup : MonoBehaviour
         Controller.instance.PauseFullGame();
     }
     
+
+    public void UI_Outlines(int id)
+    {
+        main.ToggleOutline(id);
+    }
 }

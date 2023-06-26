@@ -37,16 +37,19 @@ public class Npc : MonoBehaviour
             if(!isWriting) prefab.SetActive(true);
             else prefab.SetActive(false);
 
-            if(Input.GetKeyDown(Player.instance.interactKey[0]) || Input.GetKeyDown(Player.instance.interactKey[1]))
+            if(!isWriting)
             {
-                if(npcType == 0)
+                if(Input.GetKeyDown(Player.instance.interactKey[0]) || Input.GetKeyDown(Player.instance.interactKey[1]))
                 {
-                    Controller.instance.shop.SetActive(true);
-                    Controller.instance.PauseFullGame();
-                }
-                if(npcType == 1)
-                {
-                    StartWriting(quotes, endEvent);
+                    if(npcType == 0)
+                    {
+                        Controller.instance.shop.SetActive(true);
+                        Controller.instance.PauseFullGame();
+                    }
+                    if(npcType == 1)
+                    {
+                        StartWriting(quotes, endEvent);
+                    }
                 }
             }
         }

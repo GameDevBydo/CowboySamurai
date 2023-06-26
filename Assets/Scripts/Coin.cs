@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {   
+    void Start()
+    {
+        coinValue = Random.Range(1, 5);
+    }
+    int coinValue;
     private float gravity = -3.5f;
     void Update() 
     {
@@ -15,7 +20,7 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Controller.instance.money++;
+            Controller.instance.money+=coinValue;
             Destroy(gameObject);
         }
         if(other.tag == "ground")

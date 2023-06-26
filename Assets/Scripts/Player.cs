@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
                 CallAttack();
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
+                if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 10);
             }
                 
             
@@ -153,7 +154,7 @@ public class Player : MonoBehaviour
             break;
             case 6:
                 currentState = PlayerState.DASHING;
-                animationName = "Idle";
+                animationName = "Dash";
             break;
             case 7:
                 currentState = PlayerState.SUPER;
@@ -219,12 +220,12 @@ public class Player : MonoBehaviour
         if(input != Vector3.zero)
         {
             transform.forward = input;
-            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER)  && groundedPlayer) ChangePlayerState(2);
+            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING) && groundedPlayer) ChangePlayerState(2);
             //anim.SetBool("walking",true);
         }
         else
         {
-            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER) && groundedPlayer) ChangePlayerState(1);
+            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING) && groundedPlayer) ChangePlayerState(1);
             //anim.SetBool("walking",false);
         }
         
@@ -321,7 +322,7 @@ public class Player : MonoBehaviour
         #region Attacks
         public void CallAttack() // Pega um input e ativa o golpe relacionado a esse input.
         {
-            if(groundedPlayer)
+            if(groundedPlayer && currentState != PlayerState.DASHING)
             {
                 bool buttonPress = false;
                 for(int i = 0; i<moveList._attack.Length; i++)
@@ -348,7 +349,7 @@ public class Player : MonoBehaviour
                     if(bullet > 0)
                     {
                         SuperCollission(bullet-1);
-                        Debug.Log("Super de " + bullet + "balas");
+                        Debug.Log("Super de " + bullet + " balas");
                     }
                 } 
 
@@ -362,13 +363,16 @@ public class Player : MonoBehaviour
 
         public bool getHit, canDash;
         
-
         IEnumerator DashCD()
         {
             canDash = false;
             getHit = false;
             rend.material = dashMat;
-            yield return new WaitForSeconds(2);
+            ChangePlayerState(6);
+            gameObject.layer = LayerMask.NameToLayer("Dash");
+            yield return new WaitForSeconds(0.35f);
+            ChangePlayerState(1);
+            gameObject.layer = LayerMask.NameToLayer("Player");
             getHit = true;
             canDash = true;
             rend.material = baseMat;
@@ -551,12 +555,24 @@ public class Player : MonoBehaviour
                 {
                     if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
                 }
-
-                foreach(Enemy en in enemiesHit)
+                float dis = 0, minDis = 100;
+                Enemy closestEnemy = null;
+                for(int i = 0; i< meter+1; i++)
                 {
+                    foreach(Enemy en in enemiesHit)
+                    {
+                        dis = Vector3.Distance(en.transform.position, transform.position);
+                        if(dis < minDis) closestEnemy = en;
+                        
+                    }
+                    if(closestEnemy != null)
+                    {
                     IncreaseComboCounter();
-                    en.TakeDamage(attack.damage, attack.stun, attack.sfx);
+                    enemiesHit.Remove(closestEnemy);
+                    closestEnemy.TakeDamage(attack.damage, attack.stun, attack.sfx);
+                    }
                 }
+
                 recoveryTimer = attack.recovery;
                 if(enemiesHit.Count>0) 
                 {
@@ -582,6 +598,7 @@ public class Player : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.F1)) GainLifeCheat();
                 if(Input.GetKeyDown(KeyCode.F2)) GainMoneyCheat();
                 if(Input.GetKeyDown(KeyCode.F3)) GainEXPCheat();
+                if(Input.GetKeyDown(KeyCode.F8)) ClearLevel();
                 if(Input.GetKeyDown(KeyCode.F9)) MaximizeSkillTree();
             //}
         }
@@ -595,7 +612,7 @@ public class Player : MonoBehaviour
             {
                 SkillController.instance.UnlockSuper(i);
             }
-            Debug.Log("<color=green>Unlocked all moves.</color>");
+            Debug.Log("<color=green>Desbloqueou todos os golpes.</color>");
         }
 
         void GainLifeCheat()
@@ -612,6 +629,11 @@ public class Player : MonoBehaviour
         void GainEXPCheat()
         {
             exp += 15;
+        }
+
+        void ClearLevel()
+        {
+            Controller.instance.enemiesDefeated = 99;
         }
         #endregion
 
