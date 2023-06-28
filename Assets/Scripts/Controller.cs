@@ -250,6 +250,8 @@ public class Controller : MonoBehaviour
         ChangeScreen(screen);
         Player.instance.hitPoints = Player.instance.maxHP;
         Player.instance.bulletBar = 0;
+        Player.instance.exp = 0;
+        money = 0;
         UpdateLifeBar(1);
         UpdateBulletBar(0);
     }
@@ -508,22 +510,22 @@ public class Controller : MonoBehaviour
     public void ChangeLevel(){
         switch(currentScene){
             case 1:
-                ChangeScene = 3;
-                break;
-            case 2:
-                ChangeScene = 5;
-                break;
-            case 3:
-                ChangeScene = 7;
-                break;
-            case 4:
                 ChangeScene = 10;
                 break;
-            case 5:
+            case 2:
                 ChangeScene = 12;
                 break;
+            case 3:
+                ChangeScene = 15;
+                break;
+            case 4:
+                ChangeScene = 20;
+                break;
+            case 5:
+                ChangeScene = 25;
+                break;
             default:
-                ChangeScene = 3;
+                ChangeScene = 10;
                 break;
         }
         if(enemiesDefeated>ChangeScene && currentScene!= 0){

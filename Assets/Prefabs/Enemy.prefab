@@ -136,7 +136,7 @@ MonoBehaviour:
   speed: 5
   baseSpeed: 2
   canFollow: 1
-  hp: 100
+  hp: 20
   expDropped: 1
   deathPS: {fileID: 7471442581379728010, guid: 89971e4de0b250148a5b9ef2a2c651d5, type: 3}
   hitPS: {fileID: 7471442581379728010, guid: 96f0f0fd616dbf94abdbb61bc60ce24f, type: 3}
