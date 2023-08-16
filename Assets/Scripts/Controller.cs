@@ -442,7 +442,9 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
+            TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
+        } 
         moneyText.text = money.ToString();
         if(currentScene != 0){
             timer -= Time.deltaTime;
@@ -550,4 +552,6 @@ public class Controller : MonoBehaviour
     {
         outlines[id].SetActive(!outlines[id].activeSelf);
     }
+
+    
 }

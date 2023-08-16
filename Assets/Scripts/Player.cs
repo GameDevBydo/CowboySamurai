@@ -8,10 +8,9 @@ public class Player : MonoBehaviour
     private Animator anim;
     public CharacterController controller;
     public float exp = 0;
-    
     private Vector3 playerVelocity;
     private Vector3 input;
-    
+
     public GameObject prefabCoin;
 
     const float gravity= -9.81f;
@@ -47,7 +46,7 @@ public class Player : MonoBehaviour
     }
     #endregion 
 
-        void Start()
+    void Start()
     {
         //moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         controller = GetComponent<CharacterController>();
@@ -64,19 +63,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
         AttSpawnPosition();
         if(!Controller.instance.inputPause)
         {
-            if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
-                PlayerPause(); // Pause funciona apenas no teclado por enquanto
-            } 
-
             if(Input.GetKeyDown(KeyCode.Joystick1Button6) || Input.GetKeyDown(KeyCode.Z)){
                 Controller.instance.ToggleShop();
-            }
-                        
-            
+            }       
             if(!Controller.instance.playerPause)
             {
                 KnockBack();
@@ -88,8 +80,6 @@ public class Player : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
                 if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 10);
             }
-                
-            
         }
 
         
@@ -169,8 +159,6 @@ public class Player : MonoBehaviour
         
     }
     #endregion
-    
-
 
     public void AttSpawnPosition(){
         Controller.instance.spawns[0].transform.position = new Vector3(transform.position.x -10, 0, 0);
@@ -293,11 +281,6 @@ public class Player : MonoBehaviour
         }
     }
     #endregion
-
-    void PlayerPause()
-    {
-        Controller.instance.TogglePlayerPause();
-    }
 
     #region Combo System
         bool m_Started;
@@ -589,53 +572,7 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        #region Cheats 
-
-        void Cheats()
-        {
-            //if(canCheat)
-            //{
-                if(Input.GetKeyDown(KeyCode.F1)) GainLifeCheat();
-                if(Input.GetKeyDown(KeyCode.F2)) GainMoneyCheat();
-                if(Input.GetKeyDown(KeyCode.F3)) GainEXPCheat();
-                if(Input.GetKeyDown(KeyCode.F8)) ClearLevel();
-                if(Input.GetKeyDown(KeyCode.F9)) MaximizeSkillTree();
-            //}
-        }
-        void MaximizeSkillTree()
-        {
-            for(int i = 0; i< SkillController.instance.skills.Length; i++)
-            {
-                SkillController.instance.UnlockSKill(i);
-            }
-            for(int i = 0; i< SkillController.instance.superSkills.Length; i++)
-            {
-                SkillController.instance.UnlockSuper(i);
-            }
-            Debug.Log("<color=green>Desbloqueou todos os golpes.</color>");
-        }
-
-        void GainLifeCheat()
-        {
-            hitPoints+= 50;
-            hitPoints = Mathf.Clamp(hitPoints, 0, maxHP);
-            Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
-        }
-        
-        void GainMoneyCheat()
-        {
-            Controller.instance.money += 20;
-        }
-        void GainEXPCheat()
-        {
-            exp += 15;
-        }
-
-        void ClearLevel()
-        {
-            Controller.instance.enemiesDefeated = 99;
-        }
-        #endregion
+       
 
         #region Gizmos
         //Desenhe o Box Overlap como um gizmo para mostrar onde ele está testando no momento
@@ -689,4 +626,52 @@ public class Player : MonoBehaviour
         }
         #endregion
     #endregion
+
+     #region Cheats 
+
+        void Cheats()
+        {
+            //if(canCheat)
+            //{
+                if(Input.GetKeyDown(KeyCode.F1)) GainLifeCheat();
+                if(Input.GetKeyDown(KeyCode.F2)) GainMoneyCheat();
+                if(Input.GetKeyDown(KeyCode.F3)) GainEXPCheat();
+                if(Input.GetKeyDown(KeyCode.F8)) ClearLevel();
+                if(Input.GetKeyDown(KeyCode.F9)) MaximizeSkillTree();
+            //}
+        }
+        void MaximizeSkillTree()
+        {
+            for(int i = 0; i< SkillController.instance.skills.Length; i++)
+            {
+                SkillController.instance.UnlockSKill(i);
+            }
+            for(int i = 0; i< SkillController.instance.superSkills.Length; i++)
+            {
+                SkillController.instance.UnlockSuper(i);
+            }
+            Debug.Log("<color=green>Desbloqueou todos os golpes.</color>");
+        }
+
+        void GainLifeCheat()
+        {
+            hitPoints+= 50;
+            hitPoints = Mathf.Clamp(hitPoints, 0, maxHP);
+            Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
+        }
+        
+        void GainMoneyCheat()
+        {
+            Controller.instance.money += 20;
+        }
+        void GainEXPCheat()
+        {
+            exp += 15;
+        }
+
+        void ClearLevel()
+        {
+            Controller.instance.enemiesDefeated = 99;
+        }
+        #endregion
 }

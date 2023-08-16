@@ -8,24 +8,19 @@ public class Npc : MonoBehaviour
 {
     public GameObject prefab;
     public float distance;
-
     private GameObject player;
     private float dist;
-
     public int npcType; // 0 para vendedor (abre uma loja), 1 para texto
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
-
     [TextArea(2,4)]
     public string[] quotes;
-
     public UnityEvent[] endEvent;
     
     // Start is called before the first frame update
     void Start()
     {
        player = Player.instance.gameObject; 
-       
     }
 
     // Update is called once per frame

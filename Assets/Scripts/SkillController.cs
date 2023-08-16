@@ -9,13 +9,9 @@ public class SkillController : MonoBehaviour
 {
     public static SkillController instance;
     public Skill [] skills, superSkills;
-    
     public TextMeshProUGUI skillname,desc,expUp,expTxtHud,skillPrice;
     public Image skillsprite;
-
     public Sprite disabled, selectable, activated;
-
-
     void Start()
     {
         instance = this;

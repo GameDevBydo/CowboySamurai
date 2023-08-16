@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
             //anim.SetBool("Kick", false);
             //anim.SetBool("JumpKick", false);
             anim.SetTrigger("Punch");
-            Golpe(attackEnemy[0]);
+            Hit(attackEnemy[0]);
   
 
             
@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
             //anim.SetBool("Kick", true);
             //anim.SetBool("JumpKick", false);
             anim.SetTrigger("Kick");
-            Golpe(attackEnemy[1]);
+            Hit(attackEnemy[1]);
             
         }
     }
@@ -152,12 +152,6 @@ public class Enemy : MonoBehaviour
         rend.material = baseMat;
     }
 
-    void KnockBack()
-    {
-
-    }
-
-
     void CheckDeath() // Método para checagem de morte
     {
         if(hp <= 0)
@@ -171,12 +165,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Golpe(Attack attack)
+    void Hit(Attack attack)
     {
 
         //Use the OverlapBox to detect if there are any other colliders within this box area.
         //Use the GameObject's centre, half the size (as a radius) and rotation. This creates an invisible box around your GameObject.
-        Collider[] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, playerMask);
+        Collider[] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, 
+        ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, playerMask);
         //Check when there is a new collider coming into contact with the box
         foreach(Collider col in hitColliders)
         {
@@ -199,20 +194,17 @@ public class Enemy : MonoBehaviour
             //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
             if (m_Started)
                 //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[0].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[0].hitboxes[0].startingPointEnemy.y, ((attackEnemy[0].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[0].hitboxes[0].startingPointEnemy.z), attackEnemy[0].hitboxes[0].extension);
+                Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[0].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[0].hitboxes[0].startingPointEnemy.y, 
+                ((attackEnemy[0].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[0].hitboxes[0].startingPointEnemy.z), attackEnemy[0].hitboxes[0].extension);
         }
         if(33 <= currentAttack && currentAttack <= 50){
             Gizmos.color = Color.blue;
             //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
             if (m_Started)
                 //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[1].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[1].hitboxes[0].startingPointEnemy.y, ((attackEnemy[1].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[1].hitboxes[0].startingPointEnemy.z), attackEnemy[1].hitboxes[0].extension);
+                Gizmos.DrawWireCube(new Vector3((gameObject.transform.position.x + attackEnemy[1].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[1].hitboxes[0].startingPointEnemy.y, 
+                ((attackEnemy[1].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[1].hitboxes[0].startingPointEnemy.z), attackEnemy[1].hitboxes[0].extension);
         }
     }
-
-    
     #endregion
-
-
-
 }

@@ -8,7 +8,6 @@ public class ControlCam : MonoBehaviour
     public static ControlCam instance;
     public CinemachineVirtualCamera cam;
     public GameObject plane,player,preFabPlayer;
-    
     public Vector3 startPlane,center,endPlane,size;
     CinemachineFramingTransposer ft;
 
@@ -41,7 +40,6 @@ public class ControlCam : MonoBehaviour
         Player.instance.transform.rotation = Quaternion.Euler(0,90,0);
         Player.instance.controller.enabled = true;
     }
-
 
     #region DEADZONE AO FINAL DA TELA
     public void DefineDeadzone()

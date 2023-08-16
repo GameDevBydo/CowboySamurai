@@ -23,6 +23,5 @@ public class SaveController : MonoBehaviour
         string s = File.ReadAllText(Application.persistentDataPath + "/saveGame.txt");
 
         SceneData data = JsonUtility.FromJson<SceneData>(s);
-        
     }
 }

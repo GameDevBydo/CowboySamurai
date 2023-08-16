@@ -8,5 +8,4 @@ public class Hitbox : ScriptableObject
     public Vector3 extension;
     public Vector3 _startingPointEnemy;
     public Vector3 startingPointEnemy =>new Vector3(_startingPoint.x , _startingPoint.y, _startingPoint.z);
-    
 }

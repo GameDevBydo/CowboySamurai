@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {   
+    int coinValue;
+    private float gravity = -3.5f;
+    
     void Start()
     {
         coinValue = Random.Range(1, 5);
     }
-    int coinValue;
-    private float gravity = -3.5f;
+    
     void Update() 
     {
         Vector3 pos = transform.position;
@@ -27,7 +29,5 @@ public class Coin : MonoBehaviour
         {
             gravity = 0;
         }
-
-
     }
 }
