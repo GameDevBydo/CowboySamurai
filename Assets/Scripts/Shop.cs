@@ -13,10 +13,10 @@ public class Shop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UptadeButtons();
+        Buttons();
     }
 
-    public void UptadeButtons(){
+    public void Buttons(){
         for(int i = 0; i< itens.Length; i++){
             if(valueItens[i]>Controller.instance.money){
                 itens[i].interactable = false;

@@ -17,8 +17,6 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int price;
     public Skill [] nextSkills;
 
-    
-    
     private Button buttonSkill;
     void Start()
     {

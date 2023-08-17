@@ -34,6 +34,53 @@ public class Controller : MonoBehaviour
     }
     #endregion 
 
+    void Start()
+    {
+        introImg.material.mainTextureOffset = Vector2.zero;
+        introImg.material = new Material(introImg.material);
+        playerBasePos = Player.instance.transform.position;
+        playerBaseRot = Player.instance.transform.rotation;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
+            TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
+        } 
+        moneyText.text = money.ToString();
+        if(currentScene != 0){
+            timer -= Time.deltaTime;
+            if(timer <=0 && enemiesInScene<=10)
+            {
+                StartSpawnEntities(UnityEngine.Random.Range(0,entities.Length),1,UnityEngine.Random.Range(0,spawns.Length));
+                timer = respawnTimer;
+            }
+        }
+        ChangeLevel();
+        ScrollingIntro();
+        if(isWriting) WriteText();
+        if(Input.GetKeyDown(KeyCode.N)) LoadNextScene();
+    }
+
+    public void StartGame(GameObject screen)
+    {
+        if(seed == null)
+        {
+            ConvertSeedIntoList();
+        }
+        ChangeGameStates(1);
+        inputPause = false; // Trocar para tocar pós animação
+        playerPause = false;
+        LoadNextScene();
+        ChangeScreen(screen);
+        Player.instance.hitPoints = Player.instance.maxHP;
+        Player.instance.bulletBar = 0;
+        Player.instance.exp = 0;
+        money = 0;
+        UpdateLifeBar(1);
+        UpdateBulletBar(0);
+    }
+
     #region UI Stuff (Tudo relacionado a UI)
     [HideInInspector]
     public GameObject currentScreen = null;
@@ -149,13 +196,7 @@ public class Controller : MonoBehaviour
         endQuoteEvent.Invoke();
     }
 
-    void Start()
-    {
-        introImg.material.mainTextureOffset = Vector2.zero;
-        introImg.material = new Material(introImg.material);
-        playerBasePos = Player.instance.transform.position;
-        playerBaseRot = Player.instance.transform.rotation;
-    }
+
     #endregion
 
     #region Scene and Application Management
@@ -175,98 +216,82 @@ public class Controller : MonoBehaviour
         public TextMeshProUGUI[] seedText, sceneCountText;
         #endregion
 
-    //Fechar o app
-    public void ExitApp()
-    {
-        Debug.Log("<color=red>Fechou o jogo.</color>");
-        Application.Quit();
-    }
-    public bool playTutorial = true, tutorialDone = false;
-    public void ToggleTutorial(bool value)
-    {
-        playTutorial = value;
-    }
-    // Carrega uma cena com id especificado.
-    public void LoadScene(int sceneId)
-    {
-        SceneManager.LoadScene(sceneId);
-        questClear = false;
-        UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
-        UpdateBulletBar(Player.instance.bulletBar);
-        nextLevel.SetActive(false);
-    }   
-
-    // Carrega o menu, e altera os trem q mudar
-    public void LoadMenu()
-    {
-        ChangeGameStates(0);
-        LoadScene(0);
-        currentScene = 0;
-        ResetPlayerPosition();
-        WriteCurrentSceneText();
-        inputPause = true;
-    }
-    // Carrega a proxima cena da lista ja seedada
-    public void LoadNextScene()
-    {
-        if(playTutorial && currentScene == 0 && !tutorialDone)
+        //Fechar o app
+        public void ExitApp()
         {
-            LoadScene(SceneManager.sceneCountInBuildSettings-2); // Lembrar de mudar para ser = a ultima cena que tem no projeto - 1
-            spawns[0].allowSpawn = false;
-            spawns[1].allowSpawn = false;
-            enemiesInScene = 0;
+            Debug.Log("<color=red>Fechou o jogo.</color>");
+            Application.Quit();
+        }
+        public bool playTutorial = true, tutorialDone = false;
+        public void ToggleTutorial(bool value)
+        {
+            playTutorial = value;
+        }
+        // Carrega uma cena com id especificado.
+        public void LoadScene(int sceneId)
+        {
+            SceneManager.LoadScene(sceneId);
+            questClear = false;
+            UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
+            UpdateBulletBar(Player.instance.bulletBar);
+            nextLevel.SetActive(false);
+        }   
+
+        // Carrega o menu, e altera os trem q mudar
+        public void LoadMenu()
+        {
+            ChangeGameStates(0);
+            LoadScene(0);
+            currentScene = 0;
+            ResetPlayerPosition();
             WriteCurrentSceneText();
+            inputPause = true;
         }
-        else if(currentScene != playableScenes)
+        // Carrega a proxima cena da lista ja seedada
+        public void LoadNextScene()
         {
-            LoadScene(sceneList[currentScene]);
-            spawns[0].allowSpawn = true;
-            spawns[1].allowSpawn = true;
-            enemiesInScene = 0;
-            currentScene++;
-            WriteCurrentSceneText();
+            if(playTutorial && currentScene == 0 && !tutorialDone)
+            {
+                LoadScene(SceneManager.sceneCountInBuildSettings-2); // Lembrar de mudar para ser = a ultima cena que tem no projeto - 1
+                spawns[0].allowSpawn = false;
+                spawns[1].allowSpawn = false;
+                enemiesInScene = 0;
+                WriteCurrentSceneText();
+            }
+            else if(currentScene != playableScenes)
+            {
+                LoadScene(sceneList[currentScene]);
+                spawns[0].allowSpawn = true;
+                spawns[1].allowSpawn = true;
+                enemiesInScene = 0;
+                currentScene++;
+                WriteCurrentSceneText();
+            }
+            else
+            {
+                LoadScene(SceneManager.sceneCountInBuildSettings-1); // Lembrar de mudar para ser = a ultima cena que tem no projeto
+                spawns[0].allowSpawn = false;
+                spawns[1].allowSpawn = false;
+                enemiesInScene = 0;
+                currentScene++;
+                WriteCurrentSceneText();
+            }
         }
-        else
+    #endregion
+
+    #region Player
+        private Vector3 playerBasePos;
+        private Quaternion playerBaseRot;
+        void ResetPlayerPosition()
         {
-            LoadScene(SceneManager.sceneCountInBuildSettings-1); // Lembrar de mudar para ser = a ultima cena que tem no projeto
-            spawns[0].allowSpawn = false;
-            spawns[1].allowSpawn = false;
-            enemiesInScene = 0;
-            currentScene++;
-            WriteCurrentSceneText();
+            Player.instance.controller.enabled = false;
+            Player.instance.transform.position = playerBasePos;
+            Player.instance.transform.rotation = playerBaseRot;
+            Player.instance.controller.enabled = true;
         }
-    }
+    #endregion
 
-    public void StartGame(GameObject screen)
-    {
-        if(seed == null)
-        {
-            ConvertSeedIntoList();
-        }
-        ChangeGameStates(1);
-        inputPause = false; // Trocar para tocar pós animação
-        playerPause = false;
-        LoadNextScene();
-        ChangeScreen(screen);
-        Player.instance.hitPoints = Player.instance.maxHP;
-        Player.instance.bulletBar = 0;
-        Player.instance.exp = 0;
-        money = 0;
-        UpdateLifeBar(1);
-        UpdateBulletBar(0);
-    }
-
-    private Vector3 playerBasePos;
-    private Quaternion playerBaseRot;
-    void ResetPlayerPosition()
-    {
-        Player.instance.controller.enabled = false;
-        Player.instance.transform.position = playerBasePos;
-        Player.instance.transform.rotation = playerBaseRot;
-        Player.instance.controller.enabled = true;
-    }
-
-        #region Coisas de Seed 
+    #region Coisas de Seed 
         public void CreateSeed() // Cria uma seed aleatória em formato de string baseado em quantas cenas jogaveis existem
         {   
             List<char> seedList = new List<char>();
@@ -342,8 +367,8 @@ public class Controller : MonoBehaviour
                 sceneCountText[i].text = "Cena: " +currentScene.ToString();
             }
         }
-        #endregion
     #endregion
+ 
 
     #region Game States
     public enum States 
@@ -440,27 +465,6 @@ public class Controller : MonoBehaviour
         SetSpawns();
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
-            TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
-        } 
-        moneyText.text = money.ToString();
-        if(currentScene != 0){
-            timer -= Time.deltaTime;
-            if(timer <=0 && enemiesInScene<=10)
-            {
-                StartSpawnEntities(UnityEngine.Random.Range(0,entities.Length),1,UnityEngine.Random.Range(0,spawns.Length));
-                timer = respawnTimer;
-            }
-        }
-        ChangeLevel();
-        ScrollingIntro();
-        if(isWriting) WriteText();
-        if(Input.GetKeyDown(KeyCode.N)) LoadNextScene();
-    }
-
-    
     #region Updating Stats
     public Image lifeBar;
     public void UpdateLifeBar(float fill)

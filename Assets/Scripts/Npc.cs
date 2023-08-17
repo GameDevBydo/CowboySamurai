@@ -16,6 +16,15 @@ public class Npc : MonoBehaviour
     [TextArea(2,4)]
     public string[] quotes;
     public UnityEvent[] endEvent;
+
+    bool isWriting;
+    string quoteToWrite;
+    string[] allQuotes;
+    int currentLetter, currentSentence, currentEvent;
+    float lettersCD, nextQuoteCD;
+
+    UnityEvent endQuoteEvent;
+    UnityEvent[] allQuoteEvents;
     
     // Start is called before the first frame update
     void Start()
@@ -54,15 +63,7 @@ public class Npc : MonoBehaviour
         }
         if(isWriting) WriteText();
     }
-
-    bool isWriting;
-    string quoteToWrite;
-    string[] allQuotes;
-    int currentLetter, currentSentence, currentEvent;
-    float lettersCD, nextQuoteCD;
-
-    UnityEvent endQuoteEvent;
-    UnityEvent[] allQuoteEvents;
+    
     void WriteText()
     {
         Debug.Log(currentSentence);

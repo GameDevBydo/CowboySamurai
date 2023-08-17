@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     public static Player instance;
     void Awake()
     {
-        
         //Singleton básico, para evitar multiplos controllers na cena
         if (instance != null && instance != this)
         {
@@ -57,7 +56,6 @@ public class Player : MonoBehaviour
         comboCounter = 0;
         getHit = true;
         canDash = true;
-        
     }
 
     // Update is called once per frame
@@ -81,8 +79,6 @@ public class Player : MonoBehaviour
                 if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 10);
             }
         }
-
-        
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
@@ -571,8 +567,6 @@ public class Player : MonoBehaviour
             }
         }
         #endregion
-
-       
 
         #region Gizmos
         //Desenhe o Box Overlap como um gizmo para mostrar onde ele está testando no momento
