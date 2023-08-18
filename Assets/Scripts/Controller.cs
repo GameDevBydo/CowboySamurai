@@ -36,8 +36,8 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-        introImg.material.mainTextureOffset = Vector2.zero;
-        introImg.material = new Material(introImg.material);
+        UI.instance.introImg.material.mainTextureOffset = Vector2.zero;
+        UI.instance.introImg.material = new Material(UI.instance.introImg.material);
         playerBasePos = Player.instance.transform.position;
         playerBaseRot = Player.instance.transform.rotation;
     }
@@ -45,7 +45,7 @@ public class Controller : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
-            TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
+            TogglePlayerPause(); // Pause funciona apenas no tesclado por enquanto
         } 
         moneyText.text = money.ToString();
         if(currentScene != 0){
@@ -57,8 +57,8 @@ public class Controller : MonoBehaviour
             }
         }
         ChangeLevel();
-        ScrollingIntro();
-        if(isWriting) WriteText();
+        UI.instance.ScrollingIntro();
+        if(UI.instance.isWriting) UI.instance.WriteText();
         if(Input.GetKeyDown(KeyCode.N)) LoadNextScene();
     }
 
@@ -72,7 +72,7 @@ public class Controller : MonoBehaviour
         inputPause = false; // Trocar para tocar pós animação
         playerPause = false;
         LoadNextScene();
-        ChangeScreen(screen);
+        UI.instance.ChangeScreen(screen);
         Player.instance.hitPoints = Player.instance.maxHP;
         Player.instance.bulletBar = 0;
         Player.instance.exp = 0;
@@ -81,7 +81,11 @@ public class Controller : MonoBehaviour
         UpdateBulletBar(0);
     }
 
+    
+
     #region UI Stuff (Tudo relacionado a UI)
+    
+    /*
     [HideInInspector]
     public GameObject currentScreen = null;
     public GameObject nextLevel;
@@ -90,39 +94,48 @@ public class Controller : MonoBehaviour
     public GameObject pauseScreen, gameOverScreen, shop, dialoguePanel, endGameScreen, skillTreePanel;
     public TextMeshProUGUI comboCounter, comboComment, dialogueText;
     public CommentSO comments;
+    */
 
     
     // Usado em botões para trocar telas, como menu, opções, etc
+    
     public void ChangeScreen(GameObject screen)
     {
-        if(currentScreen!= null) currentScreen.SetActive(false);
-        currentScreen = screen;
-        currentScreen.SetActive(true);
+        
+        if(UI.instance.currentScreen!= null) UI.instance.currentScreen.SetActive(false);    
+        UI.instance.currentScreen = screen;
+        UI.instance.currentScreen.SetActive(true);
         if(screen.name != "InGame"){
             //EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(screen.transform.GetChild(1).gameObject);
         }
+        
     }
-    GameObject auxScreen;
+    
+    //GameObject auxScreen;
     // Usado em botões para abrir e fechar subjanelas
+    
     public void TogglePanel(GameObject panel)
     {
-        auxScreen = EventSystem.current.firstSelectedGameObject;
-        Debug.Log(auxScreen);
+        UI.instance.auxScreen = EventSystem.current.firstSelectedGameObject;
+        Debug.Log(UI.instance.auxScreen);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(panel.transform.GetChild(1).gameObject);
         panel.SetActive(!panel.activeSelf);
         if(panel.activeSelf == false)
-            EventSystem.current.SetSelectedGameObject(auxScreen);        
+            EventSystem.current.SetSelectedGameObject(UI.instance.auxScreen);        
     }
-
+    
+    
+    
+    
+    /*
     public Image introImg;
-    void ScrollingIntro()
+    void ScrollingIntro()   
     {
         introImg.material.mainTextureOffset += Vector2.right * (Time.deltaTime) * 0.03f;
     }
-
-
+    
     void WriteText()
     {
         if(quoteToWrite.Length == currentLetter)
@@ -160,6 +173,7 @@ public class Controller : MonoBehaviour
         else lettersCD-=Time.deltaTime;
     }
 
+    
     bool isWriting;
     string quoteToWrite;
     string[] allQuotes;
@@ -195,9 +209,9 @@ public class Controller : MonoBehaviour
         TogglePanel(dialoguePanel);
         endQuoteEvent.Invoke();
     }
-
-
+    */
     #endregion
+    
 
     #region Scene and Application Management
     
@@ -234,7 +248,7 @@ public class Controller : MonoBehaviour
             questClear = false;
             UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
             UpdateBulletBar(Player.instance.bulletBar);
-            nextLevel.SetActive(false);
+            UI.instance.nextLevel.SetActive(false);
         }   
 
         // Carrega o menu, e altera os trem q mudar
@@ -398,8 +412,8 @@ public class Controller : MonoBehaviour
     {
         playerPause = !playerPause;
         ChangeGameStates(playerPause?0:1);
-        if(playerPause) ChangeScreen(pauseScreen);
-        else ChangeScreen(inGameScreen);
+        if(playerPause) UI.instance.ChangeScreen(UI.instance.pauseScreen);
+        else UI.instance.ChangeScreen(UI.instance.inGameScreen);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(FirstButtonPause);
     }
@@ -408,8 +422,8 @@ public class Controller : MonoBehaviour
     public void ToggleShop(){
         playerPause = !playerPause;
         ChangeGameStates(playerPause?0:1);
-        if(playerPause) ChangeScreen(skillTreePanel);
-        else ChangeScreen(inGameScreen);
+        if(playerPause) UI.instance.ChangeScreen(UI.instance.skillTreePanel);
+        else UI.instance.ChangeScreen(UI.instance.inGameScreen);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(FirstButtonSkill);
     }
@@ -445,7 +459,7 @@ public class Controller : MonoBehaviour
         public void GameOver()
         {
             ChangeGameStates(0);
-            ChangeScreen(gameOverScreen);
+            UI.instance.ChangeScreen(UI.instance.gameOverScreen);
             inputPause = true;
         }
     #endregion
@@ -455,11 +469,11 @@ public class Controller : MonoBehaviour
         ChangeGameStates(0);
         inputPause = true;
         playerPause = false;
-        comboCounter.text = "Combo: " + Convert.ToString(0);
+        UI.instance.comboCounter.text = "Combo: " + Convert.ToString(0);
         playableScenes = SceneManager.sceneCountInBuildSettings - 3; // Alterar o valor baseado em quantas cenas não jogáveis existem
         currentScene = 0;
         seed = null;
-        currentScreen = GameObject.Find("Intro");
+        UI.instance.currentScreen = GameObject.Find("Intro");
         enemiesInScene = 0;
         enemiesDefeated = 0;
         SetSpawns();
@@ -536,7 +550,7 @@ public class Controller : MonoBehaviour
         }
         if(enemiesDefeated>ChangeScene && currentScene!= 0){
             questClear = true;
-            nextLevel.SetActive(true);
+            UI.instance.nextLevel.SetActive(true);
             enemiesDefeated = 0;
         }
     }
