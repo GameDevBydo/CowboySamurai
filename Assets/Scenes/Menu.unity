@@ -24765,6 +24765,7 @@ GameObject:
   - component: {fileID: 1747575658}
   - component: {fileID: 1747575657}
   - component: {fileID: 1747575659}
+  - component: {fileID: 1747575660}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -24786,20 +24787,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 0
   moneyText: {fileID: 1138698459}
-  currentScreen: {fileID: 0}
-  nextLevel: {fileID: 2049338193}
-  inGameScreen: {fileID: 25114359}
-  pauseScreen: {fileID: 1646258808}
-  gameOverScreen: {fileID: 1525190262}
-  shop: {fileID: 27733946}
-  dialoguePanel: {fileID: 2043859856}
-  endGameScreen: {fileID: 291323197}
-  skillTreePanel: {fileID: 1066996725}
-  comboCounter: {fileID: 428231858}
-  comboComment: {fileID: 562089114}
-  dialogueText: {fileID: 1219989016}
-  comments: {fileID: 11400000, guid: e1d8766b7f3df364c9539a99252283be, type: 2}
-  introImg: {fileID: 79288649}
   currentScene: 0
   questClear: 0
   seedText:
@@ -25015,6 +25002,36 @@ MonoBehaviour:
   disabled: {fileID: 21300000, guid: fb7f50bec49d76847a687eecc516674e, type: 3}
   selectable: {fileID: 21300000, guid: dc23a0f85f425334a9d17f43c7d31eaa, type: 3}
   activated: {fileID: 21300000, guid: 50aa599fe86c0364daa73db5f4f56b0e, type: 3}
+--- !u!114 &1747575660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747575653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50020f07261aba641b5a7daefc61c66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScreen: {fileID: 0}
+  nextLevel: {fileID: 2049338193}
+  inGameScreen: {fileID: 25114359}
+  pauseScreen: {fileID: 1646258808}
+  gameOverScreen: {fileID: 1525190262}
+  shop: {fileID: 27733946}
+  dialoguePanel: {fileID: 2043859856}
+  endGameScreen: {fileID: 1525190262}
+  skillTreePanel: {fileID: 1066996725}
+  comboCounter: {fileID: 428231858}
+  comboComment: {fileID: 562089114}
+  dialogueText: {fileID: 1219989016}
+  comments: {fileID: 11400000, guid: e1d8766b7f3df364c9539a99252283be, type: 2}
+  inputPause: 0
+  playerPause: 0
+  auxScreen: {fileID: 0}
+  introImg: {fileID: 1855337537}
+  isWriting: 0
 --- !u!1 &1747727346
 GameObject:
   m_ObjectHideFlags: 0
