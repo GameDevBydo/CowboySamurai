@@ -1,41 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public int lifeRegenAmount = 30;
-    public int gainXP = 30;
-    public Button[] itens;
-    public int[] valueItens;
+    public int priceLife;
+    public int priceXP;
+    //public int[] priceTickect;
 
-    // Update is called once per frame
-    void Update()
+    public Button life;
+    public Button xp;
+    //public Button[] ticket;
+
+    public string[] descriptionTicket;
+
+    public int lifeRegenAmount;
+    public int gainXP;
+
+    void Start()
     {
-        Buttons();
+        VerifyPurchase();
     }
 
-    public void Buttons(){
-        for(int i = 0; i< itens.Length; i++){
-            if(valueItens[i]>Controller.instance.money){
-                itens[i].interactable = false;
-            }else{
-                itens[i].interactable = true;
-            }
+    public void VerifyPurchase(){
+        if(Controller.instance.money<priceLife){
+            life.interactable = false;
+        }
+        if(Controller.instance.money<priceXP){
+            xp.interactable = false;
         }
     }
-    public void BuyLife(int index){
+
+    public void BuyLife(){
         Player.instance.hitPoints += lifeRegenAmount;
         if(Player.instance.hitPoints>=200){
             Player.instance.hitPoints = 200;
         }
         Controller.instance.UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
-        Controller.instance.money -= valueItens[index];
+        Controller.instance.money -= priceLife;
     }
-    public void BuyXP(int index){
+    public void BuyXP(){
         Player.instance.exp += gainXP;
-        Controller.instance.money -= valueItens[index];
+        Controller.instance.money -= priceXP;
+    }
+
+    public void BuyTicket(){
+        
     }
 
 }
