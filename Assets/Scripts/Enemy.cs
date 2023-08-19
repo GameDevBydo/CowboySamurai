@@ -47,11 +47,11 @@ public class Enemy : MonoBehaviour
         //anim = GetComponent<Animator>();
     }
 
-    public void Update()
+    void Update()
     {
-        if(!UI.instance.inputPause)
+        if(!Controller.instance.inputPause)
         {
-            if(!UI.instance.playerPause)
+            if(!Controller.instance.playerPause)
             {
                 if(canFollow) FollowPlayer();
             }else{

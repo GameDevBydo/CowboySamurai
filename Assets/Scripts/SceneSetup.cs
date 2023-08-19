@@ -24,7 +24,7 @@ public class SceneSetup : MonoBehaviour
 
     public void EndGame()
     {
-        UI.instance.ChangeScreen(UI.instance.endGameScreen);
+        Controller.instance.ChangeScreen(Controller.instance.endGameScreen);
         Controller.instance.PauseFullGame();
     }
     

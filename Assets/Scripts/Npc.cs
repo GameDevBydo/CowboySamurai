@@ -47,7 +47,7 @@ public class Npc : MonoBehaviour
                 {
                     if(npcType == 0)
                     {
-                        UI.instance.shop.SetActive(true);
+                        Controller.instance.shop.SetActive(true);
                         Controller.instance.PauseFullGame();
                     }
                     if(npcType == 1)

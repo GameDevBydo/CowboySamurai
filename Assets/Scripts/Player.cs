@@ -59,15 +59,15 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void FixedUpdate()
+    void FixedUpdate()
     {
         AttSpawnPosition();
-        if(!UI.instance.inputPause)
+        if(!Controller.instance.inputPause)
         {
             if(Input.GetKeyDown(KeyCode.Joystick1Button6) || Input.GetKeyDown(KeyCode.Z)){
                 Controller.instance.ToggleShop();
             }       
-            if(!UI.instance.playerPause)
+            if(!Controller.instance.playerPause)
             {
                 KnockBack();
                 Cheats();
@@ -383,36 +383,36 @@ public class Player : MonoBehaviour
         {
             if(comboCounter >0) 
             {
-                UI.instance.comboCounter.text = "Combo: " + comboCounter;
+                Controller.instance.comboCounter.text = "Combo: " + comboCounter;
                 if(comboCounter >= 10 && comboCounter<20)
                 {
-                    UI.instance.comboComment.text = UI.instance.comments.comments[0];
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[0];
                 }
                 else if(comboCounter >= 20 && comboCounter<30)
                 {
-                    UI.instance.comboComment.text = UI.instance.comments.comments[1];
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[1];
                 }
                 else if(comboCounter >= 30 && comboCounter<40)
                 {
-                    UI.instance.comboComment.text = UI.instance.comments.comments[2];
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[2];
                 }
                 else if(comboCounter >= 40 && comboCounter<50)
                 {
-                    UI.instance.comboComment.text = UI.instance.comments.comments[3];
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[3];
                 }
                 else if(comboCounter >= 50 && comboCounter<60)
                 {
-                    UI.instance.comboComment.text = UI.instance.comments.comments[4];
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[4];
                 }
                 else if(comboCounter >= 60 && comboCounter<70)
                 {
-                    UI.instance.comboComment.text = UI.instance.comments.comments[5];
+                    Controller.instance.comboComment.text = Controller.instance.comments.comments[5];
                 }
             }
             else 
             {
-                UI.instance.comboCounter.text = "";
-                UI.instance.comboComment.text = "";
+                Controller.instance.comboCounter.text = "";
+                Controller.instance.comboComment.text = "";
             }
         }
 
