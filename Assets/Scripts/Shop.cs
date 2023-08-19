@@ -14,40 +14,36 @@ public class Shop : MonoBehaviour
     public Button xp;
     //public Button[] ticket;
 
-    public string[] descriptionTicket;
+    //public string[] descriptionTicket;
 
     public int lifeRegenAmount;
     public int gainXP;
 
+    public static Shop instance;
+
     void Start()
     {
-        VerifyPurchase();
-    }
-
-    public void VerifyPurchase(){
-        if(Controller.instance.money<priceLife){
-            life.interactable = false;
-        }
-        if(Controller.instance.money<priceXP){
-            xp.interactable = false;
-        }
+        instance = this;
     }
 
     public void BuyLife(){
-        Player.instance.hitPoints += lifeRegenAmount;
-        if(Player.instance.hitPoints>=200){
-            Player.instance.hitPoints = 200;
+        if(Controller.instance.money>priceLife){
+            Player.instance.hitPoints += lifeRegenAmount;
+            if(Player.instance.hitPoints>=200){
+                Player.instance.hitPoints = 200;
+            }
+            Controller.instance.UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
+            Controller.instance.money -= priceLife;
         }
-        Controller.instance.UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
-        Controller.instance.money -= priceLife;
     }
     public void BuyXP(){
-        Player.instance.exp += gainXP;
-        Controller.instance.money -= priceXP;
+        if(Controller.instance.money>priceXP){
+            Player.instance.exp += gainXP;
+            Controller.instance.money -= priceXP;
+        }
     }
 
     public void BuyTicket(){
         
     }
-
 }
