@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,12 +10,15 @@ public class Boss : MonoBehaviour
     float rageLife = 150;
     float normalLife = 100;
     private bool rageMode = false;
+    private bool canAttack = false;
 
     public GameObject bossPrefab;
     public GameObject player;
+
     public float speed;
     public float baseSpeed = 5.0f;
     public float rageSpeed = 7.0f;
+    private float distance;
 
     #endregion
 
@@ -65,7 +68,9 @@ public class Boss : MonoBehaviour
 
     int Attack()
     {
+        int damage = 0;
         //cria um collider(?) em sua frente para o ataque 
+        return damage;
     }
 
     bool isRage (bool rageMode)
@@ -73,4 +78,4 @@ public class Boss : MonoBehaviour
         return true;
     }
     #endregion
-}*/
+}
