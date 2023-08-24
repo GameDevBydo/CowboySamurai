@@ -621,51 +621,78 @@ public class Player : MonoBehaviour
         #endregion
     #endregion
 
-     #region Cheats 
+    #region Cheats 
 
-        void Cheats()
+    void Cheats()
+    {
+        //if(canCheat)
+        //{
+            if(Input.GetKeyDown(KeyCode.F1)) GainLifeCheat();
+            if(Input.GetKeyDown(KeyCode.F2)) GainMoneyCheat();
+            if(Input.GetKeyDown(KeyCode.F3)) GainEXPCheat();
+            if(Input.GetKeyDown(KeyCode.F8)) ClearLevel();
+            if(Input.GetKeyDown(KeyCode.F9)) MaximizeSkillTree();
+        //}
+    }
+    void MaximizeSkillTree()
+    {
+        for(int i = 0; i< SkillController.instance.skills.Length; i++)
         {
-            //if(canCheat)
-            //{
-                if(Input.GetKeyDown(KeyCode.F1)) GainLifeCheat();
-                if(Input.GetKeyDown(KeyCode.F2)) GainMoneyCheat();
-                if(Input.GetKeyDown(KeyCode.F3)) GainEXPCheat();
-                if(Input.GetKeyDown(KeyCode.F8)) ClearLevel();
-                if(Input.GetKeyDown(KeyCode.F9)) MaximizeSkillTree();
-            //}
+            SkillController.instance.UnlockSKill(i);
         }
-        void MaximizeSkillTree()
+        for(int i = 0; i< SkillController.instance.superSkills.Length; i++)
         {
-            for(int i = 0; i< SkillController.instance.skills.Length; i++)
-            {
-                SkillController.instance.UnlockSKill(i);
-            }
-            for(int i = 0; i< SkillController.instance.superSkills.Length; i++)
-            {
-                SkillController.instance.UnlockSuper(i);
-            }
-            Debug.Log("<color=green>Desbloqueou todos os golpes.</color>");
+            SkillController.instance.UnlockSuper(i);
         }
+        Debug.Log("<color=green>Desbloqueou todos os golpes.</color>");
+    }
 
-        void GainLifeCheat()
-        {
-            hitPoints+= 50;
-            hitPoints = Mathf.Clamp(hitPoints, 0, maxHP);
-            Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
-        }
-        
-        void GainMoneyCheat()
-        {
-            Controller.instance.money += 20;
-        }
-        void GainEXPCheat()
-        {
-            exp += 15;
-        }
+    void GainLifeCheat()
+    {
+        hitPoints+= 50;
+        hitPoints = Mathf.Clamp(hitPoints, 0, maxHP);
+        Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
+    }
+    
+    void GainMoneyCheat()
+    {
+        Controller.instance.money += 20;
+    }
+    void GainEXPCheat()
+    {
+        exp += 15;
+    }
 
-        void ClearLevel()
-        {
-            Controller.instance.enemiesDefeated = 99;
-        }
-        #endregion
+    void ClearLevel()
+    {
+        Controller.instance.enemiesDefeated = 99;
+    }
+    #endregion
+    
+
+    void Interact()
+    {   
+        //Physics.OverlapBox();
+        //Meter um physics box aqui que pega os objeto com tag ticket e filtra pelo nome pra puxar o ticket da lista.
+
+        //if(npcHit)
+        //{
+        //    object.GetComponent<Npc>().beginInteraction = true;
+        //}
+
+
+
+
+
+        //if(listaDeTickets.Count>0)
+        //{
+        //    foreach(TicketSO tic in listaDeTickets)
+        //    {
+        //        main.CollectTicket(tic);
+        //    }
+        //}
+    }
+
+
+
 }

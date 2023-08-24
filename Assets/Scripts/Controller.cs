@@ -508,36 +508,14 @@ public class Controller : MonoBehaviour
 
     #region Level Completion  (será trocado por sistema de quest)
     public int enemiesDefeated;
-    public int ChangeScene;
+    public int killsNeeded;
+
     public void ClearLevel()
     {
-    }
-
-    public void ChangeLevel(){
-        switch(currentScene){
-            case 1:
-                ChangeScene = 10;
-                break;
-            case 2:
-                ChangeScene = 12;
-                break;
-            case 3:
-                ChangeScene = 15;
-                break;
-            case 4:
-                ChangeScene = 20;
-                break;
-            case 5:
-                ChangeScene = 25;
-                break;
-            default:
-                ChangeScene = 10;
-                break;
-        }
-        if(enemiesDefeated>ChangeScene && currentScene!= 0){
+        if(enemiesDefeated>=killsNeeded && currentScene!= 0)
+        {
             questClear = true;
             nextLevel.SetActive(true);
-            enemiesDefeated = 0;
         }
     }
     #endregion
@@ -558,4 +536,70 @@ public class Controller : MonoBehaviour
     }
 
     
+
+    #region Tickets
+    [Header("Tickets")]
+    public GameObject ticketCollectedIcon;
+    public GameObject ticketScreen;
+    public Image ticket1Sprite, ticket2Sprite;
+    public TicketSO ticket1, ticket2;
+
+    public List<TicketSO> ticketsAvailable;
+
+    public void CollectTicket(TicketSO collected)
+    {
+        if(ticket1 == null) 
+        {
+            ticket1 = collected;
+            UpdateTickets(0);
+        }
+        else if (ticket2 == null) 
+        {
+            ticket2 = collected;
+            UpdateTickets(1);
+        }
+        else Debug.Log("Erro! Sem Espaço para tickets.");
+
+        ticketCollectedIcon.SetActive(true);
+    }
+
+    public void UpdateTickets(int id)
+    {
+        if(id==0)
+        {
+            ticket1Sprite.sprite = ticket1.ticketSprite;
+            ticket1Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket1.ticketName;
+            ticket1Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket1.ticketDescription;
+        }
+        else
+        {
+            ticket2Sprite.sprite = ticket2.ticketSprite;
+            ticket2Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket2.ticketName;
+            ticket2Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket2.ticketDescription;
+        }
+
+    }
+
+    public void LoadSceneTicket(int id)
+    {
+        TicketSO ticketUsed = id==0 ? ticket1 : ticket2;
+        SceneManager.LoadScene(tickedUsed.ticketLevel);
+        ticketCollectedIcon.SetActive(false);
+        ticket1 = null;
+        ticket2 = null;
+        questClear = false;
+        enemiesDefeated = 0;
+        UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
+        UpdateBulletBar(Player.instance.bulletBar);
+        nextLevel.SetActive(false);
+        killsNeeded = ticketUsed.ticketType==0 ? 10+currentScene*5 : 0;
+    }
+
+    public void InstantiateTickets()
+    {
+        
+    }
+
+    #endregion
+
 }

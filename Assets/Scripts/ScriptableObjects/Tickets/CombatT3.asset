@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2decf150ddf08e4283da7e1efce97e2, type: 3}
+  m_Name: CombatT3
+  m_EditorClassIdentifier: 
+  ticketModel: {fileID: 6627183123449876549, guid: 1774c2181d6501248a8d369f68670dae,
+    type: 3}
+  ticketSprite: {fileID: 21300000, guid: ec6c52b62cbb3a44dbceee74133c4d7e, type: 3}
+  ticketName: Bleh Cinza
+  ticketDescription: Ticket para um destino de combate.
+  ticketLevel: e
+  ticketType: 0

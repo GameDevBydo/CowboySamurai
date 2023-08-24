@@ -23,6 +23,7 @@ public class Npc : MonoBehaviour
     int currentLetter, currentSentence, currentEvent;
     float lettersCD, nextQuoteCD;
 
+    public bool beginInteraction;    
     UnityEvent endQuoteEvent;
     UnityEvent[] allQuoteEvents;
     
@@ -43,7 +44,7 @@ public class Npc : MonoBehaviour
 
             if(!isWriting)
             {
-                if(Input.GetKeyDown(Player.instance.interactKey[0]) || Input.GetKeyDown(Player.instance.interactKey[1]))
+                if(beginInteraction)
                 {
                     if(npcType == 0)
                     {

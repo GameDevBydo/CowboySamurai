@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2decf150ddf08e4283da7e1efce97e2, type: 3}
+  m_Name: BossT1
+  m_EditorClassIdentifier: 
+  ticketModel: {fileID: 6627183123449876549, guid: 948b54a0f1c712d4c81eb605c5b97ce0,
+    type: 3}
+  ticketSprite: {fileID: 21300000, guid: 0d39589c7c1eed54d831fa454497c9e6, type: 3}
+  ticketName: Sujeira Eterna
+  ticketDescription: Ticket para um destino de sofrimento.
+  ticketLevel: FinalScene
+  ticketType: 2

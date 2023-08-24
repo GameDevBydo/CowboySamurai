@@ -9,6 +9,7 @@ TagManager:
   - spawnR
   - coin
   - ground
+  - ticket
   layers:
   - Default
   - TransparentFX
