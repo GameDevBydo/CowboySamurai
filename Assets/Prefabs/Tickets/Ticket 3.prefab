@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8380446193230857757}
   - component: {fileID: 4376730097791583452}
   - component: {fileID: 6550504600866441300}
+  - component: {fileID: -974669359454882925}
   m_Layer: 0
   m_Name: Ticket 3
   m_TagString: ticket
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bc7b6d7a56c6eec469269d7a70c2ed74, type: 2}
+  - {fileID: 2100000, guid: fad13f1ec58cc6b489bdb669152fce40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,3 +106,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-974669359454882925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627183123449876549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4a4ee7f7884c0418f828e9068fb30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticketSO: {fileID: 11400000, guid: b964f5ad607a1854b833a36fff28712a, type: 2}

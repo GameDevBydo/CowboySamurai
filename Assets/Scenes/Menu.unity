@@ -26209,7 +26209,7 @@ MonoBehaviour:
   bulletColor: {r: 0.1764706, g: 0.93333334, b: 1, a: 1}
   bulletMaxColor: {r: 1, g: 0.9647059, b: 0, a: 1}
   enemiesDefeated: 0
-  ChangeScene: 0
+  killsNeeded: 10
   outlines:
   - {fileID: 782946209}
   - {fileID: 1496869549}
@@ -26217,8 +26217,8 @@ MonoBehaviour:
   ticketScreen: {fileID: 1060140674}
   ticket1Sprite: {fileID: 1936060624}
   ticket2Sprite: {fileID: 1721201588}
-  ticket1: {fileID: 11400000, guid: 4b6a144fecb697641843fe6e1fbad6c5, type: 2}
-  ticket2: {fileID: 11400000, guid: a51549ec018ef1c4ea55ccb9489d4627, type: 2}
+  ticket1: {fileID: 0}
+  ticket2: {fileID: 0}
   ticketsAvailable:
   - {fileID: 11400000, guid: 4b6a144fecb697641843fe6e1fbad6c5, type: 2}
   - {fileID: 11400000, guid: a51549ec018ef1c4ea55ccb9489d4627, type: 2}
@@ -26226,6 +26226,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed27af83b445c014893b3204feade46f, type: 2}
   - {fileID: 11400000, guid: 7f8062e5d5bceed4daff6fe691e3f506, type: 2}
   - {fileID: 11400000, guid: 00aed7797840433468b4545772a41db8, type: 2}
+  tic1Pos: {fileID: 0}
+  tic2Pos: {fileID: 0}
 --- !u!4 &1747575655
 Transform:
   m_ObjectHideFlags: 0
@@ -30277,6 +30279,18 @@ PrefabInstance:
     - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
       propertyPath: exp
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
+      propertyPath: interactSize.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
+      propertyPath: interactSize.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
+      propertyPath: interactSize.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
         type: 3}

@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
                 if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 10);
+                if(Input.GetKeyDown(interactKey[0])||Input.GetKeyDown(interactKey[1])) Interact();
             }
         }
     }
@@ -670,27 +671,35 @@ public class Player : MonoBehaviour
     #endregion
     
 
+    public Vector3 interactSize;
+
     void Interact()
     {   
-        //Physics.OverlapBox();
+        List<TicketSO> tickets = new List<TicketSO>();
+        Collider[] colliders = Physics.OverlapBox(transform.position, interactSize);
         //Meter um physics box aqui que pega os objeto com tag ticket e filtra pelo nome pra puxar o ticket da lista.
 
-        //if(npcHit)
-        //{
-        //    object.GetComponent<Npc>().beginInteraction = true;
-        //}
+        foreach(Collider collider in colliders)
+        {
+            if(collider.gameObject.name.Contains("NPC"))
+            {
+                collider.gameObject.GetComponent<Npc>().beginInteraction = true;
+                return;
+            }
+            else if(collider.gameObject.name.Contains("Tic"))
+            {
+                tickets.Add(collider.gameObject.GetComponent<Ticket>().ticketSO);
+                Destroy(collider.gameObject);
+            }
+        }
 
-
-
-
-
-        //if(listaDeTickets.Count>0)
-        //{
-        //    foreach(TicketSO tic in listaDeTickets)
-        //    {
-        //        main.CollectTicket(tic);
-        //    }
-        //}
+        if(tickets.Count>0)
+        {
+            foreach(TicketSO tic in tickets)
+            {
+                Controller.instance.CollectTicket(tic);
+            }
+        }
     }
 
 

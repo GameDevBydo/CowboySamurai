@@ -14,7 +14,8 @@ public class SceneSetup : MonoBehaviour
 
     void Start()
     {
-        GenerateTickets(main.ticket1, main.ticket2);
+       main.tic1Pos = tic1Pos;
+       main.tic2Pos = tic2Pos;
     }
 
     public void NextScene()
@@ -40,12 +41,5 @@ public class SceneSetup : MonoBehaviour
     {
         main.ToggleOutline(id);
     }
-
-    public void GenerateTickets(TicketSO tic1, TicketSO tic2)
-    {
-        Instantiate(tic1.ticketModel, tic1Pos.position, tic1Pos.rotation);
-        Instantiate(tic2.ticketModel, tic2Pos.position, tic2Pos.rotation);
-    }
-
 
 }

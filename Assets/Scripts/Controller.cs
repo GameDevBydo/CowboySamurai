@@ -56,7 +56,7 @@ public class Controller : MonoBehaviour
                 timer = respawnTimer;
             }
         }
-        ChangeLevel();
+        ClearLevel();
         ScrollingIntro();
         if(isWriting) WriteText();
         if(Input.GetKeyDown(KeyCode.N)) LoadNextScene();
@@ -508,14 +508,21 @@ public class Controller : MonoBehaviour
 
     #region Level Completion  (será trocado por sistema de quest)
     public int enemiesDefeated;
-    public int killsNeeded;
+    public int killsNeeded = 10;
 
     public void ClearLevel()
     {
-        if(enemiesDefeated>=killsNeeded && currentScene!= 0)
+        if(!questClear)
         {
-            questClear = true;
-            nextLevel.SetActive(true);
+            if(enemiesDefeated>=killsNeeded && currentScene!= 0)
+            {
+                questClear = true;
+            }
+            if(questClear) 
+            {   
+                nextLevel.SetActive(true);
+                InstantiateTickets();
+            }
         }
     }
     #endregion
@@ -542,7 +549,7 @@ public class Controller : MonoBehaviour
     public GameObject ticketCollectedIcon;
     public GameObject ticketScreen;
     public Image ticket1Sprite, ticket2Sprite;
-    public TicketSO ticket1, ticket2;
+    public TicketSO ticket1 = null, ticket2 = null;
 
     public List<TicketSO> ticketsAvailable;
 
@@ -582,9 +589,11 @@ public class Controller : MonoBehaviour
 
     public void LoadSceneTicket(int id)
     {
+        Debug.Log(ticketsAvailable.Count);
         TicketSO ticketUsed = id==0 ? ticket1 : ticket2;
-        SceneManager.LoadScene(tickedUsed.ticketLevel);
+        SceneManager.LoadScene(ticketUsed.ticketLevel);
         ticketCollectedIcon.SetActive(false);
+        ChangeScreen(inGameScreen);
         ticket1 = null;
         ticket2 = null;
         questClear = false;
@@ -593,11 +602,37 @@ public class Controller : MonoBehaviour
         UpdateBulletBar(Player.instance.bulletBar);
         nextLevel.SetActive(false);
         killsNeeded = ticketUsed.ticketType==0 ? 10+currentScene*5 : 0;
+        ticketsAvailable.Remove(ticketUsed);
+        Debug.Log(ticketsAvailable.Count);
     }
 
+    [HideInInspector]
+    public Transform tic1Pos, tic2Pos;
     public void InstantiateTickets()
     {
+        TicketSO tic1, tic2;
         
+        int tic1id=0, tic2id=0;
+        if(ticketsAvailable.Count>=2)
+        {
+            while(tic1id==tic2id)
+            {
+                tic1id = UnityEngine.Random.Range(0, ticketsAvailable.Count);
+                tic2id = UnityEngine.Random.Range(0, ticketsAvailable.Count);
+            }
+
+            tic1 = ticketsAvailable[tic1id];
+            tic2 = ticketsAvailable[tic2id];
+
+            Instantiate(tic1.ticketModel, tic1Pos.position, tic1Pos.rotation);
+            Instantiate(tic2.ticketModel, tic2Pos.position, tic2Pos.rotation);    
+        }
+        else
+        {
+            tic1id = 0;
+            tic1 = ticketsAvailable[tic1id];
+            Instantiate(tic1.ticketModel, tic1Pos.position, tic1Pos.rotation);
+        }        
     }
 
     #endregion
