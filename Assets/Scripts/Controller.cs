@@ -44,10 +44,6 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
-            TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
-        } 
-        moneyText.text = money.ToString();
         if(currentScene != 0){
             timer -= Time.deltaTime;
             if(timer <=0 && enemiesInScene<=10)
@@ -56,6 +52,10 @@ public class Controller : MonoBehaviour
                 timer = respawnTimer;
             }
         }
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
+            TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
+        } 
+        moneyText.text = money.ToString();
         ClearLevel();
         ScrollingIntro();
         if(isWriting) WriteText();
