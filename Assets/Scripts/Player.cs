@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
         getHit = true;
         canDash = true;
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -148,7 +150,7 @@ public class Player : MonoBehaviour
                 animationName = "S";
             break;
             default:
-                Debug.Log("Change to state 1");
+                //Debug.Log("Change to state 1");
                 currentState = PlayerState.STANDING;
             break;
         }
@@ -171,7 +173,7 @@ public class Player : MonoBehaviour
             {
                 Vector3 knockbackForce = knockbackDirection * 5f * Time.fixedDeltaTime; 
                 controller.Move(knockbackForce);
-                Debug.Log(knockbackForce);
+                //Debug.Log(knockbackForce);
                 
             }
             else 
@@ -300,6 +302,8 @@ public class Player : MonoBehaviour
 
 
         #region Attacks
+
+        float timeAttack;
         public void CallAttack() // Pega um input e ativa o golpe relacionado a esse input.
         {
             if(groundedPlayer && currentState != PlayerState.DASHING)
@@ -329,13 +333,15 @@ public class Player : MonoBehaviour
                     if(bullet > 0)
                     {
                         SuperCollission(bullet-1);
-                        Debug.Log("Super de " + bullet + " balas");
+                        ///Debug.Log("Super de " + bullet + " balas");
                     }
                 } 
 
                 if(buttonPress)
                 {
+                    
                     CheckAttackCollision(comboSequence);
+                    
                     buttonPress = false;
                 }
             }
@@ -453,6 +459,10 @@ public class Player : MonoBehaviour
         #endregion
 
         #region OverlapBox create
+
+        public void CheckAttack(){
+            
+        }
         void CheckAttackCollision(string name) // Método para checar se o ataque colidiu com inimigos, e se sim, causar dano
         {
             for(int i= 0; i <moveList._attack.Length; i++)
@@ -477,7 +487,7 @@ public class Player : MonoBehaviour
 
                 for(int i = 0; i<attack.hitboxes.Length; i++)
                 {
-                    Debug.Log(attack.attackName);
+                    //Debug.Log(attack.attackName);
                     hitCollider.AddRange(Physics.OverlapBox(new Vector3((gameObject.transform.position.x + attack.hitboxes[i].startingPoint.x), gameObject.transform.position.y + attack.hitboxes[i].startingPoint.y, 
                     ((attack.hitboxes[i].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[i].startingPoint.z), attack.hitboxes[i].extension, gameObject.transform.rotation, m_EnemyLayer));
                 }
@@ -504,7 +514,8 @@ public class Player : MonoBehaviour
             }
             else
             {
-                comboSequence = "";
+                if(currentState != PlayerState.ATTACKING || currentState != PlayerState.SUPER)
+                    comboSequence = "";
             }
         }
 
@@ -525,7 +536,7 @@ public class Player : MonoBehaviour
 
                 for(int i = 0; i<attack.hitboxes.Length; i++)
                 {
-                    Debug.Log(attack.attackName);
+                    //Debug.Log(attack.attackName);
                     Vector3 p = gameObject.transform.position + attack.hitboxes[i].startingPoint;
                     p.z += attack.hitboxes[i].extension.z * 0.5f;
                     hitCollider.AddRange(Physics.OverlapBox(p, attack.hitboxes[i].extension, Quaternion.identity, m_EnemyLayer));
@@ -564,7 +575,8 @@ public class Player : MonoBehaviour
             }
             else
             {
-                comboSequence = "";
+                if(currentState != PlayerState.ATTACKING || currentState != PlayerState.SUPER)
+                    comboSequence = "";
             }
         }
         #endregion
@@ -645,7 +657,7 @@ public class Player : MonoBehaviour
         {
             SkillController.instance.UnlockSuper(i);
         }
-        Debug.Log("<color=green>Desbloqueou todos os golpes.</color>");
+        ///Debug.Log("<color=green>Desbloqueou todos os golpes.</color>");
     }
 
     void GainLifeCheat()
