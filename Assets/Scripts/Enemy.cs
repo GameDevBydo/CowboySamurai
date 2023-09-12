@@ -70,9 +70,6 @@ public class Enemy : MonoBehaviour
             //anim.SetBool("JumpKick", false);
             anim.SetTrigger("Punch");
             Hit(attackEnemy[0]);
-  
-
-            
         }
         if(33 <= currentAttack && currentAttack <= 50){
             //anim.SetBool("Punch", false);
