@@ -44,14 +44,7 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        if(currentScene != 0){
-            timer -= Time.deltaTime;
-            if(timer <=0 && enemiesInScene<=10)
-            {
-                StartSpawnEntities(UnityEngine.Random.Range(0,entities.Length),1,UnityEngine.Random.Range(0,spawns.Length));
-                timer = respawnTimer;
-            }
-        }
+        
         if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
         } 
@@ -253,26 +246,16 @@ public class Controller : MonoBehaviour
             if(playTutorial && currentScene == 0 && !tutorialDone)
             {
                 LoadScene(SceneManager.sceneCountInBuildSettings-2); // Lembrar de mudar para ser = a ultima cena que tem no projeto - 1
-                spawns[0].allowSpawn = false;
-                spawns[1].allowSpawn = false;
-                enemiesInScene = 0;
                 WriteCurrentSceneText();
             }
             else if(currentScene != playableScenes)
             {
                 LoadScene(sceneList[currentScene]);
-                spawns[0].allowSpawn = true;
-                spawns[1].allowSpawn = true;
-                enemiesInScene = 0;
-                currentScene++;
                 WriteCurrentSceneText();
             }
             else
             {
                 LoadScene(SceneManager.sceneCountInBuildSettings-1); // Lembrar de mudar para ser = a ultima cena que tem no projeto
-                spawns[0].allowSpawn = false;
-                spawns[1].allowSpawn = false;
-                enemiesInScene = 0;
                 currentScene++;
                 WriteCurrentSceneText();
             }
@@ -415,30 +398,13 @@ public class Controller : MonoBehaviour
     }
 
     #region Spawn Controller
-    public Spawn[] spawns;
     public GameObject[] entities;
     bool spawnTimer;
     public int enemiesInScene;
     private float respawnTimer = 0.7f;
     private float timer;
 
-    void SetSpawns()
-    {
-        spawns = new Spawn[transform.GetChild(2).childCount];
-        for(int i = 0; i< transform.GetChild(2).childCount; i++)
-        {
-            spawns[i] = transform.GetChild(2).GetChild(i).GetComponent<Spawn>();
-        }
-    }
-
-    public void StartSpawnEntities(int entityId, int quantity, int spawnId)
-    {
-        for(int i = 0; i < quantity; i++)
-        {
-            spawns[spawnId].SpawnEntity(entities[entityId]);
-            enemiesInScene++;
-        }
-    }
+   
     #endregion
 
     #region Death
@@ -462,7 +428,7 @@ public class Controller : MonoBehaviour
         currentScreen = GameObject.Find("Intro");
         enemiesInScene = 0;
         enemiesDefeated = 0;
-        SetSpawns();
+        
     }
 
     #region Updating Stats

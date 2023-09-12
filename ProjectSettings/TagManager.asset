@@ -10,6 +10,7 @@ TagManager:
   - coin
   - ground
   - ticket
+  - plane
   layers:
   - Default
   - TransparentFX

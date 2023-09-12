@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 220545830}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: ground
+  m_TagString: plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1203,6 +1203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 318295629}
+  - component: {fileID: 318295630}
   m_Layer: 0
   m_Name: Scenario
   m_TagString: Untagged
@@ -1228,6 +1229,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &318295630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318295628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98fea8ac7aca6a0408a60151c8352b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plane: {fileID: 0}
+  player: {fileID: 0}
+  prefabType1: {fileID: 1055206369884760288, guid: 3d7ad7b41648c154eb29a514a1a2352e,
+    type: 3}
+  prefabType2: {fileID: 1055206369884760288, guid: 3a67c7e96d6a2664d9d82e8f73193285,
+    type: 3}
+  prefabType3: {fileID: 1055206369884760288, guid: 67d602984b15ceb44a83a6bd71d5632e,
+    type: 3}
+  minDistanceToPlayer: 5
+  beginEnemies: 4
+  enemiesSpawn: 2
+  enemiesInScene: []
+  type1: 1
+  type2: 1
+  type3: 0
 --- !u!1 &370762467
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,7 +63,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        AttSpawnPosition();
         if(!Controller.instance.inputPause)
         {
             if(Input.GetKeyDown(KeyCode.Joystick1Button6) || Input.GetKeyDown(KeyCode.Z)){
@@ -158,11 +157,6 @@ public class Player : MonoBehaviour
         
     }
     #endregion
-
-    public void AttSpawnPosition(){
-        Controller.instance.spawns[0].transform.position = new Vector3(transform.position.x -10, 0, 0);
-        Controller.instance.spawns[1].transform.position = new Vector3(transform.position.x +10, 0, 0);
-    }
 
     public void KnockBack()
     {
