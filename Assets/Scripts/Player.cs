@@ -207,6 +207,7 @@ public class Player : MonoBehaviour
         if(input != Vector3.zero)
         {
             transform.forward = input;
+            
             if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING) && groundedPlayer) ChangePlayerState(2);
             //anim.SetBool("walking",true);
         }
@@ -339,8 +340,8 @@ public class Player : MonoBehaviour
 
                 if(buttonPress)
                 {
-                    
-                    CheckAttackCollision(comboSequence);
+                    if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f)
+                        CheckAttackCollision(comboSequence);
                     
                     buttonPress = false;
                 }
