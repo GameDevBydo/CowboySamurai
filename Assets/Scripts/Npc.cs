@@ -23,6 +23,9 @@ public class Npc : MonoBehaviour
     int currentLetter, currentSentence, currentEvent;
     float lettersCD, nextQuoteCD;
 
+    public bool canInteractAgain = true;
+
+    [HideInInspector]
     public bool beginInteraction;    
     UnityEvent endQuoteEvent;
     UnityEvent[] allQuoteEvents;
@@ -36,45 +39,47 @@ public class Npc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dist = Vector3.Distance(transform.position, Player.instance.transform.position);
-        if(dist <= distance)
-        {
-            if(!isWriting) prefab.SetActive(true);
-            else prefab.SetActive(false);
+        //dist = Vector3.Distance(transform.position, Player.instance.transform.position);
+        //if(dist <= distance)
+        //{
+        //    
+        //}
+        //else
+        //{
+        //    prefab.SetActive(false);
+        //}
+        if(!isWriting) prefab.SetActive(true);
+        else prefab.SetActive(false);
 
-            if(!isWriting)
+        if(!isWriting)
+        {
+            if(beginInteraction && canInteractAgain)
             {
-                if(beginInteraction)
+                if(npcType == 0)
                 {
-                    if(npcType == 0)
-                    {
-                        Controller.instance.shop.SetActive(true);
-                        Controller.instance.PauseFullGame();
-                    }
-                    if(npcType == 1)
-                    {
-                        StartWriting(quotes, endEvent);
-                    }
+                    Controller.instance.shop.SetActive(true);
+                    Controller.instance.PauseFullGame();
+                }
+                if(npcType == 1)
+                {
+                    StartWriting(quotes, endEvent);
+                    canInteractAgain = false;
                 }
             }
         }
-        else
-        {
-            prefab.SetActive(false);
-        }
+
         if(isWriting) WriteText();
     }
     
     void WriteText()
     {
-        Debug.Log(currentSentence);
-        Debug.Log(allQuotes.Length-1);
         if(quoteToWrite.Length == currentLetter)
         {
             if(currentSentence == allQuotes.Length-1)
             {
                 isWriting = false;
                 Invoke("StopWrite", 3f);
+                beginInteraction = false;
             }
             else
             {
@@ -107,7 +112,6 @@ public class Npc : MonoBehaviour
 
     public void StartWriting(string[] sentences, UnityEvent[] endEvent)
     {
-        Debug.Log(dialoguePanel.name);
         dialoguePanel.SetActive(true);
         dialogueText.text = "";
         currentSentence = 0;

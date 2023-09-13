@@ -334,7 +334,7 @@ public class Player : MonoBehaviour
 
                 if(buttonPress)
                 {
-                    if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f)
+                    //if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f)
                         CheckAttackCollision(comboSequence);
                     
                     buttonPress = false;
@@ -688,15 +688,14 @@ public class Player : MonoBehaviour
 
         foreach(Collider collider in colliders)
         {
-            if(collider.gameObject.name.Contains("NPC"))
-            {
-                collider.gameObject.GetComponent<Npc>().beginInteraction = true;
-                return;
-            }
-            else if(collider.gameObject.name.Contains("Tic"))
+            if(collider.gameObject.name.Contains("Tic"))
             {
                 tickets.Add(collider.gameObject.GetComponent<Ticket>().ticketSO);
                 Destroy(collider.gameObject);
+            }
+            else if(collider.gameObject.name.Contains("NPC"))
+            {
+                collider.gameObject.GetComponent<Npc>().beginInteraction = true;
             }
         }
 

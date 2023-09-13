@@ -42,4 +42,9 @@ public class SceneSetup : MonoBehaviour
         main.ToggleOutline(id);
     }
 
+    public void ClearLevel()
+    {
+        main.ClearLevel();
+    }
+
 }

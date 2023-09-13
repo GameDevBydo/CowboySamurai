@@ -17,5 +17,5 @@ MonoBehaviour:
   ticketSprite: {fileID: 21300000, guid: a52e4d2f5d1ef0c408e3d64f9b250d5f, type: 3}
   ticketName: "F\xFAria Verde"
   ticketDescription: Ticket para um destino de combate.
-  ticketLevel: b
+  ticketLevel: a 1
   ticketType: 0

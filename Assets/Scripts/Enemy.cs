@@ -155,6 +155,7 @@ public class Enemy : MonoBehaviour
         {
             Controller.instance.enemiesInScene--;
             Controller.instance.enemiesDefeated++;
+            Controller.instance.CheckClearCondition();
             Player.instance.exp += expDropped;
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));

@@ -49,7 +49,6 @@ public class Controller : MonoBehaviour
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
         } 
         moneyText.text = money.ToString();
-        ClearLevel();
         ScrollingIntro();
         if(isWriting) WriteText();
         if(Input.GetKeyDown(KeyCode.N)) LoadNextScene();
@@ -101,7 +100,7 @@ public class Controller : MonoBehaviour
     public void TogglePanel(GameObject panel)
     {
         auxScreen = EventSystem.current.firstSelectedGameObject;
-        Debug.Log(auxScreen);
+        //Debug.Log(auxScreen);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(panel.transform.GetChild(1).gameObject);
         panel.SetActive(!panel.activeSelf);
@@ -476,21 +475,24 @@ public class Controller : MonoBehaviour
     public int enemiesDefeated;
     public int killsNeeded = 10;
 
-    public void ClearLevel()
+    public void CheckClearCondition()
     {
         if(!questClear)
         {
             if(enemiesDefeated>=killsNeeded && currentScene!= 0)
             {
                 questClear = true;
-            }
-            if(questClear) 
-            {   
-                nextLevel.SetActive(true);
-                InstantiateTickets();
+                ClearLevel();
             }
         }
     }
+
+    public void ClearLevel()
+    {
+        nextLevel.SetActive(true);
+        InstantiateTickets();
+    }
+
     #endregion
 
     public void PauseFullGame(){
@@ -514,7 +516,8 @@ public class Controller : MonoBehaviour
     [Header("Tickets")]
     public GameObject ticketCollectedIcon;
     public GameObject ticketScreen;
-    public Image ticket1Sprite, ticket2Sprite;
+    public Image ticket1Sprite, ticket2Sprite; 
+    public Sprite ticketNoSprite;
     public TicketSO ticket1 = null, ticket2 = null;
 
     public List<TicketSO> ticketsAvailable;
@@ -553,10 +556,21 @@ public class Controller : MonoBehaviour
 
     }
 
+    void ClearTicketSprites()
+    {
+        ticket1Sprite.sprite = ticket1.ticketSprite;
+        ticket1Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket1.ticketName;
+        ticket1Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket1.ticketDescription;
+
+        ticket2Sprite.sprite = ticket2.ticketSprite;
+        ticket2Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket2.ticketName;
+        ticket2Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket2.ticketDescription;
+    }
+
     public void LoadSceneTicket(int id)
     {
-        Debug.Log(ticketsAvailable.Count);
         TicketSO ticketUsed = id==0 ? ticket1 : ticket2;
+        Debug.Log("Fase: "+ticketUsed.ticketLevel);
         SceneManager.LoadScene(ticketUsed.ticketLevel);
         ticketCollectedIcon.SetActive(false);
         ChangeScreen(inGameScreen);
@@ -567,9 +581,9 @@ public class Controller : MonoBehaviour
         UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
         UpdateBulletBar(Player.instance.bulletBar);
         nextLevel.SetActive(false);
-        killsNeeded = ticketUsed.ticketType==0 ? 10+currentScene*5 : 0;
+        killsNeeded = 10+currentScene*5;
         ticketsAvailable.Remove(ticketUsed);
-        Debug.Log(ticketsAvailable.Count);
+        //Debug.Log(ticketsAvailable.Count);
     }
 
     [HideInInspector]
