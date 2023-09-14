@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+
 public class Boss : MonoBehaviour 
 {
     #region variables
@@ -12,10 +13,15 @@ public class Boss : MonoBehaviour
     float baseLife = 250;
     float rageLife = 150;
     float normalLife = 100;
+    public float expDropped = 2.0f;
     private bool rageMode = false;
     private bool canAttack = false;
     private bool canDash = false;
     private bool getHit = false;
+    int currentAttack;
+    public Attack[] attackEnemy;
+    public LayerMask playerMask;
+    public float recoveryTimer = 5.0f;
 
     public GameObject bossPrefab;
     public GameObject player;
@@ -62,10 +68,12 @@ public class Boss : MonoBehaviour
             if (rageMode)
             {
                 speed = rageSpeed;
+                currentAttack = 0;
             }
             else
             {
                 speed = baseSpeed;
+                currentAttack = 0;
             }
         }
         if(player.transform.position.x < gameObject.transform.position.x)
@@ -82,16 +90,97 @@ public class Boss : MonoBehaviour
 
     #region Atack
 
-    int Attack()
+    void Attack()
     {
-        int damage = 0;
-        //cria um collider(?) em sua frente para o ataque 
-        return damage;
+        currentAttack = Random.Range(1,100);
+        
+        if(0 < currentAttack && currentAttack < 50){
+            //anim.SetBool("Punch", true);
+            //anim.SetBool("Kick", false);
+            //anim.SetBool("JumpKick", false);
+            anim.SetTrigger("a");
+            Hit(attackEnemy[0]);
+        }
+        if(33 <= currentAttack && currentAttack <= 50){
+            //anim.SetBool("Punch", false);
+            //anim.SetBool("Kick", true);
+            //anim.SetBool("JumpKick", false);
+            anim.SetTrigger("b");
+            Hit(attackEnemy[1]);
+            
+        }
+    }
+     void Hit(Attack attack)
+    {
+
+        //Use the OverlapBox to detect if there are any other colliders within this box area.
+        //Use the GameObject's centre, half the size (as a radius) and rotation. This creates an invisible box around your GameObject.
+        Collider[] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, 
+        ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, playerMask);
+        //Check when there is a new collider coming into contact with the box
+        foreach(Collider col in hitColliders)
+        {
+            if(Player.instance.getHit)
+            {
+                Player.instance.TakeDamage(attack.damage);
+                //
+            }
+        }
+        
+        canAttack = false;
+        recoveryTimer = Mathf.Max(recoveryTimer,attack.recovery);
+
     }
 
     bool isRage (bool rageMode)
     {
         return true;
+    }
+
+    void CheckDeath() // Método para checagem de morte
+    {
+        if(normalLife <= 0)
+        {
+            Player.instance.exp += expDropped;
+            //Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
+            //Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
+            Destroy(gameObject);
+        }
+        else if (rageLife <= 0)
+        {
+            Player.instance.exp += expDropped;
+            //Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
+            //Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
+            Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(int damage, float stun, AudioClip sfx) // Método para ser chamado ao levar dano
+    {   
+        if (rageMode)
+        {
+            rageLife -= damage;
+            //Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
+            //Debug.Log("HP Atual: " + hp);
+            //GetComponent<AudioSource>().clip = sfx;
+            //GetComponent<AudioSource>().Play();
+            //StartCoroutine(HitMaterialEffect());
+            CheckDeath();
+            recoveryTimer = Mathf.Max(stun, recoveryTimer);
+            anim.SetTrigger("");
+        }
+        else if (!rageMode)
+        {
+            normalLife -= damage;
+            //Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
+            //Debug.Log("HP Atual: " + hp);
+            //GetComponent<AudioSource>().clip = sfx;
+            //GetComponent<AudioSource>().Play();
+            //StartCoroutine(HitMaterialEffect());
+            CheckDeath();
+            recoveryTimer = Mathf.Max(stun, recoveryTimer);
+            anim.SetTrigger("");
+        }
     }
     #endregion
 
