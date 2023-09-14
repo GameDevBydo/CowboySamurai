@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
             Controller.instance.money+=coinValue;
             Destroy(gameObject);
         }
-        if(other.tag == "ground")
+        if(other.tag == "plane")
         {
             gravity = 0;
         }

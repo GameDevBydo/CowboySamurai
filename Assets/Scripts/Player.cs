@@ -183,12 +183,15 @@ public class Player : MonoBehaviour
     public void MovementPlayer()
     {
         //groundedPlayer = controller.isGrounded;
-        if(groundCheck <=0) groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+
+        if(groundCheck <=0) groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.5f);
         else
         {
             groundedPlayer = false;
             groundCheck-= Time.deltaTime;
         }
+
+        
         input.Set(Input.GetAxisRaw("Horizontal"),0,0);
         
         //Verifica se o player está tocando no chão
