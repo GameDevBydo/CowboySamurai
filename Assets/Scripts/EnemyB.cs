@@ -16,9 +16,11 @@ public class EnemyB : MonoBehaviour
     public int pickHit;
     public float recoveryTime = 5.0f;
     public Attack[] attackEnemy;
+    public bool canAttack;
 
     [Header("Moving")]
     public GameObject player;
+    public float distance;
     public  float speed;
     public Vector3 playerPos;
     public bool canFollow;
@@ -37,7 +39,8 @@ public class EnemyB : MonoBehaviour
         Idle,
         Moving,
         Attacking,
-        Hitstun
+        Hitstun,
+        Dash
     }
     // Start is called before the first frame update
     void Awake()
@@ -55,30 +58,26 @@ public class EnemyB : MonoBehaviour
         EnemyState();
         recoveryTime -= Time.deltaTime;
         StartFollowPlayer();
-        /*if(canAttack){
-            ChangeState(State.Attacking);
-            pickHit = Random.Range(0, 100);
-            recoveryTime = 5.0f;
-        }*/
     }
 
     void EnemyState(){
         switch(currentState){
             case State.Idle:
-                //Debug.Log("Idle");
                 anim.Play("Idle");
             break;
             case State.Moving:
                 FollowPlayer();
             break;
             case State.Attacking:
-                //Debug.Log("Attacking");
                 ChoiceHit();
                 CheckEndAnimation();
             break;
             case State.Hitstun:
                 anim.Play("Hitstun");
             break;
+            case State.Dash:
+                anim.Play("Dash");
+                break;
             default:
                 ChangeState(State.Idle);
                 anim.Play("idle");
@@ -91,13 +90,19 @@ public class EnemyB : MonoBehaviour
     }
 
     public void CreateHit(string nameAnimation, Attack attack){
-        Collider [] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, 
-        ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, Quaternion.identity, m_LayerMask);
-        int i = 0;
-        while(i<hitColliders.Length){
-            i++;
-        }
         anim.Play(nameAnimation);
+        if(canAttack){
+            Collider [] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, 
+            ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, Quaternion.identity, m_LayerMask);
+            foreach(Collider col in hitColliders)
+            {
+                if(Player.instance.getHit)
+                {
+                    Player.instance.TakeDamage(attack.damage);
+                }
+            }
+            canAttack = false;
+        }
     }
 
     public void CheckEndAnimation(){
@@ -109,33 +114,38 @@ public class EnemyB : MonoBehaviour
     public void ChoiceHit(){
         if(pickHit < 0 && pickHit < 33){
             CreateHit("Hit1", attackEnemy[0]);
+            recoveryTime = attackEnemy[0].recovery;
         }else if(pickHit >= 33 && pickHit <= 66){
             CreateHit("Hit2", attackEnemy[1]);
+            recoveryTime = attackEnemy[1].recovery;
         }else if(pickHit>66){
             CreateHit("Hit3", attackEnemy[2]);
+            recoveryTime = attackEnemy[2].recovery;
         }
     }
 
     void OnDrawGizmos()
     {
-        if(pickHit < 0 && pickHit < 33){
-            Gizmos.color = Color.red;        
-            if (m_Started)
-                //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[0].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[0].hitboxes[0].startingPointEnemy.y, 
-        ((attackEnemy[0].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[0].hitboxes[0].startingPointEnemy.z), attackEnemy[0].hitboxes[0].extension);
-        }else if(pickHit >= 33 && pickHit <= 66){
-            Gizmos.color = Color.blue;        
-            if (m_Started)
-                //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[1].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[1].hitboxes[0].startingPointEnemy.y, 
-        ((attackEnemy[1].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[1].hitboxes[0].startingPointEnemy.z), attackEnemy[1].hitboxes[0].extension);
-        }else if(pickHit>66){
-            Gizmos.color = Color.green;        
-            if (m_Started)
-                //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[2].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[2].hitboxes[0].startingPointEnemy.y, 
-        ((attackEnemy[2].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[2].hitboxes[0].startingPointEnemy.z), attackEnemy[2].hitboxes[0].extension);
+        if(canAttack){
+            if(pickHit < 0 && pickHit < 33){
+                Gizmos.color = Color.red;        
+                if (m_Started)
+                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[0].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[0].hitboxes[0].startingPointEnemy.y, 
+                    ((attackEnemy[0].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[0].hitboxes[0].startingPointEnemy.z), attackEnemy[0].hitboxes[0].extension);
+            }else if(pickHit >= 33 && pickHit <= 66){
+                Gizmos.color = Color.blue;        
+                if (m_Started)
+                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[1].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[1].hitboxes[0].startingPointEnemy.y, 
+                        ((attackEnemy[1].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[1].hitboxes[0].startingPointEnemy.z), attackEnemy[1].hitboxes[0].extension);
+            }else if(pickHit>66){
+                Gizmos.color = Color.green;        
+                if (m_Started)
+                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                    Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[2].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[2].hitboxes[0].startingPointEnemy.y, 
+                    ((attackEnemy[2].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[2].hitboxes[0].startingPointEnemy.z), attackEnemy[2].hitboxes[0].extension);
+            }
         }
     }
 
@@ -155,16 +165,25 @@ public class EnemyB : MonoBehaviour
     }
 
     void StartFollowPlayer(){
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        distance = Vector3.Distance(transform.position, player.transform.position);
         if(distance<=target && canFollow){
             ChangeState(State.Moving);
         }
         if(distance<=targetStop && distance>=-targetStop){
             canFollow = false;
+
+            if(transform.position.x < player.transform.position.x)
+                if(!EnemyController.instance.leftEnemies.Contains(gameObject))
+                    EnemyController.instance.leftEnemies.Add(gameObject);
+
+            if(transform.position.x > player.transform.position.x)
+                if(!EnemyController.instance.rightEnemies.Contains(gameObject))
+                    EnemyController.instance.rightEnemies.Add(gameObject);
+
             if(recoveryTime<=0){
                 ChangeState(State.Attacking);
                 pickHit = Random.Range(0, 100);
-                recoveryTime = 2.0f;
+                canAttack = true;
             }
         }else{
             canFollow = true;
@@ -181,13 +200,13 @@ public class EnemyB : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage, float stun, AudioClip sfx){
+    public void TakeDamage(int damage, float stun, AudioClip sfx){
         hp-=damage;
         Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
         //Debug.Log("HP Atual: " + hp);
         GetComponent<AudioSource>().clip = sfx;
         GetComponent<AudioSource>().Play();
-        StartCoroutine(HitMaterialEffect());
+        //StartCoroutine(HitMaterialEffect());
         CheckDeath();
     }
 
@@ -197,5 +216,7 @@ public class EnemyB : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         rend.material = baseMat;
     }
+
+
 
 }

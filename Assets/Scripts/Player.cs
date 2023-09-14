@@ -478,7 +478,7 @@ public class Player : MonoBehaviour
                 // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
                 // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
                 List<Collider> hitCollider = new List<Collider>();
-                List<Enemy> enemiesHit = new List<Enemy>();
+                List<EnemyB> enemiesHit = new List<EnemyB>();
 
                 for(int i = 0; i<attack.hitboxes.Length; i++)
                 {
@@ -489,10 +489,10 @@ public class Player : MonoBehaviour
 
                 foreach (Collider col in hitCollider)
                 {
-                    if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
+                    if(!enemiesHit.Contains(col.gameObject.GetComponent<EnemyB>())) enemiesHit.Add(col.gameObject.GetComponent<EnemyB>());
                 }
 
-                foreach(Enemy en in enemiesHit)
+                foreach(EnemyB en in enemiesHit)
                 {
                     IncreaseComboCounter();
                     en.TakeDamage(attack.damage, attack.stun, attack.sfx);

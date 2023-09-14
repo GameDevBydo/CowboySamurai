@@ -1228,8 +1228,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220545829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 10}
-  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_LocalPosition: {x: -5.7516, y: -1, z: 10}
+  m_LocalScale: {x: 3.6322489, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 318295629}
@@ -1333,6 +1333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 318295629}
   - component: {fileID: 318295630}
+  - component: {fileID: 318295631}
   m_Layer: 0
   m_Name: Scenario
   m_TagString: Untagged
@@ -1372,19 +1373,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 0}
   player: {fileID: 0}
-  prefabType1: {fileID: 1055206369884760288, guid: 3d7ad7b41648c154eb29a514a1a2352e,
+  prefabType1: {fileID: 4963275425591282280, guid: 3f0887571531a7a47b93d7e32d8a11c9,
     type: 3}
-  prefabType2: {fileID: 1055206369884760288, guid: 3a67c7e96d6a2664d9d82e8f73193285,
+  prefabType2: {fileID: 4963275425591282280, guid: 3f0887571531a7a47b93d7e32d8a11c9,
     type: 3}
-  prefabType3: {fileID: 1055206369884760288, guid: 67d602984b15ceb44a83a6bd71d5632e,
+  prefabType3: {fileID: 4963275425591282280, guid: 3f0887571531a7a47b93d7e32d8a11c9,
     type: 3}
-  minDistanceToPlayer: 5
+  minDistanceToPlayer: 3
   beginEnemies: 4
-  enemiesSpawn: 2
+  enemiesSpawn: 6
   enemiesInScene: []
   type1: 1
   type2: 1
   type3: 0
+--- !u!114 &318295631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318295628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6210df0184d033947aafc279b04cd1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftEnemies: []
+  rightEnemies: []
 --- !u!1001 &456822550
 PrefabInstance:
   m_ObjectHideFlags: 0

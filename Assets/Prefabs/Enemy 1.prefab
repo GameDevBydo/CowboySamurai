@@ -258,19 +258,27 @@ MonoBehaviour:
   anim: {fileID: 6956019377057021394}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   pickHit: 0
   recoveryTime: 2
-  player: {fileID: 0}
-  speed: 1
-  playerPos: {x: 0, y: 0, z: 0}
   attackEnemy:
   - {fileID: 11400000, guid: a2c14b87e7a2d4f758f377073b7388e9, type: 2}
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
+  canAttack: 0
+  player: {fileID: 0}
+  distance: 0
+  speed: 1
+  playerPos: {x: 0, y: 0, z: 0}
   canFollow: 0
   target: 5
   targetStop: 0.8
+  hp: 50
+  expDropped: 0.5
+  deathPS: {fileID: 7471442581379728010, guid: 89971e4de0b250148a5b9ef2a2c651d5, type: 3}
+  hitPS: {fileID: 7471442581379728010, guid: 96f0f0fd616dbf94abdbb61bc60ce24f, type: 3}
+  baseMat: {fileID: 2100000, guid: 69663aed3b034439394cfc45cdb26638, type: 2}
+  hitMat: {fileID: 2100000, guid: 636102617bce3884baf8ecec0753561e, type: 2}
 --- !u!1001 &3594483200551223363
 PrefabInstance:
   m_ObjectHideFlags: 0

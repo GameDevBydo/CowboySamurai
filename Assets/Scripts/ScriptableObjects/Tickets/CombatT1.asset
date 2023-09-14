@@ -15,6 +15,7 @@ MonoBehaviour:
   ticketModel: {fileID: 6627183123449876549, guid: 07e4a61e4a5c7ac4d85d98471ffdcdf9,
     type: 3}
   ticketSprite: {fileID: 21300000, guid: 520396d27f45e5d4ebc11c2ce6e502bb, type: 3}
+  HighlightedSprite: {fileID: 0}
   ticketName: Dor Carmesim
   ticketDescription: Ticket para um destino de combate.
   ticketLevel: a

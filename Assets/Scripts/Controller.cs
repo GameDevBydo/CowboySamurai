@@ -517,6 +517,8 @@ public class Controller : MonoBehaviour
     public GameObject ticketCollectedIcon;
     public GameObject ticketScreen;
     public Image ticket1Sprite, ticket2Sprite; 
+    public SpriteState ticket1High, ticket2High;
+    public Button ticket1Button, ticket2Button;
     public Sprite ticketNoSprite;
     public TicketSO ticket1 = null, ticket2 = null;
 
@@ -544,12 +546,16 @@ public class Controller : MonoBehaviour
         if(id==0)
         {
             ticket1Sprite.sprite = ticket1.ticketSprite;
+            ticket1High.highlightedSprite = ticket1.HighlightedSprite;
+            ticket1Button.spriteState = ticket1High;
             ticket1Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket1.ticketName;
             ticket1Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket1.ticketDescription;
         }
         else
         {
             ticket2Sprite.sprite = ticket2.ticketSprite;
+            ticket2High.highlightedSprite = ticket2.HighlightedSprite;
+            ticket2Button.spriteState = ticket2High;
             ticket2Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket2.ticketName;
             ticket2Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket2.ticketDescription;
         }

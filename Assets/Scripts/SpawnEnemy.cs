@@ -1,11 +1,15 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+
+
 
 public class SpawnEnemy : MonoBehaviour
 {
-
+    public static SpawnEnemy instance;
     public GameObject plane,player,prefabType1,prefabType2,prefabType3;
     private Vector3 startPlane,center,endPlane,size;
 
@@ -28,6 +32,7 @@ public class SpawnEnemy : MonoBehaviour
     
     void Start()
     {
+        instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
 
         if(type1)
@@ -102,3 +107,4 @@ public class SpawnEnemy : MonoBehaviour
         
     
 }
+

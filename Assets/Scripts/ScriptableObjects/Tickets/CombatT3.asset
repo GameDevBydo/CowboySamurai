@@ -15,6 +15,7 @@ MonoBehaviour:
   ticketModel: {fileID: 6627183123449876549, guid: 1774c2181d6501248a8d369f68670dae,
     type: 3}
   ticketSprite: {fileID: 21300000, guid: ec6c52b62cbb3a44dbceee74133c4d7e, type: 3}
+  HighlightedSprite: {fileID: 0}
   ticketName: Bleh Cinza
   ticketDescription: Ticket para um destino de combate.
   ticketLevel: a 2
