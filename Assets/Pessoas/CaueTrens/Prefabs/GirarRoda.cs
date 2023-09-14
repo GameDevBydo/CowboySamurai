@@ -9,6 +9,6 @@ public class GirarRoda : MonoBehaviour
     void Update()
     {
         // Gira a roda em torno do eixo Y
-        transform.Rotate(Vector3.up, velocidade * Time.deltaTime);
+        //transform.Rotate(Vector3.up, velocidade * Time.deltaTime);
     }
 }
