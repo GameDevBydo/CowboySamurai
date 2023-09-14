@@ -18,6 +18,7 @@ public class Controller : MonoBehaviour
 
     public int money = 0;
     public TextMeshProUGUI moneyText;
+
     void Awake()
     {
         BasicSetup();
@@ -48,6 +49,10 @@ public class Controller : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
         } 
+        if(Input.GetKeyDown(KeyCode.Alpha1)){
+            ChangeScreen(skillTreePanel);
+            PauseFullGame();
+        }
         moneyText.text = money.ToString();
         ScrollingIntro();
         if(isWriting) WriteText();
@@ -473,7 +478,7 @@ public class Controller : MonoBehaviour
 
     #region Level Completion  (será trocado por sistema de quest)
     public int enemiesDefeated;
-    public int killsNeeded = 10;
+    public int killsNeeded = 7;
 
     public void CheckClearCondition()
     {
@@ -517,7 +522,7 @@ public class Controller : MonoBehaviour
     public GameObject ticketCollectedIcon;
     public GameObject ticketScreen;
     public Image ticket1Sprite, ticket2Sprite; 
-    public SpriteState ticket1High, ticket2High;
+    private SpriteState ticket1High, ticket2High;
     public Button ticket1Button, ticket2Button;
     public Sprite ticketNoSprite;
     public TicketSO ticket1 = null, ticket2 = null;
@@ -578,6 +583,7 @@ public class Controller : MonoBehaviour
         TicketSO ticketUsed = id==0 ? ticket1 : ticket2;
         Debug.Log("Fase: "+ticketUsed.ticketLevel);
         SceneManager.LoadScene(ticketUsed.ticketLevel);
+        currentScene++;
         ticketCollectedIcon.SetActive(false);
         ChangeScreen(inGameScreen);
         ticket1 = null;
@@ -587,7 +593,7 @@ public class Controller : MonoBehaviour
         UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
         UpdateBulletBar(Player.instance.bulletBar);
         nextLevel.SetActive(false);
-        killsNeeded = 10+currentScene*5;
+        killsNeeded = 5+currentScene*5;
         ticketsAvailable.Remove(ticketUsed);
         //Debug.Log(ticketsAvailable.Count);
     }

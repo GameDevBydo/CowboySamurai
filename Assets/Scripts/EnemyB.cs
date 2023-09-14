@@ -194,6 +194,13 @@ public class EnemyB : MonoBehaviour
         if(hp <= 0)
         {
             Player.instance.exp += expDropped;
+            Controller.instance.enemiesDefeated++;
+            Controller.instance.CheckClearCondition();
+            if(transform.position.x < player.transform.position.x) 
+                EnemyController.instance.leftEnemies.Remove(gameObject);
+
+            if(transform.position.x > player.transform.position.x)
+                EnemyController.instance.rightEnemies.Remove(gameObject);
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
             Destroy(gameObject);
