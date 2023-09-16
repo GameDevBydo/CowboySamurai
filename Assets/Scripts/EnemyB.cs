@@ -169,6 +169,7 @@ public class EnemyB : MonoBehaviour
         if(distance<=target && canFollow){
             ChangeState(State.Moving);
         }
+        
         if(distance<=targetStop && distance>=-targetStop){
             canFollow = false;
 

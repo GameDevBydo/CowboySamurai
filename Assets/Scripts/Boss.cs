@@ -129,7 +129,6 @@ public class Boss : MonoBehaviour
         
         canAttack = false;
         recoveryTimer = Mathf.Max(recoveryTimer,attack.recovery);
-
     }
 
     bool isRage (bool rageMode)
@@ -234,19 +233,19 @@ enum BossState
     
     #region IEnumerator
     IEnumerator DashCD()
-        {
-            canDash = false;
-            getHit = false;
-            //rend.material = dashMat;
-            ChangeBossState(5);
-            gameObject.layer = LayerMask.NameToLayer("Dash");
-            yield return new WaitForSeconds(0.35f);
-            ChangeBossState(1);
-            gameObject.layer = LayerMask.NameToLayer("Boss");
-            getHit = true;
-            canDash = true;
-            //rend.material = baseMat;
-        }
+    {
+        canDash = false;
+        getHit = false;
+        //rend.material = dashMat;
+        ChangeBossState(5);
+        gameObject.layer = LayerMask.NameToLayer("Dash");
+        yield return new WaitForSeconds(0.35f);
+        ChangeBossState(1);
+        gameObject.layer = LayerMask.NameToLayer("Boss");
+        getHit = true;
+        canDash = true;
+        //rend.material = baseMat;
+    }
     
     #endregion
 }
