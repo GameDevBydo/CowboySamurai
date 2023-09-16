@@ -56,7 +56,7 @@ public class Controller : MonoBehaviour
         moneyText.text = money.ToString();
         ScrollingIntro();
         if(isWriting) WriteText();
-        if(Input.GetKeyDown(KeyCode.N)) LoadNextScene();
+        //if(Input.GetKeyDown(KeyCode.N)) LoadNextScene();
     }
 
     public void StartGame(GameObject screen)
@@ -68,7 +68,8 @@ public class Controller : MonoBehaviour
         ChangeGameStates(1);
         inputPause = false; // Trocar para tocar pós animação
         playerPause = false;
-        LoadNextScene();
+        currentScene = 0;
+        LoadScene(SceneManager.sceneCountInBuildSettings-2);
         ChangeScreen(screen);
         Player.instance.hitPoints = Player.instance.maxHP;
         Player.instance.bulletBar = 0;
@@ -245,25 +246,15 @@ public class Controller : MonoBehaviour
             inputPause = true;
         }
         // Carrega a proxima cena da lista ja seedada
-        public void LoadNextScene()
-        {
-            if(playTutorial && currentScene == 0 && !tutorialDone)
-            {
-                LoadScene(SceneManager.sceneCountInBuildSettings-2); // Lembrar de mudar para ser = a ultima cena que tem no projeto - 1
-                WriteCurrentSceneText();
-            }
-            else if(currentScene != playableScenes)
-            {
-                LoadScene(sceneList[currentScene]);
-                WriteCurrentSceneText();
-            }
-            else
-            {
-                LoadScene(SceneManager.sceneCountInBuildSettings-1); // Lembrar de mudar para ser = a ultima cena que tem no projeto
-                currentScene++;
-                WriteCurrentSceneText();
-            }
-        }
+        //public void LoadNextScene()
+        //{
+        //    if(playTutorial && currentScene == 0)
+        //    {
+        //        LoadScene(SceneManager.sceneCountInBuildSettings-2); // Lembrar de mudar para ser = a ultima cena que tem no projeto - 1
+        //        WriteCurrentSceneText();
+        //    }
+        //}
+
     #endregion
 
     #region Player
@@ -581,7 +572,6 @@ public class Controller : MonoBehaviour
     public void LoadSceneTicket(int id)
     {
         TicketSO ticketUsed = id==0 ? ticket1 : ticket2;
-        Debug.Log("Fase: "+ticketUsed.ticketLevel);
         SceneManager.LoadScene(ticketUsed.ticketLevel);
         currentScene++;
         ticketCollectedIcon.SetActive(false);
@@ -595,7 +585,6 @@ public class Controller : MonoBehaviour
         nextLevel.SetActive(false);
         killsNeeded = 5+currentScene*5;
         ticketsAvailable.Remove(ticketUsed);
-        //Debug.Log(ticketsAvailable.Count);
     }
 
     [HideInInspector]
