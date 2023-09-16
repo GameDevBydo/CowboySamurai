@@ -71,3 +71,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84094c2aa3540784a9b0cc7853a16ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  expDropped: 2
+  attackEnemy: []
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  recoveryTimer: 5
+  bossPrefab: {fileID: 4235761779175157995}
+  player: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
+  speed: 0
+  baseSpeed: 5
+  rageSpeed: 7
