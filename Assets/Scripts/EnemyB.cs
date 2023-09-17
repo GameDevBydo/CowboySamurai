@@ -25,6 +25,7 @@ public class EnemyB : MonoBehaviour
     public Vector3 playerPos;
     public bool canFollow;
     public float target, targetStop;
+    public bool foundPlayer;
 
     [Header("Stats Enemy")]
     public int hp = 50;
@@ -170,6 +171,7 @@ public class EnemyB : MonoBehaviour
             ChangeState(State.Moving);
         }
         
+        
         if(distance<=targetStop && distance>=-targetStop){
             canFollow = false;
 
@@ -187,8 +189,21 @@ public class EnemyB : MonoBehaviour
                 canAttack = true;
             }
         }else{
+            AttPositionList();
             canFollow = true;
         }
+    }
+
+    void AttPositionList(){
+        
+        if(EnemyController.instance.rightEnemies.Contains(gameObject)){
+            EnemyController.instance.rightEnemies.Remove(gameObject);
+        }
+    
+        if(EnemyController.instance.leftEnemies.Contains(gameObject)){
+            EnemyController.instance.leftEnemies.Remove(gameObject);
+        }
+        
     }
 
     void CheckDeath(){
