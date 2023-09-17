@@ -482,6 +482,7 @@ public class Player : MonoBehaviour
                 // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
                 List<Collider> hitCollider = new List<Collider>();
                 List<EnemyB> enemiesHit = new List<EnemyB>();
+                List<Boss> bossHit = new List<Boss>();
 
                 for(int i = 0; i<attack.hitboxes.Length; i++)
                 {
@@ -494,6 +495,10 @@ public class Player : MonoBehaviour
                 {
                     if(!enemiesHit.Contains(col.gameObject.GetComponent<EnemyB>())) enemiesHit.Add(col.gameObject.GetComponent<EnemyB>());
                 }
+                foreach (Collider col in hitCollider)
+                {
+                    if(!bossHit.Contains(col.gameObject.GetComponent<Boss>())) bossHit.Add(col.gameObject.GetComponent<Boss>());
+                }
 
                 foreach(EnemyB en in enemiesHit)
                 {
@@ -501,8 +506,20 @@ public class Player : MonoBehaviour
                     en.TakeDamage(attack.damage, attack.stun, attack.sfx);
                     ChangeMeter(attack.meterGen);
                 }
+                foreach(Boss bs in bossHit)
+                {
+                    IncreaseComboCounter();
+                    bs.TakeDamage(attack.damage, attack.stun, attack.sfx);
+                    ChangeMeter(attack.meterGen);
+                }
+
                 recoveryTimer = attack.recovery;
                 if(enemiesHit.Count>0) 
+                {
+                    attack.hit = true;
+                    PlayHitSound();
+                }
+                if(bossHit.Count>0) 
                 {
                     attack.hit = true;
                     PlayHitSound();
