@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9044bc4d8c39640539bbfa62e1942ecf, type: 3}
-  m_Name: BossSimpleAttack
+  m_Name: BossAerialAttack
   m_EditorClassIdentifier: 
   attackName: 
   hitboxes:
-  - {fileID: 11400000, guid: cba2c688d7c94f847aa667b8d3ef4450, type: 2}
-  damage: 20
+  - {fileID: 11400000, guid: 46d74370fb94b23439a48be5ef57899a, type: 2}
+  damage: 30
   hit: 0
   startUp: 0
-  recovery: 6
+  recovery: 30
   stun: 0
   knockbackRatio: 0
   knockupRatio: 0

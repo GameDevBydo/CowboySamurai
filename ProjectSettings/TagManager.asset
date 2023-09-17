@@ -12,6 +12,7 @@ TagManager:
   - ticket
   - plane
   - Boss
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Player
   - Dash
   - Boss
-  - 
+  - Projectile
   - 
   - 
   - 

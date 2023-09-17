@@ -21,19 +21,31 @@ public class Boss : MonoBehaviour
     [Header ("Boss States")]
     private bool rageMode = false;
     private bool canAttack = false;
-    private bool canDash = false;
+
+    [Header ("Object Pool")]
+    public GameObject projectilePrefab;
+    public List<Projectile> projectilePool = new List<Projectile>();
+    public int poolSize = 6; // number os objs in scene at the same time
+
+
     bool m_Started;
     private SkinnedMeshRenderer rend;
+
+    [Header ("Projectile")]
+    float limitX = 50.0f;
+    float limitY = 50.0f;
+    float projectileTimer = 100.0f;
 
     int currentAttack;
     public Attack[] attackEnemy;
     public LayerMask playerMask;
-    public float recoveryTimer = 5.0f;
+    public float recoveryTimer = 30.0f;
 
     public ParticleSystem deathPS, hitPS;
     public Material baseMat, hitMat;
 
-    private GameObject player;
+    public GameObject player;
+
 
     private float distance;
 
@@ -43,23 +55,36 @@ public class Boss : MonoBehaviour
 
     private void Awake() 
     {
+        projectilePrefab = GameObject.FindGameObjectWithTag("Projectile");
         player = GameObject.FindGameObjectWithTag("Player");
+
         rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
     }
     void Start()
     {
         m_Started = true;  
         controller = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
+    }
+    private void Update() 
+    {
+        recoveryTimer -= Time.deltaTime;
+        CheckDistance();
     }
     private void FixedUpdate() 
     {
-
+    
     }
     void CheckDistance()
     {   
-        if (distance <= 1.5f)
+        distance = Vector3.Distance(transform.position, player.transform.position);
+        if (distance <= 10.0f)
         {
+            if (recoveryTimer <= 0)
+            {
+                canAttack = true;
+            }
+            
             if (canAttack)
             {
                 Attack();
@@ -67,14 +92,7 @@ public class Boss : MonoBehaviour
         }
         else
         {
-            if (rageMode)
-            {
-                currentAttack = 0;
-            }
-            else
-            {
-                currentAttack = 0;
-            }
+            //do rage
         }
         /* later use if boss is not at  the end of the train
         if(player.transform.position.x < gameObject.transform.position.x)
@@ -94,13 +112,43 @@ public class Boss : MonoBehaviour
 
     void Attack()
     {
-        currentAttack = Random.Range(1,50);
+        currentAttack = Random.Range(1,200);
         
-        if(0 < currentAttack && currentAttack < 50){
+        if(0 < currentAttack && currentAttack < 50)
+        {
             ChangeBossState(2);
+            WaitSecs();
             Hit(attackEnemy[0]);
+            Debug.Log("1");
+            recoveryTimer = attackEnemy[0].recovery;
         }
+        else if(49 < currentAttack && currentAttack < 100)
+        {
+            ChangeBossState(2);
+            WaitSecs();
+            Hit(attackEnemy[1]);
+            Debug.Log("2");
+            recoveryTimer = attackEnemy[1].recovery;
+        }
+        else if(99 < currentAttack && currentAttack < 150)
+        {
+            ChangeBossState(2);
+            WaitSecs();
+            Hit(attackEnemy[2]);
+            Debug.Log("3");
+            recoveryTimer = attackEnemy[2].recovery;
+        }
+        else if (149 < currentAttack && currentAttack < 200)
+        {
+            if (canAttack)
+            {
+        
+            }
+        }
+        CheckEndAnimation();
     }
+
+
      void Hit(Attack attack)
     {
         if (canAttack)
@@ -119,11 +167,7 @@ public class Boss : MonoBehaviour
             recoveryTimer = Mathf.Max(recoveryTimer,attack.recovery);
         }
     }
-    public void ChoiceHit()
-    {
-        Hit(attackEnemy[0]);
-        recoveryTimer = attackEnemy[0].recovery;
-    }
+    
     void OnDrawGizmos()
     {
         if(canAttack)
@@ -131,9 +175,24 @@ public class Boss : MonoBehaviour
             Gizmos.color = Color.red;        
             if (m_Started)
             {
-                //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                if (0 < currentAttack && currentAttack < 50)
+                {
+                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
                 Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[0].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[0].hitboxes[0].startingPointEnemy.y, 
                 ((attackEnemy[0].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[0].hitboxes[0].startingPointEnemy.z), attackEnemy[0].hitboxes[0].extension);
+                }
+                else if (49 < currentAttack && currentAttack < 100)
+                {
+                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[1].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[1].hitboxes[0].startingPointEnemy.y, 
+                ((attackEnemy[1].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[1].hitboxes[0].startingPointEnemy.z), attackEnemy[1].hitboxes[0].extension);
+                }
+                else if (99 < currentAttack && currentAttack < 150)
+                {
+                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[2].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[2].hitboxes[0].startingPointEnemy.y, 
+                ((attackEnemy[2].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[2].hitboxes[0].startingPointEnemy.z), attackEnemy[2].hitboxes[0].extension);
+                }
             }
         }
 
@@ -223,12 +282,12 @@ enum BossState
             break;
             case 1:
                 currentState = BossState.STANDING;
-                animationName = "idle";
+                animationName = "Idle";
             break;
             case 2:
                 currentState = BossState.ATTACKING;
-                animationName = "Punch";
-                CheckEndAnimation();
+                animationName = "Hit1";
+                //CheckEndAnimation();
             break;
             default:
                 //Debug.Log("Change to state 1");
@@ -238,4 +297,8 @@ enum BossState
         anim.Play(animationName);
     }
     #endregion
+    public IEnumerator WaitSecs()
+    {
+        yield return new WaitForSeconds(1.0f);
+    }
 }

@@ -494,10 +494,7 @@ public class Player : MonoBehaviour
                 foreach (Collider col in hitCollider)
                 {
                     if(!enemiesHit.Contains(col.gameObject.GetComponent<EnemyB>())) enemiesHit.Add(col.gameObject.GetComponent<EnemyB>());
-                }
-                foreach (Collider col in hitCollider)
-                {
-                    if(!bossHit.Contains(col.gameObject.GetComponent<Boss>())) bossHit.Add(col.gameObject.GetComponent<Boss>());
+                    else if(!bossHit.Contains(col.gameObject.GetComponent<Boss>())) bossHit.Add(col.gameObject.GetComponent<Boss>());
                 }
 
                 foreach(EnemyB en in enemiesHit)
