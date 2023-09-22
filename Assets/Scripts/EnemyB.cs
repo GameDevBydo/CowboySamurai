@@ -36,6 +36,15 @@ public class EnemyB : MonoBehaviour
     public Material baseMat, hitMat;
     private SkinnedMeshRenderer rend;
 
+    [Header("Hitstun")]
+    float _timerHitstun;
+
+    [Header("Ataque")]
+    float timerAttack;
+    float startUp;
+    float timeoutAttack;
+
+
     public enum State{
         Idle,
         Moving,
@@ -47,6 +56,7 @@ public class EnemyB : MonoBehaviour
     void Awake()
     {
         player = Player.instance.gameObject;
+        rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
     }
     void Start()
     {
@@ -58,7 +68,8 @@ public class EnemyB : MonoBehaviour
     {
         EnemyState();
         recoveryTime -= Time.deltaTime;
-        StartFollowPlayer();
+        if(currentState != State.Hitstun)
+            StartFollowPlayer();
     }
 
     void EnemyState(){
@@ -70,11 +81,13 @@ public class EnemyB : MonoBehaviour
                 FollowPlayer();
             break;
             case State.Attacking:
+
                 ChoiceHit();
                 CheckEndAnimation();
             break;
             case State.Hitstun:
-                anim.Play("Hitstun");
+            anim.Play("hitstun");
+            HitStun();
             break;
             case State.Dash:
                 anim.Play("Dash");
@@ -90,8 +103,12 @@ public class EnemyB : MonoBehaviour
         currentState = newState;
     }
 
-    public void CreateHit(string nameAnimation, Attack attack){
-        anim.Play(nameAnimation);
+    public void TimerAttack(){
+        
+        
+    }
+
+    public void CreateHit(Attack attack){
         if(canAttack){
             Collider [] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, 
             ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, Quaternion.identity, m_LayerMask);
@@ -114,14 +131,17 @@ public class EnemyB : MonoBehaviour
 
     public void ChoiceHit(){
         if(pickHit < 0 && pickHit < 33){
-            CreateHit("Hit1", attackEnemy[0]);
-            recoveryTime = attackEnemy[0].recovery;
+            anim.Play("Hit1");
+            CreateHit(attackEnemy[0]);
+            recoveryTime = attackEnemy[0].recovery + attackEnemy[0].startUp + 1.0f;
         }else if(pickHit >= 33 && pickHit <= 66){
-            CreateHit("Hit2", attackEnemy[1]);
-            recoveryTime = attackEnemy[1].recovery;
+            anim.Play("Hit2");
+            CreateHit(attackEnemy[1]);
+            recoveryTime = attackEnemy[1].recovery + attackEnemy[1].startUp + 1.0f;
         }else if(pickHit>66){
-            CreateHit("Hit3", attackEnemy[2]);
-            recoveryTime = attackEnemy[2].recovery;
+            anim.Play("Hit3");
+            CreateHit(attackEnemy[2]);
+            recoveryTime = attackEnemy[2].recovery + attackEnemy[2].startUp + 1.0f;
         }
     }
 
@@ -174,7 +194,6 @@ public class EnemyB : MonoBehaviour
         
         if(distance<=targetStop && distance>=-targetStop){
             canFollow = false;
-
             if(transform.position.x < player.transform.position.x)
                 if(!EnemyController.instance.leftEnemies.Contains(gameObject))
                     EnemyController.instance.leftEnemies.Add(gameObject);
@@ -195,7 +214,6 @@ public class EnemyB : MonoBehaviour
     }
 
     void AttPositionList(){
-        
         if(EnemyController.instance.rightEnemies.Contains(gameObject)){
             EnemyController.instance.rightEnemies.Remove(gameObject);
         }
@@ -203,7 +221,6 @@ public class EnemyB : MonoBehaviour
         if(EnemyController.instance.leftEnemies.Contains(gameObject)){
             EnemyController.instance.leftEnemies.Remove(gameObject);
         }
-        
     }
 
     void CheckDeath(){
@@ -223,13 +240,14 @@ public class EnemyB : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage, float stun, AudioClip sfx){
+    public void TakeDamage(int damage, float knockback, AudioClip sfx){
+        ChangeState(State.Hitstun);
         hp-=damage;
         Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
         //Debug.Log("HP Atual: " + hp);
         GetComponent<AudioSource>().clip = sfx;
         GetComponent<AudioSource>().Play();
-        //StartCoroutine(HitMaterialEffect());
+        StartCoroutine(HitMaterialEffect());
         CheckDeath();
     }
 
@@ -240,6 +258,12 @@ public class EnemyB : MonoBehaviour
         rend.material = baseMat;
     }
 
-
+    void HitStun(){
+        GetComponent<CharacterController>().enabled = false;
+        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime>1.0f){
+            GetComponent<CharacterController>().enabled = true;
+            ChangeState(State.Idle);
+        }
+    }
 
 }

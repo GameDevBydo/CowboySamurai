@@ -84,12 +84,12 @@ public class Player : MonoBehaviour
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
-        if(hit.collider.CompareTag("Enemy") && getHit)
+        /*if(hit.collider.CompareTag("Enemy") && getHit)
         {   
             canKnockback = true;
             knockbackDirection = new Vector3(transform.position.x - hit.transform.position.x, 1f, 0f).normalized;
             timerKnockback = 0f;
-        }
+        }*/
     }
 
     #region State Machine
@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
     {
         //groundedPlayer = controller.isGrounded;
 
-        if(groundCheck <=0) groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 0.5f);
+        if(groundCheck <=0) groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 1.0f);
         else
         {
             groundedPlayer = false;

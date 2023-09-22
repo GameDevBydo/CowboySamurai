@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
             leftEnemies.RemoveAt(leftEnemies.Count-1);
             if(!rightEnemies.Contains(aux)){
                 rightEnemies.Add(aux);
-                aux.transform.position = player.transform.position + new Vector3(1.5f, 0, 0);
+                aux.transform.position = player.transform.position + new Vector3(2.0f, 0, 0);
             }
                 
         }
@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
             rightEnemies.RemoveAt(rightEnemies.Count-1);
             if(!leftEnemies.Contains(aux)){
                 leftEnemies.Add(aux);
-                aux.transform.position = player.transform.position - new Vector3(1.5f, 0, 0);
+                aux.transform.position = player.transform.position - new Vector3(2.0f, 0, 0);
             }
             
         }
