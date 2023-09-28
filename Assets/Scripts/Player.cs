@@ -337,9 +337,11 @@ public class Player : MonoBehaviour
 
                 if(buttonPress)
                 {
-                    //if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f)
-                        CheckAttackCollision(comboSequence);
-                    
+                    Debug.Log(comboSequence);
+                    //ChangePlayerState(4);
+                    //CheckAttackCollision(comboSequence);
+                    CheckAnimation(comboSequence);
+                
                     buttonPress = false;
                 }
             }
@@ -458,9 +460,19 @@ public class Player : MonoBehaviour
 
         #region OverlapBox create
 
-        public void CheckAttack(){
-            
+        string previousAnimation = null;
+        bool canAnimation;
+
+        void CheckAnimation(string name){
+            for(int i= 0; i <moveList._attack.Length; i++)
+            {
+                if(moveList._attack[i].attackName == name && moveList.attackUnlocked[i])
+                {
+                    ChangePlayerState(4);
+                }
+            }
         }
+
         void CheckAttackCollision(string name) // Método para checar se o ataque colidiu com inimigos, e se sim, causar dano
         {
             for(int i= 0; i <moveList._attack.Length; i++)
@@ -471,11 +483,11 @@ public class Player : MonoBehaviour
                     attack = moveList._attack[i];
                 }
             }
-
             if(attack != null && canAttack)
             {
-                anim.Play("ResetAttack");
-                ChangePlayerState(4);
+                
+                //anim.Play("ResetAttack");
+                
                 //Debug.Log("Golpe atual: "+ name);
 
                 // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
@@ -503,13 +515,12 @@ public class Player : MonoBehaviour
                     en.TakeDamage(attack.damage, attack.stun, attack.sfx);
                     ChangeMeter(attack.meterGen);
                 }
-                foreach(Boss bs in bossHit)
+                /*foreach(Boss bs in bossHit)
                 {
                     IncreaseComboCounter();
                     bs.TakeDamage(attack.damage, attack.stun, attack.sfx);
                     ChangeMeter(attack.meterGen);
-                }
-
+                }*/
                 recoveryTimer = attack.recovery;
                 if(enemiesHit.Count>0) 
                 {
@@ -523,8 +534,7 @@ public class Player : MonoBehaviour
                 }
                 previousAttackHit = attack.hit;
                 previousAttack = name;
-            }
-            else
+            }else
             {
                 if(currentState != PlayerState.ATTACKING || currentState != PlayerState.SUPER)
                     comboSequence = "";

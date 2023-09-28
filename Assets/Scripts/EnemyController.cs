@@ -26,21 +26,19 @@ public class EnemyController : MonoBehaviour
     void Teleport(){
         if(leftEnemies.Count > 2){
             GameObject aux = leftEnemies.Last();
-            leftEnemies.RemoveAt(leftEnemies.Count-1);
             if(!rightEnemies.Contains(aux)){
                 rightEnemies.Add(aux);
                 aux.transform.position = player.transform.position + new Vector3(2.0f, 0, 0);
             }
-                
+            leftEnemies.RemoveAt(leftEnemies.Count-1);    
         }
         if(rightEnemies.Count > 2){
             GameObject aux = rightEnemies.Last();
-            rightEnemies.RemoveAt(rightEnemies.Count-1);
             if(!leftEnemies.Contains(aux)){
                 leftEnemies.Add(aux);
                 aux.transform.position = player.transform.position - new Vector3(2.0f, 0, 0);
             }
-            
+            rightEnemies.RemoveAt(rightEnemies.Count-1);
         }
     }
 }

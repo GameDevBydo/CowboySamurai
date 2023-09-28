@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
         } 
-        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetButtonDown("joystick button 6")){
+        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Joystick1Button6)){
             ChangeScreen(skillTreePanel);
             PauseFullGame();
         }

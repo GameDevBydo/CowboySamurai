@@ -279,7 +279,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 912d24b2299d9c4449196510f97906e4,
         type: 3}
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   groundedPlayer: 0
   speed: 2.5
   jump: 2
-  baseMat: {fileID: 2100000, guid: eac40cb2bb3ff354d8b754898cc76256, type: 2}
+  baseMat: {fileID: 2100000, guid: 4e41418c386355b43a5fe61baccaf858, type: 2}
   hitMat: {fileID: 2100000, guid: d1a9cbd025907ae40895b1d89c3e27ee, type: 2}
   dashMat: {fileID: 2100000, guid: 5246593842d5f604dbaefd4067124497, type: 2}
   canCheat: 0

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticketModel: {fileID: 6627183123449876549, guid: 948b54a0f1c712d4c81eb605c5b97ce0,
     type: 3}
-  ticketSprite: {fileID: 21300000, guid: 0d39589c7c1eed54d831fa454497c9e6, type: 3}
-  HighlightedSprite: {fileID: 0}
+  ticketSprite: {fileID: 21300000, guid: 09ff6f4fc25fd824882f0b2e8e4c9e1f, type: 3}
+  HighlightedSprite: {fileID: 21300000, guid: c78c14f648a1ece498cce5f6319a9beb, type: 3}
   ticketName: Sujeira Eterna
   ticketDescription: Ticket para um destino de sofrimento.
   ticketLevel: FinalScene

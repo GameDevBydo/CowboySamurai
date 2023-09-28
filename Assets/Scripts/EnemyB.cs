@@ -56,7 +56,7 @@ public class EnemyB : MonoBehaviour
     void Awake()
     {
         player = Player.instance.gameObject;
-        rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        //rend = transform.GetComponent<SkinnedMeshRenderer>();
     }
     void Start()
     {
@@ -81,13 +81,12 @@ public class EnemyB : MonoBehaviour
                 FollowPlayer();
             break;
             case State.Attacking:
-
                 ChoiceHit();
                 CheckEndAnimation();
             break;
             case State.Hitstun:
-            anim.Play("hitstun");
-            HitStun();
+                anim.Play("hitstun");
+                HitStun();
             break;
             case State.Dash:
                 anim.Play("Dash");
@@ -103,20 +102,15 @@ public class EnemyB : MonoBehaviour
         currentState = newState;
     }
 
-    public void TimerAttack(){
-        
-        
-    }
-
-    public void CreateHit(Attack attack){
+    public void CreateHit(int index){
         if(canAttack){
-            Collider [] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, 
-            ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, Quaternion.identity, m_LayerMask);
+            Collider [] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attackEnemy[index].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[index].hitboxes[0].startingPointEnemy.y, 
+            ((attackEnemy[index].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[index].hitboxes[0].startingPointEnemy.z), attackEnemy[index].hitboxes[0].extension, Quaternion.identity, m_LayerMask);
             foreach(Collider col in hitColliders)
             {
                 if(Player.instance.getHit)
                 {
-                    Player.instance.TakeDamage(attack.damage);
+                    Player.instance.TakeDamage(attackEnemy[index].damage);
                 }
             }
             canAttack = false;
@@ -132,16 +126,13 @@ public class EnemyB : MonoBehaviour
     public void ChoiceHit(){
         if(pickHit < 0 && pickHit < 33){
             anim.Play("Hit1");
-            CreateHit(attackEnemy[0]);
-            recoveryTime = attackEnemy[0].recovery + attackEnemy[0].startUp + 1.0f;
+            recoveryTime = attackEnemy[0].recovery;
         }else if(pickHit >= 33 && pickHit <= 66){
             anim.Play("Hit2");
-            CreateHit(attackEnemy[1]);
-            recoveryTime = attackEnemy[1].recovery + attackEnemy[1].startUp + 1.0f;
+            recoveryTime = attackEnemy[1].recovery;
         }else if(pickHit>66){
             anim.Play("Hit3");
-            CreateHit(attackEnemy[2]);
-            recoveryTime = attackEnemy[2].recovery + attackEnemy[2].startUp + 1.0f;
+            recoveryTime = attackEnemy[2].recovery;
         }
     }
 
@@ -247,7 +238,7 @@ public class EnemyB : MonoBehaviour
         //Debug.Log("HP Atual: " + hp);
         GetComponent<AudioSource>().clip = sfx;
         GetComponent<AudioSource>().Play();
-        StartCoroutine(HitMaterialEffect());
+        //StartCoroutine(HitMaterialEffect());
         CheckDeath();
     }
 
@@ -265,5 +256,4 @@ public class EnemyB : MonoBehaviour
             ChangeState(State.Idle);
         }
     }
-
 }
