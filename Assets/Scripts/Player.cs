@@ -306,44 +306,53 @@ public class Player : MonoBehaviour
         {
             if(groundedPlayer && currentState != PlayerState.DASHING)
             {
-                bool buttonPress = false;
-                for(int i = 0; i<moveList._attack.Length; i++)
-                {
-                    moveList._attack[i].hit = false;
-                }
-
-                if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]))
-                {
-                    comboSequence += "L";
-                    buttonPress = true;
-                } 
                 
-                
-                if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))
-                {
-                    comboSequence += "H";
-                    buttonPress = true;
-                } 
 
-                if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
-                {
-                    int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
-                    if(bullet > 0)
+                    bool buttonPress = false;
+                    for(int i = 0; i<moveList._attack.Length; i++)
                     {
-                        SuperCollission(bullet-1);
-                        ///Debug.Log("Super de " + bullet + " balas");
+                        moveList._attack[i].hit = false;
                     }
-                } 
 
-                if(buttonPress)
-                {
-                    Debug.Log(comboSequence);
-                    //ChangePlayerState(4);
-                    //CheckAttackCollision(comboSequence);
-                    CheckAnimation(comboSequence);
+                    if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]))
+                    {
+                        if(comboSequence == "" || comboSequence != "" && previousAttackHit)
+                        {
+                            comboSequence += "L";
+                            buttonPress = true;
+                        }
+                    } 
+
+
+                    if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))Hit)
+                        {
+                    {
+                        if(comboSequence == "" || comboSequence != "" && previousAttack
+                            comboSequence += "H";
+                            buttonPress = true;
+                        }
+                    } 
+
+                    if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
+                    {
+                        int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
+                        if(bullet > 0)
+                        {
+                            SuperCollission(bullet-1);
+                            ///Debug.Log("Super de " + bullet + " balas");
+                        }
+                    } 
+
+                    if(buttonPress)
+                    {
+                        Debug.Log(comboSequence);
+                        //ChangePlayerState(4);
+                        //CheckAttackCollision(comboSequence);
+                        CheckAnimation(comboSequence);
+
+                        buttonPress = false;
+                    }
                 
-                    buttonPress = false;
-                }
             }
         }
 
@@ -470,6 +479,7 @@ public class Player : MonoBehaviour
                 {
                     ChangePlayerState(4);
                 }
+                
             }
         }
 
@@ -534,10 +544,10 @@ public class Player : MonoBehaviour
                 }
                 previousAttackHit = attack.hit;
                 previousAttack = name;
-            }else
+            }
+            else
             {
-                if(currentState != PlayerState.ATTACKING || currentState != PlayerState.SUPER)
-                    comboSequence = "";
+                comboSequence = "";
             }
         }
 
