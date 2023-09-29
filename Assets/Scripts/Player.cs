@@ -324,13 +324,13 @@ public class Player : MonoBehaviour
                     } 
 
 
-                    if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))Hit)
+                    if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))
                         {
-                    {
-                        if(comboSequence == "" || comboSequence != "" && previousAttack
-                            comboSequence += "H";
-                            buttonPress = true;
-                        }
+                            if(comboSequence == "" || comboSequence != "" && previousAttackHit)
+                            {
+                                comboSequence += "H";
+                                buttonPress = true;
+                            }
                     } 
 
                     if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
