@@ -716,7 +716,7 @@ public class Player : MonoBehaviour
     
 
     public Vector3 interactSize;
-    public GameObject psTicketCollect;
+    public GameObject psTicketCollect, psNpcInteract;
     void Interact()
     {   
         List<TicketSO> tickets = new List<TicketSO>();
@@ -733,6 +733,10 @@ public class Player : MonoBehaviour
             }
             else if(collider.gameObject.name.Contains("NPC"))
             {
+                if (collider.gameObject.GetComponent<Npc>().canInteractAgain)
+                {
+                    Instantiate(psNpcInteract, collider.transform.position, collider.transform.rotation);
+                }
                 collider.gameObject.GetComponent<Npc>().beginInteraction = true;
             }
         }
