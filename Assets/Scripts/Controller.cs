@@ -79,6 +79,10 @@ public class Controller : MonoBehaviour
         UpdateBulletBar(0);
     }
 
+    public void CreditsScreen(){
+        SceneManager.LoadScene("Creditos");
+    }
+
     #region UI Stuff (Tudo relacionado a UI)
     [HideInInspector]
     public GameObject currentScreen = null;
