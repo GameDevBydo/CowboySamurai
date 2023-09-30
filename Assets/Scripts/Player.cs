@@ -716,7 +716,7 @@ public class Player : MonoBehaviour
     
 
     public Vector3 interactSize;
-
+    public GameObject psTicketCollect;
     void Interact()
     {   
         List<TicketSO> tickets = new List<TicketSO>();
@@ -728,6 +728,7 @@ public class Player : MonoBehaviour
             if(collider.gameObject.name.Contains("Tic"))
             {
                 tickets.Add(collider.gameObject.GetComponent<Ticket>().ticketSO);
+                Instantiate(psTicketCollect, collider.transform.position, collider.transform.rotation);
                 Destroy(collider.gameObject);
             }
             else if(collider.gameObject.name.Contains("NPC"))
