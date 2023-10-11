@@ -73,7 +73,6 @@ public class Player : MonoBehaviour
                 KnockBack();
                 Cheats();
                 MovementPlayer();
-                if(attack != null) Timeout();
                 CallAttack();
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
@@ -295,64 +294,62 @@ public class Player : MonoBehaviour
         float recoveryTimer;
 
         Attack attack = null;
-        bool previousAttackHit = false;
+        public bool previousAttackHit = false;
         string previousAttack = null;
 
 
         #region Attacks
 
         float timeAttack;
+        bool buttonPress = false;
         public void CallAttack() // Pega um input e ativa o golpe relacionado a esse input.
         {
             if(groundedPlayer && currentState != PlayerState.DASHING)
             {
-                
+                for(int i = 0; i<moveList._attack.Length; i++)
+                {
+                    moveList._attack[i].hit = false;
+                }
 
-                    bool buttonPress = false;
-                    for(int i = 0; i<moveList._attack.Length; i++)
+                if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]))
+                {
+                    if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
                     {
-                        moveList._attack[i].hit = false;
+                        comboSequence += "L";
+                        buttonPress = true;
+                        canInput = false;
                     }
+                } 
 
-                    if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]))
+
+                if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))
+                {
+                    if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
                     {
-                        if(comboSequence == "" || comboSequence != "" && previousAttackHit)
-                        {
-                            comboSequence += "L";
-                            buttonPress = true;
-                        }
-                    } 
-
-
-                    if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))
-                        {
-                            if(comboSequence == "" || comboSequence != "" && previousAttackHit)
-                            {
-                                comboSequence += "H";
-                                buttonPress = true;
-                            }
-                    } 
-
-                    if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
-                    {
-                        int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
-                        if(bullet > 0)
-                        {
-                            SuperCollission(bullet-1);
-                            ///Debug.Log("Super de " + bullet + " balas");
-                        }
-                    } 
-
-                    if(buttonPress)
-                    {
-                        Debug.Log(comboSequence);
-                        //ChangePlayerState(4);
-                        //CheckAttackCollision(comboSequence);
-                        CheckAnimation(comboSequence);
-
-                        buttonPress = false;
+                        comboSequence += "H";
+                        buttonPress = true;
+                        canInput = false;
                     }
-                
+                } 
+
+                if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
+                {
+                    int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
+                    if(bullet > 0)
+                    {
+                        SuperCollission(bullet-1);
+                        ///Debug.Log("Super de " + bullet + " balas");
+                    }
+                } 
+
+                if(buttonPress)
+                {
+                    Debug.Log(comboSequence);
+                    //ChangePlayerState(4);
+                    //CheckAttackCollision(comboSequence);
+                    CheckAnimation(comboSequence);
+                    buttonPress = false;
+                }
             }
         }
 
@@ -434,22 +431,6 @@ public class Player : MonoBehaviour
 
         #endregion
 
-        #region  Timeout golpe
-        void Timeout(){
-            if(recoveryTimer>0)
-            {
-                canAttack = false;
-                recoveryTimer -= Time.fixedDeltaTime;
-            }
-            else
-            {
-                canAttack = true;
-                attack = null;
-                comboSequence ="";
-                ChangePlayerState(1);
-            }
-        }
-        #endregion
 
         #region Efeitos
 
@@ -470,16 +451,20 @@ public class Player : MonoBehaviour
         #region OverlapBox create
 
         string previousAnimation = null;
-        bool canAnimation;
+        bool canInput = true;
 
         void CheckAnimation(string name){
             for(int i= 0; i <moveList._attack.Length; i++)
             {
                 if(moveList._attack[i].attackName == name && moveList.attackUnlocked[i])
                 {
-                    ChangePlayerState(4);
+                    Debug.Log("attack registered.");
+                    if(previousAttackHit || comboSequence.Length <= 1)
+                    {
+                        //anim.Stop();
+                        ChangePlayerState(4);
+                    }
                 }
-                
             }
         }
 
@@ -536,11 +521,17 @@ public class Player : MonoBehaviour
                 {
                     attack.hit = true;
                     PlayHitSound();
+                    canInput = true;
                 }
-                if(bossHit.Count>0) 
+                else if(bossHit.Count>0) 
                 {
                     attack.hit = true;
                     PlayHitSound();
+                    canInput = true;
+                }
+                else
+                {
+                    attack.hit = false;
                 }
                 previousAttackHit = attack.hit;
                 previousAttack = name;
@@ -549,6 +540,37 @@ public class Player : MonoBehaviour
             {
                 comboSequence = "";
             }
+        }
+
+        // Checar se a string atual é diferente da anterior, e se for, chamar o golpe e truezar o newMove
+        public void CallEndAnimation() // É PRA CHAMAR ESSA AQUI LUIS 
+        {
+            bool newMove = false;
+
+            for(int i= 0; i <moveList._attack.Length; i++)
+            {
+                if(moveList._attack[i].attackName == comboSequence && moveList.attackUnlocked[i])
+                {
+                    Debug.Log(" new attack registered.");
+                    if(previousAttackHit || comboSequence.Length <= 1)
+                    {
+                        ChangePlayerState(4);
+                        newMove = true;
+                    }
+                }
+            }
+
+            if(!newMove) RestartAttack();
+        }
+
+        public void RestartAttack()
+        {
+            ChangePlayerState(1);
+            comboSequence = "";
+            attack = null;
+            canAttack = true;
+            canInput = true;
+            Debug.Log("attack reset.");
         }
 
         void SuperCollission(int meter)
