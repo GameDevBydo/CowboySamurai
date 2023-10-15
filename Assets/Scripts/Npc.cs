@@ -60,7 +60,7 @@ public class Npc : MonoBehaviour
                     Controller.instance.shop.SetActive(true);
                     Controller.instance.PauseFullGame();
                 }
-                if(npcType == 1)
+                else if(npcType == 1)
                 {
                     StartWriting(quotes, endEvent);
                     canInteractAgain = false;

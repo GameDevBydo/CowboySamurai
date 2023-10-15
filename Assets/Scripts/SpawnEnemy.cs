@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-
-
-
 public class SpawnEnemy : MonoBehaviour
 {
     public static SpawnEnemy instance;
@@ -102,9 +99,13 @@ public class SpawnEnemy : MonoBehaviour
         int rndEnemy = Random.Range(0,typeEnemy.Count);
         Instantiate(typeEnemy[rndEnemy], new Vector3(spwn, 0, 0), Quaternion.identity);
         lastSpawn = new Vector3(spwn, 0, 0);
-        
     }
         
+
+    public void SpawnFixedLocation(Transform pos)
+    {
+        Instantiate(typeEnemy[0], pos.position, Quaternion.identity);
+    }
     
 }
 

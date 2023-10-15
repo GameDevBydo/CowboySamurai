@@ -547,24 +547,19 @@ public class Player : MonoBehaviour
         {
             bool newMove = false;
 
-            for(int i= 0; i <moveList._attack.Length; i++)
+            if(previousAttackHit && comboSequence.Length>1)
             {
-                if(moveList._attack[i].attackName == comboSequence && moveList.attackUnlocked[i])
-                {
-                    Debug.Log(" new attack registered.");
-                    if(previousAttackHit || comboSequence.Length <= 1)
-                    {
-                        ChangePlayerState(4);
-                        newMove = true;
-                    }
-                }
+                Debug.Log("Call new move");
+                ChangePlayerState(4);
+                newMove = true;
             }
-
+                
             if(!newMove) RestartAttack();
         }
 
         public void RestartAttack()
         {
+            Debug.Log("restartou");
             ChangePlayerState(1);
             comboSequence = "";
             attack = null;

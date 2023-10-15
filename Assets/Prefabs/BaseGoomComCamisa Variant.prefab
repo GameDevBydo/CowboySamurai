@@ -303,6 +303,36 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -1208385139660875781, guid: e716e24b113a37d4180b896a77c3144a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.50008726
+      objectReference: {fileID: 0}
+    - target: {fileID: -1208385139660875781, guid: e716e24b113a37d4180b896a77c3144a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.49991274
+      objectReference: {fileID: 0}
+    - target: {fileID: -1208385139660875781, guid: e716e24b113a37d4180b896a77c3144a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.50008726
+      objectReference: {fileID: 0}
+    - target: {fileID: -1208385139660875781, guid: e716e24b113a37d4180b896a77c3144a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.49991274
+      objectReference: {fileID: 0}
+    - target: {fileID: -1208385139660875781, guid: e716e24b113a37d4180b896a77c3144a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -1208385139660875781, guid: e716e24b113a37d4180b896a77c3144a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: -989595724216916215, guid: e716e24b113a37d4180b896a77c3144a,
         type: 3}
       propertyPath: m_Layer
@@ -742,7 +772,7 @@ MonoBehaviour:
   targetStop: 0.8
   foundPlayer: 0
   hp: 50
-  expDropped: 0.5
+  expDropped: 1
   deathPS: {fileID: 7471442581379728010, guid: 89971e4de0b250148a5b9ef2a2c651d5, type: 3}
   hitPS: {fileID: 7471442581379728010, guid: 96f0f0fd616dbf94abdbb61bc60ce24f, type: 3}
   baseMat: {fileID: 2100000, guid: 69663aed3b034439394cfc45cdb26638, type: 2}
