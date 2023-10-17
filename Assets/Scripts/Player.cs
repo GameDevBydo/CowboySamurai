@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
                 MovementPlayer();
                 CallAttack();
                 ComboTimer();
-                if(Input.GetKeyDown(KeyCode.Q) && canDash) StartCoroutine(DashCD());
+                if(Input.GetKeyDown(KeyCode.Q) && canDash || Input.GetButtonDown("Dash")) StartCoroutine(DashCD());
                 if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 10);
                 if(Input.GetKeyDown(interactKey[0])||Input.GetKeyDown(interactKey[1])) Interact();
             }
@@ -311,7 +311,7 @@ public class Player : MonoBehaviour
                     moveList._attack[i].hit = false;
                 }
 
-                if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]))
+                if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]) || Input.GetButtonDown("Fire1"))
                 {
                     if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
                     {
@@ -322,7 +322,7 @@ public class Player : MonoBehaviour
                 } 
 
 
-                if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]))
+                if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]) || Input.GetButtonDown("Fire2"))
                 {
                     if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
                     {
@@ -332,7 +332,7 @@ public class Player : MonoBehaviour
                     }
                 } 
 
-                if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]))
+                if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]) || Input.GetButtonDown("Fire3"))
                 {
                     int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
                     if(bullet > 0)
@@ -636,7 +636,7 @@ public class Player : MonoBehaviour
         {
             if(attack != null)
             {
-                if(Input.GetKey(lightAtk[0]) && !canAttack || Input.GetKey(lightAtk[1]) && !canAttack)
+                if(Input.GetKey(lightAtk[0]) && !canAttack || Input.GetKey(lightAtk[1]) && !canAttack || Input.GetButtonDown("Jump") && !canAttack)
                 {
                     for(int i = 0; i<attack.hitboxes.Length; i++){
                         
@@ -651,7 +651,7 @@ public class Player : MonoBehaviour
                     }
                 }
 
-                if(Input.GetKey(heavyAtk[0]) && !canAttack || Input.GetKey(heavyAtk[1]) && !canAttack)
+                if(Input.GetKey(heavyAtk[0]) && !canAttack || Input.GetKey(heavyAtk[1]) && !canAttack || Input.GetButtonDown("Fire2") && !canAttack)
                 {
                     for(int i = 0; i<attack.hitboxes.Length; i++){
                         
