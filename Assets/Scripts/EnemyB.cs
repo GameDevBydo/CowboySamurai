@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyB : MonoBehaviour
 {
@@ -61,6 +62,9 @@ public class EnemyB : MonoBehaviour
     void Start()
     {
         m_Started = true;
+        if(SceneManager.GetActiveScene().name == "TutorialScene"){
+            hp = 1;
+        }
     }
 
     // Update is called once per frame
