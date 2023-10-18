@@ -18,5 +18,5 @@ MonoBehaviour:
   HighlightedSprite: {fileID: 21300000, guid: 35763bb10f3122842be4066b83de23ca, type: 3}
   ticketName: Dor Carmesim
   ticketDescription: Ticket para um destino de combate.
-  ticketLevel: a
+  ticketLevel: A
   ticketType: 0
