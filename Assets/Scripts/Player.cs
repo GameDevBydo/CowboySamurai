@@ -549,9 +549,15 @@ public class Player : MonoBehaviour
 
             if(previousAttackHit && comboSequence.Length>1)
             {
-                Debug.Log("Call new move");
-                ChangePlayerState(4);
-                newMove = true;
+                for(int i= 0; i <moveList._attack.Length; i++)
+                {
+                    if(moveList._attack[i].attackName == comboSequence && moveList.attackUnlocked[i])
+                    {
+                        Debug.Log("Call new move");
+                        ChangePlayerState(4);
+                        newMove = true;
+                    }
+                }
             }
                 
             if(!newMove) RestartAttack();
