@@ -5,13 +5,21 @@ using UnityEngine.UI;
 
 public class NewSkillController : MonoBehaviour
 {
-    public GameObject [] skills;
-    // Start is called before the first frame update
+    public List<NewSkill> skills; //serializar
+    public List<NewSkill> unlockedSkills;
+    public List<NewSkill> acquiredSkills;
+    public List<NewSkill> lostSkills;
+
+    public static NewSkillController instance;
+
+    private void Awake() {
+        instance = this;
+    }
     void Start()
     {
-        for (int i = 1; i < skills.Length; i++)
+        for (int i = 1; i < skills.Count; i++)
         {
-            skills[i].GetComponent<Button>().interactable = false;
+            skills[i].buttonSkill.interactable = false;
         }
         
     }

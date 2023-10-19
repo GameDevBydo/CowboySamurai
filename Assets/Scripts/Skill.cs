@@ -17,7 +17,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int price;
     public Skill [] nextSkills;
 
-    private Button buttonSkill;
+    public Button buttonSkill;
     void Start()
     {
         buttonSkill = this.GetComponent<Button>();

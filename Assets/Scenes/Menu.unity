@@ -1451,7 +1451,87 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 923403843}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1620163517295396482, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1095520322}
+    - targetCorrespondingSourceObject: {fileID: 1620163517295396482, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1095520325}
+    - targetCorrespondingSourceObject: {fileID: 1620163519095386209, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 237217777}
+    - targetCorrespondingSourceObject: {fileID: 1620163519095386209, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 237217776}
+    - targetCorrespondingSourceObject: {fileID: 1620163519095386209, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 237217775}
+    - targetCorrespondingSourceObject: {fileID: 1620163519095386209, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 237217780}
+    - targetCorrespondingSourceObject: {fileID: 1620163517720731726, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1430644713}
+    - targetCorrespondingSourceObject: {fileID: 1620163517720731726, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1430644716}
+    - targetCorrespondingSourceObject: {fileID: 1620163518913267676, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1305586973}
+    - targetCorrespondingSourceObject: {fileID: 1620163518913267676, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1305586976}
+    - targetCorrespondingSourceObject: {fileID: 1620163518075337698, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 316646034}
+    - targetCorrespondingSourceObject: {fileID: 1620163518075337698, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 316646037}
+    - targetCorrespondingSourceObject: {fileID: 1620163518275046863, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1576659390}
+    - targetCorrespondingSourceObject: {fileID: 1620163518275046863, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1576659393}
+    - targetCorrespondingSourceObject: {fileID: 1620163518076200274, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1524581528}
+    - targetCorrespondingSourceObject: {fileID: 1620163518076200274, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1524581531}
+    - targetCorrespondingSourceObject: {fileID: 1620163518740294512, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 193841507}
+    - targetCorrespondingSourceObject: {fileID: 1620163518740294512, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 193841510}
+    - targetCorrespondingSourceObject: {fileID: 1620163518696471541, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 476527296}
+    - targetCorrespondingSourceObject: {fileID: 1620163518696471541, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 476527299}
   m_SourcePrefab: {fileID: 100100000, guid: bd15be43fe4ca4619961d53618e16596, type: 3}
 --- !u!224 &40849394 stripped
 RectTransform:
@@ -2970,6 +3050,7 @@ MonoBehaviour:
   - {fileID: 1404243005}
   - {fileID: 1163934177}
   - {fileID: 187641640}
+  buttonSkill: {fileID: 0}
 --- !u!114 &170650046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4028,6 +4109,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 7
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!82 &187641641
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4125,6 +4207,91 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &193841505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163518740294512, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &193841507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193841505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &193841508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163518740294478, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193841505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &193841510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193841505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 193841508}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &206194706
 GameObject:
   m_ObjectHideFlags: 0
@@ -4369,6 +4536,137 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &237217773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163519095386209, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &237217775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237217773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &237217776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237217773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &237217777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237217773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &237217778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163519095386239, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237217773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &237217780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237217773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 237217778}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &238815496
 GameObject:
   m_ObjectHideFlags: 0
@@ -4868,6 +5166,91 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &316646032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163518075337698, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &316646034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316646032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &316646035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163518075337696, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316646032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &316646037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316646032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 316646035}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &325983788
 GameObject:
   m_ObjectHideFlags: 0
@@ -6580,6 +6963,7 @@ MonoBehaviour:
   price: 5
   nextSkills:
   - {fileID: 1213174156}
+  buttonSkill: {fileID: 0}
 --- !u!82 &438589222
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7442,6 +7826,91 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &476527294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163518696471541, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &476527296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476527294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &476527297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163518696471539, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476527294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &476527299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476527294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 476527297}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &484411956
 GameObject:
   m_ObjectHideFlags: 0
@@ -8725,6 +9194,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 7
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!114 &555440178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11166,6 +11636,7 @@ MonoBehaviour:
   price: 20
   nextSkills:
   - {fileID: 1409614170}
+  buttonSkill: {fileID: 0}
 --- !u!114 &673974620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14407,6 +14878,7 @@ MonoBehaviour:
   price: 40
   nextSkills:
   - {fileID: 1852952140}
+  buttonSkill: {fileID: 0}
 --- !u!114 &888663195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18141,6 +18613,93 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095312985}
   m_CullTransparentMesh: 1
+--- !u!1 &1095520320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163517295396482, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1095520322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095520320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: skill 1
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills:
+  - {fileID: 237217777}
+  - {fileID: 1430644713}
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &1095520323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163517295396480, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095520320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1095520325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095520320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1095520323}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1095554744
 GameObject:
   m_ObjectHideFlags: 0
@@ -20304,6 +20863,7 @@ MonoBehaviour:
   nextSkills:
   - {fileID: 555440177}
   - {fileID: 1359232948}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1163934178
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20872,6 +21432,7 @@ MonoBehaviour:
   price: 10
   nextSkills:
   - {fileID: 673974619}
+  buttonSkill: {fileID: 0}
 --- !u!114 &1213174157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22006,6 +22567,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297063178}
   m_CullTransparentMesh: 1
+--- !u!1 &1305586971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163518913267676, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1305586973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305586971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &1305586974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163518913267674, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305586971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1305586976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305586971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1305586974}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1318237515
 GameObject:
   m_ObjectHideFlags: 0
@@ -22672,6 +23318,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 8
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!82 &1359232949
 AudioSource:
   m_ObjectHideFlags: 0
@@ -23694,6 +24341,7 @@ MonoBehaviour:
   price: 1
   nextSkills:
   - {fileID: 1672729161}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1404243006
 AudioSource:
   m_ObjectHideFlags: 0
@@ -23831,6 +24479,7 @@ MonoBehaviour:
   price: 30
   nextSkills:
   - {fileID: 888663194}
+  buttonSkill: {fileID: 0}
 --- !u!114 &1409614171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24328,6 +24977,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430118601}
   m_CullTransparentMesh: 1
+--- !u!1 &1430644711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163517720731726, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1430644713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430644711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &1430644714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163517720731724, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430644711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1430644716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430644711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1430644714}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1433002533
 GameObject:
   m_ObjectHideFlags: 0
@@ -24753,6 +25487,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503025344}
   m_CullTransparentMesh: 1
+--- !u!1 &1524581526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163518076200274, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1524581528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524581526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &1524581529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163518076200272, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524581526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1524581531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524581526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1524581529}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1525190262
 GameObject:
   m_ObjectHideFlags: 0
@@ -25325,6 +26144,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557320013}
   m_CullTransparentMesh: 1
+--- !u!1 &1576659388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163518275046863, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1576659390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576659388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: 
+  skillDesc: 
+  skillSprite: {fileID: 0}
+  skillPrice: 0
+  nextSkills: []
+  sideSkill: {fileID: 0}
+  buttonSkill: {fileID: 0}
+  skillNameUI: {fileID: 0}
+  skillDescUI: {fileID: 0}
+  skillPriceUI: {fileID: 0}
+  skillIconUI: {fileID: 0}
+--- !u!114 &1576659391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620163518275046861, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576659388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1576659393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576659388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1576659391}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1577735258
 GameObject:
   m_ObjectHideFlags: 0
@@ -26138,6 +27042,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 7
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!114 &1672729162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27196,6 +28101,7 @@ GameObject:
   - component: {fileID: 1747575658}
   - component: {fileID: 1747575657}
   - component: {fileID: 1747575659}
+  - component: {fileID: 1747575660}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -27463,6 +28369,31 @@ MonoBehaviour:
   disabled: {fileID: 21300000, guid: fb7f50bec49d76847a687eecc516674e, type: 3}
   selectable: {fileID: 21300000, guid: dc23a0f85f425334a9d17f43c7d31eaa, type: 3}
   activated: {fileID: 21300000, guid: 50aa599fe86c0364daa73db5f4f56b0e, type: 3}
+--- !u!114 &1747575660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747575653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751699c7ff7e3cc42b5e2fc260539e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 1095520322}
+  - {fileID: 237217777}
+  - {fileID: 1430644713}
+  - {fileID: 1305586973}
+  - {fileID: 316646034}
+  - {fileID: 1576659390}
+  - {fileID: 1524581528}
+  - {fileID: 193841507}
+  - {fileID: 476527296}
+  unlockedSkills: []
+  acquiredSkills: []
+  lostSkills: []
 --- !u!1 &1747727346
 GameObject:
   m_ObjectHideFlags: 0
@@ -28971,6 +29902,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 50
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!114 &1852952141
 MonoBehaviour:
   m_ObjectHideFlags: 0
