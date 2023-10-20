@@ -10,6 +10,9 @@ public class NewSkillController : MonoBehaviour
     public List<NewSkill> acquiredSkills;
     public List<NewSkill> lostSkills;
 
+    public int xp; // temporário(Substituir por xp do player)
+    
+
     public static NewSkillController instance;
 
     private void Awake() {
@@ -24,7 +27,7 @@ public class NewSkillController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

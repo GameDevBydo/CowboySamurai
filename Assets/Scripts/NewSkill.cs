@@ -13,7 +13,7 @@ public class NewSkill : MonoBehaviour
     public string skillDesc;
     public Sprite skillSprite;
     public int skillPrice;
-    public NewSkill [] nextSkills;
+    public List<NewSkill> nextSkills;
     public NewSkill sideSkill;
     public Button buttonSkill;
     
@@ -35,7 +35,7 @@ public class NewSkill : MonoBehaviour
         buttonSkill.onClick.AddListener(h);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -43,11 +43,43 @@ public class NewSkill : MonoBehaviour
 
     public void h()
     {
-        
-        for (int i = 0; i < nextSkills.Length; i++)
+        if(NewSkillController.instance.xp >= skillPrice)
         {
-            nextSkills[i].buttonSkill.interactable = true;
-            NewSkillController.instance.unlockedSkills.Add(nextSkills[i]);
+            NewSkillController.instance.xp -= skillPrice;
+            NewSkillController.instance.unlockedSkills.Remove(this);
+            NewSkillController.instance.acquiredSkills.Add(this);
+
+            ColorBlock acquiredColor = buttonSkill.colors;
+            acquiredColor.disabledColor = new Color(0, 1, 0, 0.6f);
+            buttonSkill.colors = acquiredColor;
+            
+            this.buttonSkill.interactable = false;
+
+            if(!nextSkills.Count.Equals(0))
+            {
+                for (int i = 0; i < nextSkills.Count; i++)
+                {
+                    nextSkills[i].buttonSkill.interactable = true;
+                    NewSkillController.instance.unlockedSkills.Add(nextSkills[i]);
+                }   
+            }
+            if(sideSkill != null)
+            {
+                NewSkillController.instance.unlockedSkills.Remove(sideSkill);
+                NewSkillController.instance.lostSkills.Add(sideSkill);
+
+                ColorBlock lostColor = sideSkill.buttonSkill.colors;
+                lostColor.disabledColor = new Color(1, 0, 0, 0.6f);
+                sideSkill.buttonSkill.colors = lostColor;
+
+                sideSkill.buttonSkill.interactable = false;
+            }
         }
+        else
+        {
+            Debug.Log("Pobre");
+        }
+        
+        
     }
 }
