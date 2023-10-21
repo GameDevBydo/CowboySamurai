@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ticketModel: {fileID: 6627183123449876549, guid: db66e4a7c1721ff43b1aaa4d555182e6,
     type: 3}
-  ticketSprite: {fileID: 21300000, guid: 277e73884db68c849bf18e999703db8a, type: 3}
-  HighlightedSprite: {fileID: 21300000, guid: dc9a0ba499042f8468f2d2e5a0c1007b, type: 3}
+  ticketSprite: {fileID: 21300000, guid: 8059bbe035fbcc348a0895c01feb6ece, type: 3}
+  HighlightedSprite: {fileID: 21300000, guid: eb6a335d14dfe2d41a4a5b9bb43d6f96, type: 3}
   ticketName: Golden One
   ticketDescription: "Ticket para um destino de intera\xE7\xE3o."
   ticketLevel: a 4
