@@ -23,7 +23,7 @@ public class NewSkillController : MonoBehaviour
         unlockedSkills.Add(skills[0]);
         for (int i = 1; i < skills.Count; i++)
         {
-            skills[i].buttonSkill.interactable = false;
+            //skills[i].buttonSkill.interactable = false;
         }
         
     }

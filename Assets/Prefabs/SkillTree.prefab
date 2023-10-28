@@ -167,6 +167,7 @@ MonoBehaviour:
   price: 10
   nextSkills:
   - {fileID: 1620163518717274804}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163517108925054
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1238,6 +1239,7 @@ MonoBehaviour:
   nextSkills:
   - {fileID: 1620163518832049118}
   - {fileID: 1620163517490961499}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163517296187917
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1730,6 +1732,7 @@ MonoBehaviour:
   price: 3
   nextSkills:
   - {fileID: 1620163517735727526}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163517467307985
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1994,6 +1997,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 8
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163517490961498
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2410,6 +2414,7 @@ MonoBehaviour:
   price: 30
   nextSkills:
   - {fileID: 1620163519199268725}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163517574914736
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2825,6 +2830,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 50
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163517681069503
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3303,6 +3309,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 7
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163517735727522
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4207,6 +4214,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 7
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163518130261190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4473,6 +4481,7 @@ MonoBehaviour:
   - {fileID: 1620163517467307986}
   - {fileID: 1620163517296187918}
   - {fileID: 1620163518130261191}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163518147283502
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5242,6 +5251,7 @@ MonoBehaviour:
   price: 5
   nextSkills:
   - {fileID: 1620163517108925027}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163518415828169
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5430,7 +5440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1620163518487593278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6387,6 +6397,7 @@ MonoBehaviour:
   price: 20
   nextSkills:
   - {fileID: 1620163517574914741}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163518717274767
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6809,6 +6820,7 @@ MonoBehaviour:
   skillUnlocked: 0
   price: 7
   nextSkills: []
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163518832049114
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7852,7 +7864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1620163519008059417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7868,8 +7880,8 @@ RectTransform:
   - {fileID: 1620163518487593278}
   - {fileID: 4776042208432343170}
   - {fileID: 1620163518832464281}
-  - {fileID: 1620163517295396481}
   - {fileID: 1620163517676906142}
+  - {fileID: 1620163517295396481}
   - {fileID: 1620163519095386208}
   - {fileID: 1620163517720731725}
   - {fileID: 1620163518913267675}
@@ -8611,6 +8623,7 @@ MonoBehaviour:
   price: 40
   nextSkills:
   - {fileID: 1620163517681069475}
+  buttonSkill: {fileID: 0}
 --- !u!82 &1620163519199268720
 AudioSource:
   m_ObjectHideFlags: 0

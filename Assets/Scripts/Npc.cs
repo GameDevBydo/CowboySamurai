@@ -39,17 +39,7 @@ public class Npc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //dist = Vector3.Distance(transform.position, Player.instance.transform.position);
-        //if(dist <= distance)
-        //{
-        //    
-        //}
-        //else
-        //{
-        //    prefab.SetActive(false);
-        //}
-        if(!isWriting) prefab.SetActive(true);
-        else prefab.SetActive(false);
+        
 
         if(!isWriting)
         {
@@ -62,6 +52,7 @@ public class Npc : MonoBehaviour
                 }
                 else if(npcType == 1)
                 {
+                    prefab.SetActive(false);
                     StartWriting(quotes, endEvent);
                     canInteractAgain = false;
                 }
