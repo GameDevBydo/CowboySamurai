@@ -10,6 +10,8 @@ public class NewSkillController : MonoBehaviour
     public List<NewSkill> acquiredSkills;
     public List<NewSkill> lostSkills;
 
+    public GameObject skillTreeUI;
+
     public int xp; // temporário(Substituir por xp do player)
     
 
@@ -19,11 +21,12 @@ public class NewSkillController : MonoBehaviour
         instance = this;
     }
     void Start()
-    {
+    {  
         unlockedSkills.Add(skills[0]);
         for (int i = 1; i < skills.Count; i++)
         {
-            //skills[i].buttonSkill.interactable = false;
+            if(skillTreeUI.activeSelf)
+                skills[i].buttonSkill.interactable = false;
         }
         
     }

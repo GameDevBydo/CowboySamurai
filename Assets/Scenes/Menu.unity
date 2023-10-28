@@ -2262,8 +2262,8 @@ RectTransform:
   m_Father: {fileID: 159985531}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.6969697, y: 0}
+  m_AnchorMax: {x: 0.6969697, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.40000153}
   m_SizeDelta: {x: 41.572, y: -17.918}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4795,7 +4795,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.6969697, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5494,8 +5494,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.06715243, y: -0.9031779, z: -0.39523372, w: 0.15346177}
-  m_LocalPosition: {x: 3.017479, y: 3.5551162, z: 3.9355426}
+  m_LocalRotation: {x: 0.008625194, y: -0.9878253, z: 0.059343934, w: 0.14354512}
+  m_LocalPosition: {x: 2.4335184, y: 1.4808702, z: 2.1848578}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10998,8 +10998,8 @@ RectTransform:
   m_Father: {fileID: 1724177953}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.6969697, y: 0}
+  m_AnchorMax: {x: 0.6969697, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.40000153}
   m_SizeDelta: {x: 41.572, y: -17.918}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20410,6 +20410,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153696546}
   m_CullTransparentMesh: 1
+--- !u!1 &1154972017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620163519008059418, guid: bd15be43fe4ca4619961d53618e16596,
+    type: 3}
+  m_PrefabInstance: {fileID: 40849393}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1155740193
 GameObject:
   m_ObjectHideFlags: 0
@@ -28418,6 +28424,7 @@ MonoBehaviour:
   unlockedSkills: []
   acquiredSkills: []
   lostSkills: []
+  skillTreeUI: {fileID: 1154972017}
   xp: 0
 --- !u!1 &1747727346
 GameObject:
@@ -29203,7 +29210,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.6969697, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -31714,7 +31721,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.6969697, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -33970,8 +33977,8 @@ RectTransform:
   m_Father: {fileID: 1237386924}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.6969697, y: 0}
+  m_AnchorMax: {x: 0.6969697, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.40000153}
   m_SizeDelta: {x: 41.572, y: -17.918}
   m_Pivot: {x: 0.5, y: 0.5}
