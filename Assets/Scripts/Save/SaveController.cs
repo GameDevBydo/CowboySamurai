@@ -24,7 +24,6 @@ public class SaveController : MonoBehaviour
         //Gravação dos dados no arquivo Json
         string s = JsonUtility.ToJson(scene);
         File.WriteAllText(Application.persistentDataPath + "/"+ name+".txt", s);
-        Debug.Log(Application.persistentDataPath);
     }
 
     public static void Load(string name){
@@ -53,7 +52,7 @@ public class SaveController : MonoBehaviour
         //Gravação dos dados no arquivo Json
         string s = JsonUtility.ToJson(scene);
         File.WriteAllText(Application.persistentDataPath + "/SaveConfigs.txt", s);
-        Debug.Log(Application.persistentDataPath);
+        
     }
 
     public static void LoadConfigs(){
