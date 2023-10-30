@@ -7,4 +7,5 @@ using System;
 public class SceneData
 {
     public GameSaveData game;
+    public MenuSaveData menu;
 }

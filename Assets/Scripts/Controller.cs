@@ -11,7 +11,6 @@ using UnityEngine.EventSystems;
 
 public class Controller : MonoBehaviour
 {
-    
     #region Singleton 
     [HideInInspector]
     public static Controller instance;
@@ -37,11 +36,14 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
+        
         introImg.material.mainTextureOffset = Vector2.zero;
         introImg.material = new Material(introImg.material);
         playerBasePos = Player.instance.transform.position;
         playerBaseRot = Player.instance.transform.rotation;
+        
     }
+
 
     void Update()
     {

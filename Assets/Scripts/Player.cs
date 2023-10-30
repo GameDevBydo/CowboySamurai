@@ -63,6 +63,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if(Input.GetKeyDown(KeyCode.M))
+            SaveController.Save("SaveTeste");
+        if(Input.GetKeyDown(KeyCode.N))
+            SaveController.Load("SaveTeste");
         if(!Controller.instance.inputPause)
         {
             if(Input.GetKeyDown(KeyCode.Joystick1Button6) || Input.GetKeyDown(KeyCode.Z)){
