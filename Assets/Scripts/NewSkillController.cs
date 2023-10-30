@@ -22,11 +22,19 @@ public class NewSkillController : MonoBehaviour
     }
     void Start()
     {  
+        
         unlockedSkills.Add(skills[0]);
         for (int i = 1; i < skills.Count; i++)
         {
-            if(skillTreeUI.activeSelf)
-                skills[i].buttonSkill.interactable = false;
+            skills[i].buttonSkill.interactable = false;
+        }
+
+        if(acquiredSkills.Contains(skills[0]))
+        {
+            ColorBlock acquiredColor = skills[0].buttonSkill.colors;
+            acquiredColor.disabledColor = new Color(0, 1, 0, 0.6f);
+            skills[0].buttonSkill.colors = acquiredColor;
+            skills[0].buttonSkill.interactable = false;
         }
         
     }
@@ -44,17 +52,19 @@ public class NewSkillController : MonoBehaviour
                 ColorBlock acquiredColor = skills[i].buttonSkill.colors;
                 acquiredColor.disabledColor = new Color(0, 1, 0, 0.6f);
                 skills[i].buttonSkill.colors = acquiredColor;
+                skills[i].buttonSkill.interactable = false;
             }
             else if(lostSkills.Contains(skills[i]))
             {
                 ColorBlock lostColor = skills[i].buttonSkill.colors;
                 lostColor.disabledColor = new Color(1, 0, 0, 0.6f);
                 skills[i].buttonSkill.colors = lostColor;
+                skills[i].buttonSkill.interactable = false;
 
             }
             else
             {
-                skills[i].buttonSkill.interactable = true;
+                skills[i].buttonSkill.interactable = false;
             }
         }
     }

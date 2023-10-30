@@ -1478,6 +1478,10 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 923403843}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1620163519008059418, guid: bd15be43fe4ca4619961d53618e16596,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1154972021}
     - targetCorrespondingSourceObject: {fileID: 1620163517295396482, guid: bd15be43fe4ca4619961d53618e16596,
         type: 3}
       insertIndex: -1
@@ -21462,6 +21466,33 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 40849393}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1154972021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154972017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751699c7ff7e3cc42b5e2fc260539e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 1095520322}
+  - {fileID: 237217777}
+  - {fileID: 1430644713}
+  - {fileID: 1305586973}
+  - {fileID: 316646034}
+  - {fileID: 1576659390}
+  - {fileID: 1524581528}
+  - {fileID: 193841507}
+  - {fileID: 476527296}
+  unlockedSkills: []
+  acquiredSkills: []
+  lostSkills: []
+  skillTreeUI: {fileID: 1154972017}
+  xp: 0
 --- !u!1 &1159194526
 GameObject:
   m_ObjectHideFlags: 0
@@ -29382,7 +29413,6 @@ GameObject:
   - component: {fileID: 1747575656}
   - component: {fileID: 1747575657}
   - component: {fileID: 1747575659}
-  - component: {fileID: 1747575660}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -29681,33 +29711,6 @@ MonoBehaviour:
   disabled: {fileID: 21300000, guid: fb7f50bec49d76847a687eecc516674e, type: 3}
   selectable: {fileID: 21300000, guid: dc23a0f85f425334a9d17f43c7d31eaa, type: 3}
   activated: {fileID: 21300000, guid: 50aa599fe86c0364daa73db5f4f56b0e, type: 3}
---- !u!114 &1747575660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747575653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751699c7ff7e3cc42b5e2fc260539e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skills:
-  - {fileID: 1095520322}
-  - {fileID: 237217777}
-  - {fileID: 1430644713}
-  - {fileID: 1305586973}
-  - {fileID: 316646034}
-  - {fileID: 1576659390}
-  - {fileID: 1524581528}
-  - {fileID: 193841507}
-  - {fileID: 476527296}
-  unlockedSkills: []
-  acquiredSkills: []
-  lostSkills: []
-  skillTreeUI: {fileID: 1154972017}
-  xp: 0
 --- !u!1 &1747994124
 GameObject:
   m_ObjectHideFlags: 0
