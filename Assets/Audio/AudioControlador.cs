@@ -10,7 +10,7 @@ public class AudioControlador : MonoBehaviour
     #region Audio Mixer e Sliders
     public static AudioControlador instance;
     public AudioMixer mixer;
-    public Image sfxBar, masterVolBar, BMGBar;
+    public Image sfxBar, masterVolBar, BMGBar, sfxBarInGame, masterVolBarInGame, BMGBarInGame;
 
     void Start()
     {
