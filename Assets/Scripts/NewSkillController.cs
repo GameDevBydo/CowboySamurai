@@ -49,7 +49,7 @@ public class NewSkillController : MonoBehaviour
             {
                 ColorBlock lostColor = skills[i].buttonSkill.colors;
                 lostColor.disabledColor = new Color(1, 0, 0, 0.6f);
-                skills[i].buttonSkill.colors.colors = lostColor;
+                skills[i].buttonSkill.colors = lostColor;
 
             }
             else
