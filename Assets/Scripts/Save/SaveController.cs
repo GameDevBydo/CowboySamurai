@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class SaveController : MonoBehaviour
 {
@@ -17,26 +18,46 @@ public class SaveController : MonoBehaviour
         scene.game.unlockedSkills = NewSkillController.instance.unlockedSkills;
         scene.game.lostSkills = NewSkillController.instance.lostSkills;
         scene.game.acquiredSkills = NewSkillController.instance.acquiredSkills;
+
         scene.game.life = Player.instance.hitPoints;
+        scene.game.maxHP = Player.instance.maxHP;
         scene.game.money = Controller.instance.money;
+        scene.game.xp = Player.instance.exp;
+        scene.game.bulletBar = Player.instance.bulletBar;
+
+        scene.game.currentscene = Controller.instance.currentScene;
+        scene.game.ticketsAvailable = Controller.instance.ticketsAvailable;
+        scene.game.nameScene = SceneManager.GetActiveScene().name;
         
 
         //Gravação dos dados no arquivo Json
         string s = JsonUtility.ToJson(scene);
         File.WriteAllText(Application.persistentDataPath + "/"+ name+".txt", s);
+        Debug.Log("Salvou");
     }
 
     public static void Load(string name){
         //leitura do arquivo Json
+
         string s = File.ReadAllText(Application.persistentDataPath + "/"+ name+".txt");
         SceneData data = JsonUtility.FromJson<SceneData>(s);
+
+        SceneManager.LoadScene(data.game.nameScene);
 
         NewSkillController.instance.skills = data.game.skills;
         NewSkillController.instance.unlockedSkills = data.game.unlockedSkills;
         NewSkillController.instance.lostSkills = data.game.lostSkills;
         NewSkillController.instance.acquiredSkills = data.game.acquiredSkills;
+
         Player.instance.hitPoints = data.game.life;
+        Player.instance.maxHP = data.game.maxHP;
         Controller.instance.money = data.game.money;
+        Player.instance.exp = data.game.xp;
+        Player.instance.bulletBar = data.game.bulletBar;
+        
+        
+        Controller.instance.currentScene = data.game.currentscene;
+        Controller.instance.ticketsAvailable = data.game.ticketsAvailable;
     }
 
         //realiza o save do jogo em um arquivo Json

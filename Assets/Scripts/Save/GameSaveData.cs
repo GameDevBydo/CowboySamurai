@@ -15,12 +15,16 @@ public class GameSaveData
 
     #region Game_variaveis
     public int money;
+    public int currentscene;
+    public List<TicketSO> ticketsAvailable;
+    public string nameScene;
     #endregion
 
     #region Player_Stats
     public int life;
-    public int powerBar;
-
+    public int maxHP;
+    public float bulletBar;
+    public float xp;
     public List<NewSkill> skills; //serializar
     public List<NewSkill> unlockedSkills;
     public List<NewSkill> acquiredSkills;

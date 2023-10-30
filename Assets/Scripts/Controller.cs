@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using System.IO;
+
 
 
 public class Controller : MonoBehaviour
@@ -33,7 +35,7 @@ public class Controller : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     #endregion 
-
+    public Button continueBtn;
     void Start()
     {
         
@@ -44,10 +46,10 @@ public class Controller : MonoBehaviour
         
     }
 
-
+    
     void Update()
     {
-        
+        verifySaveGame();
         if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
         } 
@@ -80,6 +82,62 @@ public class Controller : MonoBehaviour
         UpdateLifeBar(1);
         UpdateBulletBar(0);
     }
+
+    public void ContinueGame(string saveName)
+    {
+        ChangeGameStates(1);
+        inputPause = false; // Trocar para tocar pós animação
+        playerPause = false;
+        ChangeScreen(inGameScreen);
+        SaveController.Load(saveName);
+        UpdateBulletBar(Player.instance.bulletBar);
+        UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
+        nextLevel.SetActive(false);
+    }
+    
+    public GameObject[] saveNames, slotsVazios;
+    public TextMeshProUGUI[] loadNames, descLoad, loadSlotsVazios;
+    public Button[] loadsButtons;
+    public void verifySaveGame(){
+        if(File.Exists(Application.persistentDataPath + "/SaveGame1.txt")){
+            saveNames[0].SetActive(true);
+            slotsVazios[0].SetActive(false);
+            loadNames[0].text = "Jogo Salvo 1";
+            descLoad[0].text = File.GetCreationTime(Application.persistentDataPath + "/SaveGame1.txt").ToString();
+            loadSlotsVazios[0].text = "";
+            loadsButtons[0].interactable = true;
+        }else{
+            loadSlotsVazios[0].text = "Espaço Vazio";
+            loadsButtons[0].interactable = false;
+        }
+        if(File.Exists(Application.persistentDataPath + "/SaveGame2.txt")){
+            saveNames[1].SetActive(true);
+            slotsVazios[1].SetActive(false);
+            loadNames[1].text = "Jogo Salvo 2";
+            descLoad[1].text = File.GetCreationTime(Application.persistentDataPath + "/SaveGame2.txt").ToString();
+            loadSlotsVazios[1].text = "";
+            loadsButtons[1].interactable = true;
+        }else{
+            loadSlotsVazios[1].text = "Espaço Vazio";
+            loadsButtons[1].interactable = false;
+        }
+        if(File.Exists(Application.persistentDataPath + "/SaveGame3.txt")){
+            saveNames[2].SetActive(true);
+            slotsVazios[2].SetActive(false);
+            loadNames[2].text = "Jogo Salvo 3";
+            descLoad[2].text = File.GetCreationTime(Application.persistentDataPath + "/SaveGame3.txt").ToString();
+            loadSlotsVazios[2].text = "";
+            loadsButtons[2].interactable = true;
+        }else{
+            loadSlotsVazios[2].text = "Espaço Vazio";
+            loadsButtons[2].interactable = false;
+        }
+        if(File.Exists(Application.persistentDataPath + "/SaveGame1.txt") || File.Exists(Application.persistentDataPath + "/SaveGame2.txt") || File.Exists(Application.persistentDataPath + "/SaveGame3.txt"))
+            continueBtn.interactable = true;
+        else
+            continueBtn.interactable = false;
+    }
+
 
     public void CreditsScreen(){
         SceneManager.LoadScene("Creditos");
