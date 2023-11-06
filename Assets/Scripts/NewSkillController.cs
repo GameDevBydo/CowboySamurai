@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class NewSkillController : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class NewSkillController : MonoBehaviour
     public List<NewSkill> lostSkills;
 
     public GameObject skillTreeUI;
-
-    public int xp; // temporário(Substituir por xp do player)
+    public TextMeshProUGUI xpText;
+    public float xp;
     
 
     public static NewSkillController instance;
@@ -69,8 +70,13 @@ public class NewSkillController : MonoBehaviour
         }
     }
     
+    public void UpdateXP()
+    {
+        xp = Player.instance.exp;
+        xpText.text = xp.ToString() + " Xp ";
+    }
     void Update()
     {
-        
+        UpdateXP();
     }
 }
