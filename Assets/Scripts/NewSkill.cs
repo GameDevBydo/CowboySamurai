@@ -14,7 +14,7 @@ public class NewSkill : MonoBehaviour
     public Sprite skillSprite;
     public int skillPrice;
     public List<NewSkill> nextSkills;
-    public NewSkill sideSkill;
+    public List<NewSkill> sideSkill;
     public Button buttonSkill;
     
     [Header("Propriedades da UI Skill")]
@@ -32,7 +32,7 @@ public class NewSkill : MonoBehaviour
     }
     void Start()
     {
-        buttonSkill.onClick.AddListener(h);
+        buttonSkill.onClick.AddListener(ControlSkill);
     }
 
     
@@ -41,7 +41,7 @@ public class NewSkill : MonoBehaviour
         
     }
 
-    public void h()
+    public void ControlSkill()
     {
         if(NewSkillController.instance.xp >= skillPrice)
         {
@@ -65,14 +65,18 @@ public class NewSkill : MonoBehaviour
             }
             if(sideSkill != null)
             {
-                NewSkillController.instance.unlockedSkills.Remove(sideSkill);
-                NewSkillController.instance.lostSkills.Add(sideSkill);
+                foreach (var item in sideSkill)
+                {
+                    NewSkillController.instance.unlockedSkills.Remove(item);
+                    NewSkillController.instance.lostSkills.Add(item);
 
-                ColorBlock lostColor = sideSkill.buttonSkill.colors;
-                lostColor.disabledColor = new Color(1, 0, 0, 0.6f);
-                sideSkill.buttonSkill.colors = lostColor;
+                    ColorBlock lostColor = item.buttonSkill.colors;
+                    lostColor.disabledColor = new Color(1, 0, 0, 0.6f);
+                    item.buttonSkill.colors = lostColor;
 
-                sideSkill.buttonSkill.interactable = false;
+                    item.buttonSkill.interactable = false;
+                }
+                
             }
         }
         else

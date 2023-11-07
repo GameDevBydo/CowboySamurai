@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         m_Started = true;
         comboCounter = 0;
         getHit = true;
-        canDash = true;
+        
     }
 
 
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
                 MovementPlayer();
                 CallAttack();
                 ComboTimer();
-                if(Input.GetKeyDown(KeyCode.Q) && canDash || Input.GetButtonDown("Dash")) StartCoroutine(DashCD());
+                if(Input.GetKeyDown(KeyCode.Q) && canDash || Input.GetButtonDown("Dash") && canDash) StartCoroutine(DashCD());
                 if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 10);
                 if(Input.GetKeyDown(interactKey[0])||Input.GetKeyDown(interactKey[1])) Interact();
             }

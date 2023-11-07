@@ -4368,7 +4368,8 @@ MonoBehaviour:
   skillPrice: 0
   nextSkills:
   - {fileID: 476527296}
-  sideSkill: {fileID: 1524581528}
+  sideSkill:
+  - {fileID: 1524581528}
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -4776,7 +4777,8 @@ MonoBehaviour:
   nextSkills:
   - {fileID: 1305586973}
   - {fileID: 316646034}
-  sideSkill: {fileID: 1430644713}
+  sideSkill:
+  - {fileID: 1430644713}
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -4837,7 +4839,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 237217778}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &246613926
 GameObject:
   m_ObjectHideFlags: 0
@@ -5526,7 +5540,8 @@ MonoBehaviour:
   skillPrice: 0
   nextSkills:
   - {fileID: 1576659390}
-  sideSkill: {fileID: 1305586973}
+  sideSkill:
+  - {fileID: 1305586973}
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -8317,7 +8332,8 @@ MonoBehaviour:
   skillSprite: {fileID: 0}
   skillPrice: 0
   nextSkills: []
-  sideSkill: {fileID: 0}
+  sideSkill:
+  - {fileID: 1524581528}
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -19481,7 +19497,7 @@ MonoBehaviour:
   nextSkills:
   - {fileID: 237217775}
   - {fileID: 1430644713}
-  sideSkill: {fileID: 0}
+  sideSkill: []
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -19542,7 +19558,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1095520323}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1102220617
 GameObject:
   m_ObjectHideFlags: 0
@@ -21565,6 +21593,8 @@ MonoBehaviour:
   skillTreeUI: {fileID: 1154972017}
   xpText: {fileID: 1467655667}
   xp: 0
+  moveList: {fileID: 11400000, guid: eaa46e15ebb1693458483b87b3b9e82c, type: 2}
+  recoveryHP: 50
 --- !u!1 &1159194526
 GameObject:
   m_ObjectHideFlags: 0
@@ -23169,7 +23199,8 @@ MonoBehaviour:
   skillPrice: 0
   nextSkills:
   - {fileID: 1576659390}
-  sideSkill: {fileID: 316646034}
+  sideSkill:
+  - {fileID: 316646034}
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -25391,7 +25422,8 @@ MonoBehaviour:
   nextSkills:
   - {fileID: 1305586973}
   - {fileID: 316646034}
-  sideSkill: {fileID: 0}
+  sideSkill:
+  - {fileID: 237217775}
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -25452,7 +25484,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1430644714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1433002533
 GameObject:
   m_ObjectHideFlags: 0
@@ -26323,7 +26367,9 @@ MonoBehaviour:
   skillSprite: {fileID: 0}
   skillPrice: 0
   nextSkills: []
-  sideSkill: {fileID: 193841507}
+  sideSkill:
+  - {fileID: 193841507}
+  - {fileID: 476527296}
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -27058,7 +27104,7 @@ MonoBehaviour:
   nextSkills:
   - {fileID: 1524581528}
   - {fileID: 193841507}
-  sideSkill: {fileID: 0}
+  sideSkill: []
   buttonSkill: {fileID: 0}
   skillNameUI: {fileID: 0}
   skillDescUI: {fileID: 0}
@@ -27119,7 +27165,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1576659391}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill6
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1585088223
 GameObject:
   m_ObjectHideFlags: 0
