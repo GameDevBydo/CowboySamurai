@@ -21,14 +21,16 @@ public class NewSkill : MonoBehaviour
 
     [SerializeField] private  TextMeshProUGUI skillNameUI;
     [SerializeField] private  TextMeshProUGUI skillDescUI;
-    [SerializeField] private  TextMeshProUGUI skillPriceUI;
+    //[SerializeField] private  TextMeshProUGUI skillPriceUI;
     [SerializeField] private  Image skillIconUI;
 
     
 
     private void Awake() {
         
-        buttonSkill = GetComponent<Button>();   
+        buttonSkill = GetComponent<Button>();
+        skillNameUI.text = skillName;
+        skillDescUI.text = skillDesc + " - " + skillPrice + " XP";
     }
     void Start()
     {

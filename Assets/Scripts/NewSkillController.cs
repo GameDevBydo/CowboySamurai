@@ -103,7 +103,7 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill5()
     {
-        // Aumenta o dano de Espada
+        Player.instance.canDash = true;
     }
     public void Skill6()
     {
@@ -112,14 +112,14 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill7()
     {
-        // ?
+        
     }
     public void Skill8()
     {
-        // ?
+        
     }
     public void Skill9()
     {
-        // ?
+        
     }
 }
