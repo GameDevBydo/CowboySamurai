@@ -60,17 +60,13 @@ public class Boss : MonoBehaviour
     void CheckDistance()
     {   
         distance = Vector3.Distance(transform.position, player.transform.position);
-        if (distance <= 10.0f)
+        if(recoveryTimer <= 0)
         {
-            if(recoveryTimer <= 0)
-            {
-                canAttack = true;
-            }
-            
-            if(canAttack)
-            {
-                Attack();
-            }
+            canAttack = true;
+        }
+        if (distance <= 10.0f && canAttack)
+        {
+            Attack();
         }
     }
 
