@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour 
 {
-    #region variables
-    [Header ("Character Controller")]
-    private CharacterController controller;
+    #region Variables
 
     [Header ("Animator")]
     public Animator anim;
@@ -22,19 +20,8 @@ public class Boss : MonoBehaviour
     private bool rageMode = false;
     private bool canAttack = false;
 
-    [Header ("Object Pool")]
-    public GameObject projectilePrefab;
-    public List<Projectile> projectilePool = new List<Projectile>();
-    public int poolSize = 6; // number os objs in scene at the same time
-
-
     bool m_Started;
     private SkinnedMeshRenderer rend;
-
-    [Header ("Projectile")]
-    float limitX = 50.0f;
-    float limitY = 50.0f;
-    float projectileTimer = 100.0f;
 
     int currentAttack;
     public Attack[] attackEnemy;
@@ -51,19 +38,16 @@ public class Boss : MonoBehaviour
 
     #endregion
 
-    #region Move
 
     private void Awake() 
     {
-        projectilePrefab = GameObject.FindGameObjectWithTag("Projectile");
         player = GameObject.FindGameObjectWithTag("Player");
-
         rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        baseMat = rend.material;
     }
     void Start()
     {
         m_Started = true;  
-        controller = GetComponent<CharacterController>();
         //anim = GetComponent<Animator>();
     }
     private void Update() 
@@ -71,44 +55,28 @@ public class Boss : MonoBehaviour
         recoveryTimer -= Time.deltaTime;
         CheckDistance();
     }
-    private void FixedUpdate() 
-    {
-    
-    }
+
+    #region Move
     void CheckDistance()
     {   
         distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance <= 10.0f)
         {
-            if (recoveryTimer <= 0)
+            if(recoveryTimer <= 0)
             {
                 canAttack = true;
             }
             
-            if (canAttack)
+            if(canAttack)
             {
                 Attack();
             }
         }
-        else
-        {
-            //do rage
-        }
-        /* later use if boss is not at  the end of the train
-        if(player.transform.position.x < gameObject.transform.position.x)
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
-        }
-        if(player.transform.position.x > gameObject.transform.position.x)
-        {
-            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
-        }
-        */
     }
 
     #endregion
 
-    #region Atack
+    #region Attack
 
     void Attack()
     {
@@ -121,29 +89,6 @@ public class Boss : MonoBehaviour
             Hit(attackEnemy[0]);
             Debug.Log("1");
             recoveryTimer = attackEnemy[0].recovery;
-        }
-        else if(49 < currentAttack && currentAttack < 100)
-        {
-            ChangeBossState(2);
-            WaitSecs();
-            Hit(attackEnemy[1]);
-            Debug.Log("2");
-            recoveryTimer = attackEnemy[1].recovery;
-        }
-        else if(99 < currentAttack && currentAttack < 150)
-        {
-            ChangeBossState(2);
-            WaitSecs();
-            Hit(attackEnemy[2]);
-            Debug.Log("3");
-            recoveryTimer = attackEnemy[2].recovery;
-        }
-        else if (149 < currentAttack && currentAttack < 200)
-        {
-            if (canAttack)
-            {
-        
-            }
         }
         CheckEndAnimation();
     }
@@ -206,15 +151,11 @@ public class Boss : MonoBehaviour
     }
     
 
-    bool isRage (bool rageMode)
+    void EnterRage()
     {
-        if (normalLife <= 0)
-        {
-            baseLife = rageLife;
-            rageMode = true;
-            return true;
-        }
-        else return false;
+        //play rage anim, change shader
+        baseLife = rageLife;
+        rageMode = true;
     }
 
     void CheckDeath() // Método para checagem de morte
@@ -222,35 +163,19 @@ public class Boss : MonoBehaviour
         if (baseLife <= 0)
         {
             Destroy(gameObject);
-        }
-        else if (rageLife <= 0)
-        {
-            Destroy(gameObject);
+            // play video of ending
         }
     }
 
     public void TakeDamage(int damage, float stun, AudioClip sfx) // Método para ser chamado ao levar dano
     {   
-        if (rageMode)
-        {
-            rageLife -= damage;
-            //Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
-            GetComponent<AudioSource>().clip = sfx;
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(HitMaterialEffect());
-            CheckDeath();
-            recoveryTimer = Mathf.Max(stun, recoveryTimer);
-        }
-        else if (!rageMode)
-        {
-            normalLife -= damage;
-            //Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
-            GetComponent<AudioSource>().clip = sfx;
-            GetComponent<AudioSource>().Play();
-            StartCoroutine(HitMaterialEffect());
-            CheckDeath();
-            recoveryTimer = Mathf.Max(stun, recoveryTimer);
-        }
+        normalLife -= damage;
+        //Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
+        GetComponent<AudioSource>().clip = sfx;
+        GetComponent<AudioSource>().Play();
+        StartCoroutine(HitMaterialEffect());
+        CheckDeath();
+        recoveryTimer = Mathf.Max(stun, recoveryTimer);
     }
     public IEnumerator HitMaterialEffect()
     {

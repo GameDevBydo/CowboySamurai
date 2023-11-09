@@ -87,6 +87,7 @@ public class NewSkillController : MonoBehaviour
     {
         moveList.attackUnlocked[1] = true;
         moveList.attackUnlocked[2] = true;
+        Player.instance.canDash = true;
     }
     public void Skill2()
     {

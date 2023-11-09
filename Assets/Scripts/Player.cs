@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
                 CallAttack();
                 ComboTimer();
                 if(Input.GetKeyDown(KeyCode.Q) && canDash || Input.GetButtonDown("Dash") && canDash) StartCoroutine(DashCD());
-                if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 10);
+                if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 7);
                 if(Input.GetKeyDown(interactKey[0])||Input.GetKeyDown(interactKey[1])) Interact();
             }
         }
@@ -450,6 +450,12 @@ public class Player : MonoBehaviour
             hitSound.Play();
         }
 
+        int extraDamage = 0;
+        public void IncreaseBaseDamage(int value)
+        {
+            extraDamage = value;
+        }
+
         #endregion
 
         #region OverlapBox create
@@ -511,7 +517,7 @@ public class Player : MonoBehaviour
                 foreach(EnemyB en in enemiesHit)
                 {
                     IncreaseComboCounter();
-                    en.TakeDamage(attack.damage, attack.stun, attack.sfx);
+                    en.TakeDamage(attack.damage + extraDamage, attack.stun, attack.sfx);
                     ChangeMeter(attack.meterGen);
                 }
                 /*foreach(Boss bs in bossHit)
@@ -619,7 +625,7 @@ public class Player : MonoBehaviour
                     {
                     IncreaseComboCounter();
                     enemiesHit.Remove(closestEnemy);
-                    closestEnemy.TakeDamage(attack.damage, attack.stun, attack.sfx);
+                    closestEnemy.TakeDamage(attack.damage + extraDamage, attack.stun, attack.sfx);
                     }
                 }
 
