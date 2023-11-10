@@ -85,9 +85,9 @@ public class NewSkillController : MonoBehaviour
     
     public void Skill1()
     {
+        Controller.instance.UpdateBulletBar(40);
         moveList.attackUnlocked[1] = true;
         moveList.attackUnlocked[2] = true;
-        Player.instance.canDash = true;
     }
     public void Skill2()
     {
@@ -96,15 +96,15 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill3()
     {
-        Player.instance.canDash = true;
+        Controller.instance.UpdateBulletBar(80);
     }
     public void Skill4()
     {
-        // Ganha mais 1 bala de super (cresce pra 4) e aumenta o dano
+        Player.instance.IncreaseBaseDamage(5);
     }
     public void Skill5()
     {
-        Player.instance.canDash = true;
+        Player.instance.cooldownDash = (Player.instance.cooldownDash/2f);
     }
     public void Skill6()
     {
@@ -117,10 +117,10 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill8()
     {
-        
+        Controller.instance.UpdateBulletBar(120);
     }
     public void Skill9()
     {
-        
+        Player.instance.IncreaseBaseDamage(15);
     }
 }

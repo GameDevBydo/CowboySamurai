@@ -358,7 +358,7 @@ public class Player : MonoBehaviour
         }
 
         public bool getHit, canDash;
-        
+        public float cooldownDash = 1f;
         IEnumerator DashCD()
         {
             canDash = false;
@@ -366,7 +366,7 @@ public class Player : MonoBehaviour
             rend.material = dashMat;
             ChangePlayerState(6);
             gameObject.layer = LayerMask.NameToLayer("Dash");
-            yield return new WaitForSeconds(0.35f);
+            yield return new WaitForSeconds(cooldownDash);
             ChangePlayerState(1);
             gameObject.layer = LayerMask.NameToLayer("Player");
             getHit = true;

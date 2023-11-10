@@ -35883,6 +35883,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
+      propertyPath: bulletBar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
       propertyPath: psNpcInteract
       value: 
       objectReference: {fileID: 1403935496615729740, guid: 2f8c291fea222c14abf273364e957b76,
