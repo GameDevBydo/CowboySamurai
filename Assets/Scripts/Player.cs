@@ -79,6 +79,8 @@ public class Player : MonoBehaviour
                 MovementPlayer();
                 CallAttack();
                 ComboTimer();
+                if(dashCD >0) dashCD-= Time.fixedDeltaTime;
+                else canDash = true;
                 if(Input.GetKeyDown(KeyCode.Q) && canDash || Input.GetButtonDown("Dash") && canDash) StartCoroutine(DashCD());
                 if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 7);
                 if(Input.GetKeyDown(interactKey[0])||Input.GetKeyDown(interactKey[1])) Interact();
@@ -358,19 +360,19 @@ public class Player : MonoBehaviour
         }
 
         public bool getHit, canDash;
-        public float cooldownDash = 1f;
+        public float dashDuration = 0.2f, dashCD, dashMaxCD = 3;
         IEnumerator DashCD()
         {
             canDash = false;
             getHit = false;
             rend.material = dashMat;
+            dashCD = dashMaxCD+dashDuration;
             ChangePlayerState(6);
             gameObject.layer = LayerMask.NameToLayer("Dash");
-            yield return new WaitForSeconds(cooldownDash);
+            yield return new WaitForSeconds(dashDuration);
             ChangePlayerState(1);
             gameObject.layer = LayerMask.NameToLayer("Player");
             getHit = true;
-            canDash = true;
             rend.material = baseMat;
         }
         #endregion

@@ -218,8 +218,5 @@ enum BossState
         anim.Play(animationName);
     }
     #endregion
-    public IEnumerator WaitSecs()
-    {
-        yield return new WaitForSeconds(1.0f);
-    }
+    
 }

@@ -104,7 +104,7 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill5()
     {
-        Player.instance.cooldownDash = (Player.instance.cooldownDash/2f);
+        Player.instance.dashCD = 0.5f;
     }
     public void Skill6()
     {
