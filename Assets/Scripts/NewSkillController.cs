@@ -50,7 +50,7 @@ public class NewSkillController : MonoBehaviour
     public void UpdateXP()
     {
         xp = Player.instance.exp;
-        xpText.text = xp.ToString() + " Xp ";
+        xpText.text = "Custo: " + xp.ToString() + "Xp";
     }
 
     public void LoadSkillTree()

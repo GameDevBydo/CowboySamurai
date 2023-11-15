@@ -81,7 +81,7 @@ public class Boss : MonoBehaviour
         if(0 < currentAttack && currentAttack < 50)
         {
             ChangeBossState(2);
-            WaitSecs();
+            //WaitSecs();
             Hit(attackEnemy[0]);
             Debug.Log("1");
             recoveryTimer = attackEnemy[0].recovery;
