@@ -13,7 +13,7 @@ public class Boss : MonoBehaviour
 
     [Header ("Boss Stats")]
     float baseLife = 250;
-    float rageLife = 150;
+    float rageLife = 100;
     float normalLife = 100;
 
     [Header ("Boss States")]
@@ -44,6 +44,7 @@ public class Boss : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
         baseMat = rend.material;
+        normalLife = baseLife;
     }
     void Start()
     {
@@ -88,6 +89,14 @@ public class Boss : MonoBehaviour
         }
         CheckEndAnimation();
     }
+
+    
+    void SpikesAttack()
+    {
+
+
+    }
+
 
 
      void Hit(Attack attack)
@@ -150,13 +159,13 @@ public class Boss : MonoBehaviour
     void EnterRage()
     {
         //play rage anim, change shader
-        baseLife = rageLife;
+        normalLife += rageLife;
         rageMode = true;
     }
 
     void CheckDeath() // Método para checagem de morte
     {
-        if (baseLife <= 0)
+        if (normalLife <= 0)
         {
             Destroy(gameObject);
             // play video of ending
