@@ -8,11 +8,14 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.IO;
+using UnityEngine.InputSystem;
 
 
 
 public class Controller : MonoBehaviour
 {
+    NewControls controls;
+
     #region Singleton 
     [HideInInspector]
     public static Controller instance;
@@ -22,6 +25,16 @@ public class Controller : MonoBehaviour
 
     void Awake()
     {
+        controls = new NewControls();
+
+        controls.Controls.Hit1.performed += ctx => Awake();
+        controls.Controls.Hit2.performed += ctx =>  Awake();
+        controls.Controls.Jump.performed += ctx =>  Awake();
+       	controls.Controls.Dash.performed += ctx =>  Awake();
+        controls.Controls.Super.performed += ctx =>  Awake();
+        controls.Controls.Start.performed += ctx =>  Awake();
+        controls. Controls.SkillTree.performed += ctx =>  Awake();
+
         BasicSetup();
         //Singleton básico, para evitar multiplos controllers na cena
         if (instance != null && instance != this)
@@ -50,10 +63,10 @@ public class Controller : MonoBehaviour
     void Update()
     {
         verifySaveGame();
-        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)){
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)){
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
         } 
-        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Joystick1Button6)){
+        if(Input.GetKeyDown(KeyCode.Alpha1)){
             ChangeScreen(skillTreePanel);
             PauseFullGame();
         }

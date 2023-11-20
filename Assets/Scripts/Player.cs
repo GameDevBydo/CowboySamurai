@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    NewControls controls;
+
     private Animator anim;
     public CharacterController controller;
     public float exp = 0;
@@ -33,6 +36,16 @@ public class Player : MonoBehaviour
     public static Player instance;
     void Awake()
     {
+        controls = new NewControls();
+
+        controls.Controls.Hit1.performed += ctx => LightAttack();
+        controls.Controls.Hit2.performed += ctx =>  HeavyAttack();
+        controls.Controls.Jump.performed += ctx => controllerJump();
+       	controls.Controls.Dash.performed += ctx =>  checkDash();
+        controls.Controls.Super.performed += ctx =>  SpecialAttack();
+        //controls.Controls.Start.performed += ctx =>  Awake();
+        //controls. Controls.SkillTree.performed += ctx =>  Awake();
+
         //Singleton básico, para evitar multiplos controllers na cena
         if (instance != null && instance != this)
         {
@@ -63,13 +76,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
         if(Input.GetKeyDown(KeyCode.M))
             SaveController.Save("SaveTeste");
         if(Input.GetKeyDown(KeyCode.N))
             SaveController.Load("SaveTeste");
         if(!Controller.instance.inputPause)
         {
-            if(Input.GetKeyDown(KeyCode.Joystick1Button6) || Input.GetKeyDown(KeyCode.Z)){
+            if(Input.GetKeyDown(KeyCode.Z)){
                 Controller.instance.ToggleShop();
             }       
             if(!Controller.instance.playerPause)
@@ -85,6 +99,14 @@ public class Player : MonoBehaviour
                 if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 7);
                 if(Input.GetKeyDown(interactKey[0])||Input.GetKeyDown(interactKey[1])) Interact();
             }
+        }
+    }
+
+    void checkDash()
+    {
+        if(canDash)
+        {
+            DashCD();
         }
     }
 
@@ -239,6 +261,31 @@ public class Player : MonoBehaviour
         //if(input !=Vector3.zero) ChangePlayerState(2);
         //else ChangePlayerState(1);
     }
+
+    void controllerJump()
+    {
+        if(groundCheck <=0) groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 1.0f);
+        else
+        {
+            groundedPlayer = false;
+            groundCheck-= Time.deltaTime;
+        }
+
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            //playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);
+            //anim.SetTrigger("jump");
+            groundCheck = 1.03f;
+            ChangePlayerState(3);
+
+            // BERNARDOOOOO FAZ UM COOLDOWN PRO IS GROUND FICAR FALSOOO
+        }
+
+        playerVelocity.y += gravity * Time.deltaTime;
+        if(currentState != PlayerState.SUPER) controller.Move( input* Time.deltaTime * speed);
+        if(currentState != PlayerState.SUPER) controller.Move(playerVelocity * Time.deltaTime);
+
+    }
     #endregion
 
     #region Combate
@@ -355,6 +402,57 @@ public class Player : MonoBehaviour
                     //CheckAttackCollision(comboSequence);
                     CheckAnimation(comboSequence);
                     buttonPress = false;
+                }
+            }
+        }
+        
+        void LightAttack()
+        {
+            if(groundedPlayer && currentState != PlayerState.DASHING)
+            {
+                for(int i = 0; i<moveList._attack.Length; i++)
+                {
+                    moveList._attack[i].hit = false;
+                }
+
+                if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
+                {
+                    comboSequence += "L";
+                    buttonPress = true;
+                    canInput = false;
+                }
+            }
+        }
+        void HeavyAttack()
+        {
+            if(groundedPlayer && currentState != PlayerState.DASHING)
+            {
+                for(int i = 0; i<moveList._attack.Length; i++)
+                {
+                    moveList._attack[i].hit = false;
+                }
+                if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
+                {
+                    comboSequence += "H";
+                    buttonPress = true;
+                    canInput = false;
+                }
+            }
+        }
+        void SpecialAttack()
+        {
+            if(groundedPlayer && currentState != PlayerState.DASHING)
+            {
+                for(int i = 0; i<moveList._attack.Length; i++)
+                {
+                    moveList._attack[i].hit = false;
+                }
+
+                int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
+                if(bullet > 0)
+                {
+                    SuperCollission(bullet-1);
+                    ///Debug.Log("Super de " + bullet + " balas");
                 }
             }
         }
