@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    NewControls controls;
 
     private Animator anim;
     public CharacterController controller;
@@ -31,18 +30,14 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool canCheat = false;
 
+    [SerializeField]
+    private InputActionReference move, lightAttack, heavyAttack, interagir, jumpAction, dash, supremo, pause, skillTree;
+
 
     #region Singleton 
     public static Player instance;
     void Awake()
     {
-        controls = new NewControls();
-
-        controls.Controls.Hit1.performed += ctx => LightAttack();
-        controls.Controls.Hit2.performed += ctx =>  HeavyAttack();
-        controls.Controls.Jump.performed += ctx => controllerJump();
-       	controls.Controls.Dash.performed += ctx =>  checkDash();
-        controls.Controls.Super.performed += ctx =>  SpecialAttack();
         //controls.Controls.Start.performed += ctx =>  Awake();
         //controls. Controls.SkillTree.performed += ctx =>  Awake();
 
@@ -83,9 +78,9 @@ public class Player : MonoBehaviour
             SaveController.Load("SaveTeste");
         if(!Controller.instance.inputPause)
         {
-            if(Input.GetKeyDown(KeyCode.Z)){
+            /*if(interagir.action.triggered){
                 Controller.instance.ToggleShop();
-            }       
+            }     */  
             if(!Controller.instance.playerPause)
             {
                 KnockBack();
@@ -95,9 +90,10 @@ public class Player : MonoBehaviour
                 ComboTimer();
                 if(dashCD >0) dashCD-= Time.fixedDeltaTime;
                 else canDash = true;
-                if(Input.GetKeyDown(KeyCode.Q) && canDash || Input.GetButtonDown("Dash") && canDash) StartCoroutine(DashCD());
+                //Input.GetKeyDown(KeyCode.Q) && canDash || Input.GetButtonDown("Dash") &&
+                if(dash.action.triggered && canDash) StartCoroutine(DashCD());
                 if(currentState == PlayerState.DASHING) controller.Move( transform.forward * Time.fixedDeltaTime * 7);
-                if(Input.GetKeyDown(interactKey[0])||Input.GetKeyDown(interactKey[1])) Interact();
+                if(interagir.action.triggered) Interact();
             }
         }
     }
@@ -241,8 +237,8 @@ public class Player : MonoBehaviour
             //anim.SetBool("walking",false);
         }
         
-        //Pulo do player
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        //Pulo do player Input.GetButtonDown("Jump")
+        if (jumpAction.action.triggered && groundedPlayer)
         {
             //playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);
             //anim.SetTrigger("jump");
@@ -363,8 +359,8 @@ public class Player : MonoBehaviour
                 {
                     moveList._attack[i].hit = false;
                 }
-
-                if(Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]) || Input.GetButtonDown("Fire1"))
+                //Input.GetKeyDown(lightAtk[0]) || Input.GetKeyDown(lightAtk[1]) || Input.GetButtonDown("Fire1")
+                if(lightAttack.action.triggered)
                 {
                     if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
                     {
@@ -374,8 +370,8 @@ public class Player : MonoBehaviour
                     }
                 } 
 
-
-                if(Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]) || Input.GetButtonDown("Fire2"))
+                //Input.GetKeyDown(heavyAtk[0]) || Input.GetKeyDown(heavyAtk[1]) || Input.GetButtonDown("Fire2")
+                if(heavyAttack.action.triggered)
                 {
                     if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
                     {
@@ -385,7 +381,7 @@ public class Player : MonoBehaviour
                     }
                 } 
 
-                if(Input.GetKeyDown(specialAtk[0]) || Input.GetKeyDown(specialAtk[1]) || Input.GetButtonDown("Fire3"))
+                if(supremo.action.triggered)
                 {
                     int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
                     if(bullet > 0)

@@ -16,6 +16,7 @@ MonoBehaviour:
     type: 3}
   ticketSprite: {fileID: 21300000, guid: 277e73884db68c849bf18e999703db8a, type: 3}
   HighlightedSprite: {fileID: 21300000, guid: dc9a0ba499042f8468f2d2e5a0c1007b, type: 3}
+  SelectedSprite: {fileID: 21300000, guid: dc9a0ba499042f8468f2d2e5a0c1007b, type: 3}
   ticketName: Happy Festival
   ticketDescription: "Ticket para um destino de intera\xE7\xE3o."
   ticketLevel: a 3

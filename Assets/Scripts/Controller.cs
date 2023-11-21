@@ -14,7 +14,6 @@ using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
-    NewControls controls;
 
     #region Singleton 
     [HideInInspector]
@@ -23,17 +22,11 @@ public class Controller : MonoBehaviour
     public int money = 0;
     public TextMeshProUGUI moneyText;
 
+    [SerializeField]
+    private InputActionReference pause, skillTree;
+
     void Awake()
     {
-        controls = new NewControls();
-
-        controls.Controls.Hit1.performed += ctx => Awake();
-        controls.Controls.Hit2.performed += ctx =>  Awake();
-        controls.Controls.Jump.performed += ctx =>  Awake();
-       	controls.Controls.Dash.performed += ctx =>  Awake();
-        controls.Controls.Super.performed += ctx =>  Awake();
-        controls.Controls.Start.performed += ctx =>  Awake();
-        controls. Controls.SkillTree.performed += ctx =>  Awake();
 
         BasicSetup();
         //Singleton básico, para evitar multiplos controllers na cena
@@ -63,11 +56,13 @@ public class Controller : MonoBehaviour
     void Update()
     {
         verifySaveGame();
-        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)){
+        if(pause.action.triggered){
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
+            SetSelectedObj(firstBtnPause);
         } 
-        if(Input.GetKeyDown(KeyCode.Alpha1)){
+        if(skillTree.action.triggered){
             ChangeScreen(skillTreePanel);
+            SetSelectedObj(firstBtnSkillTree);
             PauseFullGame();
         }
         moneyText.text = money.ToString();
@@ -165,6 +160,7 @@ public class Controller : MonoBehaviour
     public GameObject pauseScreen, gameOverScreen, shop, dialoguePanel, endGameScreen, skillTreePanel;
     public TextMeshProUGUI comboCounter, comboComment, dialogueText;
     public CommentSO comments;
+    public GameObject firstBtnPause, firstBtnSkillTree, firstBtnShop, firstBtnTicket;
 
     
     // Usado em botões para trocar telas, como menu, opções, etc
@@ -173,10 +169,6 @@ public class Controller : MonoBehaviour
         if(currentScreen!= null) currentScreen.SetActive(false);
         currentScreen = screen;
         currentScreen.SetActive(true);
-        if(screen.name != "InGame"){
-            //EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(screen.transform.GetChild(1).gameObject);
-        }
     }
     GameObject auxScreen;
     // Usado em botões para abrir e fechar subjanelas
@@ -184,11 +176,7 @@ public class Controller : MonoBehaviour
     {
         auxScreen = EventSystem.current.firstSelectedGameObject;
         //Debug.Log(auxScreen);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(panel.transform.GetChild(1).gameObject);
-        panel.SetActive(!panel.activeSelf);
-        if(panel.activeSelf == false)
-            EventSystem.current.SetSelectedGameObject(auxScreen);        
+        panel.SetActive(!panel.activeSelf);      
     }
 
     public Image introImg;
@@ -197,7 +185,18 @@ public class Controller : MonoBehaviour
         introImg.material.mainTextureOffset += Vector2.right * (Time.deltaTime) * 0.03f;
     }
 
+    public void SetSelectedObj(GameObject obj){
+        EventSystem.current.SetSelectedGameObject(obj);
+    }
 
+    public GameObject firstBtnMenu;
+    public void SetObjSettings(){
+        if(SceneManager.GetActiveScene().name == "Menu"){
+            EventSystem.current.SetSelectedGameObject(firstBtnMenu);
+        }else{
+            EventSystem.current.SetSelectedGameObject(firstBtnPause);
+        }
+    }
     void WriteText()
     {
         if(quoteToWrite.Length == currentLetter)
@@ -455,8 +454,7 @@ public class Controller : MonoBehaviour
         ChangeGameStates(playerPause?0:1);
         if(playerPause) ChangeScreen(pauseScreen);
         else ChangeScreen(inGameScreen);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(FirstButtonPause);
+
     }
     #endregion
 
@@ -465,8 +463,7 @@ public class Controller : MonoBehaviour
         ChangeGameStates(playerPause?0:1);
         if(playerPause) ChangeScreen(skillTreePanel);
         else ChangeScreen(inGameScreen);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(FirstButtonSkill);
+
     }
 
     #region Spawn Controller
@@ -590,7 +587,7 @@ public class Controller : MonoBehaviour
     public GameObject ticketCollectedIcon;
     public GameObject ticketScreen;
     public Image ticket1Sprite, ticket2Sprite; 
-    private SpriteState ticket1High, ticket2High;
+    private SpriteState ticket1High, ticket2High, ticket1Select, ticket2Select;
     public Button ticket1Button, ticket2Button;
     public Sprite ticketNoSprite;
     public TicketSO ticket1 = null, ticket2 = null;
@@ -620,6 +617,7 @@ public class Controller : MonoBehaviour
         {
             ticket1Sprite.sprite = ticket1.ticketSprite;
             ticket1High.highlightedSprite = ticket1.HighlightedSprite;
+            ticket1Select.selectedSprite = ticket1.SelectedSprite;
             ticket1Button.spriteState = ticket1High;
             ticket1Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket1.ticketName;
             ticket1Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket1.ticketDescription;
@@ -628,6 +626,7 @@ public class Controller : MonoBehaviour
         {
             ticket2Sprite.sprite = ticket2.ticketSprite;
             ticket2High.highlightedSprite = ticket2.HighlightedSprite;
+            ticket2Select.selectedSprite = ticket2.SelectedSprite;
             ticket2Button.spriteState = ticket2High;
             ticket2Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket2.ticketName;
             ticket2Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket2.ticketDescription;

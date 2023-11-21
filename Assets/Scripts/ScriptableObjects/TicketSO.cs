@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TicketSO : ScriptableObject
 {
     public GameObject ticketModel;
-    public Sprite ticketSprite, HighlightedSprite;
+    public Sprite ticketSprite, HighlightedSprite, SelectedSprite;
     public string ticketName, ticketDescription, ticketLevel;
     [HideInInspector]
     public enum TicketType{COMBAT, NPC, BOSS};
