@@ -21,7 +21,7 @@ public class Boss : MonoBehaviour
     private bool canAttack = false;
 
     bool m_Started;
-    private SkinnedMeshRenderer rend;
+    private MeshRenderer rend;
 
     int currentAttack;
     public Attack[] attackEnemy;
@@ -30,8 +30,9 @@ public class Boss : MonoBehaviour
 
     public ParticleSystem deathPS, hitPS;
     public Material baseMat, hitMat;
+    [HideInInspector]public GameObject player;
 
-    public GameObject player;
+    public GameObject[] spikes;
 
 
     private float distance;
@@ -41,8 +42,8 @@ public class Boss : MonoBehaviour
 
     private void Awake() 
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        rend = transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        //player = GameObject.FindGameObjectWithTag("Player");                     VOLTA AQUI TB
+        rend = transform.GetChild(0).GetComponent<MeshRenderer>();
         baseMat = rend.material;
         normalLife = baseLife;
     }
@@ -50,6 +51,7 @@ public class Boss : MonoBehaviour
     {
         m_Started = true;  
         //anim = GetComponent<Animator>();
+        SpikesAttack();
     }
     private void Update() 
     {
@@ -60,15 +62,15 @@ public class Boss : MonoBehaviour
     #region Move
     void CheckDistance()
     {   
-        distance = Vector3.Distance(transform.position, player.transform.position);
-        if(recoveryTimer <= 0)
-        {
-            canAttack = true;
-        }
-        if (distance <= 10.0f && canAttack)
-        {
-            Attack();
-        }
+        //distance = Vector3.Distance(transform.position, player.transform.position);
+        //if(recoveryTimer <= 0)
+        //{
+        //    canAttack = true;
+        //}                                                                                                         VOLTA ISSO TUDO
+        //if (distance <= 10.0f && canAttack)
+        //{
+        //    Attack();
+        //}
     }
 
     #endregion
@@ -83,70 +85,28 @@ public class Boss : MonoBehaviour
         {
             ChangeBossState(2);
             //WaitSecs();
-            Hit(attackEnemy[0]);
             Debug.Log("1");
             recoveryTimer = attackEnemy[0].recovery;
         }
         CheckEndAnimation();
     }
 
-    
     void SpikesAttack()
     {
-
-
+        StartCoroutine(CallSpikes());
     }
 
-
-
-     void Hit(Attack attack)
+    IEnumerator CallSpikes()
     {
-        if (canAttack)
+        foreach(GameObject spike in spikes)
         {
-            Collider[] hitColliders = Physics.OverlapBox(new Vector3(gameObject.transform.position.x + (attack.hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attack.hitboxes[0].startingPointEnemy.y, 
-            ((attack.hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attack.hitboxes[0].startingPointEnemy.z), attack.hitboxes[0].extension, gameObject.transform.rotation, playerMask);
-            //Check when there is a new collider coming into contact with the box
-            foreach(Collider col in hitColliders)
-            {
-                if(Player.instance.getHit)
-                {
-                    Player.instance.TakeDamage(attack.damage);
-                }
-            }  
-            canAttack = false;
-            recoveryTimer = Mathf.Max(recoveryTimer,attack.recovery);
+            spike.SetActive(true);
+            Debug.Log(spike.transform.GetChild(0).GetComponent<Animation>().clip);
+            spike.transform.GetChild(0).GetComponent<Animation>().Play();
+            yield return new WaitForSeconds(1);
         }
     }
-    
-    void OnDrawGizmos()
-    {
-        if(canAttack)
-        {
-            Gizmos.color = Color.red;        
-            if (m_Started)
-            {
-                if (0 < currentAttack && currentAttack < 50)
-                {
-                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[0].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[0].hitboxes[0].startingPointEnemy.y, 
-                ((attackEnemy[0].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[0].hitboxes[0].startingPointEnemy.z), attackEnemy[0].hitboxes[0].extension);
-                }
-                else if (49 < currentAttack && currentAttack < 100)
-                {
-                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[1].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[1].hitboxes[0].startingPointEnemy.y, 
-                ((attackEnemy[1].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[1].hitboxes[0].startingPointEnemy.z), attackEnemy[1].hitboxes[0].extension);
-                }
-                else if (99 < currentAttack && currentAttack < 150)
-                {
-                    //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-                Gizmos.DrawWireCube(new Vector3(gameObject.transform.position.x + (attackEnemy[2].hitboxes[0].startingPointEnemy.x* -Mathf.Sign(this.transform.rotation.eulerAngles.y-180)), gameObject.transform.position.y + attackEnemy[2].hitboxes[0].startingPointEnemy.y, 
-                ((attackEnemy[2].hitboxes[0].extension.z/2.0f)+gameObject.transform.position.z)+attackEnemy[2].hitboxes[0].startingPointEnemy.z), attackEnemy[2].hitboxes[0].extension);
-                }
-            }
-        }
 
-    }
     public void CheckEndAnimation()
     {
         if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
@@ -191,7 +151,7 @@ public class Boss : MonoBehaviour
     #endregion
 
     #region StateMachine
-enum BossState
+    enum BossState
     {
         CINEMATIC,
         STANDING,
