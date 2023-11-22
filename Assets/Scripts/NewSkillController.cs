@@ -23,14 +23,10 @@ public class NewSkillController : MonoBehaviour
 
     private void Awake() {
         instance = this;
-        for (int i = 1; i < Player.instance.moveList.attackUnlocked.Length; i++)
-        {
-            Player.instance.moveList.attackUnlocked[i] = false;
-        }
+        
     }
     void Start()
     {  
-        
         unlockedSkills.Add(skills[0]);
         for (int i = 1; i < skills.Count; i++)
         {

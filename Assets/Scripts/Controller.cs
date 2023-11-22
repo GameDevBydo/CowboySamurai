@@ -39,6 +39,11 @@ public class Controller : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(gameObject);
+
+        for (int i = 1; i < Player.instance.moveList.attackUnlocked.Length; i++)
+        {
+            Player.instance.moveList.attackUnlocked[i] = false;
+        }
     }
     #endregion 
     public Button continueBtn;
