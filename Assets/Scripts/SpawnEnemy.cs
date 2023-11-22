@@ -35,11 +35,11 @@ public class SpawnEnemy : MonoBehaviour
         {
             typeEnemy.Add(prefabType1);
         }
-        else if(type2)
+        if(type2)
         {
             typeEnemy.Add(prefabType2);
         }
-        else if(type3)
+        if(type3)
         {
             typeEnemy.Add(prefabType3);
         }
