@@ -147,8 +147,9 @@ public class Controller : MonoBehaviour
     }
 
 
-    public void CreditsScreen(){
+    public void CreditsScreen(GameObject screen){
         SceneManager.LoadScene("Creditos");
+        ChangeScreen(screen);
     }
 
     #region UI Stuff (Tudo relacionado a UI)
