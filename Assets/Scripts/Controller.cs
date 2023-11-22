@@ -617,7 +617,7 @@ public class Controller : MonoBehaviour
         {
             ticket1Sprite.sprite = ticket1.ticketSprite;
             ticket1High.highlightedSprite = ticket1.HighlightedSprite;
-            ticket1Select.selectedSprite = ticket1.SelectedSprite;
+            ticket1High.selectedSprite = ticket1.SelectedSprite;
             ticket1Button.spriteState = ticket1High;
             ticket1Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket1.ticketName;
             ticket1Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket1.ticketDescription;
@@ -626,7 +626,7 @@ public class Controller : MonoBehaviour
         {
             ticket2Sprite.sprite = ticket2.ticketSprite;
             ticket2High.highlightedSprite = ticket2.HighlightedSprite;
-            ticket2Select.selectedSprite = ticket2.SelectedSprite;
+            ticket2High.selectedSprite = ticket2.SelectedSprite;
             ticket2Button.spriteState = ticket2High;
             ticket2Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket2.ticketName;
             ticket2Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket2.ticketDescription;

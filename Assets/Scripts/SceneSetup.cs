@@ -27,6 +27,7 @@ public class SceneSetup : MonoBehaviour
                 main.tutorialDone = true;
             }
             main.ChangeScreen(main.ticketScreen);
+            main.SetSelectedObj(main.firstBtnTicket);
         }
     }
 
