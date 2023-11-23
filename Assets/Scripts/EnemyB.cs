@@ -221,7 +221,6 @@ public class EnemyB : MonoBehaviour
     void CheckDeath(){
         if(hp <= 0)
         {
-            anim.Play("Death");
             Player.instance.exp += expDropped;
             Controller.instance.enemiesDefeated++;
             Controller.instance.CheckClearCondition();
@@ -232,7 +231,6 @@ public class EnemyB : MonoBehaviour
                 EnemyController.instance.rightEnemies.Remove(gameObject);
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
-            
             Destroy(gameObject);
         }
     }
