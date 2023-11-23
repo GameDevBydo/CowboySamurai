@@ -32,7 +32,7 @@ public class Boss : MonoBehaviour
     public Material baseMat, hitMat;
     [HideInInspector]public GameObject player;
 
-    public GameObject[] spikes;
+    public GameObject[] spikes, rageSpikes;
 
 
     private float distance;
@@ -98,12 +98,23 @@ public class Boss : MonoBehaviour
 
     IEnumerator CallSpikes()
     {
+        if(rageMode)
+        {
+            foreach(GameObject spike in rageSpikes)
+            {
+                spike.SetActive(true);
+                Debug.Log(spike.transform.GetChild(0).GetComponent<Animation>().clip);
+                spike.transform.GetChild(0).GetComponent<Animation>().Play();
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        else
         foreach(GameObject spike in spikes)
         {
             spike.SetActive(true);
             Debug.Log(spike.transform.GetChild(0).GetComponent<Animation>().clip);
             spike.transform.GetChild(0).GetComponent<Animation>().Play();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -141,6 +152,7 @@ public class Boss : MonoBehaviour
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
         recoveryTimer = Mathf.Max(stun, recoveryTimer);
+        if(normalLife <= 50) EnterRage();
     }
     public IEnumerator HitMaterialEffect()
     {
