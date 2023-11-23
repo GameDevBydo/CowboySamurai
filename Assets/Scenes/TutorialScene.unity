@@ -261,6 +261,90 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftEnemies: []
   rightEnemies: []
+--- !u!1001 &156965285
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1516522669}
+    m_Modifications:
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234507573226184363, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8553107481940632660, guid: d9c0995ce53592a44a597b795f4ccca0,
+        type: 3}
+      propertyPath: m_Name
+      value: VagaoTutorial
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d9c0995ce53592a44a597b795f4ccca0, type: 3}
+--- !u!4 &156965286 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1794177012929644871, guid: d9c0995ce53592a44a597b795f4ccca0,
+    type: 3}
+  m_PrefabInstance: {fileID: 156965285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &175032811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -328,6 +412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VagaoPBBaseVazio
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185249202695216150, guid: 601ca761fd8273e4faacaaa6acc8061e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -819,7 +908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220545829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.7324}
+  m_LocalPosition: {x: 0, y: -0.02, z: 1.7324}
   m_LocalScale: {x: 2.0318575, y: 1, z: 1.0361928}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1113,6 +1202,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cenario (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284510822466820789, guid: 82ab11c75c85e964c809fddbd916eb9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7882932606913827857, guid: 82ab11c75c85e964c809fddbd916eb9a,
         type: 3}
@@ -1676,6 +1770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cenario (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284510822466820789, guid: 82ab11c75c85e964c809fddbd916eb9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7882932606913827857, guid: 82ab11c75c85e964c809fddbd916eb9a,
         type: 3}
@@ -2400,6 +2499,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VagaoPBPortaDireita
       objectReference: {fileID: 0}
+    - target: {fileID: 8168334975203231821, guid: d4bb7c708aa1f8d4d9a8b347972815a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8797042771395836189, guid: d4bb7c708aa1f8d4d9a8b347972815a6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2606,6 +2710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VagaoPBCadeiraMesaRedonda
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736579633418291089, guid: cf7905bd059dc2d4b8fe6e9ecd985fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4810140822152642840, guid: cf7905bd059dc2d4b8fe6e9ecd985fca,
         type: 3}
@@ -2917,6 +3026,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 156965286}
   - {fileID: 220545833}
   - {fileID: 1555182080}
   - {fileID: 891801703}
@@ -2990,6 +3100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VagaoPBPortaEsquerda
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037590056207084353, guid: c0a3cc881755a534abcba34bf7265b8b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3441,6 +3556,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cenario (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284510822466820789, guid: 82ab11c75c85e964c809fddbd916eb9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2163750992453253692, guid: 82ab11c75c85e964c809fddbd916eb9a,
         type: 3}

@@ -33661,6 +33661,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1876073306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876073300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6c6b2104095bc47b69db8a5e7393be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
 --- !u!1 &1892347723
 GameObject:
   m_ObjectHideFlags: 0
@@ -35527,6 +35540,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1876073301}
+    - targetCorrespondingSourceObject: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1876073306}
   m_SourcePrefab: {fileID: 100100000, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
 --- !u!224 &2003733117 stripped
 RectTransform:
