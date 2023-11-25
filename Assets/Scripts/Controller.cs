@@ -67,7 +67,7 @@ public class Controller : MonoBehaviour
         } 
         if(skillTree.action.triggered){
             ChangeScreen(skillTreePanel);
-            SetSelectedObj(firstBtnSkillTree);
+            SetSelectedObj(NewSkillController.instance.unlockedSkills[0].gameObject);
             PauseFullGame();
         }
         moneyText.text = money.ToString();
@@ -82,6 +82,7 @@ public class Controller : MonoBehaviour
         {
             ConvertSeedIntoList();
         }
+        
         ChangeGameStates(1);
         inputPause = false; // Trocar para tocar pós animação
         playerPause = false;

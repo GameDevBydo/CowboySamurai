@@ -23,11 +23,11 @@ public class NewSkillController : MonoBehaviour
 
     private void Awake() {
         instance = this;
-        
+        unlockedSkills.Add(skills[0]);
     }
     void Start()
     {  
-        unlockedSkills.Add(skills[0]);
+        
         for (int i = 1; i < skills.Count; i++)
         {
             skills[i].buttonSkill.interactable = false;
@@ -50,7 +50,7 @@ public class NewSkillController : MonoBehaviour
     public void UpdateXP()
     {
         xp = Player.instance.exp;
-        xpText.text = "Custo: " + xp.ToString() + "Xp";
+        xpText.text = xp.ToString() + "Xp";
     }
 
     public void LoadSkillTree()
