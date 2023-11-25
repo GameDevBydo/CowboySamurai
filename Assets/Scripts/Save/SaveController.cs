@@ -24,6 +24,8 @@ public class SaveController : MonoBehaviour
         scene.game.money = Controller.instance.money;
         scene.game.xp = Player.instance.exp;
         scene.game.bulletBar = Player.instance.bulletBar;
+        scene.game.extraDamage = Player.instance.extraDamage;
+        scene.game.dashCD = Player.instance.dashCD;
 
         scene.game.currentscene = Controller.instance.currentScene;
         scene.game.ticketsAvailable = Controller.instance.ticketsAvailable;
@@ -54,6 +56,8 @@ public class SaveController : MonoBehaviour
         Controller.instance.money = data.game.money;
         Player.instance.exp = data.game.xp;
         Player.instance.bulletBar = data.game.bulletBar;
+        Player.instance.extraDamage = data.game.extraDamage;
+        Player.instance.dashCD = data.game.dashCD;
         //NewSkillController.instance.LoadSkillTree();
         
         Controller.instance.currentScene = data.game.currentscene;

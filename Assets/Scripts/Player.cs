@@ -546,7 +546,7 @@ public class Player : MonoBehaviour
             hitSound.Play();
         }
 
-        int extraDamage = 0;
+        public int extraDamage = 0;
         public void IncreaseBaseDamage(int value)
         {
             extraDamage = value;

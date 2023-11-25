@@ -29,6 +29,8 @@ public class GameSaveData
     public List<NewSkill> unlockedSkills;
     public List<NewSkill> acquiredSkills;
     public List<NewSkill> lostSkills;
+    public int extraDamage;
+    public float dashCD;
     #endregion
 
 }
