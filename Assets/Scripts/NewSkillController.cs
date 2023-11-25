@@ -113,7 +113,8 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill7()
     {
-        
+        moveList.attackUnlocked[5] = true;
+        moveList.attackUnlocked[6] = true;
     }
     public void Skill8()
     {
