@@ -51,7 +51,7 @@ public class EnemyB : MonoBehaviour
         Moving,
         Attacking,
         Hitstun,
-        Dash
+        Death
     }
     // Start is called before the first frame update
     void Awake()
@@ -70,10 +70,14 @@ public class EnemyB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         EnemyState();
-        recoveryTime -= Time.deltaTime;
-        if(currentState != State.Hitstun)
-            StartFollowPlayer();
+        if(currentState != State.Death){
+            recoveryTime -= Time.deltaTime;
+            if(currentState != State.Hitstun)
+                StartFollowPlayer();
+        }
+        
     }
 
     void EnemyState(){
@@ -92,8 +96,9 @@ public class EnemyB : MonoBehaviour
                 anim.Play("hitstun");
                 HitStun();
             break;
-            case State.Dash:
-                anim.Play("Dash");
+            case State.Death:
+                anim.Play("Death");
+                DestroyEnemy();
                 break;
             default:
                 ChangeState(State.Idle);
@@ -221,19 +226,25 @@ public class EnemyB : MonoBehaviour
     void CheckDeath(){
         if(hp <= 0)
         {
+            
             Player.instance.exp += expDropped;
             Controller.instance.enemiesDefeated++;
             Controller.instance.CheckClearCondition();
             if(transform.position.x < player.transform.position.x) 
                 EnemyController.instance.leftEnemies.Remove(gameObject);
-
             if(transform.position.x > player.transform.position.x)
                 EnemyController.instance.rightEnemies.Remove(gameObject);
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
-            Destroy(gameObject);
+            ChangeState(State.Death);
+            
         }
     }
+    void DestroyEnemy(){
+        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime>=1.0f)
+            Destroy(gameObject);
+    }
+
 
     public void TakeDamage(int damage, float knockback, AudioClip sfx){
         ChangeState(State.Hitstun);

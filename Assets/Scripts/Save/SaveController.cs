@@ -47,7 +47,8 @@ public class SaveController : MonoBehaviour
         SceneData data = JsonUtility.FromJson<SceneData>(s);
 
         SceneManager.LoadScene(data.game.nameScene);
-        NewSkillController.instance.LoadSkillTree();
+        Debug.Log(data.game.skills);
+        
         NewSkillController.instance.skills = data.game.skills;
         NewSkillController.instance.unlockedSkills = data.game.unlockedSkills;
         NewSkillController.instance.lostSkills = data.game.lostSkills;
