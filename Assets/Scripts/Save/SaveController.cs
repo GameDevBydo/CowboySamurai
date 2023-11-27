@@ -47,7 +47,6 @@ public class SaveController : MonoBehaviour
         SceneData data = JsonUtility.FromJson<SceneData>(s);
 
         SceneManager.LoadScene(data.game.nameScene);
-        Debug.Log(data.game.skills);
         
         NewSkillController.instance.skills = data.game.skills;
         NewSkillController.instance.unlockedSkills = data.game.unlockedSkills;
@@ -63,6 +62,7 @@ public class SaveController : MonoBehaviour
         Player.instance.dashCD = data.game.dashCD;
         
         Player.instance.moveList.attackUnlocked = data.game.attackUnlocked;
+        NewSkillController.instance.LoadSkillTree();
         
         Controller.instance.currentScene = data.game.currentscene;
         Controller.instance.ticketsAvailable = data.game.ticketsAvailable;

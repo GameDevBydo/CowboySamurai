@@ -245,7 +245,6 @@ public class EnemyB : MonoBehaviour
             Destroy(gameObject);
     }
 
-
     public void TakeDamage(int damage, float knockback, AudioClip sfx){
         ChangeState(State.Hitstun);
         hp-=damage;
