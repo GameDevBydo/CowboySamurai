@@ -248,7 +248,7 @@ Transform:
   - {fileID: 4652908879787585934}
   - {fileID: 1917300204763352254}
   - {fileID: 9115411800503864506}
-  - {fileID: 5583231117264327435}
+  - {fileID: 3100487594588320784}
   - {fileID: 2318465445667841174}
   - {fileID: 7433971311535409894}
   - {fileID: 6132553120665864487}
@@ -256,7 +256,7 @@ Transform:
   - {fileID: 3937980081125145576}
   - {fileID: 6062660208011430925}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &533563701144506299
 PrefabInstance:
@@ -620,7 +620,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5583231117264327435}
+    m_TransformParent: {fileID: 3100487594588320784}
     m_Modifications:
     - target: {fileID: 7149258588582781348, guid: 355450f6ca0cd7d438780c9d534aadec,
         type: 3}
@@ -875,7 +875,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87a5524afbc0e154fb605feb87efa95e, type: 3}
---- !u!4 &1948180352789156393 stripped
+--- !u!4 &8666850493520412773 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7580006612533514443, guid: 87a5524afbc0e154fb605feb87efa95e,
     type: 3}
@@ -1571,6 +1571,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 3.3400002
       objectReference: {fileID: 0}
+    - target: {fileID: 3571271895311661715, guid: 91233be0dfaf7a743b08f8f473dbc0f6,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6412718826721133858, guid: 1ccfa39412b726a419f3bdf1394e1e8b,
+        type: 3}
     - target: {fileID: 4373929763420584039, guid: 91233be0dfaf7a743b08f8f473dbc0f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1581,6 +1587,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 3.578
       objectReference: {fileID: 0}
+    - target: {fileID: 4454663247354589927, guid: 91233be0dfaf7a743b08f8f473dbc0f6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bc08887383ce6214798cac5502dc6df3, type: 2}
     - target: {fileID: 5180050987728132952, guid: 91233be0dfaf7a743b08f8f473dbc0f6,
         type: 3}
       propertyPath: m_RootOrder
@@ -1850,7 +1861,7 @@ PrefabInstance:
       addedObject: {fileID: 7925485520235542347}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f7ef42131e8dfe4b9497c00d9d6dec9, type: 3}
---- !u!4 &5583231117264327435 stripped
+--- !u!4 &3100487594588320784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8365666448243098857, guid: 2f7ef42131e8dfe4b9497c00d9d6dec9,
     type: 3}
@@ -2246,7 +2257,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2745543453631991535, guid: 9e185fd26794be04387f283b27ded6a8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1948180352789156393}
+      addedObject: {fileID: 8666850493520412773}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e185fd26794be04387f283b27ded6a8, type: 3}
 --- !u!4 &6062660208011430925 stripped
@@ -2263,6 +2274,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1794177012929644871}
     m_Modifications:
+    - target: {fileID: 5932772629977971177, guid: d2528b30b0c8e5f41a43aba47633b7f3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 983fe1d3211972b4b929bda0f4c21918, type: 2}
+    - target: {fileID: 6063976703893593453, guid: d2528b30b0c8e5f41a43aba47633b7f3,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 6852007109478385716, guid: d2528b30b0c8e5f41a43aba47633b7f3,
         type: 3}
       propertyPath: m_Name
@@ -2429,7 +2451,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5583231117264327435}
+    m_TransformParent: {fileID: 3100487594588320784}
     m_Modifications:
     - target: {fileID: 7149258588582781348, guid: 355450f6ca0cd7d438780c9d534aadec,
         type: 3}

@@ -31,6 +31,7 @@ public class GameSaveData
     public List<NewSkill> lostSkills;
     public int extraDamage;
     public float dashCD;
+    public bool[] attackUnlocked;
     #endregion
 
 }

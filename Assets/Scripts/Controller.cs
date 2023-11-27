@@ -638,7 +638,7 @@ public class Controller : MonoBehaviour
             ticket2Sprite.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ticket2.ticketName;
             ticket2Sprite.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ticket2.ticketDescription;
         }
-
+        
     }
 
     void ClearTicketSprites()

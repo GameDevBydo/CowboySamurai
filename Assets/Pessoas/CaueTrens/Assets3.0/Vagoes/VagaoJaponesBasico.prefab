@@ -2361,6 +2361,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1253183024186007977}
     m_Modifications:
+    - target: {fileID: 1219214728783251650, guid: 53ff3b58f1801674892d9360b4c1ab16,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 3511809690674608424, guid: 53ff3b58f1801674892d9360b4c1ab16,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 983fe1d3211972b4b929bda0f4c21918, type: 2}
     - target: {fileID: 4536224387500890160, guid: 53ff3b58f1801674892d9360b4c1ab16,
         type: 3}
       propertyPath: m_Name
@@ -2677,6 +2688,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1253183024186007977}
     m_Modifications:
+    - target: {fileID: 783731414630145430, guid: c1efab0565f3b1548bdb86d4c1cf6a19,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 983fe1d3211972b4b929bda0f4c21918, type: 2}
     - target: {fileID: 3795591285046592257, guid: c1efab0565f3b1548bdb86d4c1cf6a19,
         type: 3}
       propertyPath: m_RootOrder
@@ -2737,6 +2753,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: VagaoJaponesBasePoltronasJanela (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6888762782238315270, guid: c1efab0565f3b1548bdb86d4c1cf6a19,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 8488622957689497961, guid: c1efab0565f3b1548bdb86d4c1cf6a19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2817,6 +2839,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3504309742586521911, guid: 8ab6b89aed136d742898692c6c74b763,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 983fe1d3211972b4b929bda0f4c21918, type: 2}
+    - target: {fileID: 3989116669479969818, guid: 8ab6b89aed136d742898692c6c74b763,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 5178387393887955669, guid: 8ab6b89aed136d742898692c6c74b763,
         type: 3}
       propertyPath: m_Name
@@ -2980,6 +3013,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5732743137796665537, guid: eaf7cef6b7407914bac2397df8de66d1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 983fe1d3211972b4b929bda0f4c21918, type: 2}
+    - target: {fileID: 7401228292265333916, guid: eaf7cef6b7407914bac2397df8de66d1,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4436,6 +4480,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: VagaoJaponesBase
       objectReference: {fileID: 0}
+    - target: {fileID: 5366129525575934700, guid: 2f7ef42131e8dfe4b9497c00d9d6dec9,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 7898369363439293990, guid: 2f7ef42131e8dfe4b9497c00d9d6dec9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 983fe1d3211972b4b929bda0f4c21918, type: 2}
     - target: {fileID: 8365666448243098857, guid: 2f7ef42131e8dfe4b9497c00d9d6dec9,
         type: 3}
       propertyPath: m_RootOrder
@@ -4807,6 +4862,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5732743137796665537, guid: eaf7cef6b7407914bac2397df8de66d1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 983fe1d3211972b4b929bda0f4c21918, type: 2}
+    - target: {fileID: 7401228292265333916, guid: eaf7cef6b7407914bac2397df8de66d1,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

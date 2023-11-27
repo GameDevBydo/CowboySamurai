@@ -30,7 +30,9 @@ public class SaveController : MonoBehaviour
         scene.game.currentscene = Controller.instance.currentScene;
         scene.game.ticketsAvailable = Controller.instance.ticketsAvailable;
         scene.game.nameScene = SceneManager.GetActiveScene().name;
-        
+
+        scene.game.attackUnlocked = Player.instance.moveList.attackUnlocked;
+        Debug.Log(Player.instance.moveList.attackUnlocked);
 
         //Gravação dos dados no arquivo Json
         string s = JsonUtility.ToJson(scene);
@@ -45,7 +47,7 @@ public class SaveController : MonoBehaviour
         SceneData data = JsonUtility.FromJson<SceneData>(s);
 
         SceneManager.LoadScene(data.game.nameScene);
-
+        NewSkillController.instance.LoadSkillTree();
         NewSkillController.instance.skills = data.game.skills;
         NewSkillController.instance.unlockedSkills = data.game.unlockedSkills;
         NewSkillController.instance.lostSkills = data.game.lostSkills;
@@ -58,13 +60,14 @@ public class SaveController : MonoBehaviour
         Player.instance.bulletBar = data.game.bulletBar;
         Player.instance.extraDamage = data.game.extraDamage;
         Player.instance.dashCD = data.game.dashCD;
-        //NewSkillController.instance.LoadSkillTree();
+        
+        Player.instance.moveList.attackUnlocked = data.game.attackUnlocked;
         
         Controller.instance.currentScene = data.game.currentscene;
         Controller.instance.ticketsAvailable = data.game.ticketsAvailable;
     }
 
-        //realiza o save do jogo em um arquivo Json
+    //realiza o save do jogo em um arquivo Json
     public static void SaveConfigs(){
         //Criação das variaveis para usar as classes criadas para o salvamento da cena e das variaveis do jogo
         SceneData scene = new SceneData();

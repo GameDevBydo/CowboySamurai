@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 0}
   player: {fileID: 0}
-  prefabType1: {fileID: 4283634243897138565, guid: 26cf3ef49c7ae29469e8ece8a85ff344,
+  prefabType1: {fileID: 1038354284067644101, guid: 01f504184b29de24cb3175c7551d8e82,
     type: 3}
   prefabType2: {fileID: 4283634243897138565, guid: 26cf3ef49c7ae29469e8ece8a85ff344,
     type: 3}
