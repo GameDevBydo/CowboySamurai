@@ -21,13 +21,13 @@ public class Controller : MonoBehaviour
 
     public int money = 0;
     public TextMeshProUGUI moneyText;
-
+    public GameObject t;
     [SerializeField]
     private InputActionReference pause, skillTree;
 
     void Awake()
     {
-
+        t.SetActive(true);
         BasicSetup();
         //Singleton básico, para evitar multiplos controllers na cena
         if (instance != null && instance != this)
@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
     public Button continueBtn;
     void Start()
     {
-        
+        t.SetActive(false);
         introImg.material.mainTextureOffset = Vector2.zero;
         introImg.material = new Material(introImg.material);
         playerBasePos = Player.instance.transform.position;

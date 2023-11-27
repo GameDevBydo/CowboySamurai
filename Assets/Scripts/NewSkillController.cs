@@ -27,12 +27,8 @@ public class NewSkillController : MonoBehaviour
     }
     void Start()
     {  
+        LoadSkillTree();
         
-        for (int i = 1; i < skills.Count; i++)
-        {
-            skills[i].buttonSkill.interactable = false;
-        }
-
         if(acquiredSkills.Contains(skills[0]))
         {
             ColorBlock acquiredColor = skills[0].buttonSkill.colors;
@@ -55,8 +51,9 @@ public class NewSkillController : MonoBehaviour
 
     public void LoadSkillTree()
     {
+        Debug.Log(skills.Count);
         for (int i = 0; i < skills.Count; i++)
-        {
+        { 
             if(unlockedSkills.Contains(skills[i]))
             {
                 skills[i].buttonSkill.interactable = true;
