@@ -21,7 +21,7 @@ public class Boss : MonoBehaviour
     private bool canAttack = false;
 
     bool m_Started;
-    private MeshRenderer rend;
+    private SkinnedMeshRenderer rend;
 
     int currentAttack;
     public Attack[] attackEnemy;
@@ -43,19 +43,23 @@ public class Boss : MonoBehaviour
     private void Awake() 
     {
         //player = GameObject.FindGameObjectWithTag("Player");                     VOLTA AQUI TB
-        rend = transform.GetChild(0).GetComponent<MeshRenderer>();
+        rend = transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>();
         baseMat = rend.material;
         normalLife = baseLife;
     }
     void Start()
     {
         m_Started = true;  
-        //anim = GetComponent<Animator>();
-        SpikesAttack();
+        anim = transform.GetComponent<Animator>();
     }
     private void Update() 
     {
         recoveryTimer -= Time.deltaTime;
+        if(recoveryTimer <=0)
+        {
+            Attack();
+        }
+
         CheckDistance();
     }
 
@@ -79,16 +83,22 @@ public class Boss : MonoBehaviour
 
     void Attack()
     {
-        currentAttack = Random.Range(1,200);
+        currentAttack = Random.Range(1,2);
         
-        if(0 < currentAttack && currentAttack < 50)
+        if(currentAttack == 0)
         {
-            ChangeBossState(2);
-            //WaitSecs();
-            Debug.Log("1");
-            recoveryTimer = attackEnemy[0].recovery;
+            Debug.Log("0");
+            anim.Play("Wendigo_Attack1");
+            
         }
-        CheckEndAnimation();
+        else if(currentAttack == 1)
+        {
+            Debug.Log("1");
+            anim.Play("Wendigo_Attack2");
+            
+        }
+        else Debug.Log("trouxa");
+        recoveryTimer = 7;
     }
 
     void SpikesAttack()
@@ -103,29 +113,23 @@ public class Boss : MonoBehaviour
             foreach(GameObject spike in rageSpikes)
             {
                 spike.SetActive(true);
-                Debug.Log(spike.transform.GetChild(0).GetComponent<Animation>().clip);
                 spike.transform.GetChild(0).GetComponent<Animation>().Play();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
         }
         else
         foreach(GameObject spike in spikes)
         {
             spike.SetActive(true);
-            Debug.Log(spike.transform.GetChild(0).GetComponent<Animation>().clip);
             spike.transform.GetChild(0).GetComponent<Animation>().Play();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
-    public void CheckEndAnimation()
+    public void ReturnToIdle()
     {
-        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
-        {
-            ChangeBossState(1);
-        }
+        anim.Play("Armature|Idle");
     }
-    
 
     void EnterRage()
     {
@@ -170,6 +174,17 @@ public class Boss : MonoBehaviour
         ATTACKING
     }
     
+    public void ShowBox(int id)
+    {
+        transform.GetChild(id).gameObject.SetActive(true);
+    }
+
+    public void HideBox(int id)
+    {
+        transform.GetChild(id).gameObject.SetActive(false);
+    }
+
+
 
     BossState currentState, pastState;
     string animationName;
@@ -189,10 +204,8 @@ public class Boss : MonoBehaviour
             case 2:
                 currentState = BossState.ATTACKING;
                 animationName = "Hit1";
-                //CheckEndAnimation();
             break;
             default:
-                //Debug.Log("Change to state 1");
                 currentState = BossState.STANDING;
             break;
         }
@@ -200,4 +213,15 @@ public class Boss : MonoBehaviour
     }
     #endregion
     
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.tag == "Player")
+        {
+            if(Player.instance.getHit)
+            {
+                Player.instance.TakeDamage(50);
+            }
+        }
+    }
 }
