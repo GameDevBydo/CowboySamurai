@@ -805,15 +805,7 @@ public class Player : MonoBehaviour
     }
     void MaximizeSkillTree()
     {
-        for(int i = 0; i< SkillController.instance.skills.Length; i++)
-        {
-            SkillController.instance.UnlockSKill(i);
-        }
-        for(int i = 0; i< SkillController.instance.superSkills.Length; i++)
-        {
-            SkillController.instance.UnlockSuper(i);
-        }
-        ///Debug.Log("<color=green>Desbloqueou todos os golpes.</color>");
+        
     }
 
     void GainLifeCheat()

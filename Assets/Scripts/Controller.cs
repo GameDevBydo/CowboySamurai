@@ -21,15 +21,15 @@ public class Controller : MonoBehaviour
 
     public int money = 0;
     public TextMeshProUGUI moneyText;
-    public GameObject t;
+    public GameObject skillTreePrefab;
     [SerializeField]
     private InputActionReference pause, skillTree;
 
     void Awake()
     {
-        t.SetActive(true);
+        skillTreePrefab.SetActive(true);
         BasicSetup();
-        //Singleton básico, para evitar multiplos controllers na cena
+        
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -49,7 +49,7 @@ public class Controller : MonoBehaviour
     public Button continueBtn;
     void Start()
     {
-        t.SetActive(false);
+        skillTreePrefab.SetActive(false);
         introImg.material.mainTextureOffset = Vector2.zero;
         introImg.material = new Material(introImg.material);
         playerBasePos = Player.instance.transform.position;
@@ -509,6 +509,7 @@ public class Controller : MonoBehaviour
 
     #region Updating Stats
     public Image lifeBar;
+    public GameObject hp_Background, hp_Fill;
     public void UpdateLifeBar(float fill)
     {
         lifeBar.fillAmount = fill;

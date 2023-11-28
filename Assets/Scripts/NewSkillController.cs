@@ -105,7 +105,26 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill6()
     {
-        Player.instance.hitPoints += recoveryHP;
+        var rectBack = Controller.instance.hp_Background.GetComponent<RectTransform>();
+        Vector2 backWidth = rectBack.sizeDelta;
+        backWidth.x = 1000f;
+        rectBack.sizeDelta = backWidth;
+
+        Vector2 backPos = rectBack.anchoredPosition;
+        backPos.x = 499.3f;
+        rectBack.anchoredPosition = backPos;
+
+        var rectFill = Controller.instance.hp_Fill.GetComponent<RectTransform>();
+        Vector2 fillWidth = rectFill.sizeDelta;
+        fillWidth.x = 1000f;
+        rectFill.sizeDelta = fillWidth;
+
+        Vector2 fillPos = rectFill.anchoredPosition;
+        fillPos.x = 114f;
+        rectFill.anchoredPosition = fillPos;
+
+
+        Player.instance.maxHP += recoveryHP;
         Controller.instance.UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
     }
     public void Skill7()
