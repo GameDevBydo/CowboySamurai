@@ -25,6 +25,9 @@ public class Controller : MonoBehaviour
     [SerializeField]
     private InputActionReference pause, skillTree;
 
+    [HideInInspector]
+    public AudioControlador audio;
+
     void Awake()
     {
         skillTreePrefab.SetActive(true);
@@ -44,6 +47,8 @@ public class Controller : MonoBehaviour
         {
             Player.instance.moveList.attackUnlocked[i] = false;
         }
+
+        audio = GetComponent<AudioControlador>();
     }
     #endregion 
     public Button continueBtn;

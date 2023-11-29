@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456a720844b3d504db795d37776578fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinCollect: {fileID: 8300000, guid: bc118527c9101424384a96a9fedc798e, type: 3}
 --- !u!95 &126252718761814816
 Animator:
   serializedVersion: 5

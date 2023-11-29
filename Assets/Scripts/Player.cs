@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 public class Player : MonoBehaviour
 {
@@ -286,12 +287,13 @@ public class Player : MonoBehaviour
     public float bulletBar = 0, bulletMax = 0;
 
 
+    public AudioClip takeHit;
     public void TakeDamage(int damage)
     {
         hitPoints-=damage;
         StartCoroutine(HitMaterialEffect());
         Controller.instance.UpdateLifeBar((float)hitPoints/(float)maxHP);
-        //Tocar o som de dano q esta no combo system
+        Controller.instance.audio.PlayEffect(takeHit);
         CheckDeath();
     }
 

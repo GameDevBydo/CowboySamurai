@@ -56,7 +56,7 @@ public class AudioControlador : MonoBehaviour
 
     public AudioClip[] songs;
 
-    public AudioSource musicSpeaker;
+    public AudioSource musicSpeaker, effectSpeaker;
 
     public void StopSong()
     {
@@ -82,6 +82,12 @@ public class AudioControlador : MonoBehaviour
     public void UnpauseSong()
     {
         musicSpeaker.UnPause();
+    }
+
+    public void PlayEffect(AudioClip clip)
+    {
+        effectSpeaker.clip = clip;
+        effectSpeaker.Play();
     }
     #endregion
 }

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Coin : MonoBehaviour
 {   
+    public AudioClip coinCollect;
     int coinValue;
     private float gravity = -3.5f;
     
@@ -23,6 +25,7 @@ public class Coin : MonoBehaviour
         if(other.tag == "Player")
         {
             Controller.instance.money+=coinValue;
+            Controller.instance.audio.PlayEffect(coinCollect);
             Destroy(gameObject);
         }
         if(other.tag == "plane")
