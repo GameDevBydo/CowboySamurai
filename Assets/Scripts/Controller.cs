@@ -66,6 +66,8 @@ public class Controller : MonoBehaviour
     void Update()
     {
         verifySaveGame();
+        if(SceneManager.GetActiveScene().name != "TutorialScene")
+            saveButton.interactable = true;
         if(pause.action.triggered){
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
             SetSelectedObj(firstBtnPause);
@@ -173,6 +175,8 @@ public class Controller : MonoBehaviour
     public TextMeshProUGUI comboCounter, comboComment, dialogueText;
     public CommentSO comments;
     public GameObject firstBtnPause, firstBtnSkillTree, firstBtnShop, firstBtnTicket;
+
+    public Button saveButton;
 
     
     // Usado em botões para trocar telas, como menu, opções, etc

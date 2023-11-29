@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.30507952, g: 0.074008726, b: 0.06945776, a: 1}
+  m_IndirectSpecularColor: {r: 0.30500817, g: 0.07401282, b: 0.06950668, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1133,7 +1133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158855582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.38, y: -0.12, z: 1.35}
+  m_LocalPosition: {x: 4.72, y: -0.12, z: 1.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1217,8 +1217,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220545829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 11.656}
-  m_LocalScale: {x: 5.2, y: 1, z: 0.6688}
+  m_LocalPosition: {x: -7.49, y: -1, z: 11.656}
+  m_LocalScale: {x: 2.6, y: 1, z: 0.6688}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 318295629}
@@ -1367,6 +1367,7 @@ Transform:
   - {fileID: 1555182080}
   - {fileID: 891801703}
   - {fileID: 1336029563}
+  - {fileID: 1705908410}
   - {fileID: 2033676482}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2512,7 +2513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555182079}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.64, y: 1.5, z: 12.44}
+  m_LocalPosition: {x: 5.43, y: 1.5, z: 12.44}
   m_LocalScale: {x: 1, y: 5, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2708,6 +2709,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 13.448, y: 141.484, z: 8.408}
+--- !u!1001 &1705908409
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 318295629}
+    m_Modifications:
+    - target: {fileID: 289288522653832035, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_Name
+      value: VagaoRestauranteOW
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae7d2880ef931594097974b98a3302d5, type: 3}
+--- !u!4 &1705908410 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3427850084836154449, guid: ae7d2880ef931594097974b98a3302d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705908409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1853143220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3054,6 +3134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VagaoJaponesBasico
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192993688926049509, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
