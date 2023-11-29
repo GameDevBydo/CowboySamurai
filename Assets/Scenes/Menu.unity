@@ -24882,6 +24882,7 @@ MonoBehaviour:
   lifeBar: {fileID: 1829340589}
   hp_Background: {fileID: 1248239065}
   hp_Fill: {fileID: 1829340587}
+  ui_Bullet: {fileID: 896297731}
   bulletIcons:
   - {fileID: 1842891044}
   - {fileID: 1796896111}

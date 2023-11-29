@@ -123,9 +123,14 @@ public class NewSkillController : MonoBehaviour
         fillPos.x = 114f;
         rectFill.anchoredPosition = fillPos;
 
+        var rectBullet = Controller.instance.ui_Bullet.GetComponent<RectTransform>();
+        Vector2 bulletPos = rectBullet.anchoredPosition;
+        bulletPos.x = 1110f;
+        rectBullet.anchoredPosition = bulletPos;
+
 
         Player.instance.maxHP += recoveryHP;
-        Controller.instance.UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
+        //Controller.instance.UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
     }
     public void Skill7()
     {

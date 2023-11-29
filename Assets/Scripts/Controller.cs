@@ -513,7 +513,7 @@ public class Controller : MonoBehaviour
 
     #region Updating Stats
     public Image lifeBar;
-    public GameObject hp_Background, hp_Fill;
+    public GameObject hp_Background, hp_Fill, ui_Bullet;
     public void UpdateLifeBar(float fill)
     {
         lifeBar.fillAmount = fill;
