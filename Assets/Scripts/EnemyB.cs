@@ -178,10 +178,10 @@ public class EnemyB : MonoBehaviour
         anim.Play("Walking");
 
         if(player.transform.position.x < gameObject.transform.position.x){
-            transform.rotation = Quaternion.Euler(new Vector3(0,180,0));
+            transform.rotation = Quaternion.Euler(new Vector3(0,-90,0));
         }
         if(player.transform.position.x > gameObject.transform.position.x){
-            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,0,0));
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0,90,0));
         }
     }
 
