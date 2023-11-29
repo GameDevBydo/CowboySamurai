@@ -83,7 +83,7 @@ public class Boss : MonoBehaviour
 
     void Attack()
     {
-        currentAttack = Random.Range(1,2);
+        currentAttack = Random.Range(0,1);
         
         if(currentAttack == 0)
         {

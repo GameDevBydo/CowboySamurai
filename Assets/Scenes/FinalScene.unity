@@ -9438,6 +9438,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WendigoRigged
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cca3f0af5feedd4e9bf131ea60b4a9e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
     - target: {fileID: 4453383931039765132, guid: 0cca3f0af5feedd4e9bf131ea60b4a9e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9473,6 +9478,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1270453550}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0cca3f0af5feedd4e9bf131ea60b4a9e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1270453552}
   m_SourcePrefab: {fileID: 100100000, guid: 0cca3f0af5feedd4e9bf131ea60b4a9e, type: 3}
 --- !u!4 &1270453548 stripped
 Transform:
@@ -9550,6 +9559,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!65 &1270453552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270453549}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.0655313, y: 6.11158, z: 7.758501}
+  m_Center: {x: -3.2695696, y: 2.55579, z: -1.6120782}
 --- !u!1 &1353376533
 GameObject:
   m_ObjectHideFlags: 0
