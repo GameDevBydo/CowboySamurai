@@ -85,11 +85,6 @@ public class Controller : MonoBehaviour
 
     public void StartGame(GameObject screen)
     {
-        if(seed == null)
-        {
-            ConvertSeedIntoList();
-        }
-        
         ChangeGameStates(1);
         inputPause = false; // Trocar para tocar pós animação
         playerPause = false;
@@ -578,6 +573,7 @@ public class Controller : MonoBehaviour
     {
         nextLevel.SetActive(true);
         InstantiateTickets();
+        GameObject.FindWithTag("EndLevel").GetComponent<BoxCollider>().enabled = true;
     }
 
     #endregion

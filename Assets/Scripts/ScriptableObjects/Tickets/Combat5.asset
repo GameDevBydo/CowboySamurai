@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2decf150ddf08e4283da7e1efce97e2, type: 3}
-  m_Name: CombatT2
+  m_Name: Combat5
   m_EditorClassIdentifier: 
-  ticketModel: {fileID: 6627183123449876549, guid: 176878883e3cb8e4890bde23ae871e52,
+  ticketModel: {fileID: 6627183123449876549, guid: 07e4a61e4a5c7ac4d85d98471ffdcdf9,
     type: 3}
   ticketSprite: {fileID: 21300000, guid: bd703f09a7efbfc409cbb6a3e13621e9, type: 3}
   HighlightedSprite: {fileID: 21300000, guid: 35763bb10f3122842be4066b83de23ca, type: 3}
   SelectedSprite: {fileID: 21300000, guid: 35763bb10f3122842be4066b83de23ca, type: 3}
-  ticketName: "F\xFAria Verde"
+  ticketName: Bleh Cinza
   ticketDescription: Ticket para um destino de combate.
-  ticketLevel: B
+  ticketLevel: e
   ticketType: 0

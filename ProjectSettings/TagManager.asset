@@ -14,6 +14,7 @@ TagManager:
   - Boss
   - Projectile
   - EV
+  - EndLevel
   layers:
   - Default
   - TransparentFX

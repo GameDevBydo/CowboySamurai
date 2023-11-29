@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8380446193230857757}
   - component: {fileID: 4376730097791583452}
   - component: {fileID: 6550504600866441300}
-  - component: {fileID: 4946215171630435564}
+  - component: {fileID: -8345940168146770435}
   m_Layer: 0
-  m_Name: Ticket 1
+  m_Name: TicketInteraction
   m_TagString: ticket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.4, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3713867610248846310}
+  - {fileID: 6638657614485559944}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1a9cbd025907ae40895b1d89c3e27ee, type: 2}
+  - {fileID: 2100000, guid: 99f67086e2edd4e4599f3041956a2902, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4946215171630435564
+--- !u!114 &-8345940168146770435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4a4ee7f7884c0418f828e9068fb30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticketSO: {fileID: 11400000, guid: 4b6a144fecb697641843fe6e1fbad6c5, type: 2}
---- !u!1001 &5917089946108673694
+  ticketSO: {fileID: 11400000, guid: 7f8062e5d5bceed4daff6fe691e3f506, type: 2}
+--- !u!1001 &4446962632217018352
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -202,15 +202,15 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d92c56106fabbbb45b73131d857bf166, type: 2}
+      objectReference: {fileID: 2100000, guid: d9426b0c652b03c41acb1a82b52aa91d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ad88a9006567c4785b0e9dfa8adb15, type: 3}
---- !u!4 &3713867610248846310 stripped
+--- !u!4 &6638657614485559944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7032361053906380152, guid: f8ad88a9006567c4785b0e9dfa8adb15,
     type: 3}
-  m_PrefabInstance: {fileID: 5917089946108673694}
+  m_PrefabInstance: {fileID: 4446962632217018352}
   m_PrefabAsset: {fileID: 0}

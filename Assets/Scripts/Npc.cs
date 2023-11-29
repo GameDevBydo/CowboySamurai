@@ -49,6 +49,7 @@ public class Npc : MonoBehaviour
                 {
                     Controller.instance.shop.SetActive(true);
                     Controller.instance.PauseFullGame();
+                    endEvent[0].Invoke();
                 }
                 else if(npcType == 1)
                 {

@@ -29,7 +29,7 @@ public class Boss : MonoBehaviour
     public float recoveryTimer = 30.0f;
 
     public ParticleSystem deathPS, hitPS;
-    public Material baseMat, hitMat;
+    public Material baseMat, hitMat, rageMat, rageScytheMat;
     [HideInInspector]public GameObject player;
 
     public GameObject[] spikes, rageSpikes;
@@ -83,21 +83,21 @@ public class Boss : MonoBehaviour
 
     void Attack()
     {
-        currentAttack = Random.Range(0,1);
+        currentAttack = Random.Range(0,3);
         
         if(currentAttack == 0)
         {
-            Debug.Log("0");
             anim.Play("Wendigo_Attack1");
-            
         }
         else if(currentAttack == 1)
         {
-            Debug.Log("1");
-            anim.Play("Wendigo_Attack2");
-            
+            anim.Play("Wendigo_Attack2");   
         }
-        else Debug.Log("trouxa");
+        else if(currentAttack == 2)
+        {
+            if(rageMode) anim.Play("Wendigo_Attack3");
+            else anim.Play("Wendigo_Attack2");
+        }
         recoveryTimer = 7;
     }
 
@@ -136,6 +136,9 @@ public class Boss : MonoBehaviour
         //play rage anim, change shader
         normalLife += rageLife;
         rageMode = true;
+        rend.material = rageMat;
+        baseMat = rageMat;
+        transform.GetChild(0).GetChild(2).GetComponent<SkinnedMeshRenderer>().material = rageScytheMat;
     }
 
     void CheckDeath() // Método para checagem de morte

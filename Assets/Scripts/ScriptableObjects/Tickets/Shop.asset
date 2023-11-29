@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2decf150ddf08e4283da7e1efce97e2, type: 3}
-  m_Name: NpcT2
+  m_Name: Shop
   m_EditorClassIdentifier: 
-  ticketModel: {fileID: 6627183123449876549, guid: db66e4a7c1721ff43b1aaa4d555182e6,
+  ticketModel: {fileID: 6627183123449876549, guid: d9f5e1a28f62f2a4e807198aea07a272,
     type: 3}
   ticketSprite: {fileID: 21300000, guid: 8059bbe035fbcc348a0895c01feb6ece, type: 3}
   HighlightedSprite: {fileID: 21300000, guid: eb6a335d14dfe2d41a4a5b9bb43d6f96, type: 3}
   SelectedSprite: {fileID: 21300000, guid: eb6a335d14dfe2d41a4a5b9bb43d6f96, type: 3}
-  ticketName: Golden One
+  ticketName: Hora de Gastar
   ticketDescription: "Ticket para um destino de intera\xE7\xE3o."
-  ticketLevel: a 4
+  ticketLevel: Shop
   ticketType: 1
