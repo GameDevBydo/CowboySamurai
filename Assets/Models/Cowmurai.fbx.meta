@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: de9514ab5d87f334587330a8397805d7
+guid: ba2bf3b243713404896b59a8db5f4bf8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -143,7 +143,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.2644227
+        functionName: CheckAttackCollision
+        data: H
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9755104
+        functionName: CallEndAnimation
+        data: 
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -172,7 +188,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.26199588
+        functionName: CheckAttackCollision
+        data: HH
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8648179
+        functionName: CallEndAnimation
+        data: 
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -259,7 +291,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.2160638
+        functionName: CheckAttackCollision
+        data: L
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.58402777
+        functionName: CallEndAnimation
+        data: 
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -288,7 +336,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.24733634
+        functionName: CheckAttackCollision
+        data: LL
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.92286503
+        functionName: CallEndAnimation
+        data: 
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -317,7 +381,23 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.20694456
+        functionName: CheckAttackCollision
+        data: LLL
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.79372144
+        functionName: CallEndAnimation
+        data: 
+        objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -504,7 +584,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
