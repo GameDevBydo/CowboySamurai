@@ -1483,11 +1483,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 0}
   player: {fileID: 0}
-  prefabType1: {fileID: 5119422155215336240, guid: a8a4edca8c09c684aa4c25918c920a8d,
+  prefabType1: {fileID: 4005425075796316872, guid: e47a7bebff087b54092208d3b0fede18,
     type: 3}
-  prefabType2: {fileID: 5119422155215336240, guid: d9c20604287a6934dbb9b5cc9103c278,
+  prefabType2: {fileID: 8622916372847366261, guid: 01a8de86fe46e0a4080b27f0bad4573d,
     type: 3}
-  prefabType3: {fileID: 4144898017931797761, guid: 134553f9323053a46bec3ca033fd2d33,
+  prefabType3: {fileID: 3427773074272861684, guid: c66d6c62cd7d71241bde9058fecfaf78,
     type: 3}
   minDistanceToPlayer: 3
   beginEnemies: 4
