@@ -463,8 +463,16 @@ public class Controller : MonoBehaviour
     {
         playerPause = !playerPause;
         ChangeGameStates(playerPause?0:1);
-        if(playerPause) ChangeScreen(pauseScreen);
-        else ChangeScreen(inGameScreen);
+        if(playerPause) 
+        {
+            Time.timeScale = 0;
+            ChangeScreen(pauseScreen);
+        }
+        else 
+        {
+            Time.timeScale = 1;
+            ChangeScreen(inGameScreen);
+        }
 
     }
     #endregion
@@ -472,9 +480,16 @@ public class Controller : MonoBehaviour
     public void ToggleShop(){
         playerPause = !playerPause;
         ChangeGameStates(playerPause?0:1);
-        if(playerPause) ChangeScreen(skillTreePanel);
-        else ChangeScreen(inGameScreen);
-
+        if(playerPause) 
+        {
+            Time.timeScale = 0;
+            ChangeScreen(skillTreePanel);
+        }
+        else 
+        {
+            Time.timeScale = 1;
+            ChangeScreen(inGameScreen);
+        }
     }
 
     #region Spawn Controller
