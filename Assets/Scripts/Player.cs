@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
             }     */  
             if(!Controller.instance.playerPause)
             {
+                
                 KnockBack();
                 Cheats();
                 MovementPlayer();
@@ -157,7 +158,10 @@ public class Player : MonoBehaviour
             break;
             case 5:
                 currentState = PlayerState.HITSTUN;
-                animationName = "Idle";
+                if(currentHitstun == 0)
+                    animationName = "Stagger-Light";
+                if(currentHitstun == 1)
+                    animationName = "Stagger-Large";
             break;
             case 6:
                 currentState = PlayerState.DASHING;
@@ -197,6 +201,14 @@ public class Player : MonoBehaviour
         
         }
     }
+    public int currentHitstun;
+
+    public IEnumerator Hitstun()
+    {
+        ChangePlayerState(5);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        ChangePlayerState(1);
+    }
     #region Movimento do player
     float groundCheck = 0;
     public void MovementPlayer()
@@ -224,12 +236,12 @@ public class Player : MonoBehaviour
         {
             transform.forward = input;
             
-            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING) && groundedPlayer) ChangePlayerState(2);
+            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING && currentState != PlayerState.HITSTUN) && groundedPlayer) ChangePlayerState(2);
             //anim.SetBool("walking",true);
         }
         else
         {
-            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING) && groundedPlayer) ChangePlayerState(1);
+            if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING && currentState != PlayerState.HITSTUN) && groundedPlayer) ChangePlayerState(1);
             //anim.SetBool("walking",false);
         }
         

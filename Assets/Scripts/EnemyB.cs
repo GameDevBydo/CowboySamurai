@@ -18,6 +18,7 @@ public class EnemyB : MonoBehaviour
     public float recoveryTime = 5.0f;
     public Attack[] attackEnemy;
     public bool canAttack;
+    public int currentcombo;
 
     [Header("Moving")]
     public GameObject player;
@@ -120,6 +121,11 @@ public class EnemyB : MonoBehaviour
                 if(Player.instance.getHit)
                 {
                     Player.instance.TakeDamage(attackEnemy[index].damage);
+                    currentcombo++;
+                    if(currentcombo>=3){
+                        SetHitstunAnimPlayer();
+                        currentcombo=0;
+                    }
                 }
             }
             canAttack = false;
@@ -130,6 +136,18 @@ public class EnemyB : MonoBehaviour
         if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f){
             ChangeState(State.Idle);
         }
+    }
+
+    public void SetHitstunAnimPlayer(){
+        if(gameObject.name == "Enemy1(Clone)" || gameObject.name == "Enemy2(Clone)"){
+            Debug.Log("HiststunLeve");
+            Player.instance.currentHitstun = 0;
+        }
+        if(gameObject.name == "EnemyStick1(Clone)" || gameObject.name == "EnemyStick2(Clone)"){
+            Debug.Log("HiststunLarge");
+            Player.instance.currentHitstun = 1;
+        }
+        StartCoroutine(Player.instance.Hitstun());
     }
 
     public void ChoiceHit(){
@@ -265,7 +283,7 @@ public class EnemyB : MonoBehaviour
 
     void HitStun(){
         GetComponent<CharacterController>().enabled = false;
-        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime>1.0f){
+        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime>=1.0f){
             GetComponent<CharacterController>().enabled = true;
             ChangeState(State.Idle);
         }
