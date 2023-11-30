@@ -4,26 +4,38 @@ using UnityEngine;
 
 public class Parallax : MonoBehaviour
 {
-    public Vector3 startP,endP;
+    public Transform startWagon,endWagon;
+    private Vector3 startP,endP;
     public float parallax;
  
     void Start()
     {
+        
+
        
     }
 
-
+    float Size()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Bounds bounds = spriteRenderer.bounds;
+        return bounds.size.x/2f;
+    }
     void Update()
     {
-        transform.Translate(Time.deltaTime*parallax, 0, 0);
 
-        if(transform.position.x > endP.x+5)
+        Vector3 pos = transform.position;
+
+        startP = new Vector3(pos.x + Size(), pos.y, pos.z);
+        endP = new Vector3(pos.x - Size(), pos.y, pos.z);
+
+        transform.Translate(Time.deltaTime*-parallax, 0, 0);
+
+        if(startP.x < endWagon.position.x )
         {
-            transform.position = new Vector3(startP.x-5,transform.position.y,transform.position.z);
+            float p = startWagon.position.x + Size();
+            transform.position = new Vector3(p,transform.position.y,transform.position.z);
         }
-        if(transform.position.x < startP.x-5)
-        {
-            transform.position = new Vector3(endP.x+5,transform.position.y,transform.position.z);
-        }
+        
     }
 }
