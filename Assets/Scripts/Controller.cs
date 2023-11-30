@@ -9,7 +9,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.IO;
 using UnityEngine.InputSystem;
-
+using UnityEngine.Video;
 
 
 public class Controller : MonoBehaviour
@@ -49,6 +49,7 @@ public class Controller : MonoBehaviour
         }
 
         audio = GetComponent<AudioControlador>();
+        videoPlayer = GetComponent<VideoPlayer>();
     }
     #endregion 
     public Button continueBtn;
@@ -719,8 +720,12 @@ public class Controller : MonoBehaviour
         {
             while(tic1id==tic2id)
             {
-                tic1id = UnityEngine.Random.Range(0, ticketsAvailable.Count);
-                tic2id = UnityEngine.Random.Range(0, ticketsAvailable.Count);
+                tic1id = UnityEngine.Random.Range(0, ticketsAvailable.Count-1);
+                tic2id = UnityEngine.Random.Range(0, ticketsAvailable.Count-1);
+            }
+            if(currentScene>4)
+            {
+                tic1id = ticketsAvailable.Count-1;
             }
 
             tic1 = ticketsAvailable[tic1id];
@@ -738,5 +743,36 @@ public class Controller : MonoBehaviour
     }
 
     #endregion
+
+
+    
+    VideoPlayer videoPlayer;
+    public VideoClip openingVideo, endingVideo;
+    public GameObject videoObj;
+
+    public void PlayOpeningVideo()
+    {
+        inputPause = true;
+        videoPlayer.clip = openingVideo;
+        videoObj.SetActive(true);
+        videoPlayer.Play();
+        Invoke("CloseVideo", (float)videoPlayer.clip.length);
+    }
+
+    public void PlayEndingVideo()
+    {
+        inputPause = true;
+        videoPlayer.clip = endingVideo;
+        videoObj.SetActive(true);
+        videoPlayer.Play();
+        Invoke("CloseVideo", (float)videoPlayer.clip.length+1);
+    }
+
+    void CloseVideo()
+    {
+        videoObj.SetActive(false);
+        inputPause = false;
+    }
+
 
 }

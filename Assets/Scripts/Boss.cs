@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Boss : MonoBehaviour 
 {
@@ -46,6 +46,7 @@ public class Boss : MonoBehaviour
         rend = transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>();
         baseMat = rend.material;
         normalLife = baseLife;
+        source = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -146,6 +147,7 @@ public class Boss : MonoBehaviour
         if (normalLife <= 0)
         {
             Destroy(gameObject);
+            Controller.instance.PlayEndingVideo();
             // play video of ending
         }
     }
@@ -227,4 +229,16 @@ public class Boss : MonoBehaviour
             }
         }
     }
+
+    AudioSource source;
+
+    public void PlaySound(AudioClip sound)
+    {
+        source.clip = sound;
+        source.Play();
+    }
+
+
+
+
 }

@@ -16294,7 +16294,7 @@ GameObject:
   - component: {fileID: 1213916330}
   - component: {fileID: 1213916329}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: VideoImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22582,11 +22582,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4b6a144fecb697641843fe6e1fbad6c5, type: 2}
   - {fileID: 11400000, guid: a51549ec018ef1c4ea55ccb9489d4627, type: 2}
   - {fileID: 11400000, guid: b964f5ad607a1854b833a36fff28712a, type: 2}
+  - {fileID: 11400000, guid: 878fa328e7d7c7b46bd824f03f54a894, type: 2}
+  - {fileID: 11400000, guid: 8ccddb1ca3203d94ea8d34d2fee77957, type: 2}
+  - {fileID: 11400000, guid: b3868c6b2deb86e4da75526be469cd0c, type: 2}
   - {fileID: 11400000, guid: ed27af83b445c014893b3204feade46f, type: 2}
   - {fileID: 11400000, guid: 7f8062e5d5bceed4daff6fe691e3f506, type: 2}
   - {fileID: 11400000, guid: 00aed7797840433468b4545772a41db8, type: 2}
   tic1Pos: {fileID: 0}
   tic2Pos: {fileID: 0}
+  openingVideo: {fileID: 32900000, guid: e5478a0eab1dbb74fb8269588668d7d6, type: 3}
+  endingVideo: {fileID: 32900000, guid: 46db5cd64a7769e4ea2d4c92a2d4ce30, type: 3}
+  videoObj: {fileID: 1213916327}
 --- !u!4 &1747575655
 Transform:
   m_ObjectHideFlags: 0
@@ -22842,7 +22848,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747575653}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: e5478a0eab1dbb74fb8269588668d7d6, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
