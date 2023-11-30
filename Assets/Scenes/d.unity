@@ -1485,9 +1485,9 @@ MonoBehaviour:
   player: {fileID: 0}
   prefabType1: {fileID: 1038354284067644101, guid: 01f504184b29de24cb3175c7551d8e82,
     type: 3}
-  prefabType2: {fileID: 96010453714263404, guid: e9d586b4007c9d84682d76208d5f813f,
+  prefabType2: {fileID: 5119422155215336240, guid: cae5ff7fde782dc439f1ece2e55f5346,
     type: 3}
-  prefabType3: {fileID: 6414428905586325777, guid: 2be7880b29b54cb418e738f3249b4fe3,
+  prefabType3: {fileID: 4144898017931797761, guid: 134553f9323053a46bec3ca033fd2d33,
     type: 3}
   minDistanceToPlayer: 3
   beginEnemies: 4
