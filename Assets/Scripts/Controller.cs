@@ -111,42 +111,59 @@ public class Controller : MonoBehaviour
         nextLevel.SetActive(false);
     }
     
-    public GameObject[] saveNames, slotsVazios;
-    public TextMeshProUGUI[] loadNames, descLoad, loadSlotsVazios;
-    public Button[] loadsButtons;
+    public Sprite gameSaved, slotEmpty;
+    public TextMeshProUGUI[]  descLoad;
+    public Image saveImage1, saveImage2, saveImage3;
+    public Image loadImage1, loadImage2, loadImage3;
+    public Button save1, save2, save3;
+    public Button load1, load2, load3;
+    [Header("Jogo Salvo")]
+    public SpriteState spriteStateSaved;
+    [Header("Slot Vazio")]
+    public SpriteState spriteStateEmpty;
+
     public void verifySaveGame(){
         if(File.Exists(Application.persistentDataPath + "/SaveGame1.txt")){
-            saveNames[0].SetActive(true);
-            slotsVazios[0].SetActive(false);
-            loadNames[0].text = "Jogo Salvo 1";
+            saveImage1.sprite = gameSaved;
+            loadImage1.sprite = gameSaved;
             descLoad[0].text = File.GetCreationTime(Application.persistentDataPath + "/SaveGame1.txt").ToString();
-            loadSlotsVazios[0].text = "";
-            loadsButtons[0].interactable = true;
+            save1.interactable = true;
+            save1.spriteState = spriteStateSaved;
+            load1.spriteState = spriteStateSaved;
         }else{
-            loadSlotsVazios[0].text = "Espaço Vazio";
-            loadsButtons[0].interactable = false;
+            saveImage1.sprite = slotEmpty;
+            loadImage1.sprite = slotEmpty;
+            save1.spriteState = spriteStateEmpty;
+            load1.spriteState = spriteStateEmpty;
+            save1.interactable = false;
         }
         if(File.Exists(Application.persistentDataPath + "/SaveGame2.txt")){
-            saveNames[1].SetActive(true);
-            slotsVazios[1].SetActive(false);
-            loadNames[1].text = "Jogo Salvo 2";
+            saveImage2.sprite = gameSaved;
+            loadImage2.sprite = gameSaved;
+            save2.interactable = true;
             descLoad[1].text = File.GetCreationTime(Application.persistentDataPath + "/SaveGame2.txt").ToString();
-            loadSlotsVazios[1].text = "";
-            loadsButtons[1].interactable = true;
+            save2.spriteState = spriteStateSaved;
+            load2.spriteState = spriteStateSaved;
         }else{
-            loadSlotsVazios[1].text = "Espaço Vazio";
-            loadsButtons[1].interactable = false;
+            saveImage2.sprite = slotEmpty;
+            loadImage2.sprite = slotEmpty;
+            save2.spriteState = spriteStateEmpty;
+            load2.spriteState = spriteStateEmpty;
+            save2.interactable = false;
         }
         if(File.Exists(Application.persistentDataPath + "/SaveGame3.txt")){
-            saveNames[2].SetActive(true);
-            slotsVazios[2].SetActive(false);
-            loadNames[2].text = "Jogo Salvo 3";
+            saveImage3.sprite = gameSaved;
+            loadImage3.sprite = gameSaved;
+            save3.interactable = true;
             descLoad[2].text = File.GetCreationTime(Application.persistentDataPath + "/SaveGame3.txt").ToString();
-            loadSlotsVazios[2].text = "";
-            loadsButtons[2].interactable = true;
+            save3.spriteState = spriteStateSaved;
+            load3.spriteState = spriteStateSaved;
         }else{
-            loadSlotsVazios[2].text = "Espaço Vazio";
-            loadsButtons[2].interactable = false;
+            saveImage3.sprite = slotEmpty;
+            loadImage3.sprite = slotEmpty;
+            save3.spriteState = spriteStateEmpty;
+            load3.spriteState = spriteStateEmpty;
+            save3.interactable = false;
         }
         if(File.Exists(Application.persistentDataPath + "/SaveGame1.txt") || File.Exists(Application.persistentDataPath + "/SaveGame2.txt") || File.Exists(Application.persistentDataPath + "/SaveGame3.txt"))
             continueBtn.interactable = true;
