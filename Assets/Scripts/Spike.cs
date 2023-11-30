@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Spike : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class Spike : MonoBehaviour
     public void GoAway()
     {
         transform.parent.gameObject.SetActive(false);
+    }
+
+    public void PlaySound()
+    {
+        GetComponent<AudioSource>().Play();
     }
 
     private void OnTriggerEnter(Collider other) 
