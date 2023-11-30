@@ -71,7 +71,7 @@ public class EnemyB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentState == State.Death) StartCoroutine(Destroy());
         EnemyState();
         if(currentState != State.Death){
             recoveryTime -= Time.deltaTime;
@@ -99,7 +99,7 @@ public class EnemyB : MonoBehaviour
             break;
             case State.Death:
                 anim.Play("Death");
-                DestroyEnemy();
+                
                 break;
             default:
                 ChangeState(State.Idle);
@@ -244,7 +244,7 @@ public class EnemyB : MonoBehaviour
     void CheckDeath(){
         if(hp <= 0)
         {
-            
+            GetComponent<CharacterController>().enabled = false;
             Player.instance.exp += expDropped;
             Controller.instance.enemiesDefeated++;
             Controller.instance.CheckClearCondition();
@@ -255,12 +255,14 @@ public class EnemyB : MonoBehaviour
             Instantiate(deathPS, transform.position + Vector3.up, deathPS.transform.rotation);
             Instantiate(Player.instance.prefabCoin, new Vector3(transform.position.x,2f,transform.position.z), Quaternion.Euler(90f,0,0));
             ChangeState(State.Death);
-            
         }
     }
-    void DestroyEnemy(){
-        if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime>=1.0f)
-            Destroy(gameObject);
+
+    public IEnumerator Destroy()
+    {
+        
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        Destroy(gameObject);
     }
 
     public void TakeDamage(int damage, float knockback, AudioClip sfx){
