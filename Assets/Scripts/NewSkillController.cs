@@ -82,7 +82,7 @@ public class NewSkillController : MonoBehaviour
     
     public void Skill1()
     {
-        Controller.instance.UpdateBulletBar(40);
+        Player.instance.ChangeMeter(2);
         moveList.attackUnlocked[1] = true;
         moveList.attackUnlocked[2] = true;
     }
@@ -93,7 +93,7 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill3()
     {
-        Controller.instance.UpdateBulletBar(80);
+        Player.instance.ChangeMeter(2);
     }
     public void Skill4()
     {
@@ -139,7 +139,7 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill8()
     {
-        Controller.instance.UpdateBulletBar(120);
+        Player.instance.ChangeMeter(2);
     }
     public void Skill9()
     {

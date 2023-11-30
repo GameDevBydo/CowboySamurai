@@ -3909,6 +3909,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill8
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &237217773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1620163519095386209, guid: bd15be43fe4ca4619961d53618e16596,
@@ -7230,6 +7242,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 804597638}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill9
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19307,6 +19331,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill7
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1525190262
 GameObject:
   m_ObjectHideFlags: 0
@@ -25964,10 +26000,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
+      propertyPath: exp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
       propertyPath: dash
       value: 
       objectReference: {fileID: 778834199696562141, guid: 369891a5704406744bbf6a9505490c44,
         type: 3}
+    - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
+      propertyPath: jump
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 785914903, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81, type: 3}
       propertyPath: move
       value: 
