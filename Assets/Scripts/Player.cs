@@ -205,7 +205,9 @@ public class Player : MonoBehaviour
     public IEnumerator Hitstun()
     {
         ChangePlayerState(5);
+        GetComponent<CharacterController>().enabled = false;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        GetComponent<CharacterController>().enabled = true;
         ChangePlayerState(1);
     }
     #region Movimento do player
