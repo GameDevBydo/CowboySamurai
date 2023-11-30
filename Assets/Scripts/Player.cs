@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        SetMaxMeter(6);
         //moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
@@ -238,23 +239,21 @@ public class Player : MonoBehaviour
             transform.forward = input;
             
             if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING && currentState != PlayerState.HITSTUN) && groundedPlayer) ChangePlayerState(2);
-            //anim.SetBool("walking",true);
+            
         }
         else
         {
             if((currentState != PlayerState.ATTACKING && currentState != PlayerState.SUPER && currentState != PlayerState.DASHING && currentState != PlayerState.HITSTUN) && groundedPlayer) ChangePlayerState(1);
-            //anim.SetBool("walking",false);
+           
         }
         
-        //Pulo do player Input.GetButtonDown("Jump")
+        
         if (jumpAction.action.triggered && groundedPlayer)
         {
-            //playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);
-            //anim.SetTrigger("jump");
+            playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);            
             groundCheck = 1.03f;
             ChangePlayerState(3);
-
-            // BERNARDOOOOO FAZ UM COOLDOWN PRO IS GROUND FICAR FALSOOO
+   
         }
 
         //Aplicação da gravidade e da movimentação 
@@ -262,35 +261,8 @@ public class Player : MonoBehaviour
         if(currentState != PlayerState.SUPER) controller.Move( input* Time.deltaTime * speed);
         if(currentState != PlayerState.SUPER) controller.Move(playerVelocity * Time.deltaTime);
 
-        //if(!groundedPlayer) ChangePlayerState(3);
-        //if(input !=Vector3.zero) ChangePlayerState(2);
-        //else ChangePlayerState(1);
     }
 
-    void controllerJump()
-    {
-        if(groundCheck <=0) groundedPlayer = Physics.Raycast(transform.position, Vector3.down, 1.0f);
-        else
-        {
-            groundedPlayer = false;
-            groundCheck-= Time.deltaTime;
-        }
-
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
-        {
-            //playerVelocity.y += Mathf.Sqrt(jump * -3.0f * gravity);
-            //anim.SetTrigger("jump");
-            groundCheck = 1.03f;
-            ChangePlayerState(3);
-
-            // BERNARDOOOOO FAZ UM COOLDOWN PRO IS GROUND FICAR FALSOOO
-        }
-
-        playerVelocity.y += gravity * Time.deltaTime;
-        if(currentState != PlayerState.SUPER) controller.Move( input* Time.deltaTime * speed);
-        if(currentState != PlayerState.SUPER) controller.Move(playerVelocity * Time.deltaTime);
-
-    }
     #endregion
 
     #region Combate
@@ -319,12 +291,13 @@ public class Player : MonoBehaviour
 
     public void ChangeMeter(float val)
     {
-        bulletBar = Mathf.Clamp(bulletBar+=val, 0, bulletMax);
+        bulletBar = Mathf.Clamp(bulletBar+=(val*20), 0, bulletMax);
         Controller.instance.UpdateBulletBar(bulletBar);
+        
     }
     public void SetMaxMeter(int value)
     {
-        bulletMax = (value+1)*20;
+        bulletMax = (value)*20;
     }
 
     public void CheckDeath()
@@ -743,6 +716,7 @@ public class Player : MonoBehaviour
                 }
                 ChangeMeter(attack.meterGen);
                 previousAttackHit = attack.hit;
+                
             }
             else
             {
