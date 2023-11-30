@@ -79,7 +79,6 @@ public class Player : MonoBehaviour
             }     */  
             if(!Controller.instance.playerPause)
             {
-                
                 KnockBack();
                 Cheats();
                 MovementPlayer();
@@ -161,7 +160,7 @@ public class Player : MonoBehaviour
                 if(currentHitstun == 0)
                     animationName = "Stagger-Light";
                 if(currentHitstun == 1)
-                    animationName = "Stagger-Large";
+                    animationName = "Stagger-Downed";
             break;
             case 6:
                 currentState = PlayerState.DASHING;
