@@ -68,7 +68,7 @@ public class Controller : MonoBehaviour
         verifySaveGame();
         if(SceneManager.GetActiveScene().name != "TutorialScene")
             saveButton.interactable = true;
-        if(pause.action.triggered){
+        if(pause.action.triggered && skillTreePanel.activeSelf == false){
             TogglePlayerPause(); // Pause funciona apenas no teclado por enquanto
             SetSelectedObj(firstBtnPause);
         } 
