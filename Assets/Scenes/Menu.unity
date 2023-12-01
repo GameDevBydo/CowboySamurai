@@ -1068,8 +1068,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed24fb555604a84a977b431adfe6413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priceLife: 30
-  priceXP: 20
+  priceLife: 15
+  priceXP: 15
   life: {fileID: 0}
   xp: {fileID: 0}
   lifeRegenAmount: 50
@@ -8167,7 +8167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15
+  m_text: 20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6136f0f04c4159345aa00e8ec9512d8a, type: 2}
   m_sharedMaterial: {fileID: 3952433886240461333, guid: 6136f0f04c4159345aa00e8ec9512d8a,
@@ -17995,7 +17995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15
+  m_text: 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6136f0f04c4159345aa00e8ec9512d8a, type: 2}
   m_sharedMaterial: {fileID: 3952433886240461333, guid: 6136f0f04c4159345aa00e8ec9512d8a,
