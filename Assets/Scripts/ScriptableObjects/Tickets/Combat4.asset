@@ -17,7 +17,7 @@ MonoBehaviour:
   ticketSprite: {fileID: 21300000, guid: bd703f09a7efbfc409cbb6a3e13621e9, type: 3}
   HighlightedSprite: {fileID: 21300000, guid: 35763bb10f3122842be4066b83de23ca, type: 3}
   SelectedSprite: {fileID: 21300000, guid: 35763bb10f3122842be4066b83de23ca, type: 3}
-  ticketName: Bleh Cinza
+  ticketName: "T\xE9dio Marrom"
   ticketDescription: Ticket para um destino de combate.
   ticketLevel: d
   ticketType: 0
