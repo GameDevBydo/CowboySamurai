@@ -172,7 +172,9 @@ public class Controller : MonoBehaviour
             continueBtn.interactable = false;
     }
 
-
+    public void TiraPause(){
+        Time.timeScale = 1;
+    }
     public void CreditsScreen(GameObject screen){
         SceneManager.LoadScene("Creditos");
         ChangeScreen(screen);

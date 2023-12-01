@@ -7828,7 +7828,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: UnPauseFullGame
+        m_MethodName: TiraPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
