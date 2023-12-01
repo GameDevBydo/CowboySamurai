@@ -2598,21 +2598,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3193258905549289536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3193258905549289538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!114 &3193258905549289537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2639,7 +2624,6 @@ GameObject:
   - component: {fileID: 3193258905549289539}
   - component: {fileID: 3193258905549289542}
   - component: {fileID: 3193258905549289537}
-  - component: {fileID: 3193258905549289536}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged
@@ -4428,21 +4412,6 @@ MonoBehaviour:
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
   parallax: 7
---- !u!114 &8576543815102321291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8576543815102321294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!1 &8576543815102321294
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,7 +4423,6 @@ GameObject:
   - component: {fileID: 8576543815102321288}
   - component: {fileID: 8576543815102321289}
   - component: {fileID: 8576543815102321290}
-  - component: {fileID: 8576543815102321291}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged

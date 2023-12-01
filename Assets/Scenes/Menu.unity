@@ -9646,7 +9646,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
-        m_MethodName: TogglePanel
+        m_MethodName: closeShop
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 27733946}
