@@ -606,6 +606,7 @@ public class Controller : MonoBehaviour
 
     public void ClearLevel()
     {
+        questClear = true;
         nextLevel.SetActive(true);
         InstantiateTickets();
         GameObject.FindWithTag("EndLevel").GetComponent<BoxCollider>().enabled = true;
