@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
                 MovementPlayer();
                 CallAttack();
                 ComboTimer();
+                AttackTimer();
                 if(dashCD >0) dashCD-= Time.fixedDeltaTime;
                 else canDash = true;
                 //Input.GetKeyDown(KeyCode.Q) && canDash || Input.GetButtonDown("Dash") &&
@@ -347,6 +348,7 @@ public class Player : MonoBehaviour
                 {
                     if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
                     {
+                        attackTimer = 3;
                         comboSequence += "L";
                         buttonPress = true;
                         canInput = false;
@@ -358,6 +360,7 @@ public class Player : MonoBehaviour
                 {
                     if(comboSequence == "" || comboSequence != "" && previousAttackHit && canInput)
                     {
+                        attackTimer = 3;
                         comboSequence += "H";
                         buttonPress = true;
                         canInput = false;
@@ -366,16 +369,19 @@ public class Player : MonoBehaviour
 
                 if(supremo.action.triggered)
                 {
+                    attackTimer = 3;
                     int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
                     if(bullet > 0)
                     {
-                        SuperCollission(bullet-1);
+                        ChangePlayerState(7);
+                        ChangeMeter(-1);
                         ///Debug.Log("Super de " + bullet + " balas");
                     }
                 } 
 
                 if(buttonPress)
                 {
+                    attackTimer = 3;
                     Debug.Log(comboSequence);
                     //ChangePlayerState(4);
                     //CheckAttackCollision(comboSequence);
@@ -430,7 +436,7 @@ public class Player : MonoBehaviour
                 int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
                 if(bullet > 0)
                 {
-                    SuperCollission(bullet-1);
+                    //SuperCollission(bullet-1);
                     ///Debug.Log("Super de " + bullet + " balas");
                 }
             }
@@ -462,15 +468,23 @@ public class Player : MonoBehaviour
             if(comboTimer>0) comboTimer-=Time.fixedDeltaTime;
             else if(comboTimer<=0 && comboCounter>0) ResetComboCounter();    
         }
+
+        float attackTimer = 3;
+        void AttackTimer()
+        {
+            if(attackTimer>0) attackTimer-=Time.fixedDeltaTime;
+            else if(attackTimer<=0 && !canInput) RestartAttack();
+        }
         public void IncreaseComboCounter()
         {
-            comboTimer = 3;
+            comboTimer = 2;
             comboCounter++;
             UpdateComboCounter();
         }
 
         public void ResetComboCounter()
         {
+            RestartAttack();
             comboCounter = 0;
             UpdateComboCounter();
         }
@@ -599,12 +613,12 @@ public class Player : MonoBehaviour
                     en.TakeDamage(attack.damage + extraDamage, attack.stun, attack.sfx);
                     ChangeMeter(attack.meterGen);
                 }
-                /*foreach(Boss bs in bossHit)
+                foreach(Boss boss in bossHit)
                 {
                     IncreaseComboCounter();
-                    bs.TakeDamage(attack.damage, attack.stun, attack.sfx);
+                    boss.TakeDamage(attack.damage, attack.sfx);
                     ChangeMeter(attack.meterGen);
-                }*/
+                }
                 recoveryTimer = attack.recovery;
                 if(enemiesHit.Count>0) 
                 {
@@ -663,15 +677,13 @@ public class Player : MonoBehaviour
             Debug.Log("attack reset.");
         }
 
-        void SuperCollission(int meter)
+        void SuperCollission()
         {
-            
-            attack = superList._attack[meter];
+            int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
+            attack = superList._attack[bullet];
 
             if(attack != null)
             {
-                anim.Play("ResetAttack");
-                ChangePlayerState(7);
                 // Duas listas são criadas, uma para os colisores e outra para os Scripts de Enemy
                 // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
 
@@ -690,22 +702,11 @@ public class Player : MonoBehaviour
                 {
                     if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
                 }
-                float dis = 0, minDis = 100;
-                Enemy closestEnemy = null;
-                for(int i = 0; i< meter+1; i++)
+                
+                foreach(Enemy en in enemiesHit)
                 {
-                    foreach(Enemy en in enemiesHit)
-                    {
-                        dis = Vector3.Distance(en.transform.position, transform.position);
-                        if(dis < minDis) closestEnemy = en;
-                        
-                    }
-                    if(closestEnemy != null)
-                    {
                     IncreaseComboCounter();
-                    enemiesHit.Remove(closestEnemy);
-                    closestEnemy.TakeDamage(attack.damage + extraDamage, attack.stun, attack.sfx);
-                    }
+                    en.TakeDamage(attack.damage + extraDamage, attack.stun, attack.sfx);
                 }
 
                 recoveryTimer = attack.recovery;
@@ -853,5 +854,11 @@ public class Player : MonoBehaviour
                 Controller.instance.CollectTicket(tic);
             }
         }
+    }
+
+    public AudioSource gun;
+    public void PlayGunShot()
+    {
+        gun.Play();
     }
 }

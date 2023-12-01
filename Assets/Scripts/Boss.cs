@@ -152,15 +152,13 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage, float stun, AudioClip sfx) // Método para ser chamado ao levar dano
+    public void TakeDamage(int damage, AudioClip sfx) // Método para ser chamado ao levar dano
     {   
         normalLife -= damage;
-        //Instantiate(hitPS, transform.position + Vector3.up, hitPS.transform.rotation);
         GetComponent<AudioSource>().clip = sfx;
         GetComponent<AudioSource>().Play();
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
-        recoveryTimer = Mathf.Max(stun, recoveryTimer);
         if(normalLife <= 50) EnterRage();
     }
     public IEnumerator HitMaterialEffect()
