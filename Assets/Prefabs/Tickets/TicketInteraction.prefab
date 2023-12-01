@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4a4ee7f7884c0418f828e9068fb30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticketSO: {fileID: 11400000, guid: 7f8062e5d5bceed4daff6fe691e3f506, type: 2}
+  ticketSO: {fileID: 11400000, guid: ed27af83b445c014893b3204feade46f, type: 2}
 --- !u!1001 &4446962632217018352
 PrefabInstance:
   m_ObjectHideFlags: 0
