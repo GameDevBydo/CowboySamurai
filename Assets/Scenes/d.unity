@@ -2957,7 +2957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 3
+  parallax: 7
 --- !u!212 &1815633586252653814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3039,7 +3039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 3
+  parallax: 7
 --- !u!212 &1815633586284467308
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3170,7 +3170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 1
+  parallax: 3
 --- !u!212 &1815633586855491242
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3285,7 +3285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 1
+  parallax: 3
 --- !u!1 &1815633586905950124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3403,7 +3403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 1
+  parallax: 3
 --- !u!212 &1815633586994227468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3518,7 +3518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 10
+  parallax: 20
 --- !u!1 &1815633587142339382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,7 +3787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 10
+  parallax: 20
 --- !u!1 &1815633588013446736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3887,7 +3887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 10
+  parallax: 20
 --- !u!114 &1815633588177867840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3917,7 +3917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 1815633586644698115}
   endWagon: {fileID: 1815633587824976644}
-  parallax: 3
+  parallax: 7
 --- !u!212 &1815633588177867842
 SpriteRenderer:
   m_ObjectHideFlags: 0

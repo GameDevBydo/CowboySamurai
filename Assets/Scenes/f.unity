@@ -2145,7 +2145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 1
+  parallax: 3
 --- !u!1 &3193258904148873853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,7 +2297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 3
+  parallax: 7
 --- !u!4 &3193258904872573008
 Transform:
   m_ObjectHideFlags: 0
@@ -2327,7 +2327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 1
+  parallax: 3
 --- !u!1 &3193258904872573011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,7 +2497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 10
+  parallax: 20
 --- !u!4 &3193258905528089832
 Transform:
   m_ObjectHideFlags: 0
@@ -2527,7 +2527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 10
+  parallax: 20
 --- !u!1 &3193258905528089835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,7 +2627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 3
+  parallax: 7
 --- !u!1 &3193258905549289538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2881,7 +2881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 3
+  parallax: 7
 --- !u!1 &3193258905964843474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2960,7 +2960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 10
+  parallax: 20
 --- !u!212 &3193258906031847391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3112,7 +3112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 1
+  parallax: 3
 --- !u!4 &4279656961126181332
 Transform:
   m_ObjectHideFlags: 0
@@ -3662,7 +3662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 1
+  parallax: 3
 --- !u!1 &8576543813851180996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3832,7 +3832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 10
+  parallax: 20
 --- !u!4 &8576543813995097599
 Transform:
   m_ObjectHideFlags: 0
@@ -3929,7 +3929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 1
+  parallax: 3
 --- !u!1 &8576543814249443430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3995,7 +3995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 1
+  parallax: 3
 --- !u!4 &8576543814367273313
 Transform:
   m_ObjectHideFlags: 0
@@ -4193,7 +4193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 3
+  parallax: 7
 --- !u!1 &8576543814720217666
 GameObject:
   m_ObjectHideFlags: 0
@@ -4260,7 +4260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 3
+  parallax: 7
 --- !u!1 &8576543814819402404
 GameObject:
   m_ObjectHideFlags: 0
@@ -4427,7 +4427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 3
+  parallax: 7
 --- !u!114 &8576543815102321291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4510,7 +4510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 10
+  parallax: 20
 --- !u!4 &8576543815372692133
 Transform:
   m_ObjectHideFlags: 0
@@ -4610,7 +4610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 8576543814571426504}
   endWagon: {fileID: 3193258905964843475}
-  parallax: 10
+  parallax: 20
 --- !u!4 &8576543815407267989
 Transform:
   m_ObjectHideFlags: 0

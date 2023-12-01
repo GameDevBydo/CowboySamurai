@@ -2930,7 +2930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 10
+  parallax: 20
 --- !u!114 &4633504658643893968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2945,7 +2945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 1
+  parallax: 3
 --- !u!1 &4633504658643893973
 GameObject:
   m_ObjectHideFlags: 0
@@ -3112,7 +3112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 1
+  parallax: 3
 --- !u!1 &4633504658756936055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,7 +3160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 1
+  parallax: 3
 --- !u!1 &4633504658807402614
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,7 +3309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 3
+  parallax: 7
 --- !u!1 &4633504659260572597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,7 +3510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 3
+  parallax: 7
 --- !u!1 &4633504659494056787
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,7 +3625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 3
+  parallax: 7
 --- !u!1 &4633504659540345759
 GameObject:
   m_ObjectHideFlags: 0
@@ -3674,7 +3674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 10
+  parallax: 20
 --- !u!1 &4633504659815173050
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,7 +3774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 4633504659097572313}
   endWagon: {fileID: 4633504659993687262}
-  parallax: 10
+  parallax: 20
 --- !u!1 &4633504659914760586
 GameObject:
   m_ObjectHideFlags: 0

@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 3
+  parallax: 7
 --- !u!212 &140973604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 10
+  parallax: 20
 --- !u!212 &245600908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1027,7 +1027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 10
+  parallax: 20
 --- !u!212 &478059014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 1
+  parallax: 3
 --- !u!212 &634214590
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1577,7 +1577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 10
+  parallax: 20
 --- !u!212 &748181949
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1708,7 +1708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 3
+  parallax: 7
 --- !u!212 &828534650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2637,7 +2637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 3
+  parallax: 7
 --- !u!212 &1201702642
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3203,7 +3203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 1
+  parallax: 3
 --- !u!212 &1557969954
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3538,7 +3538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 1
+  parallax: 3
 --- !u!212 &1907455540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3893,7 +3893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 10
+  parallax: 20
 --- !u!4 &6581655878512238327
 Transform:
   m_ObjectHideFlags: 0
@@ -3993,7 +3993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 10
+  parallax: 20
 --- !u!4 &6581655878613988551
 Transform:
   m_ObjectHideFlags: 0
@@ -4127,7 +4127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 3
+  parallax: 7
 --- !u!114 &6581655878884556009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4310,7 +4310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 1
+  parallax: 3
 --- !u!4 &6581655879619596035
 Transform:
   m_ObjectHideFlags: 0
@@ -4410,7 +4410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 1
+  parallax: 3
 --- !u!4 &6581655879669538306
 Transform:
   m_ObjectHideFlags: 0
@@ -4510,7 +4510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 10
+  parallax: 20
 --- !u!4 &6581655879923876765
 Transform:
   m_ObjectHideFlags: 0
@@ -4610,7 +4610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 1
+  parallax: 3
 --- !u!4 &6581655880051540388
 Transform:
   m_ObjectHideFlags: 0
@@ -4710,7 +4710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 3
+  parallax: 7
 --- !u!4 &6581655880240692420
 Transform:
   m_ObjectHideFlags: 0
@@ -4828,7 +4828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startWagon: {fileID: 6581655880404806826}
   endWagon: {fileID: 815415217}
-  parallax: 3
+  parallax: 7
 --- !u!4 &6581655880272563294
 Transform:
   m_ObjectHideFlags: 0
