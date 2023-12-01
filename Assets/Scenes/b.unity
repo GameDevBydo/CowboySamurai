@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3050799, g: 0.07400859, b: 0.06945776, a: 1}
+  m_IndirectSpecularColor: {r: 0.30507952, g: 0.074008726, b: 0.06945776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2640,6 +2640,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318295629}
     m_Modifications:
+    - target: {fileID: 488182146872711079, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 760727092766460582, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 1253183024186007977, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
         type: 3}
       propertyPath: m_RootOrder
@@ -2695,6 +2707,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1367222005941786209, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 1957301696127908895, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 2077361025141125426, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 2235675518396844372, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 2573278506997395195, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 2779193811080504909, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 5152342250464139505, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 5368050894157105092, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 9192993688926049509, guid: 39ce61c1cb7e9884c9e06cd083ba83e0,
         type: 3}
       propertyPath: m_Name

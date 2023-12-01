@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.5190315, g: 0.3712505, b: 0.32184285, a: 1}
+  m_IndirectSpecularColor: {r: 1.5190313, g: 0.3712509, b: 0.3218435, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -756,6 +756,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318295629}
     m_Modifications:
+    - target: {fileID: 700617963434656029, guid: 505eeef38dff30644a2949692bf32de0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 1389752316416111481, guid: 505eeef38dff30644a2949692bf32de0,
         type: 3}
       propertyPath: m_RootOrder
@@ -816,16 +822,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: VagaoBarJapones
       objectReference: {fileID: 0}
+    - target: {fileID: 3023509470637165881, guid: 505eeef38dff30644a2949692bf32de0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 3735178492728789574, guid: 505eeef38dff30644a2949692bf32de0,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3971262835346677538, guid: 505eeef38dff30644a2949692bf32de0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 5191710748748618643, guid: 505eeef38dff30644a2949692bf32de0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 6382816806657981922, guid: 505eeef38dff30644a2949692bf32de0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 7924896222115925289, guid: 505eeef38dff30644a2949692bf32de0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 8014415436243910426, guid: 505eeef38dff30644a2949692bf32de0,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8563159876616973754, guid: 505eeef38dff30644a2949692bf32de0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 8701978167522233352, guid: 505eeef38dff30644a2949692bf32de0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

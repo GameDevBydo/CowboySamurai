@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3050799, g: 0.07400859, b: 0.06945776, a: 1}
+  m_IndirectSpecularColor: {r: 0.30507952, g: 0.074008726, b: 0.06945776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1235,6 +1235,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 318295629}
     m_Modifications:
+    - target: {fileID: 1122580302515707758, guid: c1ef8a9254908ef4aac7b82992cd83c0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 5076228549235824376, guid: c1ef8a9254908ef4aac7b82992cd83c0,
         type: 3}
       propertyPath: m_RootOrder
@@ -1290,11 +1296,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5405709251900774837, guid: c1ef8a9254908ef4aac7b82992cd83c0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 7117489694279042655, guid: c1ef8a9254908ef4aac7b82992cd83c0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 983fe1d3211972b4b929bda0f4c21918, type: 2}
+    - target: {fileID: 7664882314590124618, guid: c1ef8a9254908ef4aac7b82992cd83c0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 7673143145140279004, guid: c1ef8a9254908ef4aac7b82992cd83c0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 7786328895017595480, guid: c1ef8a9254908ef4aac7b82992cd83c0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -8766212559649032848, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
+    - target: {fileID: 7900121371931277159, guid: c1ef8a9254908ef4aac7b82992cd83c0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     - target: {fileID: 8882281880432842814, guid: c1ef8a9254908ef4aac7b82992cd83c0,
         type: 3}
       propertyPath: m_Name
       value: VagaoJRestaurante
       objectReference: {fileID: 0}
+    - target: {fileID: 9206158193908241503, guid: c1ef8a9254908ef4aac7b82992cd83c0,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4558095043594256468, guid: 59b34987504b2704795e34e544d75792,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
