@@ -50,6 +50,7 @@ public class Npc : MonoBehaviour
                     Controller.instance.shop.SetActive(true);
                     Controller.instance.PauseFullGame();
                     if(!Controller.instance.questClear) endEvent[0].Invoke();
+                    canInteractAgain = false;
                 }
                 else if(npcType == 1)
                 {
