@@ -3273,7 +3273,6 @@ GameObject:
   - component: {fileID: 1492899531395828878}
   - component: {fileID: 1492899531395828879}
   - component: {fileID: 1492899531395828876}
-  - component: {fileID: 1492899531395828877}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged
@@ -3296,21 +3295,6 @@ MonoBehaviour:
   startWagon: {fileID: 1492899530781744334}
   endWagon: {fileID: 5755992919902146517}
   parallax: 7
---- !u!114 &1492899531395828877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492899531395828872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!4 &1492899531395828878
 Transform:
   m_ObjectHideFlags: 0
@@ -4143,7 +4127,6 @@ GameObject:
   - component: {fileID: 5755992919501923909}
   - component: {fileID: 5755992919501923904}
   - component: {fileID: 5755992919501923911}
-  - component: {fileID: 5755992919501923910}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged
@@ -4166,21 +4149,6 @@ Transform:
   m_Father: {fileID: 5755992918282115228}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5755992919501923910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5755992919501923908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!114 &5755992919501923911
 MonoBehaviour:
   m_ObjectHideFlags: 0

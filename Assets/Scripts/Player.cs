@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        SetMaxMeter(6);
+        SetMaxMeter(0);
         //moneyText = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();

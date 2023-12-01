@@ -495,6 +495,11 @@ public class Controller : MonoBehaviour
         }
 
     }
+
+    public void closeShop(GameObject screen){
+        screen.SetActive(false);
+        TiraPause();
+    }
     #endregion
 
     public void ToggleShop(){
@@ -534,6 +539,7 @@ public class Controller : MonoBehaviour
     void BasicSetup() // Coisas para acontecerem no inicio do jogo.
     {
         ChangeGameStates(0);
+        Player.instance.SetMaxMeter(0);
         inputPause = true;
         playerPause = false;
         comboCounter.text = "Combo: " + Convert.ToString(0);

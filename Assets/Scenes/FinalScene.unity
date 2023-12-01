@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4093332, g: 0.044026706, b: 0.037491083, a: 1}
+  m_IndirectSpecularColor: {r: 0.4094046, g: 0.04403227, b: 0.03749117, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13174,21 +13174,6 @@ MonoBehaviour:
   startWagon: {fileID: 2866576393832190058}
   endWagon: {fileID: 8979787519765431153}
   parallax: 3
---- !u!114 &2866576393301819433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2866576393301819436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!4 &2866576393301819434
 Transform:
   m_ObjectHideFlags: 0
@@ -13267,7 +13252,6 @@ GameObject:
   - component: {fileID: 2866576393301819434}
   - component: {fileID: 2866576393301819435}
   - component: {fileID: 2866576393301819432}
-  - component: {fileID: 2866576393301819433}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged
@@ -14888,7 +14872,6 @@ GameObject:
   - component: {fileID: 8979787519913093857}
   - component: {fileID: 8979787519913093860}
   - component: {fileID: 8979787519913093859}
-  - component: {fileID: 8979787519913093858}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged
@@ -14911,21 +14894,6 @@ Transform:
   m_Father: {fileID: 8979787521301550136}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8979787519913093858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8979787519913093856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!114 &8979787519913093859
 MonoBehaviour:
   m_ObjectHideFlags: 0

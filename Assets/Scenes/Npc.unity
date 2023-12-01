@@ -3556,21 +3556,6 @@ MonoBehaviour:
   startWagon: {fileID: 5324842083040826617}
   endWagon: {fileID: 1347454314339796962}
   parallax: 7
---- !u!114 &1347454315018038897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347454315018038899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!4 &1347454315018038898
 Transform:
   m_ObjectHideFlags: 0
@@ -3597,7 +3582,6 @@ GameObject:
   - component: {fileID: 1347454315018038898}
   - component: {fileID: 1347454315018038903}
   - component: {fileID: 1347454315018038896}
-  - component: {fileID: 1347454315018038897}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged
@@ -4506,21 +4490,6 @@ Transform:
   m_Father: {fileID: 5324842084719122187}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5324842084624417978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324842084624417983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!114 &5324842084624417979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4547,7 +4516,6 @@ GameObject:
   - component: {fileID: 5324842084624417977}
   - component: {fileID: 5324842084624417976}
   - component: {fileID: 5324842084624417979}
-  - component: {fileID: 5324842084624417978}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3050799, g: 0.07400859, b: 0.06945776, a: 1}
+  m_IndirectSpecularColor: {r: 0.30507952, g: 0.074008726, b: 0.06945776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1491,7 +1491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950904435}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.34, y: 0.78, z: 4.85}
+  m_LocalPosition: {x: 18.524, y: 1.797, z: 2.122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2625,7 +2625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007026767}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.36, y: 0.65, z: 4.52}
+  m_LocalPosition: {x: 18.544, y: 1.667, z: 1.792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3816,21 +3816,6 @@ MonoBehaviour:
   startWagon: {fileID: 3820635021377925816}
   endWagon: {fileID: 3820635021804262847}
   parallax: 7
---- !u!114 &3820635021987816187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3820635021987816190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa629ccb62333a844b7f1f0e58fabe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWagon: {fileID: 0}
-  endWagon: {fileID: 0}
-  parallax: 0
 --- !u!1 &3820635021987816190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3842,7 +3827,6 @@ GameObject:
   - component: {fileID: 3820635021987816184}
   - component: {fileID: 3820635021987816185}
   - component: {fileID: 3820635021987816186}
-  - component: {fileID: 3820635021987816187}
   m_Layer: 0
   m_Name: MidleGround2-Espelho
   m_TagString: Untagged

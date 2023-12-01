@@ -82,6 +82,7 @@ public class NewSkillController : MonoBehaviour
     
     public void Skill1()
     {
+        Player.instance.SetMaxMeter(2);
         Player.instance.ChangeMeter(2);
         moveList.attackUnlocked[1] = true;
         moveList.attackUnlocked[2] = true;
@@ -93,6 +94,7 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill3()
     {
+        Player.instance.SetMaxMeter(4);
         Player.instance.ChangeMeter(2);
     }
     public void Skill4()
@@ -139,6 +141,7 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill8()
     {
+        Player.instance.SetMaxMeter(6);
         Player.instance.ChangeMeter(2);
     }
     public void Skill9()
