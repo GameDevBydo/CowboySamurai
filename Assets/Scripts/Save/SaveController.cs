@@ -66,6 +66,7 @@ public class SaveController : MonoBehaviour
         
         Controller.instance.currentScene = data.game.currentscene;
         Controller.instance.ticketsAvailable = data.game.ticketsAvailable;
+        Controller.instance.UnPauseFullGame();
     }
 
     //realiza o save do jogo em um arquivo Json
