@@ -54,6 +54,7 @@ public class Npc : MonoBehaviour
                 else if(npcType == 1)
                 {
                     prefab.SetActive(false);
+                    Controller.instance.PauseFullGame();
                     StartWriting(quotes, endEvent);
                     canInteractAgain = false;
                 }
@@ -128,6 +129,7 @@ public class Npc : MonoBehaviour
         //inputPause = false;
         dialoguePanel.SetActive(false);
         endQuoteEvent.Invoke();
+        Controller.instance.UnPauseFullGame();
     }
 }
 
