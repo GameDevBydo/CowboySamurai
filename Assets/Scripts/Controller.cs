@@ -43,11 +43,6 @@ public class Controller : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        for (int i = 1; i < Player.instance.moveList.attackUnlocked.Length; i++)
-        {
-            Player.instance.moveList.attackUnlocked[i] = false;
-        }
-
         audio = GetComponent<AudioControlador>();
         videoPlayer = GetComponent<VideoPlayer>();
     }
@@ -136,7 +131,6 @@ public class Controller : MonoBehaviour
             loadImage1.sprite = slotEmpty;
             save1.spriteState = spriteStateEmpty;
             load1.spriteState = spriteStateEmpty;
-            save1.interactable = false;
         }
         if(File.Exists(Application.persistentDataPath + "/SaveGame2.txt")){
             saveImage2.sprite = gameSaved;
@@ -150,7 +144,6 @@ public class Controller : MonoBehaviour
             loadImage2.sprite = slotEmpty;
             save2.spriteState = spriteStateEmpty;
             load2.spriteState = spriteStateEmpty;
-            save2.interactable = false;
         }
         if(File.Exists(Application.persistentDataPath + "/SaveGame3.txt")){
             saveImage3.sprite = gameSaved;
@@ -164,7 +157,6 @@ public class Controller : MonoBehaviour
             loadImage3.sprite = slotEmpty;
             save3.spriteState = spriteStateEmpty;
             load3.spriteState = spriteStateEmpty;
-            save3.interactable = false;
         }
         if(File.Exists(Application.persistentDataPath + "/SaveGame1.txt") || File.Exists(Application.persistentDataPath + "/SaveGame2.txt") || File.Exists(Application.persistentDataPath + "/SaveGame3.txt"))
             continueBtn.interactable = true;
