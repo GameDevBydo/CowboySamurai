@@ -394,7 +394,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014285833, y: 1.2635069, z: -0.023122227}
 --- !u!111 &56718014
 Animation:
@@ -710,7 +710,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014214308, y: 1.2635068, z: -0.02312336}
 --- !u!111 &81773315
 Animation:
@@ -1486,7 +1486,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014214308, y: 1.2635068, z: -0.02312336}
 --- !u!111 &356826923
 Animation:
@@ -1753,7 +1753,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014214308, y: 1.2635068, z: -0.02312336}
 --- !u!111 &392481523
 Animation:
@@ -2101,7 +2101,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014273913, y: 1.2635069, z: -0.023122882}
 --- !u!82 &423534020
 AudioSource:
@@ -2340,7 +2340,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014273913, y: 1.2635069, z: -0.023122882}
 --- !u!111 &435324650
 Animation:
@@ -2778,7 +2778,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014214308, y: 1.2635068, z: -0.02312336}
 --- !u!82 &520206076
 AudioSource:
@@ -3069,7 +3069,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743960244}
   m_LocalRotation: {x: 0.0026687318, y: -0, z: -0, w: 0.9999965}
-  m_LocalPosition: {x: 1.098, y: 4.429, z: -24.098}
+  m_LocalPosition: {x: 1.098, y: 2.91, z: -24.098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3217,7 +3217,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014214308, y: 1.2635068, z: -0.02312336}
 --- !u!111 &774344293
 Animation:
@@ -3588,7 +3588,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014321596, y: 1.2635069, z: -0.02312169}
 --- !u!111 &871123066
 Animation:
@@ -3960,7 +3960,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014321596, y: 1.2635069, z: -0.02312169}
 --- !u!111 &903697213
 Animation:
@@ -4227,7 +4227,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014285833, y: 1.2635069, z: -0.023122227}
 --- !u!111 &949302998
 Animation:
@@ -4494,7 +4494,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014214308, y: 1.2635068, z: -0.02312336}
 --- !u!111 &960386520
 Animation:
@@ -10321,7 +10321,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014273913, y: 1.2635069, z: -0.023122882}
 --- !u!111 &1419081274
 Animation:
@@ -10535,7 +10535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420496405}
   m_LocalRotation: {x: 0.0026687318, y: 0, z: 0, w: 0.9999965}
-  m_LocalPosition: {x: 1.098, y: 4.429, z: -24.098}
+  m_LocalPosition: {x: 1.098, y: 2.91, z: -24.098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10917,7 +10917,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014321596, y: 1.2635069, z: -0.02312169}
 --- !u!111 &1619976024
 Animation:
@@ -11496,7 +11496,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014214308, y: 1.2635068, z: -0.02312336}
 --- !u!111 &1899779083
 Animation:
@@ -11763,7 +11763,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014273913, y: 1.2635069, z: -0.023122882}
 --- !u!111 &1994340720
 Animation:
@@ -12194,7 +12194,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014285833, y: 1.2635069, z: -0.023122227}
 --- !u!82 &2009830267
 AudioSource:
@@ -12433,7 +12433,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014214308, y: 1.2635068, z: -0.02312336}
 --- !u!111 &2025270062
 Animation:
@@ -12700,7 +12700,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0759284, y: 3.0460253, z: 0.61376274}
+  m_Size: {x: 12.24, y: 3.0460253, z: 0.61376274}
   m_Center: {x: -0.00014285833, y: 1.2635069, z: -0.023122227}
 --- !u!111 &2054341601
 Animation:

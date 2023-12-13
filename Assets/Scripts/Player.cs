@@ -611,13 +611,13 @@ public class Player : MonoBehaviour
                 {
                     IncreaseComboCounter();
                     en.TakeDamage(attack.damage + extraDamage, attack.stun, attack.sfx);
-                    ChangeMeter(attack.meterGen);
+                    ChangeMeter(attack.meterGen/20.0f);
                 }
                 foreach(Boss boss in bossHit)
                 {
                     IncreaseComboCounter();
                     boss.TakeDamage(attack.damage, attack.sfx);
-                    ChangeMeter(attack.meterGen);
+                    ChangeMeter(attack.meterGen/20.0f);
                 }
                 recoveryTimer = attack.recovery;
                 if(enemiesHit.Count>0) 
@@ -677,10 +677,10 @@ public class Player : MonoBehaviour
             Debug.Log("attack reset.");
         }
 
-        void SuperCollission()
+        public void SuperCollission()
         {
             int bullet = Mathf.FloorToInt(bulletBar/(20.0f));
-            attack = superList._attack[bullet];
+            attack = superList._attack[0];
 
             if(attack != null)
             {
@@ -715,9 +715,8 @@ public class Player : MonoBehaviour
                     attack.hit = true;
                     PlayHitSound();
                 }
-                ChangeMeter(attack.meterGen);
                 previousAttackHit = attack.hit;
-                
+                ChangeMeter(attack.meterGen/20.0f);
             }
             else
             {

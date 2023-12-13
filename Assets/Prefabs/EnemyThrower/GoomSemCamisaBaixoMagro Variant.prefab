@@ -288,6 +288,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 42582392860230229, guid: 483e7063139d7b14498bd0a2185993b3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ab22aa6b755ed54585b8dfed2f4ef57, type: 2}
     - target: {fileID: 118295488842618100, guid: 483e7063139d7b14498bd0a2185993b3,
         type: 3}
       propertyPath: m_Layer
@@ -646,6 +651,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
   canAttack: 0
+  currentcombo: 0
   player: {fileID: 0}
   distance: 0
   speed: 1

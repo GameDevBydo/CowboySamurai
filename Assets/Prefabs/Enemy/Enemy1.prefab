@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3621c9fb625377c46ba7e36262598c62,
         type: 3}
       propertyPath: m_Name
-      value: GoomComCamisaMedioForte Variant
+      value: Enemy1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3621c9fb625377c46ba7e36262598c62,
         type: 3}
@@ -453,6 +453,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5092186868594211091, guid: 3621c9fb625377c46ba7e36262598c62,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ab22aa6b755ed54585b8dfed2f4ef57, type: 2}
     - target: {fileID: 5250842784993074727, guid: 3621c9fb625377c46ba7e36262598c62,
         type: 3}
       propertyPath: m_Layer
@@ -630,6 +635,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
   canAttack: 0
+  currentcombo: 0
   player: {fileID: 0}
   distance: 0
   speed: 1

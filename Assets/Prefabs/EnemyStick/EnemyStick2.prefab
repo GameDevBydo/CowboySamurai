@@ -233,6 +233,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -2350061405494683300, guid: 7892d49ecc8746547b44cfb560acc9a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b95f708ce71bbb044bdab52f31342601, type: 2}
     - target: {fileID: -2304961610255005550, guid: 7892d49ecc8746547b44cfb560acc9a5,
         type: 3}
       propertyPath: m_Layer
@@ -273,6 +278,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -1301345699105886792, guid: 7892d49ecc8746547b44cfb560acc9a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ab22aa6b755ed54585b8dfed2f4ef57, type: 2}
     - target: {fileID: -1208317599938117009, guid: 7892d49ecc8746547b44cfb560acc9a5,
         type: 3}
       propertyPath: m_Layer
@@ -336,7 +346,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7892d49ecc8746547b44cfb560acc9a5,
         type: 3}
       propertyPath: m_Name
-      value: GoomSemCamisaAltoForte Variant
+      value: EnemyStick2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7892d49ecc8746547b44cfb560acc9a5,
         type: 3}
@@ -625,6 +635,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
   - {fileID: 11400000, guid: 24bd0692dab574306bf64c761aaa55d0, type: 2}
   canAttack: 0
+  currentcombo: 0
   player: {fileID: 0}
   distance: 0
   speed: 1
