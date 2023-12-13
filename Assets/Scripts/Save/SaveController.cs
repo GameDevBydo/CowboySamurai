@@ -62,7 +62,6 @@ public class SaveController : MonoBehaviour
         Player.instance.dashCD = data.game.dashCD;
         
         Player.instance.moveList.attackUnlocked = data.game.attackUnlocked;
-        //NewSkillController.instance.LoadSkillTree();
         
         Controller.instance.currentScene = data.game.currentscene;
         Controller.instance.ticketsAvailable = data.game.ticketsAvailable;
