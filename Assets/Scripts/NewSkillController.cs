@@ -57,6 +57,7 @@ public class NewSkillController : MonoBehaviour
             if(unlockedSkills.Contains(skills[i]))
             {
                 skills[i].buttonSkill.interactable = true;
+                skills[i].upSkill.SetActive(true);
             }
             else if (acquiredSkills.Contains(skills[i]))
             {
@@ -64,6 +65,7 @@ public class NewSkillController : MonoBehaviour
                 acquiredColor.disabledColor = new Color(0, 1, 0, 0.6f);
                 skills[i].buttonSkill.colors = acquiredColor;
                 skills[i].buttonSkill.interactable = false;
+                skills[i].upSkill.SetActive(false);
             }
             else if(lostSkills.Contains(skills[i]))
             {
@@ -71,11 +73,13 @@ public class NewSkillController : MonoBehaviour
                 lostColor.disabledColor = new Color(1, 0, 0, 0.6f);
                 skills[i].buttonSkill.colors = lostColor;
                 skills[i].buttonSkill.interactable = false;
+                skills[i].upSkill.SetActive(false);
 
             }
             else
             {
                 skills[i].buttonSkill.interactable = false;
+                skills[i].upSkill.SetActive(false);
             }
         }
     }

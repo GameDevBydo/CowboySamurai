@@ -16,12 +16,13 @@ public class NewSkill : MonoBehaviour
     public List<NewSkill> nextSkills;
     public List<NewSkill> sideSkill;
     public Button buttonSkill;
+    public GameObject upSkill;
     
     [Header("Propriedades da UI Skill")]
 
     [SerializeField] private  TextMeshProUGUI skillNameUI;
     [SerializeField] private  TextMeshProUGUI skillDescUI;
-    //[SerializeField] private  TextMeshProUGUI skillPriceUI;
+    
     [SerializeField] private  Image skillIconUI;
 
     
@@ -56,6 +57,7 @@ public class NewSkill : MonoBehaviour
             buttonSkill.colors = acquiredColor;
             
             this.buttonSkill.interactable = false;
+            this.upSkill.SetActive(false);
 
             if(!nextSkills.Count.Equals(0))
             {
@@ -63,6 +65,7 @@ public class NewSkill : MonoBehaviour
                 {
                     nextSkills[i].buttonSkill.interactable = true;
                     NewSkillController.instance.unlockedSkills.Add(nextSkills[i]);
+                    nextSkills[i].upSkill.SetActive(true);
                 }   
             }
             if(sideSkill != null)
@@ -75,7 +78,7 @@ public class NewSkill : MonoBehaviour
                     ColorBlock lostColor = item.buttonSkill.colors;
                     lostColor.disabledColor = new Color(1, 0, 0, 0.6f);
                     item.buttonSkill.colors = lostColor;
-
+                    item.upSkill.SetActive(false);
                     item.buttonSkill.interactable = false;
                 }
                 
