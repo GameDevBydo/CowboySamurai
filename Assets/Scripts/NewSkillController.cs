@@ -28,7 +28,6 @@ public class NewSkillController : MonoBehaviour
     void Start()
     {  
         LoadSkillTree();
-        
         if(acquiredSkills.Contains(skills[0]))
         {
             ColorBlock acquiredColor = skills[0].buttonSkill.colors;
