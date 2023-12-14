@@ -69,6 +69,7 @@ public class Controller : MonoBehaviour
             SetSelectedObj(firstBtnPause);
         } 
         if(skillTree.action.triggered){
+            NewSkillController.instance.LoadSkillTree();
             ChangeScreen(skillTreePanel);
             SetSelectedObj(NewSkillController.instance.unlockedSkills[0].gameObject);
             PauseFullGame();
