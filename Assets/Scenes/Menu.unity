@@ -16091,6 +16091,7 @@ MonoBehaviour:
   skillTreeUI: {fileID: 1154972017}
   xpText: {fileID: 1467655667}
   xp: 0
+  anim: {fileID: 1467655669}
   moveList: {fileID: 11400000, guid: eaa46e15ebb1693458483b87b3b9e82c, type: 2}
   recoveryHP: 50
 --- !u!1 &1159194526
@@ -19098,6 +19099,7 @@ GameObject:
   - component: {fileID: 1467655666}
   - component: {fileID: 1467655668}
   - component: {fileID: 1467655667}
+  - component: {fileID: 1467655669}
   m_Layer: 5
   m_Name: Xp_Value
   m_TagString: Untagged
@@ -19223,6 +19225,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467655665}
   m_CullTransparentMesh: 1
+--- !u!95 &1467655669
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467655665}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67107311ffd03d645b9a0acae40f781f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &1488102247
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class NewSkillController : MonoBehaviour
     public GameObject skillTreeUI;
     public TextMeshProUGUI xpText;
     public float xp;
+    public Animator anim;
 
     [SerializeField] private MoveList moveList;
     [SerializeField] private int recoveryHP;

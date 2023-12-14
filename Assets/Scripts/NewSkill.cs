@@ -48,7 +48,7 @@ public class NewSkill : MonoBehaviour
     {
         if(NewSkillController.instance.xp >= skillPrice)
         {
-            NewSkillController.instance.xp -= skillPrice;
+            Player.instance.exp -= skillPrice;
             NewSkillController.instance.unlockedSkills.Remove(this);
             NewSkillController.instance.acquiredSkills.Add(this);
 
@@ -86,7 +86,7 @@ public class NewSkill : MonoBehaviour
         }
         else
         {
-            Debug.Log("Pobre");
+            NewSkillController.instance.anim.SetTrigger("OneTime");
         }
         
         
