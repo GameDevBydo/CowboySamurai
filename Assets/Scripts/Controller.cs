@@ -72,7 +72,7 @@ public class Controller : MonoBehaviour
             NewSkillController.instance.LoadSkillTree();
             ChangeScreen(skillTreePanel);
             SetSelectedObj(NewSkillController.instance.unlockedSkills[0].gameObject);
-            PauseFullGame();
+            simplePause();
         }
         moneyText.text = money.ToString();
         ScrollingIntro();
@@ -167,6 +167,10 @@ public class Controller : MonoBehaviour
 
     public void TiraPause(){
         Time.timeScale = 1;
+    }
+    public void simplePause()
+    {
+        Time.timeScale = 0;
     }
     public void CreditsScreen(GameObject screen){
         SceneManager.LoadScene("Creditos");
