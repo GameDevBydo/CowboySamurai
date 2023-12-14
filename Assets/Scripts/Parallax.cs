@@ -31,7 +31,7 @@ public class Parallax : MonoBehaviour
 
         transform.Translate(Time.deltaTime*-parallax, 0, 0);
 
-        if(startP.x < endWagon.position.x )
+        if(startP.x <= endWagon.position.x )
         {
             float p = startWagon.position.x + Size();
             transform.position = new Vector3(p,transform.position.y,transform.position.z);
