@@ -711,7 +711,6 @@ public class Controller : MonoBehaviour
         UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
         UpdateBulletBar(Player.instance.bulletBar);
         nextLevel.SetActive(false);
-        killsNeeded = 5+currentScene*5;
         ticketsAvailable.Remove(ticketUsed);
     }
 

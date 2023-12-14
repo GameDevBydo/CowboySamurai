@@ -16,6 +16,7 @@ TagManager:
   - EV
   - EndLevel
   - EW
+  - Scenario
   layers:
   - Default
   - TransparentFX

@@ -840,7 +840,7 @@ GameObject:
   - component: {fileID: 318295631}
   m_Layer: 0
   m_Name: Scenario
-  m_TagString: Untagged
+  m_TagString: Scenario
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -895,8 +895,7 @@ MonoBehaviour:
   minDistanceToPlayer: 3
   beginEnemies: 4
   enemiesSpawn: 6
-  enemiesInScene: []
-  type1: 1
+  type1: 0
   type2: 1
   type3: 0
 --- !u!114 &318295631

@@ -7,6 +7,7 @@ public class SpawnEnemy : MonoBehaviour
 {
     public static SpawnEnemy instance;
     public GameObject plane,player,prefabType1,prefabType2,prefabType3;
+    private int enemiesToKill;
     private Vector3 startPlane,center,endPlane,size;
 
 
@@ -16,7 +17,7 @@ public class SpawnEnemy : MonoBehaviour
     [Header("Configs Inimigos")]
     [SerializeField] private int beginEnemies;
     [SerializeField] private int enemiesSpawn;
-    public GameObject[] enemiesInScene;
+    private GameObject[] enemiesInScene;
 
     [Header("Tipos de Inimigos na Cena")] 
     [SerializeField] bool type1;
@@ -28,6 +29,9 @@ public class SpawnEnemy : MonoBehaviour
     
     void Start()
     {
+        enemiesToKill = beginEnemies + enemiesSpawn;
+        Controller.instance.killsNeeded = enemiesToKill;
+
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
 
