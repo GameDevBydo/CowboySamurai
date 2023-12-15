@@ -89,7 +89,7 @@ public class NewSkillController : MonoBehaviour
         Player.instance.SetMaxMeter(2);
         Player.instance.ChangeMeter(2);
         moveList.attackUnlocked[1] = true;
-        moveList.attackUnlocked[2] = true;
+        moveList.attackUnlocked[2] = true;  
     }
     public void Skill2()
     {

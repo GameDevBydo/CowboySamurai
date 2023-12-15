@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 
 public class NewSkill : MonoBehaviour
@@ -25,7 +26,7 @@ public class NewSkill : MonoBehaviour
     
     [SerializeField] private  Image skillIconUI;
 
-    
+    public UnityEvent eventSkill;
 
     private void Awake() {
         
@@ -48,6 +49,7 @@ public class NewSkill : MonoBehaviour
     {
         if(NewSkillController.instance.xp >= skillPrice)
         {
+            eventSkill.Invoke();
             Player.instance.exp -= skillPrice;
             NewSkillController.instance.unlockedSkills.Remove(this);
             NewSkillController.instance.acquiredSkills.Add(this);
@@ -58,6 +60,7 @@ public class NewSkill : MonoBehaviour
             
             this.buttonSkill.interactable = false;
             this.upSkill.SetActive(false);
+            
 
             if(!nextSkills.Count.Equals(0))
             {

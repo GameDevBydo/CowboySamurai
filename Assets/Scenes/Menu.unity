@@ -3890,6 +3890,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 1832598538}
   skillDescUI: {fileID: 1457801287}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill8
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &193841508 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163518740294478, guid: bd15be43fe4ca4619961d53618e16596,
@@ -3958,18 +3973,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1154972021}
-        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
-        m_MethodName: Skill8
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!224 &193841512 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1620163518740294479, guid: bd15be43fe4ca4619961d53618e16596,
@@ -4010,6 +4013,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 393041674}
   skillDescUI: {fileID: 161806865}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &237217778 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163519095386239, guid: bd15be43fe4ca4619961d53618e16596,
@@ -4066,18 +4084,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1154972021}
-        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
-        m_MethodName: Skill2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
         m_MethodName: SetSelectedObj
@@ -5147,6 +5153,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 155553482}
   skillDescUI: {fileID: 256573510}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &316646035 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163518075337696, guid: bd15be43fe4ca4619961d53618e16596,
@@ -7396,6 +7417,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 836278001}
   skillDescUI: {fileID: 96555567}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill9
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &476527297 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163518696471539, guid: bd15be43fe4ca4619961d53618e16596,
@@ -7459,18 +7495,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 804597638}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1154972021}
-        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
-        m_MethodName: Skill9
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14846,6 +14870,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 1370290354}
   skillDescUI: {fileID: 1853015507}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1095520323 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163517295396480, guid: bd15be43fe4ca4619961d53618e16596,
@@ -14902,18 +14941,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1154972021}
-        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
-        m_MethodName: Skill1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
         m_MethodName: SetSelectedObj
@@ -17217,6 +17244,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 1737141596}
   skillDescUI: {fileID: 806672949}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1305586974 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163518913267674, guid: bd15be43fe4ca4619961d53618e16596,
@@ -18724,6 +18766,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 2084115328}
   skillDescUI: {fileID: 1793761645}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1430644714 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163517720731724, guid: bd15be43fe4ca4619961d53618e16596,
@@ -18780,18 +18837,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1154972021}
-        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
-        m_MethodName: Skill3
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
         m_MethodName: SetSelectedObj
@@ -19906,6 +19951,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 1282069687}
   skillDescUI: {fileID: 972051082}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill7
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1524581529 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163518076200272, guid: bd15be43fe4ca4619961d53618e16596,
@@ -19969,18 +20029,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 804597638}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1154972021}
-        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
-        m_MethodName: Skill7
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -20733,6 +20781,21 @@ MonoBehaviour:
   skillNameUI: {fileID: 447973236}
   skillDescUI: {fileID: 428725079}
   skillIconUI: {fileID: 0}
+  eventSkill:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1154972021}
+        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
+        m_MethodName: Skill6
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1576659391 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1620163518275046861, guid: bd15be43fe4ca4619961d53618e16596,
@@ -20789,18 +20852,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1154972021}
-        m_TargetAssemblyTypeName: NewSkillController, Assembly-CSharp
-        m_MethodName: Skill6
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1747575654}
         m_TargetAssemblyTypeName: Controller, Assembly-CSharp
         m_MethodName: SetSelectedObj

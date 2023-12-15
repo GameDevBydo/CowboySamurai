@@ -67,6 +67,10 @@ public class Player : MonoBehaviour
         comboCounter = 0;
         getHit = true;
         
+        for (int i = 1; i < moveList.attackUnlocked.Length; i++)
+        {
+            moveList.attackUnlocked[i] = false;
+        }
     }
 
 
