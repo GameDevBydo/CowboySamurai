@@ -16,6 +16,7 @@ public class SceneSetup : MonoBehaviour
     {
        main.tic1Pos = tic1Pos;
        main.tic2Pos = tic2Pos;
+       main.inputPause = false;
     }
 
     public void NextScene()
@@ -26,6 +27,7 @@ public class SceneSetup : MonoBehaviour
             {
                 main.tutorialDone = true;
             }
+            main.inputPause = true;
             main.ChangeScreen(main.ticketScreen);
             main.SetSelectedObj(main.firstBtnTicket);
         }
