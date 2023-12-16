@@ -26,6 +26,8 @@ public class SaveController : MonoBehaviour
         scene.game.bulletBar = Player.instance.bulletBar;
         scene.game.extraDamage = Player.instance.extraDamage;
         scene.game.dashCD = Player.instance.dashCD;
+        scene.game.enemiesDefeated = Controller.instance.enemiesDefeated;
+        scene.game.killsNeeded = Controller.instance.killsNeeded;
 
         scene.game.currentscene = Controller.instance.currentScene;
         scene.game.ticketsAvailable = Controller.instance.ticketsAvailable;
@@ -60,6 +62,8 @@ public class SaveController : MonoBehaviour
         Player.instance.bulletBar = data.game.bulletBar;
         Player.instance.extraDamage = data.game.extraDamage;
         Player.instance.dashCD = data.game.dashCD;
+        Controller.instance.enemiesDefeated = data.game.enemiesDefeated;
+        Controller.instance.killsNeeded = data.game.killsNeeded;
         
         Player.instance.moveList.attackUnlocked = data.game.attackUnlocked;
         

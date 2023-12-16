@@ -32,6 +32,8 @@ public class GameSaveData
     public int extraDamage;
     public float dashCD;
     public bool[] attackUnlocked;
+    public int enemiesDefeated;
+    public int killsNeeded;
     #endregion
 
 }
