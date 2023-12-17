@@ -455,7 +455,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: 413}
+  m_AnchoredPosition: {x: -0.000030518, y: 431}
   m_SizeDelta: {x: 1920, y: 74.967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187241321
@@ -1674,7 +1674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00005271175, y: -68}
+  m_AnchoredPosition: {x: 0.00005271175, y: -83}
   m_SizeDelta: {x: 1920, y: 74.967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &460176573
@@ -1698,7 +1698,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Luis Henrique Costa Silva Araujo\nBernardo Miranda Machado Coelho\nAna
-    J\xFAlia Teles de Lima e Silva"
+    J\xFAlia Teles de Lima e Silva\nPablo Henrique Ramos dos Reis"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4498,7 +4498,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Lucas Henrique Silva Cruz:\n\t-Cowboy\n\t-Wendigo\n\t-Alien\n\t-Vendedor\n\t-NPC
-    masculino\n\t-4 varia\xE7\xF5es dp goom\n\t-2 varia\xE7\xF5es da pipoca\nCau\xEA
+    masculino\n\t-4 varia\xE7\xF5es do goom\n\t-2 varia\xE7\xF5es da pipoca\nCau\xEA
     Cezar dos Santos:\n\t-Goom\n\t-Pipoca"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
