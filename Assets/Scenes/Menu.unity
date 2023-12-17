@@ -23751,8 +23751,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 00aed7797840433468b4545772a41db8, type: 2}
   tic1Pos: {fileID: 0}
   tic2Pos: {fileID: 0}
-  openingVideo: {fileID: 32900000, guid: e5478a0eab1dbb74fb8269588668d7d6, type: 3}
-  endingVideo: {fileID: 32900000, guid: 46db5cd64a7769e4ea2d4c92a2d4ce30, type: 3}
+  openingVideo: {fileID: 32900000, guid: 52798565e46ed0540894e48f06fa240a, type: 3}
+  endingVideo: {fileID: 32900000, guid: 4a0a1cec9fb085646ba06aad0dd8434b, type: 3}
   videoObj: {fileID: 1213916327}
 --- !u!4 &1747575655
 Transform:
@@ -24009,7 +24009,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747575653}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: e5478a0eab1dbb74fb8269588668d7d6, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

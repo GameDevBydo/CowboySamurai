@@ -607,8 +607,14 @@ public class Player : MonoBehaviour
 
                 foreach (Collider col in hitCollider)
                 {
-                    if(!enemiesHit.Contains(col.gameObject.GetComponent<EnemyB>())) enemiesHit.Add(col.gameObject.GetComponent<EnemyB>());
-                    else if(!bossHit.Contains(col.gameObject.GetComponent<Boss>())) bossHit.Add(col.gameObject.GetComponent<Boss>());
+                    if(col.tag=="Enemy")
+                    {
+                        if(!enemiesHit.Contains(col.gameObject.GetComponent<EnemyB>())) enemiesHit.Add(col.gameObject.GetComponent<EnemyB>());
+                    }
+                    else if (col.tag=="Boss")
+                    {
+                        if(!bossHit.Contains(col.gameObject.GetComponent<Boss>())) bossHit.Add(col.gameObject.GetComponent<Boss>());
+                    }
                 }
 
                 foreach(EnemyB en in enemiesHit)
@@ -692,7 +698,8 @@ public class Player : MonoBehaviour
                 // Após as checagens de colisão, a lista de scripts é preenchida e em seguida é inserida num loop que chamará a função de dano
 
                 List<Collider> hitCollider = new List<Collider>();
-                List<Enemy> enemiesHit = new List<Enemy>();
+                List<EnemyB> enemiesHit = new List<EnemyB>();
+                List<Boss> bossHit = new List<Boss>();
 
                 for(int i = 0; i<attack.hitboxes.Length; i++)
                 {
@@ -704,13 +711,27 @@ public class Player : MonoBehaviour
 
                 foreach (Collider col in hitCollider)
                 {
-                    if(!enemiesHit.Contains(col.gameObject.GetComponent<Enemy>())) enemiesHit.Add(col.gameObject.GetComponent<Enemy>());
+                    if(col.tag=="Enemy")
+                    {
+                        if(!enemiesHit.Contains(col.gameObject.GetComponent<EnemyB>())) enemiesHit.Add(col.gameObject.GetComponent<EnemyB>());
+                    }
+                    else if (col.tag=="Boss")
+                    {
+                        if(!bossHit.Contains(col.gameObject.GetComponent<Boss>())) bossHit.Add(col.gameObject.GetComponent<Boss>());
+                    }
                 }
-                
-                foreach(Enemy en in enemiesHit)
+
+                foreach(EnemyB en in enemiesHit)
                 {
                     IncreaseComboCounter();
                     en.TakeDamage(attack.damage + extraDamage, attack.stun, attack.sfx);
+                    ChangeMeter(attack.meterGen/20.0f);
+                }
+                foreach(Boss boss in bossHit)
+                {
+                    IncreaseComboCounter();
+                    boss.TakeDamage(attack.damage, attack.sfx);
+                    ChangeMeter(attack.meterGen/20.0f);
                 }
 
                 recoveryTimer = attack.recovery;

@@ -777,6 +777,7 @@ public class Controller : MonoBehaviour
 
     void CloseVideo()
     {
+        videoPlayer.clip = null;
         audio.UnpauseSong();
         videoObj.SetActive(false);
         inputPause = false;
