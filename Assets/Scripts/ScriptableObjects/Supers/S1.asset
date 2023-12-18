@@ -15,7 +15,7 @@ MonoBehaviour:
   attackName: S
   hitboxes:
   - {fileID: 11400000, guid: 8e113d9b3edc312488865bf37fa9d5f2, type: 2}
-  damage: 200
+  damage: 100
   hit: 0
   startUp: 0
   recovery: 1

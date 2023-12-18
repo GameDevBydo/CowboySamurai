@@ -378,8 +378,6 @@ public class Player : MonoBehaviour
                     if(bullet > 0)
                     {
                         ChangePlayerState(7);
-                        ChangeMeter(-1);
-                        ///Debug.Log("Super de " + bullet + " balas");
                     }
                 } 
 
@@ -725,13 +723,11 @@ public class Player : MonoBehaviour
                 {
                     IncreaseComboCounter();
                     en.TakeDamage(attack.damage + extraDamage, attack.stun, attack.sfx);
-                    ChangeMeter(attack.meterGen/20.0f);
                 }
                 foreach(Boss boss in bossHit)
                 {
                     IncreaseComboCounter();
                     boss.TakeDamage(attack.damage, attack.sfx);
-                    ChangeMeter(attack.meterGen/20.0f);
                 }
 
                 recoveryTimer = attack.recovery;

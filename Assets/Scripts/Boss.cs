@@ -12,15 +12,14 @@ public class Boss : MonoBehaviour
     public Animator anim;
 
     [Header ("Boss Stats")]
-    float baseLife = 250;
-    float rageLife = 100;
-    float normalLife = 100;
+    float baseLife = 500;
+    float rageLife = 250;
+    float normalLife = 500;
 
     [Header ("Boss States")]
     private bool rageMode = false;
     private bool canAttack = false;
 
-    bool m_Started;
     private SkinnedMeshRenderer rend;
 
     int currentAttack;
@@ -28,9 +27,7 @@ public class Boss : MonoBehaviour
     public LayerMask playerMask;
     public float recoveryTimer = 30.0f;
 
-    public ParticleSystem deathPS, hitPS;
     public Material baseMat, hitMat, rageMat, rageScytheMat;
-    [HideInInspector]public GameObject player;
 
     public GameObject[] spikes, rageSpikes;
 
@@ -42,15 +39,13 @@ public class Boss : MonoBehaviour
 
     private void Awake() 
     {
-        //player = GameObject.FindGameObjectWithTag("Player");                     VOLTA AQUI TB
         rend = transform.GetChild(0).GetChild(1).GetComponent<SkinnedMeshRenderer>();
         baseMat = rend.material;
         normalLife = baseLife;
         source = GetComponent<AudioSource>();
     }
     void Start()
-    {
-        m_Started = true;  
+    {  
         anim = transform.GetComponent<Animator>();
     }
     private void Update() 
@@ -60,28 +55,9 @@ public class Boss : MonoBehaviour
         {
             Attack();
         }
-
-        CheckDistance();
     }
-
-    #region Move
-    void CheckDistance()
-    {   
-        //distance = Vector3.Distance(transform.position, player.transform.position);
-        //if(recoveryTimer <= 0)
-        //{
-        //    canAttack = true;
-        //}                                                                                                         VOLTA ISSO TUDO
-        //if (distance <= 10.0f && canAttack)
-        //{
-        //    Attack();
-        //}
-    }
-
-    #endregion
 
     #region Attack
-
     void Attack()
     {
         currentAttack = Random.Range(0,3);
@@ -129,12 +105,11 @@ public class Boss : MonoBehaviour
 
     public void ReturnToIdle()
     {
-        anim.Play("Armature|Idle");
+        anim.Play("Wendigo_Idle");
     }
 
     void EnterRage()
     {
-        //play rage anim, change shader
         normalLife += rageLife;
         rageMode = true;
         rend.material = rageMat;
@@ -148,7 +123,7 @@ public class Boss : MonoBehaviour
         {
             Destroy(gameObject);
             Controller.instance.PlayEndingVideo();
-            // play video of ending
+            Controller.instance.ChangeScreen(Controller.instance.endGameScreen);
         }
     }
 
@@ -159,7 +134,11 @@ public class Boss : MonoBehaviour
         GetComponent<AudioSource>().Play();
         StartCoroutine(HitMaterialEffect());
         CheckDeath();
-        if(normalLife <= 50) EnterRage();
+        if(normalLife <= 200 && !rageMode)
+        {
+            anim.Play("Wendigo_Rage");
+            recoveryTimer = 6;
+        }
     }
     public IEnumerator HitMaterialEffect()
     {
@@ -186,8 +165,6 @@ public class Boss : MonoBehaviour
     {
         transform.GetChild(id).gameObject.SetActive(false);
     }
-
-
 
     BossState currentState, pastState;
     string animationName;
@@ -216,18 +193,6 @@ public class Boss : MonoBehaviour
     }
     #endregion
     
-
-    private void OnTriggerEnter(Collider other) 
-    {
-        if(other.tag == "Player")
-        {
-            if(Player.instance.getHit)
-            {
-                Player.instance.TakeDamage(50);
-            }
-        }
-    }
-
     AudioSource source;
 
     public void PlaySound(AudioClip sound)

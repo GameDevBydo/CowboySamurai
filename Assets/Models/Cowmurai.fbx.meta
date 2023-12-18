@@ -358,7 +358,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.24733634
+      - time: 0.32892144
         functionName: CheckAttackCollision
         data: LL
         objectReferenceParameter: {fileID: 2432761055447202610, guid: 6f1c28d2f40dc6f4b90d940b9c0d6f81,

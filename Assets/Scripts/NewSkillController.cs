@@ -140,8 +140,7 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill7()
     {
-        moveList.attackUnlocked[5] = true;
-        moveList.attackUnlocked[6] = true;
+        Player.instance.IncreaseBaseDamage(15);
     }
     public void Skill8()
     {
@@ -150,6 +149,6 @@ public class NewSkillController : MonoBehaviour
     }
     public void Skill9()
     {
-        Player.instance.IncreaseBaseDamage(15);
+        Player.instance.IncreaseBaseDamage(10);
     }
 }

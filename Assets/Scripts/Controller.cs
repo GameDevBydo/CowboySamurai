@@ -651,11 +651,15 @@ public class Controller : MonoBehaviour
         if(ticket1 == null) 
         {
             ticket1 = collected;
+            if(ticket1.ticketName == "Fúria Monstruosa") ticketsAvailable.Add(ticket1);
+            else ticketsAvailable.Remove(ticket1);
             UpdateTickets(0);
         }
         else if (ticket2 == null) 
         {
             ticket2 = collected;
+            if(ticket2.ticketName == "Fúria Monstruosa") ticketsAvailable.Add(ticket2);
+            else ticketsAvailable.Remove(ticket2);
             UpdateTickets(1);
         }
         else Debug.Log("Erro! Sem Espaço para tickets.");
@@ -711,7 +715,6 @@ public class Controller : MonoBehaviour
         UpdateLifeBar((float)Player.instance.hitPoints/(float)Player.instance.maxHP);
         UpdateBulletBar(Player.instance.bulletBar);
         nextLevel.SetActive(false);
-        ticketsAvailable.Remove(ticketUsed);
     }
 
     [HideInInspector]
@@ -739,12 +742,12 @@ public class Controller : MonoBehaviour
             Instantiate(tic1.ticketModel, tic1Pos.position, tic1Pos.rotation);
             Instantiate(tic2.ticketModel, tic2Pos.position, tic2Pos.rotation);    
         }
-        else
+        else if(ticketsAvailable.Count == 1)
         {
             tic1id = 0;
             tic1 = ticketsAvailable[tic1id];
             Instantiate(tic1.ticketModel, tic1Pos.position, tic1Pos.rotation);
-        }        
+        }
     }
 
     #endregion

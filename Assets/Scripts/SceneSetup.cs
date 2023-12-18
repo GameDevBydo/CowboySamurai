@@ -21,15 +21,18 @@ public class SceneSetup : MonoBehaviour
 
     public void NextScene()
     {
-        if(main.questClear || main.currentScene == 0) 
+        if(main.ticketCollectedIcon.activeSelf)
         {
-            if(main.currentScene == 0)
+            if(main.questClear || main.currentScene == 0) 
             {
-                main.tutorialDone = true;
+                if(main.currentScene == 0)
+                {
+                    main.tutorialDone = true;
+                }
+                main.inputPause = true;
+                main.ChangeScreen(main.ticketScreen);
+                main.SetSelectedObj(main.firstBtnTicket);
             }
-            main.inputPause = true;
-            main.ChangeScreen(main.ticketScreen);
-            main.SetSelectedObj(main.firstBtnTicket);
         }
     }
 

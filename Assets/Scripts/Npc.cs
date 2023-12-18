@@ -132,5 +132,10 @@ public class Npc : MonoBehaviour
         endQuoteEvent.Invoke();
         Controller.instance.UnPauseFullGame();
     }
+
+    public void AlienEffect(int val)
+    {
+        Controller.instance.money += val;
+    }
 }
 

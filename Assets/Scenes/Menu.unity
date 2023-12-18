@@ -3878,7 +3878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Tambor Cheio
-  skillDesc: Desbloqueia todas as balas. Ativa +2 balas, maximizando a carga do super.
+  skillDesc: Ativa +2 balas, maximizando a carga do super.
   skillSprite: {fileID: 0}
   skillPrice: 3
   nextSkills:
@@ -3998,9 +3998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: "Dom\xEDnio da Espada"
-  skillDesc: 'Ainda mais golpes com espada. Golpes LLL e HH desbloqueados.
-
-'
+  skillDesc: Golpes LLL (U, U, U) e HH (I, I) desbloqueados.
   skillSprite: {fileID: 0}
   skillPrice: 2
   nextSkills:
@@ -5141,7 +5139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Eu sou a Velocidade
-  skillDesc: "Reduz o tempo de recarga da Evasiva. Evasiva volta 50% mais r\xE1pido."
+  skillDesc: "Evasiva volta mais r\xE1pido."
   skillSprite: {fileID: 0}
   skillPrice: 3
   nextSkills:
@@ -7405,8 +7403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: O Cowboy Samurai
-  skillDesc: "Aumenta o dano geral. Aumenta todo o dano\_causado."
+  skillName: Mestre das Armas
+  skillDesc: "Aumenta todo o dano\_causado."
   skillSprite: {fileID: 0}
   skillPrice: 4
   nextSkills: []
@@ -14855,10 +14853,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: "Novos come\xE7os..."
-  skillDesc: 'Novos golpes com espada e arma. Golpes LL e H desbloqueados, e pode
-    usar o Super.
-
-'
+  skillDesc: Golpes LL (aperte U, U), Golpe H (aperte I) e Super (aperte O, custa
+    1 bala).
   skillSprite: {fileID: 0}
   skillPrice: 1
   nextSkills:
@@ -17232,7 +17228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: Eu sou o Perigo
-  skillDesc: "Dano aumentado. Seus tiros e cortes d\xE3o mais dano."
+  skillDesc: Dano aumentado.
   skillSprite: {fileID: 0}
   skillPrice: 3
   nextSkills:
@@ -18753,7 +18749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: "Dom\xEDnio do Rev\xF3lver"
-  skillDesc: Aumenta o tambor em 2 balas. Pode usar mais cargas do super.
+  skillDesc: Aumenta o tambor em 2 balas.
   skillSprite: {fileID: 0}
   skillPrice: 2
   nextSkills:
@@ -19938,8 +19934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf045a764e17f84c8a02fb49cf32a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Mestre Samurai
-  skillDesc: Ainda mais golpes com espada. Golpes LH e LLH desbloqueados.
+  skillName: O Cowboy Samurai
+  skillDesc: Aumento alto de dano.
   skillSprite: {fileID: 0}
   skillPrice: 6
   nextSkills: []
@@ -20769,7 +20765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillName: "Dif\xEDcil de Morrer"
-  skillDesc: "Aumenta sua Vida. Vida m\xE1xima aumentada."
+  skillDesc: "Vida m\xE1xima aumentada."
   skillSprite: {fileID: 0}
   skillPrice: 3
   nextSkills:
