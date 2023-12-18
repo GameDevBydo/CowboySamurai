@@ -748,6 +748,7 @@ public class Controller : MonoBehaviour
             tic1 = ticketsAvailable[tic1id];
             Instantiate(tic1.ticketModel, tic1Pos.position, tic1Pos.rotation);
         }
+        else Debug.Log("Erro! Sem tickets.");
     }
 
     #endregion
